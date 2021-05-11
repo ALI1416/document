@@ -47,7 +47,7 @@
 |      | label                | 创建、更改或删除磁盘的卷标。                            |
 | ■    | md                   | 创建一个目录。                                          |
 |      | mkdir(同md)          | 创建一个目录。                                          |
-| ■    | mklink               | 创建符号链接和硬链接                                    |
+|      | mklink               | 创建符号链接和硬链接                                    |
 | ■    | mode                 | 配置系统设备。                                          |
 | ■    | more                 | 逐屏显示输出。                                          |
 | ■    | move                 | 将一个或多个文件从一个目录移动到另一个目录。            |
@@ -91,17 +91,17 @@
 ## 常用简单命令
 | 常用 | 命令    | 作用         | 示例                                | 解释                                                     |
 | ---- | ------- | ------------ | ----------------------------------- | -------------------------------------------------------- |
-| ■    | help    | 帮助         | help                                | 显示所有系统命令<br>help 命令名 ->显示该命令的帮助信息   |
+| ■    | help    | 帮助         | ①help<br>②help 命令名               | ①显示所有系统命令<br>②显示该命令的帮助信息               |
 | ■    | rem或:: | 注释         | rem 注释信息                        | 注释                                                     |
-| ■    | chcp    | 字符集       | ①chcp<br>②chcp 数字                 | ①显示使用的字符集<br>②设置字符集(936是GBK，65001是UTF-8) |
 | ■    | color   | 颜色         | color 07                            | 设置黑底白字(颜色代码见下)                               |
 | ■    | mode    | 设置窗口大小 | mode 100,30                         | 设置窗口宽100高30                                        |
+| ■    | chcp    | 字符集       | ①chcp<br>②chcp 数字                 | ①显示使用的字符集<br>②设置字符集(936是GBK，65001是UTF-8) |
 | ■    | date    | 日期         | ①date<br>②date /t                   | ①显示并设置日期<br>②显示日期                             |
 | ■    | time    | 时间         | ①time<br>②time /t                   | ①显示并设置时间<br>②显示时间                             |
 | ■    | echo    | 显示消息     | ①echo 消息<br>②echo [on &#124; off] | ①显示消息<br>②开启/关闭回显                              |
-| ■    | cls     | 清除屏幕     |                                     |
-| ■    | pause   | 暂停         |                                     |
-| ■    | exit    | 退出         |                                     |
+| ■    | cls     | 清除屏幕     |                                     |                                                          |
+| ■    | pause   | 暂停         |                                     |                                                          |
+| ■    | exit    | 退出         |                                     |                                                          |
 | ■    | goto    | 跳转         | goto 标签                           | 跳转到标签处                                             |
 | ■    | :       | 标签         | :标签                               | goto可以跳转到的地方                                     |
 | ■    | @       | 关闭本行回显 | ①@命令<br>②@echo off                | ①关闭本行回显<br>②本行和后面回显关闭                     |
@@ -120,7 +120,7 @@
 |      | && &#124;&#124; | 相当于if-else。左成功，执行中；左失败，执行右 | dir c:\ && echo ok &#124;&#124; echo error                                  | 输出c盘，输出ok                     |
 | ■    | >&和<&          | 重定向左句柄到右                              | 见下                                                                        | 见下                                |
 
-默认情况下，可以从键盘将命令输入（即STDIN句柄）发送到cmd，然后由cmd将命令输出（即STDOUT句柄）发送到命令提示符窗口。
+默认情况下，可以从键盘将命令输入(即STDIN句柄)发送到cmd，然后由cmd将命令输出(即STDOUT句柄)发送到命令提示符窗口。
 
 | 句柄      | 代号 | 说明                             |
 | --------- | ---- | -------------------------------- |
@@ -149,9 +149,9 @@
 | 7    | C0C0C0   | 白色   | <div style="background:#C0C0C0;">&emsp;</div> | F    | FFFFFF   | 亮白色   | <div style="background:#FFFFFF;">&emsp;</div> |
 
 ## set 显示、设置或删除cmd.exe环境变量
-**格式1：`set [变量名=[值]]`**  
-**格式2：`set /a [变量名=]表达式`**  
-**格式3：`set /p 变量名=[提示信息]`**  
+**编辑格式：`set [变量名=[值]]`**  
+**计算格式：`set /a [变量名=]表达式`**  
+**输入格式：`set /p 变量名=[提示信息]`**  
 ### 命令
 | 常用 | 命令            | 解释                          |
 | ---- | --------------- | ----------------------------- |
@@ -225,7 +225,6 @@
 
 ## dir 显示目录中的文件和子目录列表
 **格式：`dir [盘符:][路径][文件名] [/a[[:]属性]] [/b] [/c] [/d] [/l] [/n] [/o[[:]排列顺序]] [/p] [/q] [/r] [/s] [/t[[:]时间段]] [/w] [/x] [/4]`**
-
 ### /a 属性
 | 字段 | 含义           | 字段 | 含义           |
 | ---- | -------------- | ---- | -------------- |
@@ -408,6 +407,96 @@ E:.
             新建 Microsoft Visio 绘图.vsd
 ```
 
+## cmd 启动cmd的一个新实例
+**格式：`cmd [/a | /u] [/q] [/d] [/e:on | /e:off] [/f:on | /f:off] [/v:on | /v:off] [[/s] [/c | /k] 字符串]`**
+### 命令
+| 常用 | 命令                             | 解释                                    |
+| ---- | -------------------------------- | --------------------------------------- |
+|      | start cmd                        | 打开新的实例                            |
+| ■    | start cmd /c pause               | 执行命令然后关闭这个实例                |
+| ■    | start cmd /k pause               | 执行命令但保留这个实例                  |
+| ■    | start cmd /k test.bat            | 执行批处理但保留这个实例                |
+| ■    | start cmd /k "E:\a b c\test.bat" | 执行批处理(带空格)但保留这个实例        |
+| ■    | start cmd /k test.exe            | 执行程序但保留这个实例                  |
+|      | start cmd /q                     | 关闭回显                                |
+|      | start cmd /t:70                  | 设置字体和背景颜色                      |
+|      | start cmd /d(?)                  | 禁止从注册表执行AutoRun命令             |
+|      | start cmd /a(?)                  | 使向管道或文件的内部命令输出成为ANSI    |
+|      | start cmd /u(?)                  | 使向管道或文件的内部命令输出成为Unicode |
+|      | start cmd /e(?)                  | 启用/关闭命令扩展                       |
+|      | start cmd /f(?)                  | 启用/关闭文件和目录名完成字符           |
+|      | start cmd /v(?)                  | 启用/关闭!作为分隔符延迟的环境变量扩展  |
+
+## start 启动一个单独的窗口以运行指定的程序或命令
+**格式：`start ["标题"] [/d 路径] [/i] [/min] [/max] [/separate | /shared] [/low | /normal | /high | /realtime | /abovenormal | /belownormal] [/node <numa节点>] [/affinity <十六进制关联掩码>] [/wait] [/b] [命令或批处理/程序] [参数]`**
+### 命令
+| 常用 | 命令                                         | 解释                                             |
+| ---- | -------------------------------------------- | ------------------------------------------------ |
+| ■    | start test.bat(同start cmd /k test.bat)      | 新实例执行命令或批处理                           |
+| ■    | start test.exe                               | 新实例执行程序                                   |
+| ■    | start "测试" test.bat                        | 指定标题                                         |
+| ■    | start "" "E:\a b c\test.bat"                 | 路径带有空格(指定标题为空)                       |
+|      | start /b test.bat                            | 本窗口执行这个新的实例                           |
+| ■    | start /min test.bat                          | 以最小化方式启动窗口                             |
+|      | start /max test.bat                          | 以最大化方式启动窗口                             |
+| ■    | start test.bat a b c                         | 传递参数                                         |
+| ■    | start test.bat a "b c" d                     | 参数有空格                                       |
+| ■    | start "" "E:\a b c\test.bat" 1 "2 3" 4(无效) | 路径和参数有空格                                 |
+| ■    | start /wait test.bat                         | 启动应用程序并等待它终止                         |
+|      | start /separate test.bat(?)                  | 在单独的内存空间中启动16位Windows程序            |
+|      | start /shared test.bat(?)                    | 在共享内存空间中启动16位Windows程序              |
+|      | start /low test.bat(?)                       | 在idle优先级类中启动应用程序                     |
+|      | start /normal test.bat(?)                    | 在normal优先级类中启动应用程序                   |
+|      | start /high test.bat(?)                      | 在high优先级类中启动应用程序                     |
+|      | start /realtime test.bat(?)                  | 在realtime优先级类中启动应用程序                 |
+|      | start /abovenormal test.bat(?)               | 在abovenormal优先级类中启动应用程序              |
+|      | start /belownormal test.bat(?)               | 在belownormal优先级类中启动应用程序              |
+|      | start /node 123 test.bat(?)                  | 将首选非一致性内存结构(numa)节点指定为十进制整数 |
+|      | start /affinity 123 test.bat(?)              | 将处理器关联掩码指定为十六进制数字               |
+
+## call 从批处理程序调用另一个批处理程序
+**格式：`call [盘符:][路径]]文件名 [参数]`**  
+类似于`start /b`
+
+## shutdown 关机
+**格式：`shutdown [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f] [/m \\指定目标计算机][/t 秒数][/d [p|u:]主要原因编号:次要原因编号 [/c "注释"]]`**
+### 命令
+| 常用 | 命令               | 解释                       |
+| ---- | ------------------ | -------------------------- |
+| ■    | shutdown /s        | 60秒后关机                 |
+| ■    | shutdown /r        | 重启                       |
+| ■    | shutdown /h        | 休眠                       |
+| ■    | shutdown /l        | 注销                       |
+| ■    | shutdown /t 100    | 100秒后关机                |
+| ■    | shutdown /a        | 取消关机                   |
+|      | shutdown /c "注释" | 注释                       |
+|      | shutdown /i        | 图形化界面                 |
+|      | shutdown /sg       | 重启，自动登录，重启程序   |
+|      | shutdown /g        | 重启，自动登录             |
+|      | shutdown /p        | 关机，没有超时或警告       |
+|      | shutdown /hybrid   | 快速启动                   |
+|      | shutdown /fw       | 下次启动转到BIOS           |
+|      | shutdown /e        | 意外关闭的原因             |
+|      | shutdown /o        | 重启并转到高级启动选项菜单 |
+|      | shutdown /m \\\aaa | 指定目标计算机aaa          |
+|      | shutdown /f        | 强制关闭程序，不警告用户   |
+|      | shutdown /d        | 提供重新启动或关闭的原因   |
+
+## sort 排序
+**格式：`sort [/r] [/+n] [/m 千字节] [/l 区域] [/rec 记录字节数] [[盘符:][路径]文件名] [/t [盘符:][路径]] [/o [盘符:][路径]文件名]`**
+### 命令
+| 常用 | 命令                | 解释                     |
+| ---- | ------------------- | ------------------------ |
+| ■    | sort 1.txt          | 升序排序                 |
+| ■    | sort /r 1.txt       | 降序排序                 |
+| ■    | sort /+3 1.txt      | 从第3个字符开始排序      |
+| ■    | sort 1.txt /o 2.txt | 排序后输出文件           |
+|      | sort 1.txt /t       | 指定临时文件路径         |
+|      | sort 1.txt /rec     | 指定记录中的最大字符数量 |
+|      | sort 1.txt /l       | 指定区域                 |
+|      | sort 1.txt /m       | 指定最大内存             |
+
+
 ## copy 将一份或多份文件复制到另一个位置
 **格式：`copy [/d] [/v] [/n] [/y | /-y] [/z] [/l] [/a | /b ] 源 [/a | /b] [+ 源 [/a | /b] [+ ...]] [目的 [/a | /b]]`**
 ### 命令
@@ -458,84 +547,210 @@ E:.
 |      | xcopy a b /i /z(?)             | 在可重新启动模式下复制网络文件                 |
 |      | xcopy a b /i /b(?)             | 复制符号链接本身与链接目标                     |
 
-## cmd 启动cmd的一个新实例
-**格式：`cmd [/a | /u] [/q] [/d] [/e:on | /e:off] [/f:on | /f:off] [/v:on | /v:off] [[/s] [/c | /k] 字符串]`**
+## del 删除一个或多个文件
+**格式：`del [/p] [/f] [/s] [/q] [/a[[:]属性]] 文件名`**
+### /a 属性
+| 字段 | 含义           | 字段 | 含义           |
+| ---- | -------------- | ---- | -------------- |
+| R    | 只读文件       | S    | 系统文件       |
+| H    | 隐藏文件       | A(?) | 准备存档的文件 |
+| I(?) | 无内容索引文件 | L(?) | 重新分析点     |
+| O(?) | 脱机文件       | -    | 表示“否”的前缀 |
+
 ### 命令
-| 常用 | 命令                             | 解释                                    |
-| ---- | -------------------------------- | --------------------------------------- |
-|      | start cmd                        | 打开新的实例                            |
-| ■    | start cmd /c pause               | 执行命令然后关闭这个实例                |
-| ■    | start cmd /k pause               | 执行命令但保留这个实例                  |
-| ■    | start cmd /k test.bat            | 执行批处理但保留这个实例                |
-| ■    | start cmd /k "E:\a b c\test.bat" | 执行批处理(带空格)但保留这个实例        |
-| ■    | start cmd /k test.exe            | 执行程序但保留这个实例                  |
-|      | start cmd /q                     | 关闭回显                                |
-|      | start cmd /t:70                  | 设置字体和背景颜色                      |
-|      | start cmd /d(?)                  | 禁止从注册表执行AutoRun命令             |
-|      | start cmd /a(?)                  | 使向管道或文件的内部命令输出成为ANSI    |
-|      | start cmd /u(?)                  | 使向管道或文件的内部命令输出成为Unicode |
-|      | start cmd /e(?)                  | 启用/关闭命令扩展                       |
-|      | start cmd /f(?)                  | 启用/关闭文件和目录名完成字符           |
-|      | start cmd /v(?)                  | 启用/关闭!作为分隔符延迟的环境变量扩展  |
+| 常用 | 命令              | 解释                            |
+| ---- | ----------------- | ------------------------------- |
+| ■    | del 1.txt         | 删除1.txt，回收站找不到         |
+| ■    | del *.txt         | 删除txt结尾的文件，不包括子目录 |
+| ■    | del /s *.txt      | 删除txt结尾的文件，包括子目录   |
+|      | del /p 1.txt      | 提示确认                        |
+| ■    | del /f 1.txt      | 强制删除只读文件                |
+|      | del /q *.txt      | 不提示删除信息                  |
+| ■    | del /a /ah *。txt | 删除隐藏文件                    |
 
-## start 启动一个单独的窗口以运行指定的程序或命令
-**格式：`start ["标题"] [/d 路径] [/i] [/min] [/max] [/separate | /shared] [/low | /normal | /high | /realtime | /abovenormal | /belownormal] [/node <numa节点>] [/affinity <十六进制关联掩码>] [/wait] [/b] [命令或批处理/程序] [参数]`**
+## md 创建目录(文件夹)
+**格式：`md [盘符:]路径(文件夹名)`**
 ### 命令
-| 常用 | 命令                                         | 解释                                                             |
-| ---- | -------------------------------------------- | ---------------------------------------------------------------- |
-| ■    | start test.bat(同start cmd /k test.bat)      | 新实例执行命令或批处理                                           |
-| ■    | start test.exe                               | 新实例执行程序                                                   |
-| ■    | start "测试" test.bat                        | 指定标题                                                         |
-| ■    | start "" "E:\a b c\test.bat"                 | 路径带有空格(指定标题为空)                                       |
-|      | start /b test.bat                            | 本窗口执行这个新的实例                                           |
-| ■    | start /min test.bat                          | 以最小化方式启动窗口                                             |
-|      | start /max test.bat                          | 以最大化方式启动窗口                                             |
-| ■    | start test.bat a b c                         | 传递参数                                                         |
-| ■    | start test.bat a "b c" d                     | 参数有空格                                                       |
-| ■    | start "" "E:\a b c\test.bat" 1 "2 3" 4(无效) | 路径和参数有空格                                                 |
-| ■    | start /wait test.bat                         | 启动应用程序并等待它终止                                         |
-|      | start /separate test.bat(?)                  | 在单独的内存空间中启动16位Windows程序                            |
-|      | start /shared test.bat(?)                    | 在共享内存空间中启动16位Windows程序                              |
-|      | start /low test.bat(?)                       | 在IDLE优先级类中启动应用程序                                     |
-|      | start /normal test.bat(?)                    | 在normal优先级类中启动应用程序                                   |
-|      | start /high test.bat(?)                      | 在high优先级类中启动应用程序                                     |
-|      | start /realtime test.bat(?)                  | 在realtime优先级类中启动应用程序                                 |
-|      | start /abovenormal test.bat(?)               | 在abovenormal优先级类中启动应用程序                              |
-|      | start /belownormal test.bat(?)               | 在belownormal优先级类中启动应用程序                              |
-|      | start /node 1 test.bat(?)                    | 将首选非一致性内存结构(NUMA)节点指定为十进制整数                 |
-|      | start /affinity 1 test.bat(?)                | 将处理器关联掩码指定为十六进制数字。进程被限制在这些处理器上运行 |
+| 常用 | 命令     | 解释           |
+| ---- | -------- | -------------- |
+| ■    | md a     | 创建a文件夹    |
+| ■    | md a\b\c | 创建多级文件夹 |
 
-## call 从批处理程序调用另一个批处理程序
-**格式：`call [盘符:][路径]]文件名 [参数]`**  
-类似于`start /b`
-
-## shutdown 关机
-**格式：`shutdown [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f] [/m \\指定目标计算机][/t 秒数][/d [p|u:]主要原因编号:次要原因编号 [/c "注释"]]`**
+## rd 删除目录(文件夹)
+**格式：`md [/s] [/q] [盘符:]路径(文件夹名)`**
 ### 命令
-| 常用 | 命令                  | 解释                                                                                                                 |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| ■    | shutdown /s           | 60秒后关机                                                                                                           |
-| ■    | shutdown /r           | 重启                                                                                                                 |
-| ■    | shutdown /h           | 休眠                                                                                                                 |
-| ■    | shutdown /l           | 注销                                                                                                                 |
-| ■    | shutdown /t 100       | 100秒后关机                                                                                                          |
-| ■    | shutdown /a           | 取消关机                                                                                                             |
-|      | shutdown /s /c "注释" | 有关重新启动或关闭的原因的注释                                                                                       |
-|      | shutdown /i           | 显示图形用户界面                                                                                                     |
-|      | shutdown /sg          | 关闭计算机。在下一次启动时，如果启用了自动重启登录，则将自动登录并锁定上次交互用户。登录后，重启任何已注册的应用程序 |
-|      | shutdown /g           | 完全关闭并重启计算机。重新启动系统后，如果启用了自动重启登录，则将自动登录并锁定上次交互用户                         |
-|      | shutdown /p           | 关闭本地计算机，没有超时或警告                                                                                       |
-|      | shutdown /hybrid      | 执行计算机关闭并进行准备以快速启动                                                                                   |
-|      | shutdown /fw          | 与关闭选项结合使用，使下次启动转到固件用户界面                                                                       |
-|      | shutdown /e           | 记录计算机意外关闭的原因                                                                                             |
-|      | shutdown /o           | 转到高级启动选项菜单并重新启动计算机                                                                                 |
-|      | shutdown /m \\aaa     | 指定目标计算机                                                                                                       |
-|      | shutdown /f           | 强制关闭正在运行的应用程序而不事先警告用户                                                                           |
-|      | shutdown /d           | 提供重新启动或关闭的原因                                                                                             |
+| 常用 | 命令       | 解释                        |
+| ---- | ---------- | --------------------------- |
+| ■    | rd a       | 删除a文件夹(必须为空文件夹) |
+| ■    | rd /s a    | 以及删除子文件和子文件夹    |
+| ■    | rd /s /q a | 不提示确认信息              |
 
-## sort 排序
-**格式：`sort [/r] [/+n] [/m 千字节] [/l 区域] [/rec 记录字节数] [[盘符:][路径]文件名] [/t [盘符:][路径]] [/o [盘符:][路径]文件名]`**
+## move 移动文件(剪切)并重命名文件和目录
+**移动文件格式：`move [/y | /-y] [盘符:][路径]文件名[,...] 目标位置`**
+**重命名格式：`move [/y | /-y] [盘符:][路径]文件夹名 新文件夹名`**
 ### 命令
-| 常用 | 命令 | 解释 |
-| ---- | ---- | ---- |
+| 常用 | 命令               | 解释                   |
+| ---- | ------------------ | ---------------------- |
+| ■    | move 1.txt b       | 移动1.txt文件到b文件夹 |
+| ■    | move /y 1.txt b    | 覆盖已存在的文件       |
+| ■    | move 1.txt b\2.txt | 移动并重命名文件       |
+| ■    | move b c           | 重命名文件夹           |
 
+## replace 替换文件
+**格式1：`replace [盘符:][路径]文件名 [盘符:][路径] [/a] [/p] [/r] [/w]`**
+**格式2：`replace [盘符:][路径]文件名 [盘符:][路径] [/p] [/r] [/s] [/w] [/u]`**
+### 命令
+| 常用 | 命令               | 解释                                           |
+| ---- | ------------------ | ---------------------------------------------- |
+| ■    | replace 1.txt c /a | c文件夹中不存在1.txt才复制                     |
+|      | replace 1.txt c /p | c文件夹中存在1.txt需要确认才替换               |
+| ■    | replace 1.txt c /s | c文件夹以及子文件夹中存在1.txt才替换           |
+| ■    | replace 1.txt c /u | c文件夹以及子文件夹中存在1.txt并且日期早才替换 |
+| ■    | replace 1.txt c /r | 只读文件和为保护文件也能替换                   |
+|      | replace 1.txt c /w | 插入磁盘后再运行                               |
+
+## ren 重命名文件
+**格式：`ren [盘符:][路径]文件名 新文件名`**
+### 命令
+| 常用 | 命令            | 解释                             |
+| ---- | --------------- | -------------------------------- |
+| ■    | ren 1.txt 2.txt | 重命名1.txt为2.txt(不能指定目录) |
+
+## find 在文件中搜索字符串
+**格式：`find [/v] [/c] [/n] [/i] [/off[line]] "字符串" [[盘符:][路径]文件名[ ...]]`**
+### 命令
+| 常用 | 命令                      | 解释                                        |
+| ---- | ------------------------- | ------------------------------------------- |
+| ■    | find 1.txt "path"         | 在1.txt文件中搜索存在"path"字符串的行并显示 |
+| ■    | find 1.txt /v "path"      | 不存在                                      |
+| ■    | find 1.txt /c "path"      | 仅显示行数                                  |
+| ■    | find 1.txt /n "path"      | 显示行号                                    |
+| ■    | find 1.txt /i "path"      | 忽略大小写                                  |
+|      | find 1.txt /off "path"(?) | 不要跳过具有脱机属性集的文件                |
+
+## type 显示文本文件的内容
+**格式：`type [盘符:][路径]文件名`**
+### 命令
+| 常用 | 命令       | 解释              |
+| ---- | ---------- | ----------------- |
+| ■    | type 1.txt | 显示1.txt文件内容 |
+
+## more 逐屏显示输出
+**格式：`more /e [/c] [/p] [/s] [/tn] [+n] [文件名]`**
+### 命令
+| 常用 | 命令             | 解释                      |
+| ---- | ---------------- | ------------------------- |
+| ■    | more 1.txt       | 逐屏显示                  |
+|      | more 1.txt 2.txt | 逐屏显示                  |
+| ■    | more +3 1.txt    | 从第3行显示               |
+|      | more /c 1.txt    | 逐屏显示前先cls           |
+| ■    | more /s 1.txt    | 多个空行缩成一行          |
+| ■    | more /t4 1.txt   | tab显示为4个空格(默认8个) |
+|      | more /p 1.txt(?) | 扩展FormFeed字符          |
+
+### 出现More提示时可接受命令
+| 常用 | 命令 | 解释           |
+| ---- | ---- | -------------- |
+|      | p3   | 显示下3行      |
+|      | s3   | 跳过下3行      |
+|      | f    | 显示下一个文件 |
+| ■    | q    | 退出           |
+| ■    | =    | 显示行号       |
+|      | ?    | 显示帮助       |
+| ■    | 空格 | 显示下一页     |
+| ■    | 回车 | 显示下一行     |
+
+## findstr 在文件中寻找字符串
+**格式：`findstr [/b] [/e] [/l] [/r] [/s] [/i] [/x] [/v] [/n] [/m] [/o] [/p] [/f:指定文件列表的文件] [/c:字符串] [/g:指定要搜索字符串的文件] [/d:要查找目录列表(分号为分隔符)] [/a:颜色代码] [/off[line]] "字符串" [[盘符:][路径]文件名[ ...]]`**
+### 命令
+| 常用 | 命令                          | 解释                                               |
+| ---- | ----------------------------- | -------------------------------------------------- |
+| ■    | findstr "path" 1.txt          | 在1.txt文件中搜索存在"path"字符串的行并显示        |
+| ■    | findstr "path ren" 1.txt      | 在1.txt文件中搜索存在"path"或"ren"字符串的行并显示 |
+| ■    | findstr /c:"path ren" 1.txt   | 在1.txt文件中搜索存在"path ren"字符串的行并显示    |
+| ■    | findstr /v "path" 1.txt       | 不存在                                             |
+| ■    | findstr /n "path" 1.txt       | 显示行号                                           |
+| ■    | findstr /i "path" 1.txt       | 忽略大小写                                         |
+|      | findstr /off "path" 1.txt(?)  | 不要跳过具有脱机属性集的文件                       |
+| ■    | findstr /b "path" 1.txt       | 每行的首部是"path"字符串                           |
+| ■    | findstr /e "path" 1.txt       | 每行的结尾是"path"字符串                           |
+| ■    | findstr /r "表达式" 1.txt     | 将搜索字符串作为一般表达式使用(见下)               |
+|      | findstr /l "path" 1.txt(?)    | 按字使用搜索字符串                                 |
+| ■    | findstr /s "path" 1.txt       | 包含子目录                                         |
+| ■    | findstr /m "path" 1.txt       | 如果有匹配只打印文件名                             |
+| ■    | findstr /o "path" 1.txt       | 显示偏移量                                         |
+|      | findstr /p "path" 1.txt       | 忽略有不可打印字符的文件                           |
+|      | findstr /a:12 "path" 1.txt(?) | 指定有十六进位数字的颜色属性                       |
+| ■    | findstr /f:2.txt "path" 1.txt | 从指定文件读文件列表(/代表控制台)                  |
+| ■    | findstr /g:2.txt "path" 1.txt | 从指定的文件获得搜索字符串(/代表控制台)            |
+|      | findstr /d:a;b "path" 1.txt   | 要查找目录列表(分号为分隔符)                       |
+
+### 一般表达式
+| 常用 | 表达式    | 解释                                 |
+| ---- | --------- | ------------------------------------ |
+| ■    | .         | 通配符: 任何字符                     |
+| ■    | *         | 重复: 以前字符或类出现零或零以上次数 |
+| ■    | ^         | 行位置: 行的开始                     |
+| ■    | $         | 行位置: 行的终点                     |
+| ■    | [class]   | 字符类: 任何在字符集中的字符         |
+| ■    | [^class]  | 补字符类: 任何不在字符集中的字符     |
+| ■    | [x-y]     | 范围: 在指定范围内的任何字符         |
+|      | \x        | Escape: 元字符x的文字用法            |
+|      | \\&lt;xyz | 字位置: 字的开始                     |
+|      | xyz\\>    | 字位置: 字的结束                     |
+
+## tasklist 显示在本地或远程机器上当前运行的进程列表
+**格式：`tasklist [/s 远程系统地址 [/u 用户名 [/p [密码]]]] [/m [模块] | /svc | /v] [/fi 过滤器] [/fo 输出格式] [/nh]`**
+### 命令
+| 常用 | 命令                                  | 解释                                   |
+| ---- | ------------------------------------- | -------------------------------------- |
+| ■    | tasklist                              | 显示进程列表                           |
+|      | tasklist /s 1.2.3.4 /u admin /p admin | 显示远程系统进程列表                   |
+|      | tasklist /m >1.txt                    | 显示进程列表和加载的模块               |
+|      | tasklist /svc >1.txt                  | 显示进程列表和主持的服务               |
+|      | tasklist /apps                        | 显示Microsoft Store应用及其关联的进程  |
+|      | tasklist /v >1.txt                    | 显示详细任务信息                       |
+|      | tasklist /fo scv                      | 指定输出格式(有table[默认]，list，csv) |
+|      | tasklist /nh                          | 不显示标题(table，csv有效)             |
+| ■    | tasklist /fi "imagename eq code.exe"  | 显示程序名为code.exe的进程信息         |
+| ■    | tasklist /fi "pid eq 11100"           | 显示pid为11100的进程信息               |
+
+### 过滤器
+| 常用 | 命令        | 有效运算符             | 有效值                                   |
+| ---- | ----------- | ---------------------- | ---------------------------------------- |
+|      | status      | eq, ne                 | running,suspended,not responding,unknown |
+| ■    | imagename   | eq, ne                 | 映像名称                                 |
+| ■    | pid         | eq, ne, gt, lt, ge, le | pid值                                    |
+|      | session     | eq, ne, gt, lt, ge, le | 会话编号                                 |
+|      | sessionname | eq, ne                 | 会话名称                                 |
+|      | cputime     | eq, ne, gt, lt, ge, le | cpu时间：格式为hh:mm:ss                  |
+|      | memusage    | eq, ne, gt, lt, ge, le | 内存使用(以kb为单位)                     |
+|      | username    | eq, ne                 | 用户名：格式为[域\]用户                  |
+|      | services    | eq, ne                 | 服务名称                                 |
+|      | windowtitle | eq, ne                 | 窗口标题                                 |
+|      | 模块        | eq, ne                 | dll名称                                  |
+
+## taskkill 使用该工具按照进程ID(PID)或映像名称终止任务
+**格式：`taskkill [/s 远程系统地址 [/u 用户名 [/p [密码]]]] { [/fi 过滤器] [/pid pid | /im 程序名] } [/t] [/f]`**
+### 命令
+| 常用 | 命令                                               | 解释                                     |
+| ---- | -------------------------------------------------- | ---------------------------------------- |
+|      | taskkill /s 1.2.3.4 /u admin /p admin /pid 1234 /f | 结束远程系统进程                         |
+| ■    | taskkill /im code.exe /f                           | 结束程序名为code.exe的进程               |
+| ■    | taskkill /im code.exe /t /f                        | 结束程序名为code.exe的进程以及它的子进程 |
+| ■    | taskkill /pid 11100 /f                             | 结束pid为11100的进程                     |
+|      | taskkill /fi "imagename eq code.* " /f             | 结束程序名为code.*的进程                 |
+
+### 过滤器
+| 常用 | 命令        | 有效运算符             | 有效值                         |
+| ---- | ----------- | ---------------------- | ------------------------------ |
+|      | status      | eq, ne                 | running,not responding,unknown |
+| ■    | imagename   | eq, ne                 | 映像名称                       |
+| ■    | pid         | eq, ne, gt, lt, ge, le | pid值                          |
+|      | session     | eq, ne, gt, lt, ge, le | 会话编号                       |
+|      | cputime     | eq, ne, gt, lt, ge, le | cpu时间：格式为hh:mm:ss        |
+|      | memusage    | eq, ne, gt, lt, ge, le | 内存使用(以kb为单位)           |
+|      | username    | eq, ne                 | 用户名：格式为[域\]用户        |
+|      | modules     | eq, ne                 | dll名称                        |
+|      | services    | eq, ne                 | 服务名称                       |
+|      | windowtitle | eq, ne                 | 窗口标题                       |
