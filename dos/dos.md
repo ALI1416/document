@@ -1,5 +1,4 @@
-# DOS/CMD/BAT内部命令
-
+# 内部命令
 ## 所有命令
 | 常用 | 命令                 | 作用                                                    |
 | ---- | -------------------- | ------------------------------------------------------- |
@@ -37,7 +36,7 @@
 | ■■   | for                  | 为一组文件中的每个文件运行一个指定的命令。              |
 |      | format               | 格式化磁盘，以便用于Windows。                           |
 |      | fsutil               | 显示或配置文件系统属性。                                |
-|      | ftype                | 显示或修改在文件扩展名关联中使用的文件类型。            |
+|      | f类型                | 显示或修改在文件扩展名关联中使用的文件类型。            |
 | ■■   | goto                 | 将Windows命令解释程序定向到批处理程序中某个带标签的行。 |
 |      | gpresult             | 显示计算机或用户的组策略信息。                          |
 |      | ~~graftabl(不存在)~~ | 使Windows在图形模式下显示扩展字符集。                   |
@@ -81,7 +80,7 @@
 | ■    | time                 | 显示或设置系统时间。                                    |
 | ■    | title                | 设置cmd.exe会话的窗口标题。                             |
 | ■    | tree                 | 以图形方式显示驱动程序或路径的目录结构。                |
-| ■■   | type                 | 显示文本文件的内容。                                    |
+| ■■   | 类型                 | 显示文本文件的内容。                                    |
 |      | ver                  | 显示Windows的版本。                                     |
 |      | verify               | 告诉Windows是否进行验证，以确保文件正确写入磁盘。       |
 |      | vol                  | 显示磁盘卷标和序列号。                                  |
@@ -883,16 +882,140 @@ E:.
 |      | %~dp$PATH:I | 搜索列在路径环境变量的目录，并将%I扩展到找到的第一个驱动器号和路径。                                                                   |
 |      | %~ftzaI     | 将%I扩展到类似输出线路的dir                                                                                                            |
 
-# DOS/CMD/BAT外部命令或可运行的程序
+例如：`%%~na`为变量a的文件名
+
+# 外部命令
 ## 常用命令
 | 常用 | 命令    | 作用   |
 | ---- | ------- | ------ |
 |      | choice  | 选项   |
-|      | netstat | 网络   |
 |      | reg     | 注册表 |
+|      | netstat | 网络   |
 |      |         |        |
 
-## 常用可运行的程序
+## choice 允许用户从选择列表选择一个项目并返回所选项目的索引
+**格式：`choice [/c 选项列表] [/n] [/cs] [/t 超时 /d 默认选项] [/m 提示文本]`**
+### 命令
+| 常用 | 命令                                      | 解释                 |
+| ---- | ----------------------------------------- | -------------------- |
+|      | choice /c abcd                            | 选项abcd             |
+| ■■   | choice /c abcd /m "请做出选择"            | 选项abcd显示提示文本 |
+|      | choice /c abcd /n /m "请做出选择"         | 不提示选项           |
+| ■    | choice /c abAB /cs /m "请做出选择"        | 区分大小写           |
+| ■■   | choice /c abcd /t 10 /d a /m "请做出选择" | 超时10秒默认选a      |
+
+### 代码和输出
+#### 仅选项
+代码
+```bat
+@echo off
+choice /c abcd
+echo %errorlevel%
+```
+输出
+```txt
+E:\>test.bat
+[A,B,C,D]?B
+2
+```
+#### 选项和提示
+代码
+```bat
+@echo off
+choice /c abcd /m "请做出选择"
+echo %errorlevel%
+```
+输出
+```txt
+E:\>test.bat
+请做出选择 [A,B,C,D]?A
+1
+```
+#### 仅提示
+代码
+```bat
+@echo off
+choice /c abcd /n /m "请做出选择"
+echo %errorlevel%
+```
+输出
+```txt
+E:\>test.bat
+请做出选择 C
+3
+```
+
+## reg 注册表操作
+**新增格式：`reg add 路径 [/v 名称 | /ve] [/t 类型] [/s 分隔符] [/d 值] [/f] [/reg:32 | /reg:64]`**
+**删除格式：`reg delete 路径 [/v 名称 | /ve | /va] [/f] [/reg:32 | /reg:64]`**
+**查询格式：`reg query 路径 [/v [名称] | /ve] [/s] [/f 值 [/k] [/d] [/c] [/e]] [/t 类型] [/z] [/se 分隔符] [/reg:32 | /reg:64]`**
+**导入格式：`reg import 文件名[/reg:32 | /reg:64]`**
+**导出格式：`reg export 路径 文件名 [/y] [/reg:32 | /reg:64]`**
+**加载格式：`reg load 路径 文件名 [/reg:32 | /reg:64]`**
+**卸载格式：`reg unload 路径`**
+**复制格式：`reg copy 路径1 路径2 [/s] [/f] [/reg:32 | /reg:64]`**
+**保存格式：`reg save 路径 文件名 [/y] [/reg:32 | /reg:64]`**
+**比较格式：`reg compare 路径1 路径2 [/v 名称 | /ve] [output] [/s] [/reg:32 | /reg:64]`**
+**还原格式：`reg restore 路径 文件名 [/reg:32 | /reg:64]`**
+**标志格式：`reg flags 路径 [query | set [dont_virtualize] [dont_silent_fail] [recurse_flag]] [/reg:32 | /reg:64]`**
+### 路径 
+**格式：`[\\远程机器名\]根路径\子路径`**
+| 常用 | 名称 |
+| ---- | ---- |
+|      | HKLM |
+|      | HKCU |
+|      | HKCR |
+|      | HKU  |
+|      | HKCC |
+
+### /t 类型
+| 常用 | 名称          | 解释           |
+| ---- | ------------- | -------------- |
+| ■■   | REG_SZ        | 字符串值(默认) |
+|      | REG_MULTI_SZ  | 多字符串值     |
+|      | REG_EXPAND_SZ | 可扩充字符串值 |
+|      | REG_DWORD     | DWord(32位)值  |
+|      | REG_QWORD     | QWord(64位)值  |
+|      | REG_BINARY    | 二进制值       |
+|      | REG_NONE      | (?)            |
+
+### 命令
+| 常用 | 命令                                 | 解释 |
+| ---- | ------------------------------------ | ---- |
+| ■■   | reg add 路径 /v 名称 /t REG_SZ /d 值 | 新增 |
+| ■■   | reg delete 路径 /v 名称 /f           | 删除 |
+| ■    | reg query 路径                       | 查询 |
+|      | reg import 导入路径                  | 导入 |
+|      | reg export 路径 导出路径             | 导出 |
+
+## netstat 显示协议统计信息和当前TCP/IP网络连接
+**格式：`netstat [-a] [-b] [-e] [-f] [-n] [-o] [-p 指定协议] [-r] [-s] [-t] [-x] [-y] [刷新间隔]`**
+### -p 指定协议
+| 常用 | 名称  |
+| ---- | ----- |
+|      | TCP   |
+|      | UDP   |
+|      | TCPv6 |
+|      | UDPv6 |
+
+### -p 指定协议 -s
+| 常用 | 名称   |
+| ---- | ------ |
+|      | IP     |
+|      | IPv6   |
+|      | ICMP   |
+|      | ICMPv6 |
+|      | TCP    |
+|      | UDP    |
+|      | TCPv6  |
+|      | UDPv6  |
+
+### 命令
+| 常用 | 命令         | 解释                                              |
+| ---- | ------------ | ------------------------------------------------- |
+| ■■   | netstat -ano | 显示活动连接的协议、本机地址、外部地址、状态、PID |
+
+# 内部程序
 | 常用 | 命令         | 作用            |
 | ---- | ------------ | --------------- |
 | ■■   | cmd          | 命令提示符      |
@@ -923,44 +1046,83 @@ E:.
 |      | fsmgmt       | 共享文件夹管理  |
 |      | winver       | 关于"Windows"   |
 
-## choice 允许用户从选择列表选择一个项目并返回所选项目的索引
-**格式：`choice [/c 选项列表] [/n] [/cs] [/t 超时 /d 默认选项] [/m 提示文本]`**
-### 命令
-| 常用 | 命令                           | 解释 |
-| ---- | ------------------------------ | ---- |
-|      | choice /c abcd /m "请做出选择" |      |
-|      |                                |      |
-|      |                                |      |
-
-
-# reg 注册表
-- regedit ->打开图形化界面
-- reg add 路径 /v 名称 /t REG_SZ /d 值 /f ->新增
-- reg delete 路径 /v 名称 /f ->删除
-- reg query 路径 ->查询
-- reg export 路径 导出路径 ->导出
-- reg import 导入路径 ->导入
-
-# 开机启动
-- reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f ->新增启动项(此用户)
-- reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f ->新增启动项(所有用户，需要管理员权限)
-- C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup ->启动项目录(此用户)
-- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp ->启动项目录(所有用户，需要管理员权限)
-
-# 查询端口号占用情况并杀死进程
-- netstat -ano ->显示活动连接的协议、本机地址、外部地址、状态、PID
-- netstat -ano | findstr 端口号 ->查询端口号占用情况
-- taskmgr ->打开任务管理器界面
-- tasklist ->查显示所有进程的进程名、PID等
-- tasklist | findstr 进程PID ->查询该PID的进程信息
-- taskkill /pid 进程PID /f ->杀死进程
-- taskkill /im 进程名 /f ->杀死进程
-
 # 常用bat程序
-
-## 把文件放到同名文件夹里
+## choice示例
 ```bat
-@echo off 
-for /f "tokens=1-3 delims=-" %%a in ('dir /a-d/b *.xls') do ( (if not exist "%%~a-%%~b" md "%%~a-%%~b") & ( move "%%~a" "%%~a-%%~b\") )
+@echo off
+:head
+choice /c abcd0 /m "请选择ABCD,退出按0"
+rem errorlevel 要从大到小排序
+if errorlevel 255 goto e255
+if errorlevel 5 goto e5
+if errorlevel 4 goto e4
+if errorlevel 3 goto e3
+if errorlevel 2 goto e2
+if errorlevel 1 goto e1
+if errorlevel 0 goto e0
+:e0
+echo 您按了Ctrl+C键
+goto head
+:e255
+echo 状态错误(不知道如何触发)
+goto head
+:e1
+echo 您选择了A
+goto head
+:e2
+echo 您选择了B
+goto head
+:e3
+echo 您选择了C
+goto head
+:e4
+echo 您选择了D
+goto head
+:e5
+echo 您选择了退出
+pause
+exit
+```
+
+## 开机启动
+### 注册表新增本用户开机启动
+语句：`reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
+`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`：本用户开机启动注册表路径  
+`/v qq`：设置名称qq  
+`/t REG_SZ`：设置类型字符串  
+`/d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"`：设置启动程序路径  
+`/f`：不用提示就强行覆盖现有注册表项
+### 注册表新增所有用户开机启动
+语句：`reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
+注意：需要管理员权限
+### 注册表删除本用户开机启动
+语句：`reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`
+### 注册表删除所有用户开机启动
+语句：`reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`
+### 注册表查询本用户开机启动
+语句：`reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
+### 注册表查询所有用户开机启动
+语句：`reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
+### 目录方式新增本用户开机启动
+把快捷方式复制到：`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+### 目录方式新增所有用户开机启动
+把快捷方式复制到：`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`  
+注意：需要管理员权限
+
+## 查询端口号占用情况并杀死进程
+1. 查询端口号占用情况：`netstat -ano | findstr 端口号`，获得进程PID在右侧  
+2. 查询该PID的进程信息：`tasklist | findstr 进程PID`，获得进程名在左侧  
+3. 杀死进程：`taskkill /pid 进程PID /f`或`taskkill /im 进程名 /f`  
+
+## 创建与文件同名(不含后缀)的文件夹并把文件放进去
+```bat
+@echo off
+set /p p=Please Input Suffix:
+for /f "delims=" %%a in ('dir /a-d/b *.%p%') do (
+    if not exist "%%~na" md "%%~na"
+    move "%%~a" "%%~na"
+)
 pause
 ```
+
+
