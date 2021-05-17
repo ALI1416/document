@@ -946,17 +946,17 @@ E:\>test.bat
 ```
 
 ## reg 注册表操作
-**新增格式：`reg add 路径 [/v 名称 | /ve] [/t 类型] [/s 分隔符] [/d 值] [/f] [/reg:32 | /reg:64]`**
-**删除格式：`reg delete 路径 [/v 名称 | /ve | /va] [/f] [/reg:32 | /reg:64]`**
-**查询格式：`reg query 路径 [/v [名称] | /ve] [/s] [/f 值 [/k] [/d] [/c] [/e]] [/t 类型] [/z] [/se 分隔符] [/reg:32 | /reg:64]`**
-**导入格式：`reg import 文件名[/reg:32 | /reg:64]`**
-**导出格式：`reg export 路径 文件名 [/y] [/reg:32 | /reg:64]`**
-**加载格式：`reg load 路径 文件名 [/reg:32 | /reg:64]`**
-**卸载格式：`reg unload 路径`**
-**复制格式：`reg copy 路径1 路径2 [/s] [/f] [/reg:32 | /reg:64]`**
-**保存格式：`reg save 路径 文件名 [/y] [/reg:32 | /reg:64]`**
-**比较格式：`reg compare 路径1 路径2 [/v 名称 | /ve] [output] [/s] [/reg:32 | /reg:64]`**
-**还原格式：`reg restore 路径 文件名 [/reg:32 | /reg:64]`**
+**新增格式：`reg add 路径 [/v 名称 | /ve] [/t 类型] [/s 分隔符] [/d 值] [/f] [/reg:32 | /reg:64]`**  
+**删除格式：`reg delete 路径 [/v 名称 | /ve | /va] [/f] [/reg:32 | /reg:64]`**  
+**查询格式：`reg query 路径 [/v [名称] | /ve] [/s] [/f 值 [/k] [/d] [/c] [/e]] [/t 类型] [/z] [/se 分隔符] [/reg:32 | /reg:64]`**  
+**导入格式：`reg import 文件名[/reg:32 | /reg:64]`**  
+**导出格式：`reg export 路径 文件名 [/y] [/reg:32 | /reg:64]`**  
+**加载格式：`reg load 路径 文件名 [/reg:32 | /reg:64]`**  
+**卸载格式：`reg unload 路径`**  
+**复制格式：`reg copy 路径1 路径2 [/s] [/f] [/reg:32 | /reg:64]`**  
+**保存格式：`reg save 路径 文件名 [/y] [/reg:32 | /reg:64]`**  
+**比较格式：`reg compare 路径1 路径2 [/v 名称 | /ve] [output] [/s] [/reg:32 | /reg:64]`**  
+**还原格式：`reg restore 路径 文件名 [/reg:32 | /reg:64]`**  
 **标志格式：`reg flags 路径 [query | set [dont_virtualize] [dont_silent_fail] [recurse_flag]] [/reg:32 | /reg:64]`**
 ### 路径 
 **格式：`[\\远程机器名\]根路径\子路径`**
@@ -1029,14 +1029,14 @@ E:\>test.bat
 | ■    | calc         | 计算器          |
 | ■    | mspaint      | 画图            |
 |      | write        | 写字板          |
+|      | osk          | 屏幕键盘        |
 |      | magnify      | 放大镜          |
 |      | narrator     | 讲述人          |
 |      | eudcedit     | 造字            |
 |      | charmap      | 字符映射表      |
-|      | perfmon      | 性能监测        |
-|      | osk          | 屏幕键盘        |
-|      | cleanmgr     | 磁盘清理        |
 |      | dxdiag       | DirectX诊断工具 |
+|      | perfmon      | 性能监测        |
+|      | cleanmgr     | 磁盘清理        |
 |      | msconfig     | 系统配置管理    |
 |      | compmgmt     | 计算机管理      |
 |      | devmgmt      | 设备管理器      |
@@ -1047,9 +1047,26 @@ E:\>test.bat
 |      | winver       | 关于"Windows"   |
 
 # 常用bat程序
+注意：以下所有代码，都需要保存字符集为UTF8的文件
+## 乱码解决
+如果bat文本编码为`UTF8`，需要设置字符集编码为`65001`。  
+echo命令不能连续输出2行中文(可以换行隔开)。
+```bat
+@echo off
+chcp 65001
+cls
+echo 中文+English
+
+echo 中文第二行，换行隔开
+echo.
+echo 中文第3行，命令隔开
+```
+
 ## choice示例
 ```bat
 @echo off
+chcp 65001
+cls
 :head
 choice /c abcd0 /m "请选择ABCD,退出按0"
 rem errorlevel 要从大到小排序
@@ -1085,44 +1102,224 @@ exit
 ```
 
 ## 开机启动
-### 注册表新增本用户开机启动
+**注册表新增本用户开机启动项**  
 语句：`reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
 `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`：本用户开机启动注册表路径  
 `/v qq`：设置名称qq  
 `/t REG_SZ`：设置类型字符串  
 `/d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"`：设置启动程序路径  
-`/f`：不用提示就强行覆盖现有注册表项
-### 注册表新增所有用户开机启动
+`/f`：不用提示就强行覆盖现有注册表项  
+**注册表新增所有用户开机启动项**  
 语句：`reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
-注意：需要管理员权限
-### 注册表删除本用户开机启动
-语句：`reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`
-### 注册表删除所有用户开机启动
-语句：`reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`
-### 注册表查询本用户开机启动
-语句：`reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
-### 注册表查询所有用户开机启动
-语句：`reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
-### 目录方式新增本用户开机启动
-把快捷方式复制到：`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
-### 目录方式新增所有用户开机启动
+注意：需要管理员权限  
+**注册表删除本用户开机启动项**  
+语句：`reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`  
+**注册表删除所有用户开机启动项**  
+语句：`reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`  
+注意：需要管理员权限  
+**注册表查询本用户开机启动项**  
+语句：`reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`  
+**注册表查询所有用户开机启动项**  
+语句：`reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`  
+**目录方式新增本用户开机启动项**  
+把快捷方式复制到：`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`  
+**目录方式新增所有用户开机启动项**  
 把快捷方式复制到：`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`  
-注意：需要管理员权限
+注意：需要管理员权限  
+```bat
+@echo off
+chcp 65001
+cls
+:head
+set p=
+set q=
+echo.
+echo   ----------请选择操作----------
+
+echo   [1] 打开 本用户开机启动项 目录
+
+echo   [2] 打开 所有用户开机启动项 目录
+
+echo   [3] 注册表查询 本用户开机启动项
+
+echo   [4] 注册表查询 所有用户开机启动项
+
+echo   [5] 注册表新增 本用户开机启动项
+
+echo   [6] 注册表新增 所有用户开机启动项(需要管理员权限)
+
+echo   [7] 注册表删除 本用户开机启动项
+
+echo   [8] 注册表删除 所有用户开机启动项(需要管理员权限)
+
+echo   [0] 退出
+
+echo   ----------请选择操作----------
+echo.
+
+choice /c 123456780
+if errorlevel 9 goto e0
+if errorlevel 8 goto e8
+if errorlevel 7 goto e7
+if errorlevel 6 goto e6
+if errorlevel 5 goto e5
+if errorlevel 4 goto e4
+if errorlevel 3 goto e3
+if errorlevel 2 goto e2
+if errorlevel 1 goto e1
+if errorlevel 0 goto e0
+
+:e0
+exit
+
+:e1
+echo.
+echo 正在打开，请稍后...
+explorer "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
+echo 已打开。
+goto head
+
+:e2
+echo.
+echo 正在打开，请稍后...
+explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
+echo 已打开。
+goto head
+
+:e3
+echo.
+reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+goto head
+
+:e4
+echo.
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+goto head
+
+:e5
+echo.
+set /p p=请输入路径：
+set /p q=请输入名称(任意)：
+reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
+goto head
+
+:e6
+echo.
+set /p p=请输入路径：
+set /p q=请输入名称(任意)：
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
+goto head
+
+:e7
+echo.
+set /p q=请输入名称：
+reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
+goto head
+
+:e8
+echo.
+set /p q=请输入名称：
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
+goto head
+```
 
 ## 查询端口号占用情况并杀死进程
-1. 查询端口号占用情况：`netstat -ano | findstr 端口号`，获得进程PID在右侧  
-2. 查询该PID的进程信息：`tasklist | findstr 进程PID`，获得进程名在左侧  
-3. 杀死进程：`taskkill /pid 进程PID /f`或`taskkill /im 进程名 /f`  
+```bat
+@echo off
+chcp 65001
+cls
+:head
+set p=
+echo.
+echo   ----------请选择操作----------
+
+echo   [1] 列出所有网络连接情况
+
+echo   [2] 查询端口号占用情况
+
+echo   [3] 列出所有进程的详细信息
+
+echo   [4] 查询进程PID的详细信息
+
+echo   [5] 查询进程名的详细信息(可使用通配符)
+
+echo   [6] 根据进程PID结束进程
+
+echo   [7] 根据进程名结束进程
+
+echo   [0] 退出
+
+echo   ----------请选择操作----------
+echo.
+
+choice /c 12345670
+if errorlevel 7 goto e0
+if errorlevel 6 goto e6
+if errorlevel 5 goto e5
+if errorlevel 4 goto e4
+if errorlevel 3 goto e3
+if errorlevel 2 goto e2
+if errorlevel 1 goto e1
+if errorlevel 0 goto e0
+
+:e0
+exit
+
+:e1
+echo.
+netstat -ano
+goto head
+
+:e2
+echo.
+set /p p=请输入要查询的端口号：
+echo.
+netstat -ano | findstr /c:":%p% "
+goto head
+
+:e3
+echo.
+tasklist
+goto head
+
+:e4
+echo.
+set /p p=请输入要查询的进程PID：
+echo.
+tasklist | findstr /c:" %p% "
+goto head
+
+:e5
+echo.
+set /p p=请输入要查询的进程名(可使用通配符)：
+echo.
+tasklist | findstr /i /r "%p%"
+goto head
+
+:e6
+echo.
+set /p p=请输入要结束的进程PID：
+echo.
+taskkill /pid %p% /f
+goto head
+
+:e7
+echo.
+set /p p=请输入要结束进程名：
+echo.
+taskkill /im %p% /f
+goto head
+```
 
 ## 创建与文件同名(不含后缀)的文件夹并把文件放进去
 ```bat
 @echo off
-set /p p=Please Input Suffix:
+chcp 65001
+cls
+set /p p=请输入文件后缀：
 for /f "delims=" %%a in ('dir /a-d/b *.%p%') do (
     if not exist "%%~na" md "%%~na"
     move "%%~a" "%%~na"
 )
 pause
 ```
-
-
