@@ -205,10 +205,91 @@
 | ■■   | ~fI    | 全路径           | ~f0  | E:\test a.bat         |
 |      | ~sI    | 路径为短路径     | ~s0  | E:\test a.bat         |
 |      | ~aI    | 属性             | ~a0  | --a--------           |
-|      | ~tI    | 日期和时间       | ~t0  | 2021/05/13 周四 15:18 |
+|      | ~tI    | 创建日期和时间   | ~t0  | 2021/05/13 周四 15:18 |
 | ■    | ~zI    | 大小             | ~z0  | 20                    |
 | ■■   | ~dpI   | 盘符+路径        | ~dp0 | E:\                   |
 | ■■   | ~nxI   | 文件名           | ~nx0 | test a.bat            |
+
+## 变量延迟
+**未开启变量延迟**
+```bat
+@echo off
+set test=aaa
+if %test%==aaa (
+    set test=bbb
+    echo %test%
+)
+```
+输出`aaa`  
+**开启变量延迟**  
+使用`setlocal enabledelayedexpansion`开启变量延迟，使用`!变量名!`来使用变量。  
+使用`setlocal disabledelayedexpansion`关闭变量延迟
+```bat
+@echo off
+setlocal enabledelayedexpansion
+set test=aaa
+if %test%==aaa (
+    set test=bbb
+    echo %test%
+    echo !test!
+)
+```
+输出`aaa`和`bbb`
+
+## 参数传递
+**接收参数**  
+使用`%I`来接收参数值，`I`从`1-9`最多接收9个参数。  
+注意：`%0`代表命令本身不是参数。  
+注意：`%~I`可以去除双引号。  
+**传递参数**  
+直接在命令后面写入参数值，如果有空格需要用双引号。  
+
+## 字符串操作
+**截取**  
+```bat
+@echo off
+set a=asdfghjkl
+echo 原字符串 %a%
+
+echo 只要前3个 %a:~0,3%
+echo 不要前3个 %a:~3%
+echo 跳过前1个字符，只要前3个 %a:~1,3%
+
+echo 不要后3个 %a:~0,-3%
+echo 只要后3个 %a:~-3%
+echo 跳过前1个字符，不要后3个 %a:~1,-3%
+
+echo 后6个字符中，只要前2个 %a:~-6,2%
+echo 后6个字符中，不要前2个 %a:~-6,-2%
+```
+**替换**  
+```bat
+@echo off
+set a=asdfghjklasdfghjkl
+echo 原字符串 %a%
+
+echo 替换df成123 %a:df=123%
+
+echo 原字符串并没有被替换 %a%
+set a=%a:df=123%
+echo 使用set覆盖字符串后 %a%
+```
+**合并**  
+```bat
+@echo off
+set a=asdfghjkl
+set b=1234567890
+echo 原字符串a %a%
+echo 原字符串b %b%
+
+echo 合并ab字符串 %a%%b%
+
+echo 原字符串a并没有被合并 %a%
+echo 原字符串b并没有被合并 %b%
+set a=%a%%b%
+echo 使用set合并字符串ab并赋值给a后 %a%
+echo 原字符串b并没有被合并 %b%
+```
 
 ## 一般表达式
 | 常用 | 表达式    | 解释                                 | 示例   | 解释                        |
@@ -246,6 +327,7 @@
 | ■■   | echo 消息 | 显示消息              |
 | ■■   | echo.     | 显示回车              |
 | ■■   | echo %cd% | 显示系统常量和变量    |
+| ■■   | echo !a!  | 使用a变量的延迟值     |
 | ■■   | echo %~f0 | 显示拓展变量(仅限bat) |
 
 ## set 显示、设置或删除cmd.exe环境变量
@@ -261,6 +343,8 @@
 | ■    | set a=          | 删除a                         |
 |      | set /a 1+1      | 计算1+1并输出                 |
 | ■    | set /a v=1+1    | 计算1+1赋值到v并输出          |
+|      | set /a v=066    | 计算8进制数字                 |
+|      | set /a v=0x66   | 计算16进制数字                |
 |      | set /p a=       | 用户手动赋值a                 |
 | ■■   | set /p a=请输入 | 用户手动赋值a，并提示“请输入” |
 
@@ -1048,7 +1132,7 @@ E:\>test.bat
 
 # 常用bat程序
 注意：以下所有代码，都需要保存字符集为UTF8的文件
-## 乱码解决
+## 乱码解决方法
 如果bat文本编码为`UTF8`，需要设置字符集编码为`65001`。  
 echo命令不能连续输出2行中文(可以换行隔开)。
 ```bat
@@ -1063,45 +1147,9 @@ echo 中文第3行，命令隔开
 ```
 
 ## choice示例
-```bat
-@echo off
-chcp 65001
-cls
-:head
-choice /c abcd0 /m "请选择ABCD,退出按0"
-rem errorlevel 要从大到小排序
-if errorlevel 255 goto e255
-if errorlevel 5 goto e5
-if errorlevel 4 goto e4
-if errorlevel 3 goto e3
-if errorlevel 2 goto e2
-if errorlevel 1 goto e1
-if errorlevel 0 goto e0
-:e0
-echo 您按了Ctrl+C键
-goto head
-:e255
-echo 状态错误(不知道如何触发)
-goto head
-:e1
-echo 您选择了A
-goto head
-:e2
-echo 您选择了B
-goto head
-:e3
-echo 您选择了C
-goto head
-:e4
-echo 您选择了D
-goto head
-:e5
-echo 您选择了退出
-pause
-exit
-```
+示例：[choice示例.bat](example/choice示例.bat)
 
-## 开机启动
+## 开机启动项管理
 **注册表新增本用户开机启动项**  
 语句：`reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
 `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`：本用户开机启动注册表路径  
@@ -1126,200 +1174,11 @@ exit
 **目录方式新增所有用户开机启动项**  
 把快捷方式复制到：`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`  
 注意：需要管理员权限  
-```bat
-@echo off
-chcp 65001
-cls
-:head
-set p=
-set q=
-echo.
-echo   ----------请选择操作----------
-
-echo   [1] 打开 本用户开机启动项 目录
-
-echo   [2] 打开 所有用户开机启动项 目录
-
-echo   [3] 注册表查询 本用户开机启动项
-
-echo   [4] 注册表查询 所有用户开机启动项
-
-echo   [5] 注册表新增 本用户开机启动项
-
-echo   [6] 注册表新增 所有用户开机启动项(需要管理员权限)
-
-echo   [7] 注册表删除 本用户开机启动项
-
-echo   [8] 注册表删除 所有用户开机启动项(需要管理员权限)
-
-echo   [0] 退出
-
-echo   ----------请选择操作----------
-echo.
-
-choice /c 123456780
-if errorlevel 9 goto e0
-if errorlevel 8 goto e8
-if errorlevel 7 goto e7
-if errorlevel 6 goto e6
-if errorlevel 5 goto e5
-if errorlevel 4 goto e4
-if errorlevel 3 goto e3
-if errorlevel 2 goto e2
-if errorlevel 1 goto e1
-if errorlevel 0 goto e0
-
-:e0
-exit
-
-:e1
-echo.
-echo 正在打开，请稍后...
-explorer "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
-echo 已打开。
-goto head
-
-:e2
-echo.
-echo 正在打开，请稍后...
-explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
-echo 已打开。
-goto head
-
-:e3
-echo.
-reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-goto head
-
-:e4
-echo.
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-goto head
-
-:e5
-echo.
-set /p p=请输入路径：
-set /p q=请输入名称(任意)：
-reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
-goto head
-
-:e6
-echo.
-set /p p=请输入路径：
-set /p q=请输入名称(任意)：
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
-goto head
-
-:e7
-echo.
-set /p q=请输入名称：
-reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
-goto head
-
-:e8
-echo.
-set /p q=请输入名称：
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
-goto head
-```
+示例：[开机启动项管理.bat](example/开机启动项管理.bat)
 
 ## 查询端口号占用情况并杀死进程
-```bat
-@echo off
-chcp 65001
-cls
-:head
-set p=
-echo.
-echo   ----------请选择操作----------
-
-echo   [1] 列出所有网络连接情况
-
-echo   [2] 查询端口号占用情况
-
-echo   [3] 列出所有进程的详细信息
-
-echo   [4] 查询进程PID的详细信息
-
-echo   [5] 查询进程名的详细信息(可使用通配符)
-
-echo   [6] 根据进程PID结束进程
-
-echo   [7] 根据进程名结束进程
-
-echo   [0] 退出
-
-echo   ----------请选择操作----------
-echo.
-
-choice /c 12345670
-if errorlevel 7 goto e0
-if errorlevel 6 goto e6
-if errorlevel 5 goto e5
-if errorlevel 4 goto e4
-if errorlevel 3 goto e3
-if errorlevel 2 goto e2
-if errorlevel 1 goto e1
-if errorlevel 0 goto e0
-
-:e0
-exit
-
-:e1
-echo.
-netstat -ano
-goto head
-
-:e2
-echo.
-set /p p=请输入要查询的端口号：
-echo.
-netstat -ano | findstr /c:":%p% "
-goto head
-
-:e3
-echo.
-tasklist
-goto head
-
-:e4
-echo.
-set /p p=请输入要查询的进程PID：
-echo.
-tasklist | findstr /c:" %p% "
-goto head
-
-:e5
-echo.
-set /p p=请输入要查询的进程名(可使用通配符)：
-echo.
-tasklist | findstr /i /r "%p%"
-goto head
-
-:e6
-echo.
-set /p p=请输入要结束的进程PID：
-echo.
-taskkill /pid %p% /f
-goto head
-
-:e7
-echo.
-set /p p=请输入要结束进程名：
-echo.
-taskkill /im %p% /f
-goto head
-```
+示例：[查询端口号占用情况并杀死进程.bat](example/查询端口号占用情况并杀死进程.bat)
 
 ## 创建与文件同名(不含后缀)的文件夹并把文件放进去
-```bat
-@echo off
-chcp 65001
-cls
-set /p p=请输入文件后缀：
-for /f "delims=" %%a in ('dir /a-d/b *.%p%') do (
-    if not exist "%%~na" md "%%~na"
-    move "%%~a" "%%~na"
-)
-pause
-```
+示例：[创建与文件同名(不含后缀)的文件夹并把文件放进去.bat](example/创建与文件同名(不含后缀)的文件夹并把文件放进去.bat)
+
