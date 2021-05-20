@@ -59,31 +59,37 @@ goto head
 
 :e4
 echo.
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+set /p p=请输入名称：
+set /p q=请输入值：
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /t REG_SZ /d "%q%" /f
 goto head
 
 :e5
 echo.
-set /p p=请输入路径：
-set /p q=请输入名称(任意)：
-reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
+set /p q=请输入值(不要加分号)：
+for /f "tokens=1,2*" %%i in ('"reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path ""') do (
+    set r=%%k
+)
+if not "%r:~-1%"==";" set r=%r%;
+echo %r% | findstr /i /c:"%q%;" && goto e5c1 || goto e5c2
+:e5c1
+echo 已存在，不可重复添加。
+goto head
+:e5c2
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%%q%;" /f
+echo 添加成功。
 goto head
 
 :e6
 echo.
-set /p p=请输入路径：
-set /p q=请输入名称(任意)：
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /t REG_SZ /d "%p%" /f
+set /p p=请输入名称：
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /f
 goto head
 
 :e7
 echo.
-set /p q=请输入名称：
-reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
-goto head
-
-:e8
-echo.
-set /p q=请输入名称：
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %q% /f
+set /p q=请输入值(不要加分号)：
+setlocal enabledelayedexpansion
+echo !r:%q%=!
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%q%" /f
 goto head
