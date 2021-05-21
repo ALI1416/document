@@ -1,6 +1,9 @@
 @echo off
+rem Author:ALI
+rem GitHub:https://github.com/ali1416
 chcp 65001
 cls
+
 :head
 set p=
 echo.

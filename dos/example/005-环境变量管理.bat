@@ -1,6 +1,10 @@
 @echo off
+rem Author:ALI
+rem GitHub:https://github.com/ali1416
 chcp 65001
 cls
+setlocal enabledelayedexpansion
+
 :head
 set p=
 set q=
@@ -14,13 +18,13 @@ echo   [2] 查询 环境变量
 
 echo   [3] 查询 Path环境变量
 
-echo   [4] 新增 环境变量
+echo   [4] 新增 环境变量(需要管理员权限)
 
-echo   [5] 新增 Path环境变量值
+echo   [5] 新增 Path环境变量值(需要管理员权限)
 
-echo   [6] 删除 环境变量
+echo   [6] 删除 环境变量(需要管理员权限)
 
-echo   [7] 删除 Path环境变量值
+echo   [7] 删除 Path环境变量值(需要管理员权限)
 
 echo   [0] 退出
 
@@ -89,7 +93,15 @@ goto head
 :e7
 echo.
 set /p q=请输入值(不要加分号)：
-setlocal enabledelayedexpansion
-echo !r:%q%=!
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%q%" /f
+for /f "tokens=1,2*" %%i in ('"reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path ""') do (
+    set r=%%k
+)
+if not "%r:~-1%"==";" set r=%r%;
+echo %r% | findstr /i /c:"%q%;" && goto e7c1 || goto e7c2
+:e7c1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "!r:%q%;=!" /f
+echo 删除成功。
+goto head
+:e7c2
+echo 不存在，删除失败。
 goto head

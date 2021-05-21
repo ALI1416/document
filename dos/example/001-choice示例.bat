@@ -1,8 +1,10 @@
 @echo off
+rem Author:ALI
+rem GitHub:https://github.com/ali1416
 chcp 65001
 cls
-:head
 
+:head
 choice /c abcd0 /m "请选择ABCD,退出按0"
 rem errorlevel 要从大到小排序
 if errorlevel 255 goto e255
