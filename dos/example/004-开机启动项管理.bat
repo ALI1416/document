@@ -73,25 +73,27 @@ goto head
 :e5
 echo.
 set /p p=请输入名称(任意)：
+
 set /p q=请输入路径：
-reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %p% /t REG_SZ /d "%q%" /f
+reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d "%q%" /f
 goto head
 
 :e6
 echo.
 set /p p=请输入名称(任意)：
+
 set /p q=请输入路径：
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %p% /t REG_SZ /d "%q%" /f
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d "%q%" /f
 goto head
 
 :e7
 echo.
 set /p p=请输入名称：
-reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %p% /f
+reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /f
 goto head
 
 :e8
 echo.
 set /p p=请输入名称：
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %p% /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /f
 goto head

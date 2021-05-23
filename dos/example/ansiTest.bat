@@ -6,19 +6,19 @@ cls
 
 echo [0m无属性
 
-echo [1m粗体
+echo [1m粗体(vs code有效，cmd字体颜色变亮)
 
 echo [2m未知(无效)
 
-echo [3m斜体(cmd中无效)
+echo [3m斜体(高版本电脑系统在vs code有效)
 
-echo [4m下划线(vs code中无效)
+echo [4m下划线(cmd有效)
 
 echo [5m闪烁(无效)
 
 echo [7m反色
 
-echo [8m不显示(cmd中无效)
+echo [8m不显示(高版本电脑系统在vs code有效)
 
 echo [0m无属性
 
