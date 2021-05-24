@@ -1022,12 +1022,12 @@ E:.
 
 # 外部命令
 ## 常用命令
-| 常用 | 命令    | 作用   |
-| ---- | ------- | ------ |
-|      | choice  | 选项   |
-|      | reg     | 注册表 |
-|      | netstat | 网络   |
-|      |         |        |
+| 常用 | 命令     | 作用     |
+| ---- | -------- | -------- |
+| ■■   | choice   | 选项     |
+| ■■   | reg      | 注册表   |
+| ■■   | netstat  | 网络     |
+| ■    | schtasks | 计划任务 |
 
 ## choice 允许用户从选择列表选择一个项目并返回所选项目的索引
 **格式：`choice [/c 选项列表] [/n] [/cs] [/t 超时 /d 默认选项] [/m 提示文本]`**
@@ -1096,13 +1096,11 @@ E:\>test.bat
 **标志格式：`reg flags 路径 [query | set [dont_virtualize] [dont_silent_fail] [recurse_flag]] [/reg:32 | /reg:64]`**
 ### 路径 
 **格式：`[\\远程机器名\]根路径\子路径`**
-| 常用 | 名称 |
+| 名称 | 名称 |
 | ---- | ---- |
-|      | HKLM |
-|      | HKCU |
-|      | HKCR |
-|      | HKU  |
-|      | HKCC |
+| HKLM | HKU  |
+| HKCU | HKCC |
+| HKCR |      |
 
 ### /t 类型
 | 常用 | 名称          | 解释           |
@@ -1127,29 +1125,71 @@ E:\>test.bat
 ## netstat 显示协议统计信息和当前TCP/IP网络连接
 **格式：`netstat [-a] [-b] [-e] [-f] [-n] [-o] [-p 指定协议] [-r] [-s] [-t] [-x] [-y] [刷新间隔]`**
 ### -p 指定协议
-| 常用 | 名称  |
+| 名称 | 名称  |
 | ---- | ----- |
-|      | TCP   |
-|      | UDP   |
-|      | TCPv6 |
-|      | UDPv6 |
+| TCP  | TCPv6 |
+| UDP  | UDPv6 |
 
 ### -p 指定协议 -s
-| 常用 | 名称   |
-| ---- | ------ |
-|      | IP     |
-|      | IPv6   |
-|      | ICMP   |
-|      | ICMPv6 |
-|      | TCP    |
-|      | UDP    |
-|      | TCPv6  |
-|      | UDPv6  |
+| 名称   | 名称  |
+| ------ | ----- |
+| IP     | TCP   |
+| IPv6   | UDP   |
+| ICMP   | TCPv6 |
+| ICMPv6 | UDPv6 |
 
 ### 命令
 | 常用 | 命令         | 解释                                              |
 | ---- | ------------ | ------------------------------------------------- |
 | ■■   | netstat -ano | 显示活动连接的协议、本机地址、外部地址、状态、PID |
+
+## schtasks 允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任务
+**新增格式：`schtasks /create [/s 远程系统地址 [/u 用户名 [/p [密码]]]] [/ru 计算机用户 [/rp 计算机用户密码]] /sc 计划频率 [/mo 计划类型] [/d 日] [/m 月] [/i 执行前等待时间] /tn 名称 /tr 要运行的程序 [/st 开始时间] [/ri 重复间隔] [ {/et 结束时间 | /du 持续时间} [/k] [/xml xml中创建任务] [/v1]] [/sd 第一次运行日期] [/ed 最后一次运行日期] [/it | /np] [/z] [/f] [/退出代码]`**
+**删除格式：`schtasks /delete [/s 远程系统地址 [/u 用户名 [/p [密码]]]] /tn 名称 [/f] [/退出代码]`**
+**修改格式：`schtasks /change [/s 远程系统地址 [/u 用户名 [/p [密码]]]] /tn 名称 { [/ru 计算机用户] [/rp 计算机用户密码] [/tr 要运行的程序] [/st 开始时间] [/ri 重复间隔] [ {/et 结束时间 | /du 持续时间} [/k] ] [/sd 第一次运行日期] [/ed 最后一次运行日期] [/enable | /disable] [/it] [/z] } [/退出代码]`**
+**查询格式：`schtasks /query [/s 远程系统地址 [/u 用户名 [/p [密码]]]] [/fo 输出格式 | /xml [xml类型]] [/nh] [/v] [/tn 名称] [/退出代码]`**
+**运行格式：`schtasks /run [/s 远程系统地址 [/u 用户名 [/p [密码]]]] [/i] /tn 名称 [/退出代码]`**
+**停止格式：`schtasks /end [/s 远程系统地址 [/u 用户名 [/p [密码]]]] /tn 名称 [/退出代码]`**
+**显示sid格式：`schtasks /showsid /tn 名称 [/退出代码]`**
+### /sc 计划频率 /mo计划类型
+| 名称    | 含义                                             | 名称    | 含义                              |
+| ------- | ------------------------------------------------ | ------- | --------------------------------- |
+| minute  | 分钟：1-1439                                     | once    | 一次                              |
+| hourly  | 小时：1-23                                       | onstart | 计算机启动时                      |
+| daily   | 天：1-365                                        | onlogon | 用户登录时                        |
+| weekly  | 周：1-52                                         | onidle  | 空闲时                            |
+| monthly | 月：1-12或first/second/third/fourth/last/lastday | onevent | 事件被记录时：xpath事件查询字符串 |
+
+### /d 日
+| 名称 | 含义 | 名称 | 含义           |
+| ---- | ---- | ---- | -------------- |
+| mon  | 周一 | sat  | 周六           |
+| tue  | 周二 | sun  | 周日           |
+| wed  | 周三 | 1-31 | 指定月的哪一天 |
+| thu  | 周四 | *    | 所有           |
+| fri  | 周五 |      |                |
+
+### /m 月
+| 名称 | 含义 | 名称 | 含义   |
+| ---- | ---- | ---- | ------ |
+| jan  | 一月 | aug  | 八月   |
+| feb  | 二月 | sep  | 九月   |
+| mar  | 三月 | oct  | 四月   |
+| apr  | 四月 | nov  | 十一月 |
+| may  | 五月 | dec  | 十二月 |
+| jun  | 六月 | *    | 所有   |
+| jul  | 七月 |      |        |
+
+### 命令
+| 常用 | 命令                                                       | 解释                                     |
+| ---- | ---------------------------------------------------------- | ---------------------------------------- |
+| ■■   | schtasks /create /sc minute /mo 2 /tn test /tr notepad.exe | 创建任务test，每2分钟执行一次notepad.exe |
+| ■■   | schtasks /change /tn test /disable                         | 禁用任务test                             |
+| ■■   | schtasks /delete /tn test                                  | 删除任务test                             |
+| ■■   | schtasks /query /tn test                                   | 查询任务test的详细信息                   |
+| ■    | schtasks /run /tn test                                     | 手动调用任务test                         |
+| ■    | schtasks /end /tn test                                     | 手动终止任务test                         |
+|      | schtasks /showsid /tn test                                 | 显示任务test的sid                        |
 
 # 内部程序
 | 常用 | 命令         | 作用            |
@@ -1160,6 +1200,7 @@ E:\>test.bat
 | ■■   | mstsc        | 远程桌面        |
 | ■    | regedit      | 注册表          |
 | ■    | services.msc | 服务            |
+| ■    | taskschd.msc | 计划任务        |
 | ■    | control      | 控制面板        |
 | ■    | notepad      | 记事本          |
 | ■    | calc         | 计算器          |
@@ -1183,10 +1224,12 @@ E:\>test.bat
 |      | winver       | 关于"Windows"   |
 
 # 常用bat程序
-注意：以下所有代码，都需要保存字符集为UTF8的文件
-## 乱码解决方法
-如果bat文本编码为`UTF8`，需要设置字符集编码为`65001`。  
-echo命令不能连续输出2行中文(可以换行隔开)。
+目录：[example](example/)  
+注意：所有代码，都需要保存编码为`UTF8`的文件
+**乱码解决方法**  
+bat文本编码保存为`UTF8`，设置字符集编码为`65001`。  
+echo命令不能连续输出2行中文(可以换行隔开)。  
+例如：
 ```bat
 @echo off
 chcp 65001
@@ -1197,40 +1240,3 @@ echo 中文第二行，换行隔开
 echo.
 echo 中文第3行，命令隔开
 ```
-
-## choice示例
-示例：[choice示例.bat](example/choice示例.bat)
-
-## 开机启动项管理
-**注册表新增本用户开机启动项**  
-语句：`reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
-`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`：本用户开机启动注册表路径  
-`/v qq`：设置名称qq  
-`/t REG_SZ`：设置类型字符串  
-`/d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"`：设置启动程序路径  
-`/f`：不用提示就强行覆盖现有注册表项  
-**注册表新增所有用户开机启动项**  
-语句：`reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /t REG_SZ /d "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" /f`  
-注意：需要管理员权限  
-**注册表删除本用户开机启动项**  
-语句：`reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`  
-**注册表删除所有用户开机启动项**  
-语句：`reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v qq /f`  
-注意：需要管理员权限  
-**注册表查询本用户开机启动项**  
-语句：`reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`  
-**注册表查询所有用户开机启动项**  
-语句：`reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`  
-**目录方式新增本用户开机启动项**  
-把快捷方式复制到：`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`  
-**目录方式新增所有用户开机启动项**  
-把快捷方式复制到：`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`  
-注意：需要管理员权限  
-示例：[开机启动项管理.bat](example/开机启动项管理.bat)
-
-## 查询端口号占用情况并杀死进程
-示例：[查询端口号占用情况并杀死进程.bat](example/查询端口号占用情况并杀死进程.bat)
-
-## 创建与文件同名(不含后缀)的文件夹并把文件放进去
-示例：[创建与文件同名(不含后缀)的文件夹并把文件放进去.bat](example/创建与文件同名(不含后缀)的文件夹并把文件放进去.bat)
-

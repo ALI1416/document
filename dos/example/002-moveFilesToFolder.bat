@@ -2,7 +2,6 @@
 rem Author:ALI
 rem GitHub:https://github.com/ali1416
 chcp 65001
-cls
 
 if "%1"=="" goto help
 if "%1"=="/?" goto help
