@@ -1,8 +1,12 @@
 @echo off
-rem Author:ALI
-rem GitHub:https://github.com/ali1416
-chcp 65001
-cls
+@REM Author:ALI
+@REM GitHub:https://github.com/ali1416
+@REM Version:1.0
+set cp=
+for /f "delims=: tokens=1,2" %%i in ('chcp') do (
+    set cp=%%j
+)
+if not "%cp%"==" 65001" ( chcp 65001 & cls )
 
 echo 移动 指定后缀的文件 到 与文件(不含后缀)同名的文件夹，不存在会创建
 echo.

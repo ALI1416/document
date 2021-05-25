@@ -1,8 +1,12 @@
 @echo off
-rem Author:ALI
-rem GitHub:https://github.com/ali1416
-chcp 65001
-cls
+@REM Author:ALI
+@REM GitHub:https://github.com/ali1416
+@REM Version:1.0
+set cp=
+for /f "delims=: tokens=1,2" %%i in ('chcp') do (
+    set cp=%%j
+)
+if not "%cp%"==" 65001" ( chcp 65001 & cls )
 setlocal enabledelayedexpansion
 
 :head
@@ -71,16 +75,18 @@ goto head
 :e5
 echo.
 set /p q=请输入值(不要加分号)：
-for /f "tokens=1,2*" %%i in ('"reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path ""') do (
-    set r=%%k
-)
-if not "%r:~-1%"==";" set r=%r%;
-echo %r% | findstr /i /c:"%q%;" && goto e5c1 || goto e5c2
+call:queryExist
+@REM 查询输入的值，是否存在
+echo "%r%" | findstr /i /c:";%q%;" && goto e5c1 || goto e5c2
 :e5c1
 echo 已存在，不可重复添加。
 goto head
 :e5c2
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%%q%;" /f
+@REM 拼接输入的值，尾部没有;
+set r=%r%%q%
+@REM 去除头部;
+if "%r:~0,1%"==";" set r=%r:~1%
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
 echo 添加成功。
 goto head
 
@@ -93,15 +99,35 @@ goto head
 :e7
 echo.
 set /p q=请输入值(不要加分号)：
-for /f "tokens=1,2*" %%i in ('"reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path ""') do (
-    set r=%%k
-)
-if not "%r:~-1%"==";" set r=%r%;
-echo %r% | findstr /i /c:"%q%;" && goto e7c1 || goto e7c2
+call:queryExist
+@REM 查询输入的值，是否存在
+echo "%r%" | findstr /i /c:";%q%;" && goto e7c1 || goto e7c2
 :e7c1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "!r:%q%;=!" /f
+@REM 去除输入值的多余\
+if "%q:~-1%"=="\" set q=%q:~0,-1%
+@REM 去除输入的值
+set r=!r:;%q%;=;!
+@REM 去除头部;
+if "%r:~0,1%"==";" set r=%r:~1%
+@REM 去除尾部;
+if "%r:~-1%"==";" set r=%r:~0,-1%
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
 echo 删除成功。
 goto head
 :e7c2
 echo 不存在，删除失败。
 goto head
+
+
+@REM 内部函数
+:queryExist
+@REM 查询环境变量Path
+for /f "tokens=1,2*" %%i in ('"reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path ""') do (
+    set r=%%k
+)
+@REM 如果头部不存在;则添加;
+if not "%r:~1%"==";" set r=;%r%
+@REM 如果尾部不存在;则添加;
+if not "%r:~-1%"==";" set r=%r%;
+@REM 输入的值尾部是\就多加一个\
+if "%q:~-1%"=="\" set q=%q%\

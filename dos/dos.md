@@ -331,7 +331,7 @@ echo 原字符串b并没有被合并 %b%
 | ■■   | echo %~f0 | 显示拓展变量(仅限bat) |
 
 ### 转义字符
-| 字符   | 转义后  |
+| 字符   | 转义    |
 | ------ | ------- |
 | %      | %%      |
 | ^      | ^^      |
@@ -825,6 +825,7 @@ E:.
 | ■■   | findstr "path" 1.txt          | 在1.txt文件中搜索存在"path"字符串的行并显示        |
 | ■■   | findstr "path ren" 1.txt      | 在1.txt文件中搜索存在"path"或"ren"字符串的行并显示 |
 | ■■   | findstr /c:"path ren" 1.txt   | 在1.txt文件中搜索存在"path ren"字符串的行并显示    |
+| ■■   | findstr /c:"path\\\\" 1.txt   | 搜索存在"path\\"字符串，结尾是单\需要变成双\       |
 | ■■   | findstr /v "path" 1.txt       | 不存在                                             |
 | ■    | findstr /n "path" 1.txt       | 显示行号                                           |
 | ■■   | findstr /i "path" 1.txt       | 忽略大小写                                         |

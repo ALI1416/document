@@ -1,7 +1,12 @@
 @echo off
-rem Author:ALI
-rem GitHub:https://github.com/ali1416
-chcp 65001
+@REM Author:ALI
+@REM GitHub:https://github.com/ali1416
+@REM Version:1.0
+set cp=
+for /f "delims=: tokens=1,2" %%i in ('chcp') do (
+    set cp=%%j
+)
+if not "%cp%"==" 65001" ( chcp 65001 & cls )
 
 if "%1"=="" goto help
 if "%1"=="/?" goto help
