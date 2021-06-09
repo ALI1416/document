@@ -1,3 +1,7 @@
+' Author:ALI
+' GitHub:https://github.com/ali1416
+' Version:1.0
+
 ' 文件
 dim s
 s="C:\1\22\333\4444\55555.txt"
