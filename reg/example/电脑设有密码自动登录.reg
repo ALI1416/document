@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+; 电脑设有密码自动登录
+; Win+R输入 netplwiz 取消勾选“要使用本计算机，用户必须输入用户名和密码”即可自动登录
+; 没有显示“要使用本计算机，用户必须输入用户名和密码”需要执行以下注册表
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device]
+"DevicePasswordLessBuildVersion"=dword:00000000
