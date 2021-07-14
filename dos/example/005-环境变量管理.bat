@@ -2,14 +2,11 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
-setlocal enabledelayedexpansion
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-:head
+:begin
+
+setLocal enableDelayedExpansion
 set p=
 set q=
 set r=
@@ -30,13 +27,16 @@ echo   [6] 删除 环境变量(需要管理员权限)
 
 echo   [7] 删除 Path环境变量值(需要管理员权限)
 
+echo   [Z] 获取管理员权限
+
 echo   [0] 退出
 
 echo   ----------请选择操作----------
 echo.
 
-choice /c 12345670
-if errorlevel 8 goto e0
+choice /c 1234567z0
+if errorlevel 9 goto e0
+if errorlevel 8 goto ez
 if errorlevel 7 goto e7
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
@@ -46,31 +46,29 @@ if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto e0
 
-:e0
-exit
-
 :e1
 echo 正在打开，请稍后...
 start SystemPropertiesAdvanced
 echo 已打开。
-goto head
+goto begin
 
 :e2
 echo.
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
-goto head
+goto begin
 
 :e3
 echo.
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path "
-goto head
+goto begin
 
 :e4
 echo.
 set /p p=请输入名称：
 set /p q=请输入值：
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /t REG_SZ /d "%q%" /f
-goto head
+setX "%p%" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\%p%" /M
+goto begin
 
 :e5
 echo.
@@ -80,21 +78,23 @@ call:queryExist
 echo "%r%" | findstr /i /c:";%q%;" && goto e5c1 || goto e5c2
 :e5c1
 echo 已存在，不可重复添加。
-goto head
+goto begin
 :e5c2
 @REM 拼接输入的值，尾部没有;
 set r=%r%%q%
 @REM 去除头部;
 if "%r:~0,1%"==";" set r=%r:~1%
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
-echo 添加成功。
-goto head
+@REM 尾部是\，并且不是\\就多加一个\
+if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
+setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
+goto begin
 
 :e6
 echo.
 set /p p=请输入名称：
 reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /f
-goto head
+goto begin
 
 :e7
 echo.
@@ -111,13 +111,22 @@ set r=!r:;%q%;=;!
 if "%r:~0,1%"==";" set r=%r:~1%
 @REM 去除尾部;
 if "%r:~-1%"==";" set r=%r:~0,-1%
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
-echo 删除成功。
-goto head
+@REM 尾部是\，并且不是\\就多加一个\
+if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
+setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
+goto begin
 :e7c2
 echo 不存在，删除失败。
-goto head
+goto begin
 
+:ez
+( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "%~f0" -Verb RunAs )&&( exit )
+echo 已获取管理员权限，不必重复获取！
+goto begin
+
+:e0
+goto end
 
 @REM 内部函数
 :queryExist
@@ -131,3 +140,6 @@ if not "%r:~1%"==";" set r=;%r%
 if not "%r:~-1%"==";" set r=%r%;
 @REM 输入的值尾部是\就多加一个\
 if "%q:~-1%"=="\" set q=%q%\
+goto end
+
+:end

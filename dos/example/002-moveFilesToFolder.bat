@@ -2,11 +2,9 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
+
+:begin
 
 if "%1"=="" goto help
 if "%1"=="/?" goto help
@@ -32,15 +30,22 @@ echo %~n0 txt D:\files 会移动D:\files文件夹里所有以txt结尾的文件 
 goto end
 
 :e1
+call:moveFile %1
+goto end
+
+:e2
+pushd %2
+call:moveFile %1
+popd
+goto end
+
+@REM 内部函数
+:moveFile
 for /f "delims=" %%a in ('dir /a-d/b *.%1') do (
     if not exist "%%~na" md "%%~na"
     move "%%~a" "%%~na"
 )
 echo 移动完成。
 goto end
-
-:e2
-cd /d %2
-goto e1
 
 :end

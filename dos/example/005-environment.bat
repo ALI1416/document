@@ -2,13 +2,11 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
-setlocal enabledelayedexpansion
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
+:begin
+
+setlocal enabledelayedexpansion
 set p=
 set q=
 set r=
@@ -28,23 +26,27 @@ echo 命令错误，请看以下帮助信息
 goto help
 
 :help
-echo 开机启动项管理
+echo 环境变量管理
 echo.
 echo 格式：%~n0 [ open ^| query ^| add ^| delete ] [ all ^| path ] [名称] [值]
 echo.
 echo 例如：
 
-echo %~n0 open current 打开本用户开机启动项文件夹
+echo %~n0 open 打开系统设置图形化界面(请手动选择环境变量)
 
-echo %~n0 query current 注册表查询本用户开机启动项
+echo %~n0 query all 查询环境变量
 
-echo %~n0 add current qq "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" 注册表新增本用户开机启动项(所有用户需要管理员权限)，名称为qq，路径为"D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"
+echo %~n0 add all "test" "D:\test" 新增环境变量test的值为"D:\test"(新增和删除需要管理员权限)
 
-echo %~n0 delete current qq 注册表删除本用户开机启动项(所有用户需要管理员权限)，名称为qq
+echo %~n0 add path "D:\test" 新增环境变量path的值为"D:\test"
+
+echo %~n0 delete all "test" 删除环境变量test
 goto end
 
 :e1
+echo 正在打开，请稍后...
 start SystemPropertiesAdvanced
+echo 已打开。
 goto end
 
 :e2
@@ -72,8 +74,10 @@ goto end
 set r=%r%%q%
 @REM 去除头部;
 if "%r:~0,1%"==";" set r=%r:~1%
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
-echo 添加成功。
+@REM 尾部是\，并且不是\\就多加一个\
+if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
+setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
 goto end
 
 :e6
@@ -94,8 +98,10 @@ set r=!r:;%q%;=;!
 if "%r:~0,1%"==";" set r=%r:~1%
 @REM 去除尾部;
 if "%r:~-1%"==";" set r=%r:~0,-1%
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_SZ /d "%r%" /f
-echo 删除成功。
+@REM 尾部是\，并且不是\\就多加一个\
+if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
+setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
 goto end
 :e7c2
 echo 不存在，删除失败。
@@ -112,7 +118,6 @@ if not "%r:~1%"==";" set r=;%r%
 @REM 如果尾部不存在;则添加;
 if not "%r:~-1%"==";" set r=%r%;
 @REM 输入的值尾部是\就多加一个\
-echo 666
 if "%q:~-1%"=="\" set q=%q%\
 
 :end

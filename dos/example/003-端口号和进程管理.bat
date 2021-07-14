@@ -2,13 +2,10 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-:head
+:begin
+
 set p=
 echo.
 echo   ----------请选择操作----------
@@ -42,50 +39,52 @@ if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto e0
 
-:e0
-exit
-
 :e1
 echo.
 netstat -ano
-goto head
+goto begin
 
 :e2
 echo.
 set /p p=请输入要查询的端口号：
 echo.
 netstat -ano | findstr /c:":%p% "
-goto head
+goto begin
 
 :e3
 echo.
 tasklist
-goto head
+goto begin
 
 :e4
 echo.
 set /p p=请输入要查询的进程PID：
 echo.
 tasklist | findstr /c:" %p% "
-goto head
+goto begin
 
 :e5
 echo.
 set /p p=请输入要查询的进程名(可使用通配符)：
 echo.
 tasklist | findstr /i /r "%p%"
-goto head
+goto begin
 
 :e6
 echo.
 set /p p=请输入要结束的进程PID：
 echo.
 taskkill /pid %p% /f
-goto head
+goto begin
 
 :e7
 echo.
 set /p p=请输入要结束进程名：
 echo.
 taskkill /im %p% /f
-goto head
+goto begin
+
+:e0
+goto end
+
+:end

@@ -2,11 +2,9 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
+
+:begin
 
 if "%1"=="" goto help
 if "%1"=="/?" goto help
@@ -31,21 +29,25 @@ echo 格式：%~n0 [ open ^| query ^| add ^| delete ] [ current ^| all ] [名称
 echo.
 echo 例如：
 
-echo %~n0 open current 打开本用户开机启动项文件夹
+echo %~n0 open current 打开本用户开机启动项目录
 
-echo %~n0 query current 注册表查询本用户开机启动项
+echo %~n0 query current 查询本用户开机启动项
 
-echo %~n0 add current qq "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" 注册表新增本用户开机启动项(所有用户需要管理员权限)，名称为qq，路径为"D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"
+echo %~n0 add all qq "D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" 新增所有用户开机启动项(新增和删除所有用户开机启动项需要管理员权限)，名称为qq，路径为"D:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe"
 
-echo %~n0 delete current qq 注册表删除本用户开机启动项(所有用户需要管理员权限)，名称为qq
+echo %~n0 delete current qq 删除本用户开机启动项，名称为qq
 goto end
 
 :e1
+echo 正在打开，请稍后...
 explorer "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
+echo 已打开。
 goto end
 
 :e2
+echo 正在打开，请稍后...
 explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
+echo 已打开。
 goto end
 
 :e3

@@ -80,7 +80,7 @@
 | ■    | time                 | 显示或设置系统时间。                                    |
 | ■    | title                | 设置cmd.exe会话的窗口标题。                             |
 | ■    | tree                 | 以图形方式显示驱动程序或路径的目录结构。                |
-| ■■   | 类型                 | 显示文本文件的内容。                                    |
+| ■■   | type                 | 显示文本文件的内容。                                    |
 |      | ver                  | 显示Windows的版本。                                     |
 |      | verify               | 告诉Windows是否进行验证，以确保文件正确写入磁盘。       |
 |      | vol                  | 显示磁盘卷标和序列号。                                  |
@@ -105,14 +105,27 @@
 | ■■   | @       | 关闭本行回显 | @命令                 | 关闭本行回显                                             |
 | ■■   | /?      | 查看帮助     | 命令 /?               | 查看帮助信息                                             |
 
+## 颜色代码
+| 代码 | 颜色代码 | 颜色   | 色块                                          | 代码 | 颜色代码 | 颜色     | 色块                                          |
+| ---- | -------- | ------ | --------------------------------------------- | ---- | -------- | -------- | --------------------------------------------- |
+| 0    | 000000   | 黑色   | <div style="background:#000000;">&emsp;</div> | 8    | 808080   | 灰色     | <div style="background:#808080;">&emsp;</div> |
+| 1    | 000080   | 蓝色   | <div style="background:#000080;">&emsp;</div> | 9    | 0000FF   | 淡蓝色   | <div style="background:#0000FF;">&emsp;</div> |
+| 2    | 008000   | 绿色   | <div style="background:#008000;">&emsp;</div> | A    | 00FF00   | 淡绿色   | <div style="background:#00FF00;">&emsp;</div> |
+| 3    | 008080   | 浅绿色 | <div style="background:#008080;">&emsp;</div> | B    | 00FFFF   | 淡浅绿色 | <div style="background:#00FFFF;">&emsp;</div> |
+| 4    | 800000   | 红色   | <div style="background:#800000;">&emsp;</div> | C    | FF0000   | 淡红色   | <div style="background:#FF0000;">&emsp;</div> |
+| 5    | 800080   | 紫色   | <div style="background:#800080;">&emsp;</div> | D    | FF00FF   | 淡紫色   | <div style="background:#FF00FF;">&emsp;</div> |
+| 6    | 808000   | 黄色   | <div style="background:#808000;">&emsp;</div> | E    | FFFF00   | 淡黄色   | <div style="background:#FFFF00;">&emsp;</div> |
+| 7    | C0C0C0   | 白色   | <div style="background:#C0C0C0;">&emsp;</div> | F    | FFFFFF   | 亮白色   | <div style="background:#FFFFFF;">&emsp;</div> |
+
 ## 特殊字符
 | 常用 | 字符            | 作用                                          | 示例                                                                        | 解释                                |
 | ---- | --------------- | --------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------- |
-| ■■   | >               | 命令输出到文件                                | dir >1.txt                                                                  | 内容覆盖到1.txt                     |
-| ■■   | >>              | 命令输出到文件(追加)                          | dir >1.txt                                                                  | 内容追加到1.txt                     |
-| ■    | <               | 文件中读取命令输入                            | sort <1.txt                                                                 | 对1.txt文件内容进行排序             |
+| ■■   | ^               | 代码内换行符                                  | ec^<br>ho hello                                                             | 等价于echo hello                    |
+| ■■   | >               | 命令输出到文件                                | ①dir >1.txt<br>②dir >nul                                                    | ①内容覆盖到1.txt<br>②关闭dir回显    |
+| ■■   | >>              | 命令输出到文件(追加)                          | dir >>1.txt                                                                 | 内容追加到1.txt                     |
+| ■■   | <               | 文件中读取命令输入                            | sort <1.txt                                                                 | 对1.txt文件内容进行排序             |
 | ■■   | &#124;          | 管道符。左结果作为右参数                      | dir c:\                                                  &#124; findstr "w" | 输出c盘中含有w字符串                |
-|      | &               | 命令分隔符。相当于换行符                      | dir a:\ & dir c:\                                                           | 输出找不到a盘，输出c盘              |
+| ■■   | &               | 命令分隔符。相当于换行符                      | dir a:\ & dir c:\                                                           | 输出找不到a盘，输出c盘              |
 | ■■   | &#124;&#124;    | 或。左失败，右执行；左成功，右不执行          | ①dir a:\ &#124;&#124; dir c:\ <br>②dir c:\ &#124;&#124; dir d:\             | ①输出找不到a盘，输出c盘<br>②输出c盘 |
 | ■■   | &&              | 且。左失败，右不执行；左成功，右执行          | ①dir a:\ && dir c:\ <br>②dir c:\ && dir d:\                                 | ①输出找不到a盘<br>②输出c盘和d盘     |
 | ■■   | && &#124;&#124; | 相当于if-else。左成功，执行中；左失败，执行右 | dir c:\ && echo ok &#124;&#124; echo error                                  | 输出c盘，输出ok                     |
@@ -134,17 +147,16 @@
 | ■■   | 2>                 | 重定向错误       | dir 1.txt 2>2.txt | 结果输出到1.txt，错误输出到2.txt |
 | ■■   | 2>&1(2<&1效果一样) | 重定向错误到输出 | dir 1.txt 2>&1    | 结果和错误都输出到1.txt          |
 
-## 颜色代码
-| 代码 | 颜色代码 | 颜色   | 色块                                          | 代码 | 颜色代码 | 颜色     | 色块                                          |
-| ---- | -------- | ------ | --------------------------------------------- | ---- | -------- | -------- | --------------------------------------------- |
-| 0    | 000000   | 黑色   | <div style="background:#000000;">&emsp;</div> | 8    | 808080   | 灰色     | <div style="background:#808080;">&emsp;</div> |
-| 1    | 000080   | 蓝色   | <div style="background:#000080;">&emsp;</div> | 9    | 0000FF   | 淡蓝色   | <div style="background:#0000FF;">&emsp;</div> |
-| 2    | 008000   | 绿色   | <div style="background:#008000;">&emsp;</div> | A    | 00FF00   | 淡绿色   | <div style="background:#00FF00;">&emsp;</div> |
-| 3    | 008080   | 浅绿色 | <div style="background:#008080;">&emsp;</div> | B    | 00FFFF   | 淡浅绿色 | <div style="background:#00FFFF;">&emsp;</div> |
-| 4    | 800000   | 红色   | <div style="background:#800000;">&emsp;</div> | C    | FF0000   | 淡红色   | <div style="background:#FF0000;">&emsp;</div> |
-| 5    | 800080   | 紫色   | <div style="background:#800080;">&emsp;</div> | D    | FF00FF   | 淡紫色   | <div style="background:#FF00FF;">&emsp;</div> |
-| 6    | 808000   | 黄色   | <div style="background:#808000;">&emsp;</div> | E    | FFFF00   | 淡黄色   | <div style="background:#FFFF00;">&emsp;</div> |
-| 7    | C0C0C0   | 白色   | <div style="background:#C0C0C0;">&emsp;</div> | F    | FFFFFF   | 亮白色   | <div style="background:#FFFFFF;">&emsp;</div> |
+## 转义字符
+| 字符   | 转义    |
+| ------ | ------- |
+| "      | """     |
+| %      | %%      |
+| ^      | ^^      |
+| &      | ^&      |
+| <      | ^<      |
+| >      | ^>      |
+| &#124; | ^&#124; |
 
 ## 系统常量
 | 常用 | 解释                               | 变量名                                 | 示例值                                                                                        |
@@ -222,11 +234,11 @@ if %test%==aaa (
 ```
 输出`aaa`  
 **开启变量延迟**  
-使用`setlocal enabledelayedexpansion`开启变量延迟，使用`!变量名!`来使用变量。  
-使用`setlocal disabledelayedexpansion`关闭变量延迟
+使用`setLocal enableDelayedExpansion`开启变量延迟，使用`!变量名!`来使用变量。  
+使用`setLocal disableDelayedExpansion`关闭变量延迟
 ```bat
 @echo off
-setlocal enabledelayedexpansion
+setLocal enableDelayedExpansion
 set test=aaa
 if %test%==aaa (
     set test=bbb
@@ -329,23 +341,6 @@ echo 原字符串b并没有被合并 %b%
 | ■■   | echo %cd% | 显示系统常量和变量    |
 | ■■   | echo !a!  | 使用a变量的延迟值     |
 | ■■   | echo %~f0 | 显示拓展变量(仅限bat) |
-
-### 转义字符
-| 字符   | 转义    |
-| ------ | ------- |
-| %      | %%      |
-| ^      | ^^      |
-| &      | ^&      |
-| <      | ^<      |
-| >      | ^>      |
-| &#124; | ^&#124; |
-
-注意：如果命令过长也可以使用`^`进行换行，例如：
-```bat
-ec^
-ho he^
-llo
-```
 
 ## set 显示、设置或删除cmd.exe环境变量
 **编辑格式：`set [变量名=[值]]`**  
@@ -1226,15 +1221,15 @@ E:\>test.bat
 
 # 常用bat程序
 目录：[example](example/)  
-注意：所有代码，都需要保存编码为`UTF8`的文件
+注意：所有代码，都需要保存编码为`UTF8`的文件  
 **乱码解决方法**  
 bat文本编码保存为`UTF8`，设置字符集编码为`65001`。  
 echo命令不能连续输出2行中文(可以换行隔开)。  
 例如：
 ```bat
 @echo off
-chcp 65001
-cls
+for /f "delims=: tokens=1,2" %%i in ('chcp') do ( if not "%%j"==" 65001" ( chcp 65001 & cls ) )
+
 echo 中文+English
 
 echo 中文第二行，换行隔开

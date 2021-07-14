@@ -2,11 +2,11 @@
 @REM Author:ALI
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
-set cp=
-for /f "delims=: tokens=1,2" %%i in ('chcp') do (
-    set cp=%%j
-)
-if not "%cp%"==" 65001" ( chcp 65001 & cls )
+for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
+
+:begin
+
+@REM Please open it by UTF-8 encoding
 
 echo [0m无属性
 
@@ -67,3 +67,5 @@ echo [3;20H输出到3行20列
 echo [25;30f输出到25行30列
 
 pause
+
+:end
