@@ -6,8 +6,8 @@ for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chc
 
 :begin
 
-if "%1"=="" goto help
-if "%1"=="/?" goto help
+if "%~1"=="" goto help
+if "%~1"=="/?" goto help
 set pathType=notExist
 if exist "%~1" ( dir /ad/b "%~1">nul 2>&1 && set pathType=folder || set pathType=file )
 if %pathType%==notExist goto e1
@@ -38,19 +38,19 @@ echo %~n0 "C:\Windows\system32\cmd.exe" "/s /k pushd D:" 打开路径为"C:\Wind
 goto end
 
 :e1
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "cmd" -Verb RunAs )
+( reg query "HKU\S-1-5-19">nul 2>&1 && start cmd )||( powershell Start-Process "cmd" -Verb RunAs )
 goto end
 
 :e2
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "cmd" -ArgumentList """/s /k (pushd `"""%~1`""")""" -Verb RunAs )
+( reg query "HKU\S-1-5-19">nul 2>&1 && start cmd /s /k pushd %~1 )||( powershell Start-Process "cmd" -ArgumentList """/s /k (pushd `"""%~1`""")""" -Verb RunAs )
 goto end
 
 :e3
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "%~1" -Verb RunAs )
+( reg query "HKU\S-1-5-19">nul 2>&1 && start "%~1" )||( powershell Start-Process """%~1""" -Verb RunAs )
 goto end
 
 :e4
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "%~1" -ArgumentList """%~2""" -Verb RunAs )
+( reg query "HKU\S-1-5-19">nul 2>&1 && start "%~1" "%~2")||( powershell Start-Process """%~1""" -ArgumentList """%~2""" -Verb RunAs )
 goto end
 
 :end

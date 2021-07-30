@@ -1,0 +1,4 @@
+drop user if exists 'ali'@'%';
+create user 'ali'@'%' IDENTIFIED BY 'alibaba';
+grant all privileges on *.* to 'ali'@'%' WITH GRANT OPTION;
+

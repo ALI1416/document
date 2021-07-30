@@ -47,6 +47,9 @@ if errorlevel 1 goto e1
 if errorlevel 0 goto e0
 
 :e1
+echo.
+echo   [1] 打开 系统设置 图形化界面(请手动选择环境变量)
+echo.
 echo 正在打开，请稍后...
 start SystemPropertiesAdvanced
 echo 已打开。
@@ -54,23 +57,33 @@ goto begin
 
 :e2
 echo.
+echo   [2] 查询 环境变量
+echo.
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
 goto begin
 
 :e3
+echo.
+echo   [3] 查询 Path环境变量
 echo.
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" | findstr /c:" Path "
 goto begin
 
 :e4
 echo.
+echo   [4] 新增 环境变量(需要管理员权限)
+echo.
 set /p p=请输入名称：
+
 set /p q=请输入值：
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /t REG_SZ /d "%q%" /f
 setX "%p%" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\%p%" /M
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e5
+echo.
+echo   [5] 新增 Path环境变量值(需要管理员权限)
 echo.
 set /p q=请输入值(不要加分号)：
 call:queryExist
@@ -88,15 +101,21 @@ if "%r:~0,1%"==";" set r=%r:~1%
 if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
 setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e6
 echo.
+echo   [6] 删除 环境变量(需要管理员权限)
+echo.
 set /p p=请输入名称：
 reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %p% /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e7
+echo.
+echo   [7] 删除 Path环境变量值(需要管理员权限)
 echo.
 set /p q=请输入值(不要加分号)：
 call:queryExist
@@ -115,14 +134,25 @@ if "%r:~-1%"==";" set r=%r:~0,-1%
 if "%r:~-1%"=="\" if not "%r:~-2,-1%"=="\" set r=%r%\
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%r%" /f
 setX "Path" /K "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path" /M
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 :e7c2
 echo 不存在，删除失败。
 goto begin
 
 :ez
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "%~f0" -Verb RunAs )&&( exit )
-echo 已获取管理员权限，不必重复获取！
+echo.
+echo   [Z] 获取管理员权限
+echo.
+( reg query "HKU\S-1-5-19">nul 2>&1 && goto ez1 )||( goto ez2 )
+:ez1
+echo 已经获取到了管理员权限，不必重复获取！
+goto begin
+:ez2
+( powershell Start-Process """%~f0""" -Verb RunAs )&&( exit )
+if %errorlevel%==0 goto end
+echo.
+echo 获取失败，请重试！
 goto begin
 
 :e0

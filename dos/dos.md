@@ -584,9 +584,11 @@ E:.
 | ■■   | start test.bat(同start cmd /k test.bat)      | 新实例执行命令或批处理                           |
 | ■    | start test.exe                               | 新实例执行程序                                   |
 | ■■   | start "测试" test.bat                        | 指定标题                                         |
-| ■■   | start "" "E:\a b c\test.bat"                 | 路径带有空格(指定标题为空)                       |
-|      | start /b test.bat                            | 本窗口执行这个新的实例                           |
-| ■    | start /min test.bat                          | 以最小化方式启动窗口                             |
+| ■■   | start "" "E:\a b c\test.bat"                 | 路径带有空格(标题为空)                           |
+| ■■   | start /d "E:\a b c\" test.bat                | 指定启动目录                                     |
+|      | start /i test.bat                            | 打开新的实例，不继承父窗口变量                   |
+| ■    | start /b test.bat                            | 本窗口打开新的实例                               |
+|      | start /min test.bat                          | 以最小化方式启动窗口                             |
 |      | start /max test.bat                          | 以最大化方式启动窗口                             |
 | ■■   | start test.bat a b c                         | 传递参数                                         |
 | ■■   | start test.bat a "b c" d                     | 参数有空格                                       |
@@ -603,9 +605,14 @@ E:.
 |      | start /node 123 test.bat(?)                  | 将首选非一致性内存结构(numa)节点指定为十进制整数 |
 |      | start /affinity 123 test.bat(?)              | 将处理器关联掩码指定为十六进制数字               |
 
-## call 从批处理程序调用另一个批处理程序
-**格式：`call [盘符:][路径]]文件名 [参数]`**  
-类似于`start /b`
+## call 调用程序或标签
+**调用程序格式：`call [盘符:][路径]]文件名 [参数]`**  
+**调用标签格式：`call:标签名`**  
+### 命令
+| 常用 | 命令          | 解释             |
+| ---- | ------------- | ---------------- |
+| ■■   | call test.bat | 调用test.bat程序 |
+| ■■   | call:test     | 调用test标签     |
 
 ## shutdown 关机
 **格式：`shutdown [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f] [/m \\指定目标计算机][/t 秒数][/d [p|u:]主要原因编号:次要原因编号 [/c "注释"]]`**

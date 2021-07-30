@@ -8,6 +8,7 @@ for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chc
 
 set p=
 set q=
+set r=
 echo.
 echo   ----------请选择操作----------
 
@@ -49,12 +50,16 @@ if errorlevel 0 goto e0
 
 :e1
 echo.
+echo   [1] 打开 本用户 开机启动项目录
+echo.
 echo 正在打开，请稍后...
 explorer "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
 echo 已打开。
 goto begin
 
 :e2
+echo.
+echo   [2] 打开 所有用户 开机启动项目录
 echo.
 echo 正在打开，请稍后...
 explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
@@ -63,45 +68,87 @@ goto begin
 
 :e3
 echo.
+echo   [3] 查询 本用户 开机启动项
+echo.
 reg query HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 goto begin
 
 :e4
+echo.
+echo   [4] 查询 所有用户 开机启动项
 echo.
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 goto begin
 
 :e5
 echo.
+echo   [5] 新增 本用户 开机启动项
+echo.
 set /p p=请输入名称(任意)：
 
 set /p q=请输入路径：
+
+set /p r=请输入参数(无参数按回车，多参数不要加引号，参数带引号输入3个引号)：
+if "%r%"=="" ( goto e51 ) else ( goto e52 )
+:e51
 reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d "%q%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
+goto begin
+:e52
+reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d """"%q%""" %r%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e6
 echo.
+echo   [6] 新增 所有用户 开机启动项(需要管理员权限)
+echo.
 set /p p=请输入名称(任意)：
 
 set /p q=请输入路径：
+
+set /p r=请输入参数(无参数按回车，多参数不要加引号，参数带引号输入3个引号)：
+if "%r%"=="" ( goto e61 ) else ( goto e62 )
+:e61
 reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d "%q%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
+goto begin
+:e62
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /t REG_SZ /d """"%q%""" %r%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e7
 echo.
+echo   [7] 删除 本用户 开机启动项
+echo.
 set /p p=请输入名称：
 reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e8
 echo.
+echo   [8] 删除 所有用户 开机启动项(需要管理员权限)
+echo.
 set /p p=请输入名称：
 reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%p%" /f
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :ez
-( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process "%~f0" -Verb RunAs )&&( exit )
-echo 已获取管理员权限，不必重复获取！
+echo.
+echo   [Z] 获取管理员权限
+echo.
+( reg query "HKU\S-1-5-19">nul 2>&1 && goto ez1 )||( goto ez2 )
+:ez1
+echo 已经获取到了管理员权限，不必重复获取！
+goto begin
+:ez2
+( powershell Start-Process """%~f0""" -Verb RunAs )&&( exit )
+if %errorlevel%==0 goto end
+echo.
+echo 获取失败，请重试！
 goto begin
 
 :e0
