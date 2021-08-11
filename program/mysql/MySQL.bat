@@ -20,17 +20,17 @@ echo   [3] 开启MySQL服务
 
 echo   --------------------
 
-echo   [4] 修改root用户密码为空【会关闭MySQL服务】
+echo   [4] 修改root用户密码为root【会关闭MySQL服务】
 
-echo   [5] 修改root用户密码为空【会关闭MySQL服务，密码兼容模式】
+echo   [5] 修改root用户密码为root【会关闭MySQL服务，密码兼容模式】
 
-echo   [6] 新增/修改ali用户密码为alibaba，并赋予所有权限【会关闭MySQL服务】
+echo   [6] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
 
-echo   [7] 新增/修改ali用户密码为alibaba，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
+echo   [7] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
 
 echo   --------------------
 
-echo   [8] 将MySQL的bin路径添加进环境变量【需要以管理员身份运行】
+echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 
 echo   [9] 开启MySQL服务开机自启
 
@@ -65,14 +65,14 @@ if errorlevel 0 goto e0
 
 :e1
 echo.
-echo   [1] 开启MySQL【隐藏窗口运行】
+echo   [1] 开启MySQL服务【隐藏窗口运行】
 echo.
 extra\hideWindow "%~dp0bin\mysqld"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭MySQL
+echo   [2] 关闭MySQL服务
 echo.
 call:kill
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -80,32 +80,32 @@ goto begin
 
 :e3
 echo.
-echo   [3] 开启MySQL
+echo   [3] 开启MySQL服务
 echo.
 start bin\mysqld --console
 goto begin
 
 :e4
 echo.
-echo   [4] 修改root用户密码为空【会关闭MySQL服务】
+echo   [4] 修改root用户密码为root【会关闭MySQL服务】
 echo.
 call:kill
 echo.
-call:initFile alterRootEmptyPassword.txt
+call:initFile alterUserRoot.txt
 goto begin
 
 :e5
 echo.
-echo   [5] 修改root用户密码为空【会关闭MySQL服务，密码兼容模式】
+echo   [5] 修改root用户密码为root【会关闭MySQL服务，密码兼容模式】
 echo.
 call:kill
 echo.
-call:initFile alterRootEmptyPasswordOld.txt
+call:initFile alterUserRootOld.txt
 goto begin
 
 :e6
 echo.
-echo   [6] 新增/修改ali用户密码为alibaba，并赋予所有权限【会关闭MySQL服务】
+echo   [6] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
 echo.
 call:kill
 echo.
@@ -114,7 +114,7 @@ goto begin
 
 :e7
 echo.
-echo   [7] 新增/修改ali用户密码为alibaba，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
+echo   [7] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
 echo.
 call:kill
 echo.
@@ -123,28 +123,28 @@ goto begin
 
 :e8
 echo.
-echo   [8] 将MySQL添加进环境变量【需要以管理员身份运行】
+echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 echo.
 call extra\environment add path "%~dp0bin"
 goto begin
 
 :e9
 echo.
-echo   [9] 开启MySQL开机自启
+echo   [9] 开启MySQL服务开机自启
 echo.
 call extra\startUp add current mysqld "%~dp0extra\hideWindow.vbs" """%~dp0bin\mysqld.exe"""
 goto begin
 
 :ea
 echo.
-echo   [A] 关闭MySQL开机自启
+echo   [A] 关闭MySQL服务开机自启
 echo.
 call extra\startUp delete current mysqld
 goto begin
 
 :ey
 echo.
-echo   [Y] 创建MySQL快捷方式到桌面
+echo   [Y] 创建MySQL启动界面快捷方式到桌面
 echo.
 call extra\createShortcut Desktop MySQL "%~f0"
 goto begin

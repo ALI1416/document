@@ -8,12 +8,8 @@ cd /d %~dp0
 
 :begin
 
-echo 提取MySQL
-
-echo 请把此文件夹放到到mysql目录
-
 choice /c yn /m "确定提取吗？"
-if errorlevel 2 goto end
+if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto end
 
@@ -31,7 +27,13 @@ copy ..\bin\mysqldump.exe bin
 copy ..\bin\mysqlimport.exe bin
 copy ..\lib\plugin\component_reference_cache.dll lib\plugin
 xcopy ..\share share /s /i
-
+echo 提取完成！
 pause
+goto end
+
+:e2
+echo 提取取消！
+pause
+goto end
 
 :end
