@@ -922,6 +922,7 @@ E:.
 | ■■   | if "a" gtr "b" (echo true) else (echo false)     | false,字符串大小                 |
 | ■■   | if errorlevel 1 (echo true) else (echo false)    | false,错误层次是否大于等于1      |
 |      | if cmdextversion 1 (echo true) else (echo false) | true,命令拓展版本号是否大于等于1 |
+|      | if ^"==^" (echo true) else (echo false)          | true,引号是否相等                |
 
 ### 运算符
 | 常用 | 运算符 | 解释 |
