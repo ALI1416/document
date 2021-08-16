@@ -4,8 +4,8 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-cd /d %~dp0
-call:checkDataFolder
+pushd %~dp0
+call:checkFolder
 
 :begin
 
@@ -32,9 +32,11 @@ echo   --------------------
 
 echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 
-echo   [9] 开启MySQL服务开机自启
+echo   [9] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
 
-echo   [A] 关闭MySQL服务开机自启
+echo   [A] 开启MySQL服务开机自启
+
+echo   [B] 关闭MySQL服务开机自启
 
 echo   --------------------
 
@@ -47,10 +49,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456789AYZ0
-if errorlevel 13 goto e0
-if errorlevel 12 goto ez
-if errorlevel 11 goto ey
+choice /c 123456789ABYZ0
+if errorlevel 14 goto e0
+if errorlevel 13 goto ez
+if errorlevel 12 goto ey
+if errorlevel 11 goto eb
 if errorlevel 10 goto ea
 if errorlevel 9 goto e9
 if errorlevel 8 goto e8
@@ -67,7 +70,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启MySQL服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0bin\mysqld"
+extra\hideWindow "%~dp0bin\bin\mysqld"
 goto begin
 
 :e2
@@ -82,7 +85,7 @@ goto begin
 echo.
 echo   [3] 开启MySQL服务
 echo.
-start bin\mysqld --console
+start bin\bin\mysqld --console
 goto begin
 
 :e4
@@ -125,19 +128,26 @@ goto begin
 echo.
 echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\environment add path "%~dp0bin"
+call extra\environment add path "%~dp0bin\bin"
 goto begin
 
 :e9
 echo.
-echo   [9] 开启MySQL服务开机自启
+echo   [9] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp add current mysqld "%~dp0extra\hideWindow.vbs" """%~dp0bin\mysqld.exe"""
+call extra\environment delete path "%~dp0bin\bin"
 goto begin
 
 :ea
 echo.
-echo   [A] 关闭MySQL服务开机自启
+echo   [A] 开启MySQL服务开机自启
+echo.
+call extra\startUp add current mysqld "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\mysqld.exe"""
+goto begin
+
+:eb
+echo.
+echo   [B] 关闭MySQL服务开机自启
 echo.
 call extra\startUp delete current mysqld
 goto begin
@@ -165,21 +175,22 @@ echo 获取失败，请重试！
 goto begin
 
 :e0
+popd
 goto end
 
 @REM 内部函数
-:checkDataFolder
-if exist "%~dp0data" goto end
+:checkFolder
+if exist "%~dp0bin\data" goto end
 echo   data目录缺失！
 echo.
 echo   正在创建data目录...
 echo.
-"%~dp0bin\mysqld" --initialize-insecure
+"%~dp0bin\bin\mysqld" --initialize-insecure
 echo   创建成功！账号：root，密码：(空)
 goto end
 
 :initFile
-start bin\mysqld --init-file="%~dp0extra\%1" --console
+start bin\bin\mysqld --init-file="%~dp0extra\%1" --console
 goto end
 
 :kill

@@ -4,7 +4,7 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-cd /d %~dp0
+pushd %~dp0
 call:checkFolder
 
 :begin
@@ -28,9 +28,11 @@ echo   --------------------
 
 echo   [6] 将Nginx目录添加进环境变量【需要以管理员身份运行】
 
-echo   [7] 开启Nginx服务开机自启
+echo   [7] 将Nginx目录从环境变量移除【需要以管理员身份运行】
 
-echo   [8] 关闭Nginx服务开机自启
+echo   [8] 开启Nginx服务开机自启
+
+echo   [9] 关闭Nginx服务开机自启
 
 echo   --------------------
 
@@ -43,10 +45,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 12345678YZ0
-if errorlevel 11 goto e0
-if errorlevel 10 goto ez
-if errorlevel 9 goto ey
+choice /c 123456789YZ0
+if errorlevel 12 goto e0
+if errorlevel 11 goto ez
+if errorlevel 10 goto ey
+if errorlevel 9 goto e9
 if errorlevel 8 goto e8
 if errorlevel 7 goto e7
 if errorlevel 6 goto e6
@@ -61,14 +64,18 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Nginx服务【隐藏窗口运行】
 echo.
+pushd bin
 start nginx.exe
+popd
 goto begin
 
 :e2
 echo.
 echo   [2] 关闭Nginx服务
 echo.
+pushd bin
 call nginx.exe -s quit
+popd
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
@@ -76,7 +83,9 @@ goto begin
 echo.
 echo   [3] 开启Nginx服务
 echo.
+pushd bin
 start cmd /k nginx.exe
+popd
 goto begin
 
 :e4
@@ -91,26 +100,36 @@ goto begin
 echo.
 echo   [5] 重新加载Nginx配置
 echo.
-start nginx.exe -s reload
+pushd bin
+call nginx.exe -s reload
+if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
+popd
 goto begin
 
 :e6
 echo.
 echo   [6] 将Nginx目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\environment add path "%~dp0"
+call extra\environment add path "%~dp0bin"
 goto begin
 
 :e7
 echo.
-echo   [7] 开启Nginx服务开机自启
+echo   [7] 将Nginx目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp add current nginx "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpNginx.bat"""
+call extra\environment delete path "%~dp0bin"
 goto begin
 
 :e8
 echo.
-echo   [8] 关闭Nginx服务开机自启
+echo   [8] 开启Nginx服务开机自启
+echo.
+call extra\startUp add current nginx "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpNginx.bat"""
+goto begin
+
+:e9
+echo.
+echo   [9] 关闭Nginx服务开机自启
 echo.
 call extra\startUp delete current nginx
 goto begin
@@ -138,27 +157,28 @@ echo 获取失败，请重试！
 goto begin
 
 :e0
+popd
 goto end
 
 @REM 内部函数
 :checkFolder
-if exist "%~dp0logs" goto checkFolderTemp
+if exist "%~dp0bin\logs" goto checkFolder2
 echo   logs目录缺失！
 echo.
 echo   正在创建logs目录...
 echo.
-md "%~dp0logs"
+md "%~dp0bin\logs"
 echo   创建成功！
-goto checkFolderTemp
+goto checkFolder2
 
-:checkFolderTemp
-if exist "%~dp0temp" goto end
+:checkFolder2
+if exist "%~dp0bin\temp" goto end
 echo.
 echo   temp目录缺失！
 echo.
 echo   正在创建temp目录...
 echo.
-md "%~dp0temp"
+md "%~dp0bin\temp"
 echo   创建成功！
 goto end
 

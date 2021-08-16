@@ -1,12 +1,12 @@
 # MongoDB
 
-## 提取
-1. 下载MongoDB压缩包，地址 https://www.mongodb.com/try/download/community 选择`MongoDB Community Server`版本，`Package`选择`zip`下载，名称应为`mongodb-windows-x86_64-版本号.zip`，并解压
-2. 把本压缩包解压到刚才的MongoDB压缩包解压后的文件夹内，如图所示：  
-![提取示例](img/提取示例.jpg)
-3. 双击`提取.bat`文件，进行文件提取
-4. 提取后，可以把`README.md`文件、`提取.bat`文件和`img`文件夹删除掉
-5. 可以对提取后的文件夹进行打包(请不要运行`MongoDB.bat`文件)
+## 下载
+下载地址 https://www.mongodb.com/try/download/community 版本选择`MongoDB Community Server`，Package选择`zip`，名称应为`mongodb-windows-x86_64-版本号.zip`，解压后文件夹名称应为`mongodb-win32-x86_64-windows-版本号`
+
+## 初始化
+1. 把本压缩包解压到`mongodb-win32-x86_64-windows-版本号`文件夹内，如图所示：  
+![初始化示例](img/初始化示例.jpg)
+2. 双击`初始化.bat`文件
 
 ## 运行
-点击`MongoDB.bat`文件运行MongoDB启动界面
+双击`MongoDB.bat`文件

@@ -4,7 +4,7 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-cd /d %~dp0
+pushd %~dp0
 
 :begin
 
@@ -21,9 +21,11 @@ echo   --------------------
 
 echo   [4] 将Redis目录添加进环境变量【需要以管理员身份运行】
 
-echo   [5] 开启Redis服务开机自启
+echo   [6] 将Redis目录从环境变量移除【需要以管理员身份运行】
 
-echo   [6] 关闭Redis服务开机自启
+echo   [6] 开启Redis服务开机自启
+
+echo   [7] 关闭Redis服务开机自启
 
 echo   --------------------
 
@@ -36,10 +38,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456YZ0
-if errorlevel 9 goto e0
-if errorlevel 8 goto ez
-if errorlevel 7 goto ey
+choice /c 1234567YZ0
+if errorlevel 10 goto e0
+if errorlevel 9 goto ez
+if errorlevel 8 goto ey
+if errorlevel 7 goto e7
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
 if errorlevel 4 goto e4
@@ -52,7 +55,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Redis服务【隐藏窗口运行】
 echo.
-extra\hideWindowRedis "%~dp0"
+extra\hideWindowRedis "%~dp0bin\"
 goto begin
 
 :e2
@@ -67,26 +70,33 @@ goto begin
 echo.
 echo   [3] 开启Redis服务
 echo.
-start redis-server redis.conf
+start bin\redis-server bin\redis.conf
 goto begin
 
 :e4
 echo.
 echo   [4] 将Redis目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\environment add path "%~dp0"
+call extra\environment add path "%~dp0bin"
 goto begin
 
 :e5
 echo.
-echo   [5] 开启Redis服务开机自启
+echo   [5] 将Redis目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp add current redis-server "%~dp0extra\hideWindowRedis.vbs" """%~dp0\"""
+call extra\environment delete path "%~dp0bin"
 goto begin
 
 :e6
 echo.
-echo   [6] 关闭Redis服务开机自启
+echo   [6] 开启Redis服务开机自启
+echo.
+call extra\startUp add current redis-server "%~dp0extra\hideWindowRedis.vbs" """%~dp0bin\\"""
+goto begin
+
+:e7
+echo.
+echo   [7] 关闭Redis服务开机自启
 echo.
 call extra\startUp delete current redis-server
 goto begin
@@ -114,6 +124,7 @@ echo 获取失败，请重试！
 goto begin
 
 :e0
+popd
 goto end
 
 :end

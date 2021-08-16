@@ -4,7 +4,7 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-cd /d %~dp0
+pushd %~dp0
 call:checkDataFolder
 
 :begin
@@ -22,9 +22,11 @@ echo   --------------------
 
 echo   [4] 将MongoDB目录添加进环境变量【需要以管理员身份运行】
 
-echo   [5] 开启MongoDB服务开机自启
+echo   [5] 将MongoDB目录从环境变量移除【需要以管理员身份运行】
 
-echo   [6] 关闭MongoDB服务开机自启
+echo   [6] 开启MongoDB服务开机自启
+
+echo   [7] 关闭MongoDB服务开机自启
 
 echo   --------------------
 
@@ -37,10 +39,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456YZ0
-if errorlevel 9 goto e0
-if errorlevel 8 goto ez
-if errorlevel 7 goto ey
+choice /c 1234567YZ0
+if errorlevel 10 goto e0
+if errorlevel 9 goto ez
+if errorlevel 8 goto ey
+if errorlevel 7 goto e7
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
 if errorlevel 4 goto e4
@@ -53,7 +56,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启MongoDB服务【隐藏窗口运行】
 echo.
-extra\hideWindowMongoDB "%~dp0"
+extra\hideWindowMongoDB "%~dp0bin\"
 goto begin
 
 :e2
@@ -68,26 +71,33 @@ goto begin
 echo.
 echo   [3] 开启MongoDB服务
 echo.
-start mongod --dbpath "%~dp0data"
+start bin\mongod --dbpath "%~dp0bin\data"
 goto begin
 
 :e4
 echo.
 echo   [4] 将MongoDB目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\environment add path "%~dp0"
+call extra\environment add path "%~dp0bin"
 goto begin
 
 :e5
 echo.
-echo   [5] 开启MongoDB服务开机自启
+echo   [5] 将MongoDB目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp add current mongod "%~dp0extra\hideWindowMongoDB.vbs" """%~dp0\"""
+call extra\environment delete path "%~dp0bin"
 goto begin
 
 :e6
 echo.
-echo   [6] 关闭MongoDB服务开机自启
+echo   [6] 开启MongoDB服务开机自启
+echo.
+call extra\startUp add current mongod "%~dp0extra\hideWindowMongoDB.vbs" """%~dp0bin\\"""
+goto begin
+
+:e7
+echo.
+echo   [7] 关闭MongoDB服务开机自启
 echo.
 call extra\startUp delete current mongod
 goto begin
@@ -115,16 +125,17 @@ echo 获取失败，请重试！
 goto begin
 
 :e0
+popd
 goto end
 
 @REM 内部函数
 :checkDataFolder
-if exist "%~dp0data" goto end
+if exist "%~dp0bin\data" goto end
 echo   data目录缺失！
 echo.
 echo   正在创建data目录...
 echo.
-md "%~dp0data"
+md "%~dp0bin\data"
 echo   创建成功！
 goto end
 

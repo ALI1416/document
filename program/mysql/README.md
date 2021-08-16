@@ -1,12 +1,15 @@
 # MySQL
 
-## 提取
-1. 下载MySQL压缩包，地址 https://dev.mysql.com/downloads/mysql/ 选择`Windows (x86, 64-bit), ZIP Archive`版本下载，名称应为`mysql-版本号-winx64.zip`，并解压
-2. 把本压缩包解压到刚才的MySQL压缩包解压后的文件夹内，如图所示：  
-![提取示例](img/提取示例.jpg)
-3. 双击`提取.bat`文件，进行文件提取
-4. 提取后，可以把`README.md`文件、`提取.bat`文件和`img`文件夹删除掉
-5. 可以对提取后的文件夹进行打包(请不要运行`MySQL.bat`文件)
+## 下载
+下载地址 https://dev.mysql.com/downloads/mysql/ 版本选择`Windows (x86, 64-bit), ZIP Archive`，名称应为`mysql-版本号-winx64.zip`，解压后文件夹名称应为`mysql-版本号-winx64`
+
+## 初始化
+1. 把本压缩包解压到`mysql-版本号-winx64`文件夹内，如图所示：  
+![初始化示例](img/初始化示例.jpg)
+2. 双击`初始化.bat`文件
 
 ## 运行
-点击`MySQL.bat`文件运行MySQL启动界面
+双击`MySQL.bat`文件
+
+## 注意
+如果提示`丢失xxx.dll文件`，需要安装`微软常用运行库`，可以到 https://www.ghxi.com/yxkhj.html 进行下载安装

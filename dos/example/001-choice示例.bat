@@ -4,6 +4,8 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
+title %~n0
+
 :begin
 
 choice /c abcd0 /m "请选择ABCD,退出按0"

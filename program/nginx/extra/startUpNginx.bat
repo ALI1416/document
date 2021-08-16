@@ -4,9 +4,11 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
+pushd %~dp0
+
 :begin
 
-cd ..
+cd ..\bin
 start nginx.exe
 
 :end

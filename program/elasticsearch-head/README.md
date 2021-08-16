@@ -1,4 +1,4 @@
-# ElasticSearch
+# ElasticSearchHead
 
 ## 下载
 1. ElasticSearch压缩包，下载地址 https://www.elastic.co/cn/downloads/elasticsearch 版本选择`WINDOWS`，名称应为`elasticsearch-版本号-windows-x86_64.zip`，解压后文件夹名称应为`elasticsearch-版本号`

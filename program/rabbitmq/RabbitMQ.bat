@@ -4,7 +4,7 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-cd /d %~dp0
+pushd %~dp0
 
 :begin
 
@@ -21,17 +21,19 @@ echo   --------------------
 
 echo   [4] 将RabbitMQ的sbin目录添加进环境变量【需要以管理员身份运行】
 
-echo   [5] 开启RabbitMQ服务开机自启
+echo   [5] 将RabbitMQ的sbin目录从环境变量移除【需要以管理员身份运行】
 
-echo   [6] 关闭RabbitMQ服务开机自启
+echo   [6] 开启RabbitMQ服务开机自启
+
+echo   [7] 关闭RabbitMQ服务开机自启
 
 echo   --------------------
-
-echo   [7] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
 
 echo   [8] 启用RabbitMQ网页管理插件
 
 echo   [9] 用浏览器打开RabbitMQ管理页面
+
+echo   [A] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
 
 echo   --------------------
 
@@ -44,10 +46,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456789YZ0
-if errorlevel 12 goto e0
-if errorlevel 11 goto ez
-if errorlevel 10 goto ey
+choice /c 123456789aYZ0
+if errorlevel 13 goto e0
+if errorlevel 12 goto ez
+if errorlevel 11 goto ey
+if errorlevel 10 goto ea
 if errorlevel 9 goto e9
 if errorlevel 8 goto e8
 if errorlevel 7 goto e7
@@ -63,14 +66,14 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启RabbitMQ服务【隐藏窗口运行】
 echo.
-call sbin\rabbitmq-server -detached
+call bin\sbin\rabbitmq-server -detached
 goto begin
 
 :e2
 echo.
 echo   [2] 关闭RabbitMQ服务
 echo.
-call sbin\rabbitmqctl stop
+call bin\sbin\rabbitmqctl stop
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
@@ -78,43 +81,42 @@ goto begin
 echo.
 echo   [3] 开启RabbitMQ服务
 echo.
-start sbin\rabbitmq-server
+start bin\sbin\rabbitmq-server
 goto begin
 
 :e4
 echo.
 echo   [4] 将RabbitMQ的sbin目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\environment add path "%~dp0sbin"
+call extra\environment add path "%~dp0bin\sbin"
 goto begin
 
 :e5
 echo.
-echo   [5] 开启RabbitMQ服务开机自启
+echo   [5] 将RabbitMQ的sbin目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp add current rabbitmq-server "%~dp0sbin\rabbitmq-server" "-detached"
+call extra\environment delete path "%~dp0bin\sbin"
 goto begin
 
 :e6
 echo.
-echo   [6] 关闭RabbitMQ服务开机自启
+echo   [6] 开启RabbitMQ服务开机自启
 echo.
-call extra\startUp delete current rabbitmq-server
+call extra\startUp add current rabbitmq-server "%~dp0bin\sbin\rabbitmq-server" "-detached"
 goto begin
 
 :e7
 echo.
-echo   [7] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
+echo   [7] 关闭RabbitMQ服务开机自启
 echo.
-set /p p=请输入erlang的安装路径，例如【 D:\Program Files\erl-23.2 】 
-call extra\environment add all "ERLANG_HOME" "%p%"
+call extra\startUp delete current rabbitmq-server
 goto begin
 
 :e8
 echo.
 echo   [8] 启用RabbitMQ网页管理插件
 echo.
-call sbin\rabbitmq-plugins enable rabbitmq_management
+call bin\sbin\rabbitmq-plugins enable rabbitmq_management
 goto begin
 
 :e9
@@ -122,6 +124,14 @@ echo.
 echo   [9] 用浏览器打开RabbitMQ管理页面
 echo.
 start http://localhost:15672
+goto begin
+
+:ea
+echo.
+echo   [A] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
+echo.
+set /p p=请输入erlang的安装路径，例如【 D:\Program Files\erl-23.2 】 
+call extra\environment add all "ERLANG_HOME" "%p%"
 goto begin
 
 :ey
@@ -147,6 +157,7 @@ echo 获取失败，请重试！
 goto begin
 
 :e0
+popd
 goto end
 
 :end
