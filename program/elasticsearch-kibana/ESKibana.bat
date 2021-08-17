@@ -5,34 +5,36 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 setLocal enableDelayedExpansion
-
 pushd %~dp0
-call:checkFolder
 
 :begin
 
 echo.
 echo   ----------请选择操作----------
 
-echo   [1] 开启ElasticSearch服务【隐藏窗口运行】
+echo   [1] 开启Kibana服务【隐藏窗口运行】
 
-echo   [2] 关闭ElasticSearch服务
+echo   [2] 关闭Kibana服务
 
-echo   [3] 开启ElasticSearch服务
-
-echo   --------------------
-
-echo   [4] 将ElasticSearch的bin目录添加进环境变量【需要以管理员身份运行】
-
-echo   [5] 将ElasticSearch的bin目录从环境变量移除【需要以管理员身份运行】
-
-echo   [6] 开启ElasticSearch服务开机自启
-
-echo   [7] 关闭ElasticSearch服务开机自启
+echo   [3] 开启Kibana服务
 
 echo   --------------------
 
-echo   [Y] 创建ElasticSearch启动界面快捷方式到桌面
+echo   [4] 将Kibana的bin目录添加进环境变量【需要以管理员身份运行】
+
+echo   [5] 将Kibana的bin目录从环境变量移除【需要以管理员身份运行】
+
+echo   [6] 开启Kibana服务开机自启
+
+echo   [7] 关闭Kibana服务开机自启
+
+echo   --------------------
+
+echo   [8] 用浏览器打开Kibana管理页面
+
+echo   --------------------
+
+echo   [Y] 创建ESKibana启动界面快捷方式到桌面
 
 echo   [Z] 获取管理员权限
 
@@ -41,10 +43,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 1234567YZ0
-if errorlevel 10 goto e0
-if errorlevel 9 goto ez
-if errorlevel 8 goto ey
+choice /c 12345678YZ0
+if errorlevel 11 goto e0
+if errorlevel 10 goto ez
+if errorlevel 9 goto ey
+if errorlevel 8 goto e8
 if errorlevel 7 goto e7
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
@@ -56,22 +59,22 @@ if errorlevel 0 goto e0
 
 :e1
 echo.
-echo   [1] 开启ElasticSearch服务【隐藏窗口运行】
+echo   [1] 开启Kibana服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0bin\bin\elasticsearch.bat"
+extra\hideWindow "%~dp0bin\bin\kibana.bat"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭ElasticSearch服务
+echo   [2] 关闭Kibana服务
 echo.
 set port=
 set num=1
-for /f "tokens=1 delims=" %%i in ( 'netstat -ano ^| findstr /c:"TCP    127.0.0.1:9200"' ) do (
+for /f "tokens=1 delims=" %%i in ( 'netstat -ano ^| findstr /c:"TCP    127.0.0.1:5601"' ) do (
     if !num!==1 set port=%%i
     set /a num+=1
 )
-if %num%==1 ( echo ElasticSearch服务未开启或端口号不是9200！ & goto begin )
+if %num%==1 ( echo Kibana服务未开启或端口号不是5601！ & goto begin )
 set pid=
 for /f "tokens=5 delims= " %%i in ( 'echo %port%' ) do (
     set pid=%%i
@@ -88,44 +91,51 @@ goto begin
 
 :e3
 echo.
-echo   [3] 开启ElasticSearch服务
+echo   [3] 开启Kibana服务
 echo.
-start bin\bin\elasticsearch.bat
+start bin\bin\kibana.bat
 goto begin
 
 :e4
 echo.
-echo   [4] 将ElasticSearch的bin目录添加进环境变量【需要以管理员身份运行】
+echo   [4] 将Kibana的bin目录添加进环境变量【需要以管理员身份运行】
 echo.
 call extra\environment add path "%~dp0bin\bin"
 goto begin
 
 :e5
 echo.
-echo   [5] 将ElasticSearch的bin目录从环境变量移除【需要以管理员身份运行】
+echo   [5] 将Kibana的bin目录从环境变量移除【需要以管理员身份运行】
 echo.
 call extra\environment delete path "%~dp0bin\bin"
 goto begin
 
 :e6
 echo.
-echo   [6] 开启ElasticSearch服务开机自启
+echo   [6] 开启Kibana服务开机自启
 echo.
-call extra\startUp add current elasticSearch "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\elasticsearch.bat"""
+call extra\startUp add current kibana "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\kibana.bat"""
 goto begin
 
 :e7
 echo.
-echo   [7] 关闭ElasticSearch服务开机自启
+echo   [7] 关闭Kibana服务开机自启
 echo.
-call extra\startUp delete current elasticSearch
+call extra\startUp delete current kibana
+goto begin
+
+:e8
+echo.
+echo   [8] 用浏览器打开Kibana管理页面
+echo.
+start http://localhost:5601
 goto begin
 
 :ey
 echo.
-echo   [Y] 创建ElasticSearch启动界面快捷方式到桌面
+echo   [Y] 创建ESKibana启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ElasticSearch "%~f0"
+call extra\createShortcut Desktop ESKibana "%~f0"
 goto begin
 
 :ez
@@ -145,17 +155,6 @@ goto begin
 
 :e0
 popd
-goto end
-
-@REM 内部函数
-:checkFolder
-if exist "%~dp0bin\logs" goto end
-echo   logs目录缺失！
-echo.
-echo   正在创建logs目录...
-echo.
-md "%~dp0bin\logs"
-echo   创建成功！
 goto end
 
 :end

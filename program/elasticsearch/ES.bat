@@ -5,7 +5,6 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 setLocal enableDelayedExpansion
-
 pushd %~dp0
 call:checkFolder
 
@@ -125,7 +124,7 @@ goto begin
 echo.
 echo   [Y] 创建ElasticSearch启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ElasticSearch "%~f0"
+call extra\createShortcut Desktop ES "%~f0"
 goto begin
 
 :ez

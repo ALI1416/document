@@ -13,7 +13,7 @@
 2. 双击`初始化.bat`文件
 
 ## 运行
-双击`ElasticSearch.bat`文件
+双击`ES.bat`文件
 
 ## 注意
 ElasticSearch和ElasticSearch-Analysis-IK版本号需要一致

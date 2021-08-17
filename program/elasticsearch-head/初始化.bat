@@ -18,18 +18,21 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-md bin
-md config
-md jdk
-md lib
-md modules
-md plugins
-xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\config config /s /i /y
-xcopy ..\..\jdk jdk /s /i /y
-xcopy ..\..\lib lib /s /i /y
-xcopy ..\..\modules modules /s /i /y
-xcopy ..\..\plugins plugins /s /i /y
+md _site
+md crx
+md proxy
+md src
+md test
+copy ..\..\.jshintrc
+copy ..\..\grunt_fileSets.js
+copy ..\..\Gruntfile.js
+copy ..\..\index.html
+copy ..\..\package.json
+xcopy ..\..\_site _site /s /i /y
+xcopy ..\..\crx crx /s /i /y
+xcopy ..\..\proxy proxy /s /i /y
+xcopy ..\..\src src /s /i /y
+xcopy ..\..\test test /s /i /y
 echo 初始化完成！
 popd
 popd

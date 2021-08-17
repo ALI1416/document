@@ -14,28 +14,30 @@ choice /c yn /m "确定初始化吗？"
 if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto end
-
 :e1
 md bin
 pushd bin
 md bin
 md config
-md jdk
-md lib
-md modules
+md node
+md node_modules
 md plugins
-xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\config config /s /i /y
-xcopy ..\..\jdk jdk /s /i /y
-xcopy ..\..\lib lib /s /i /y
-xcopy ..\..\modules modules /s /i /y
-xcopy ..\..\plugins plugins /s /i /y
+md src
+md x-pack
+copy ..\..\.i18nrc.json
+copy ..\..\package.json
+robocopy ..\..\bin bin /e
+robocopy ..\..\config config /e
+robocopy ..\..\node node /e
+robocopy ..\..\node_modules node_modules /e
+robocopy ..\..\plugins plugins /e
+robocopy ..\..\src src /e
+robocopy ..\..\x-pack x-pack /e
 echo 初始化完成！
 popd
 popd
 pause
 goto end
-
 :e2
 echo 初始化取消！
 popd
