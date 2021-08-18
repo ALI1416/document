@@ -10,3 +10,7 @@
 
 ## 运行
 双击`Nginx.bat`文件
+
+## 打包下载
+地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q  
+找到`nginx-版本号.zip`进行下载  

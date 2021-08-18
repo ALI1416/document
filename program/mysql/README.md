@@ -13,3 +13,7 @@
 
 ## 注意
 如果提示`丢失xxx.dll文件`，需要安装`微软常用运行库`，可以到 https://www.ghxi.com/yxkhj.html 进行下载安装
+
+## 打包下载
+地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q  
+找到`mysql-版本号.zip`进行下载  

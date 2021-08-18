@@ -102,6 +102,6 @@ System.out.println("在第一行末尾加上这个语言的名字，代码块内
 
 <!-- 注释 -->
 
-[![Build Status](https://travis-ci.com/ALI1416/id.svg?branch=master)](https://travis-ci.org/ALI1416/id)
+[![Build Status](https://travis-ci.com/ALI1416/id.svg?branch=master)](https://travis-ci.com/ALI1416/id)
 [![Maven central](https://maven-badges.herokuapp.com/maven-central/cn.404z/id/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cn.404z/id)
 [![License](https://img.shields.io/badge/license-BSD-brightgreen)](https://opensource.org/licenses/BSD-3-Clause)

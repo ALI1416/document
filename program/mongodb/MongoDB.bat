@@ -71,7 +71,7 @@ goto begin
 echo.
 echo   [3] 开启MongoDB服务
 echo.
-start bin\mongod --dbpath "%~dp0bin\data"
+start bin\mongod --dbpath "%~dp0bin\data" --bind_ip_all
 goto begin
 
 :e4

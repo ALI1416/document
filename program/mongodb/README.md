@@ -10,3 +10,12 @@
 
 ## 运行
 双击`MongoDB.bat`文件
+
+## 提示
+1. 本服务已开启跨域
+
+## 打包下载
+地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q  
+找到`mongodb-版本号.zip`进行下载  
+修改功能：
+1. 启用跨域

@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+call:checkFile
 
 :begin
 
@@ -158,6 +159,17 @@ goto begin
 
 :e0
 popd
+goto end
+
+@REM 内部函数
+:checkFile
+if exist "%APPDATA%\RabbitMQ\rabbitmq.config" goto end
+echo   rabbitmq.config文件缺失！
+echo.
+echo   正在创建rabbitmq.config文件...
+echo.
+echo [{rabbit, [{loopback_users, []}]}].> "%APPDATA%\RabbitMQ\rabbitmq.config"
+echo   创建成功！
 goto end
 
 :end
