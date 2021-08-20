@@ -42,3 +42,4 @@ ElasticSearch和ElasticSearch-Analysis-IK版本号需要一致
 修改功能：
 1. 调整占用内存为2g
 2. 启用跨域
+3. 附带ik
