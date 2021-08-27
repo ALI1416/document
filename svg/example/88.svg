@@ -1,0 +1,109 @@
+<svg width="512" height="512" viewBox="0 0 512 512"
+  xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="h">
+      <!-- 矩形和三角形组合 -->
+      <!-- <rect x="172" y="228" width="168" height="56"/>
+      <polygon id="tri" points="144,256 172,228 172,284"/>
+      <use href="#tri" transform="rotate(180,256,256)"/> -->
+      <!-- 转化成多边形 -->
+      <!-- <polygon points="144,256 172,228 340,228 368,256 340,284 172,284"/> -->
+      <!-- 转化成路径 -->
+      <path d="M144 256L172 228 340 228 368 256 340 284 172 284z"/>
+    </g>
+    <use id="v" href="#h" transform="rotate(90,256,256)"/>
+    <g id="n0">
+      <use href="#h" y="-228"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="-114" y="114"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n1">
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n2">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="114"/>
+      <use href="#v" x="114" y="-114"/>
+    </g>
+    <g id="n3">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n4">
+      <use href="#h"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n5">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n6">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="-114" y="114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n7">
+      <use href="#h" y="-228"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n8">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="-114" y="114"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+    <g id="n9">
+      <use href="#h" y="-228"/>
+      <use href="#h"/>
+      <use href="#h" y="228"/>
+      <use href="#v" x="-114" y="-114"/>
+      <use href="#v" x="114" y="-114"/>
+      <use href="#v" x="114" y="114"/>
+    </g>
+  </defs>
+  <!-- <use href="#n8"/> -->
+  <!-- <use href="#n8" transform="scale(.9) skewX(-5) translate(56,30)"/> -->
+  <g transform="scale(.7) skewX(-5) translate(-24,110)">
+    <use href="#n8"/>
+    <use href="#n8" x="340"/>
+  </g>
+  <!-- <g transform="scale(.45) skewX(-5) translate(24,310)">
+    <use href="#n8"/>
+    <use href="#n8" x="340"/>
+    <use href="#n8" x="680"/>
+  </g> -->
+  <!-- <g transform="scale(.35) skewX(-5) translate(20,480)">
+    <use href="#n8"/>
+    <use href="#n8" x="340"/>
+    <use href="#n8" x="680"/>
+    <use href="#n8" x="1020"/>
+  </g> -->
+  <!-- <g transform="scale(.28) skewX(-5) translate(40,650)">
+    <use href="#n8"/>
+    <use href="#n8" x="340"/>
+    <use href="#n8" x="680"/>
+    <use href="#n8" x="1020"/>
+    <use href="#n8" x="1360"/>
+  </g> -->
+</svg>
