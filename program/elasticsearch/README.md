@@ -1,22 +1,24 @@
 # ElasticSearch
 
 ## 下载
-1. ElasticSearch压缩包，下载地址 https://www.elastic.co/cn/downloads/elasticsearch 版本选择`WINDOWS`，名称应为`elasticsearch-版本号-windows-x86_64.zip`，解压后文件夹名称应为`elasticsearch-版本号`
-2. ElasticSearch-Analysis-IK压缩包，下载地址 https://github.com/medcl/elasticsearch-analysis-ik/releases/ 选择最新版，名称应为`elasticsearch-analysis-ik-版本号.zip`
-3. 打开`elasticsearch-版本号`文件夹，进入`plugins`文件夹中，新建名称为`ik`的文件夹
-4. 把`elasticsearch-analysis-ik-版本号.zip`解压到`ik`文件夹中，如图所示：  
+1. ElasticSearch压缩包，下载地址 https://www.elastic.co/cn/downloads/elasticsearch 版本选择`WINDOWS`，名称应为`elasticsearch-7.14.0-windows-x86_64.zip`，解压后文件夹名称应为`elasticsearch-7.14.0`
+2. ElasticSearch-Analysis-IK压缩包，下载地址 https://github.com/medcl/elasticsearch-analysis-ik/releases/ 选择最新版，名称应为`elasticsearch-analysis-ik-7.14.0.zip`
+3. 打开`elasticsearch-7.14.0`文件夹，进入`plugins`文件夹中，新建名称为`ik`的文件夹
+4. 把`elasticsearch-analysis-ik-7.14.0.zip`解压到`ik`文件夹中，如图所示：  
 ![ik解压示例](img/ik解压示例.jpg)
+5. ElasticSearch压缩包，快速下载地址 https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.14.0-windows-x86_64.zip 版本号参考 https://www.elastic.co/cn/downloads/past-releases#elasticsearch
+6. ElasticSearch-Analysis-IK压缩包，快速下载地址 https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.14.0/elasticsearch-analysis-ik-7.14.0.zip 版本号参考ElasticSearch版本号，ik插件更新速度可能比ElasticSearch慢
 
 ## 初始化
-1. 把本压缩包解压到`elasticsearch-版本号`文件夹内，如图所示：  
+1. 把本压缩包解压到`elasticsearch-7.14.0`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`初始化.bat`文件
 
 ## 运行
-双击`ES.bat`文件
+1. 双击`ES.bat`文件
 
 ## 注意
-ElasticSearch和ElasticSearch-Analysis-IK版本号需要一致
+1. ElasticSearch和ElasticSearch-Analysis-IK版本号需要一致
 
 ## 提示
 1. 调整占用内存  
@@ -35,11 +37,12 @@ ElasticSearch和ElasticSearch-Analysis-IK版本号需要一致
    ```
    `http.cors.enabled: true`：启用跨域  
    `http.cors.allow-origin: "*"`：允许所有用户访问
+3. 用户、角色、权限和密码  
+   需要安装xpack插件(收费)，请搜索`elasticsearch xpack`
 
 ## 打包下载
-地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q  
-找到`elasticsearch-版本号.zip`进行下载  
-修改功能：
-1. 调整占用内存为2g
-2. 启用跨域
-3. 附带ik
+1. 地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q 找到`elasticsearch-7.14.0.zip`进行下载  
+   **修改功能**
+   1. 调整占用内存为2g
+   2. 启用跨域
+   3. 附带ik

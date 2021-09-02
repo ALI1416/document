@@ -33,6 +33,9 @@ robocopy ..\..\node_modules node_modules /e
 robocopy ..\..\plugins plugins /e
 robocopy ..\..\src src /e
 robocopy ..\..\x-pack x-pack /e
+echo 启用跨域
+
+echo server.host: "0.0.0.0">> config/kibana.yml
 echo 初始化完成！
 popd
 popd

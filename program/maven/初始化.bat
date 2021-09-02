@@ -19,26 +19,13 @@ if errorlevel 0 goto end
 md bin
 pushd bin
 md bin
-md config
-md jdk
+md boot
+md conf
 md lib
-md modules
-md plugins
 xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\config config /s /i /y
-xcopy ..\..\jdk jdk /s /i /y
+xcopy ..\..\boot boot /s /i /y
+xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\lib lib /s /i /y
-xcopy ..\..\modules modules /s /i /y
-xcopy ..\..\plugins plugins /s /i /y
-echo 调整占用内存为2g
-
-echo -Xms2g>> config\jvm.options
-echo -Xmx2g>> config\jvm.options
-
-echo 启用跨域
-
-echo http.cors.enabled: true>> config\elasticsearch.yml
-echo http.cors.allow-origin: "*">> config\elasticsearch.yml
 echo 初始化完成！
 popd
 popd

@@ -1,24 +1,31 @@
 # RabbitMQ
 
 ## 下载
-下载地址 https://github.com/rabbitmq/rabbitmq-server/releases 选择最新版，名称应为`rabbitmq-server-windows-版本号.zip`，解压后文件夹名称应为`rabbitmq_server-3.9.2`
+1. 下载地址 https://github.com/rabbitmq/rabbitmq-server/releases 选择最新版，名称应为`rabbitmq-server-windows-3.9.5.zip`，解压后文件夹名称应为`rabbitmq_server-3.9.5`
+2. 快速下载地址 https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.9.5/rabbitmq-server-windows-3.9.5.zip 版本号参考 https://www.rabbitmq.com/changelog.html
 
 ## 初始化
-1. 把本压缩包解压到`rabbitmq_server-3.9.2`文件夹内，如图所示：  
+1. 把本压缩包解压到`rabbitmq_server-3.9.5`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`初始化.bat`文件
 
 ## 运行
-双击`RabbitMQ.bat`文件
+1. 双击`RabbitMQ.bat`文件
 
 ## 注意
-运行RabbitMQ服务需要安装`erlang`，如果未安装，请到 https://www.erlang.org/downloads 下载并安装
+1. 运行RabbitMQ服务需要安装`erlang`，如果未安装，请到 https://www.erlang.org/downloads 下载并安装
 
 ## 提示
-1. 本服务已开启跨域
+1. RabbitMQ配置文件示例在[extra/rabbitmq.config.example](extra/rabbitmq.config.example)
+2. 启用跨域  
+   新建或编辑`C:\Users\用户名\AppData\Roaming\RabbitMQ\rabbitmq.config`文件，插入以下内容
+   ```js
+   [{rabbit, [{loopback_users, []}]}].
+   ```
+3. 用户、角色、权限和密码  
+   管理页面设置
 
 ## 打包下载
-地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q  
-找到`rabbitmq.zip`进行下载  
-修改功能：
-1. 启用跨域
+1. 地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q 找到`rabbitmq.zip`进行下载  
+    **修改功能**
+    1. 启用跨域

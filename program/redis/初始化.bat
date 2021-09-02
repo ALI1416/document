@@ -25,6 +25,14 @@ copy ..\..\redis-check-rdb.exe
 copy ..\..\redis-cli.exe
 copy ..\..\redis-server.exe
 copy ..\..\redis.windows.conf redis.conf
+echo 启用跨域
+
+echo 请手动修改bin\redis.conf文件
+
+echo 1. `bind 127.0.0.1`改成`bind 0.0.0.0`
+
+echo 2. `protected-mode yes`改成`protected-mode no`
+
 echo 初始化完成！
 popd
 popd
