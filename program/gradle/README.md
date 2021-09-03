@@ -13,4 +13,10 @@
 1. 双击`Gradle.bat`文件
 
 ## 打包下载
-1. 地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q 找到`gradle-7.2`进行下载  
+1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
+
+## 网站
+1. 项目地址 https://gitee.com/ALI1416/document/tree/master/program/gradle
+2. 个人网站 http://404z.cn
+3. GitHub https://github.com/ALI1416
+4. Gitee https://gitee.com/ALI1416

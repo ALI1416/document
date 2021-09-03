@@ -20,4 +20,10 @@
 1. 如果提示`丢失xxx.dll文件`，需要安装`微软常用运行库`，可以到 https://www.ghxi.com/yxkhj.html 进行下载安装
 
 ## 打包下载
-1. 地址 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q 找到`mysql-8.0.26.zip`进行下载  
+1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
+
+## 网站
+1. 项目地址 https://gitee.com/ALI1416/document/tree/master/program/mysql
+2. 个人网站 http://404z.cn
+3. GitHub https://github.com/ALI1416
+4. Gitee https://gitee.com/ALI1416
