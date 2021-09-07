@@ -31,6 +31,8 @@ echo   --------------------
 
 echo   [8] 用浏览器打开Minio管理页面
 
+echo   [9] 修复Minio管理页面一直转圈进不去的Bug
+
 echo   --------------------
 
 echo   [Y] 创建Minio启动界面快捷方式到桌面
@@ -42,10 +44,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 12345678YZ0
-if errorlevel 11 goto e0
-if errorlevel 10 goto ez
-if errorlevel 9 goto ey
+choice /c 123456789YZ0
+if errorlevel 12 goto e0
+if errorlevel 11 goto ez
+if errorlevel 10 goto ey
+if errorlevel 9 goto e9
 if errorlevel 8 goto e8
 if errorlevel 7 goto e7
 if errorlevel 6 goto e6
@@ -75,7 +78,7 @@ goto begin
 echo.
 echo   [3] 开启Minio服务
 echo.
-start bin\minio server data
+start bin\minio server "%~dp0bin\data" --console-address ":9090"
 goto begin
 
 :e4
@@ -110,7 +113,14 @@ goto begin
 echo.
 echo   [8] 用浏览器打开Minio管理页面
 echo.
-start http://localhost:9000
+start http://localhost:9090
+goto begin
+
+:e9
+echo.
+echo   [9] 修复Minio管理页面一直转圈进不去的Bug
+echo.
+start extra\minioBugFix.reg
 goto begin
 
 :ey

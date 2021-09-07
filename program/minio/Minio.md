@@ -19,6 +19,16 @@
    默认启用
 2. 用户、角色、权限和密码  
    管理页面设置
+3. 管理页面打开后一直转圈，浏览器控制台提示`Refused to execute script from 'xxxx' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled.`，需要运行以下注册表文件：
+   ```txt
+   Windows Registry Editor Version 5.00
+
+   [HKEY_CLASSES_ROOT\.js]
+   "Content Type"="text/javascript"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.js]
+   "Content Type"="text/javascript"
+   ```
 
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
