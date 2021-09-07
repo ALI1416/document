@@ -11,6 +11,8 @@
 
 ## 运行
 1. 双击`MySQL.bat`文件
+2. 运行示例  
+![运行示例](img/运行示例.jpg)
 
 ## 提示
 1. 跨域、用户、角色、权限和密码  
@@ -21,6 +23,8 @@
 
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
+2. 天翼云盘 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q
+3. 百度网盘 https://pan.baidu.com/s/19jzS-u2LhRGBn4L0KKIP3g 提取码：8888
 
 ## 网站
 1. 项目地址 https://gitee.com/ALI1416/document/tree/master/program/mysql
