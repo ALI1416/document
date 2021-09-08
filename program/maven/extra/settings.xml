@@ -144,11 +144,29 @@ under the License.
    |-->
   <mirrors>
     <mirror>
-      <id>alimaven</id>
-      <mirrorOf>central</mirrorOf>
+      <id>aliyunMaven</id>
+      <mirrorOf>*</mirrorOf>
       <name>aliyun maven</name>
-      <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
+      <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
+    <!-- <mirror>
+      <id>intranetNexus</id>
+      <mirrorOf>*</mirrorOf>
+      <name>intranet nexus</name>
+      <url>http://192.168.2.102:8081/nexus/repository/maven-public/</url>
+    </mirror> -->
+    <!-- <mirror>
+      <id>extranetNexus</id>
+      <mirrorOf>*</mirrorOf>
+      <name>extranet nexus</name>
+      <url>http://nas.ycjdy.cn:5008/nexus/repository/maven-public/</url>
+    </mirror> -->
+    <!-- <mirror>
+      <id>companyIntranetNexus</id>
+      <mirrorOf>*</mirrorOf>
+      <name>company intranet nexus</name>
+      <url>http://192.168.18.29:8081/repository/maven-public/</url>
+    </mirror> -->
     <!-- mirror
      | Specifies a repository mirror site to use instead of a given repository. The repository that
      | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used

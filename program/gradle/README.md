@@ -34,7 +34,12 @@
     //            url "http://nas.ycjdy.cn:5008/nexus/repository/maven-public/"
     //            allowInsecureProtocol true
     //        }
-            // 阿里云仓库
+            // 公司私有仓库外网
+    //        maven {
+    //            url "http://192.168.18.29:8081/repository/maven-public/"
+    //            allowInsecureProtocol true
+    //        }
+        // 阿里云仓库
             maven { url "https://maven.aliyun.com/repository/public" }
             // central仓库
             mavenCentral()
