@@ -14,6 +14,36 @@
 2. 运行示例  
 ![运行示例](img/运行示例.jpg)
 
+## 提示
+1. 编译项目时，报`你的主机中的软件中止了一个已建立的连接。`错误，需要关闭电脑的`移动热点`
+2. 使用idea运行gradle项目时，报`Error running 'ServiceStarter': Command line is too long. Shorten command line for ServiceStarter or also for Application default configuration.`错误，需要修改项目下`.idea\workspace.xml`文件，找到标签`<component name="PropertiesComponent">`，在标签里加一行`<property name="dynamic.classpath" value="true" />`
+3. 仓库配置
+   ```gradle
+    allprojects {
+        // 仓库配置
+        repositories {
+            // 本地仓库
+            mavenLocal()
+            // 私有仓库内网
+    //        maven {
+    //            url "http://192.168.2.102:8081/nexus/repository/maven-public/"
+    //            allowInsecureProtocol true
+    //        }
+            // 私有仓库外网
+    //        maven {
+    //            url "http://nas.ycjdy.cn:5008/nexus/repository/maven-public/"
+    //            allowInsecureProtocol true
+    //        }
+            // 阿里云仓库
+            maven { url "https://maven.aliyun.com/repository/public" }
+            // central仓库
+            mavenCentral()
+            // jitPack仓库
+            maven { url "https://jitpack.io" }
+        }
+    }
+   ```
+
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
 2. 天翼云盘 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q
