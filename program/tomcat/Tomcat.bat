@@ -5,31 +5,28 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+call:checkFolder
 
 :begin
 
 echo.
 echo   ----------请选择操作----------
 
-echo   [1] 开启Tomcat服务
+echo   [1] 开启Tomcat服务【隐藏窗口运行】
 
 echo   [2] 关闭Tomcat服务
 
-echo   [3] 开启Tomcat服务【隐藏窗口运行，必须安装Tomcat服务，需要以管理员身份运行】
+echo   [3] 开启Tomcat服务
 
 echo   --------------------
 
-echo   [4] 安装Tomcat服务【不会开机自启】
+echo   [4] 开启Tomcat服务开机自启
 
-echo   [5] 卸载Tomcat服务【不会开机自启】
-
-echo   [6] 开启Tomcat服务开机自启【需要以管理员身份运行】
-
-echo   [7] 关闭Tomcat服务开机自启【需要以管理员身份运行】
+echo   [5] 关闭Tomcat服务开机自启
 
 echo   --------------------
 
-echo   [8] 用浏览器打开http://localhost:8080
+echo   [6] 用浏览器打开http://localhost:8080
 
 echo   --------------------
 
@@ -42,12 +39,10 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 12345678YZ0
-if errorlevel 11 goto e0
-if errorlevel 10 goto ez
-if errorlevel 9 goto ey
-if errorlevel 8 goto e8
-if errorlevel 7 goto e7
+choice /c 123456YZ0
+if errorlevel 9 goto e0
+if errorlevel 8 goto ez
+if errorlevel 7 goto ey
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
 if errorlevel 4 goto e4
@@ -58,57 +53,47 @@ if errorlevel 0 goto e0
 
 :e1
 echo.
-echo   [1] 开启Tomcat服务
+echo   [1] 开启Tomcat服务【隐藏窗口运行】
 echo.
-call bin\bin\startup.bat
+extra\hideWindow "%~dp0extra\startUpTomcat"
 goto begin
 
 :e2
 echo.
 echo   [2] 关闭Tomcat服务
 echo.
-call bin\bin\shutdown.bat
+pushd bin
+call bin\shutdown
+popd
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
 :e3
 echo.
-echo   [3] 开启Tomcat服务【隐藏窗口运行，必须安装Tomcat服务，需要以管理员身份运行】
+echo   [3] 开启Tomcat服务
 echo.
-net start tomcat
+pushd bin
+call bin\startup
+popd
 goto begin
 
 :e4
 echo.
-echo   [4] 安装Tomcat服务【不会开机自启】
+echo   [4] 开启Tomcat服务开机自启
 echo.
-call bin\bin\service.bat install tomcat
+call extra\startUp add current tomcat "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpTomcat.bat"""
 goto begin
 
 :e5
 echo.
-echo   [5] 卸载Tomcat服务【不会开机自启】
+echo   [5] 关闭Tomcat服务开机自启
 echo.
-call bin\bin\service.bat remove tomcat
+call extra\startUp delete current tomcat
 goto begin
 
 :e6
 echo.
-echo   [6] 开启Tomcat服务开机自启【需要以管理员身份运行】
-echo.
-sc config tomcat start=auto
-goto begin
-
-:e7
-echo.
-echo   [7] 关闭Tomcat服务开机自启【需要以管理员身份运行】
-echo.
-sc config tomcat start=disabled
-goto begin
-
-:e8
-echo.
-echo   [8] 用浏览器打开http://localhost:8080
+echo   [6] 用浏览器打开http://localhost:8080
 echo.
 start http://localhost:8080
 goto begin
@@ -137,6 +122,17 @@ goto begin
 
 :e0
 popd
+goto end
+
+@REM 内部函数
+:checkFolder
+if exist "%~dp0bin\temp" goto end
+echo   temp目录缺失！
+echo.
+echo   正在创建temp目录...
+echo.
+md "%~dp0bin\temp"
+echo   创建成功！
 goto end
 
 :end

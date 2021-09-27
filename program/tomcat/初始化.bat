@@ -22,6 +22,10 @@ xcopy ..\..\bin bin /s /i /y
 xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\lib lib /s /i /y
 xcopy ..\..\webapps webapps /s /i /y
+echo 正在设置隐藏窗口运行，请稍后...
+..\extra\replaceFileString ..\..\bin\startup.bat bin\startup2.bat catalina.bat catalina2.bat
+..\extra\replaceFileString ..\..\bin\catalina.bat bin\catalina2.bat setclasspath.bat setclasspath2.bat
+..\extra\replaceFileString2 ..\..\bin\setclasspath.bat bin\setclasspath2.bat
 echo 初始化完成！
 popd
 popd
