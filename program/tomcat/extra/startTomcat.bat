@@ -12,5 +12,3 @@ cd ..\bin\bin
 startup2.bat
 
 :end
-
-pause

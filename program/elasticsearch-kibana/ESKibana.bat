@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启Kibana服务【隐藏窗口运行】
 
-echo   [2] 关闭Kibana服务
+echo   [2] 关闭Kibana服务【结束端口号为5601的进程】
 
 echo   [3] 开启Kibana服务
 
@@ -30,7 +30,7 @@ echo   [7] 关闭Kibana服务开机自启
 
 echo   --------------------
 
-echo   [8] 用浏览器打开Kibana管理页面
+echo   [8] 用浏览器打开Kibana管理页面http://localhost:5601
 
 echo   --------------------
 
@@ -61,12 +61,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Kibana服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0bin\bin\kibana.bat"
+extra\hideWindow "%~dp0bin\bin\kibana"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭Kibana服务
+echo   [2] 关闭Kibana服务【结束端口号为5601的进程】
 echo.
 set port=
 set num=1
@@ -93,7 +93,7 @@ goto begin
 echo.
 echo   [3] 开启Kibana服务
 echo.
-start bin\bin\kibana.bat
+start bin\bin\kibana
 goto begin
 
 :e4
@@ -114,7 +114,7 @@ goto begin
 echo.
 echo   [6] 开启Kibana服务开机自启
 echo.
-call extra\startUp add current kibana "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\kibana.bat"""
+call extra\startUp add current kibana "%~dp0extra\hideWindow" """%~dp0bin\bin\kibana"""
 goto begin
 
 :e7
@@ -126,7 +126,7 @@ goto begin
 
 :e8
 echo.
-echo   [8] 用浏览器打开Kibana管理页面
+echo   [8] 用浏览器打开Kibana管理页面http://localhost:5601
 echo.
 start http://localhost:5601
 goto begin

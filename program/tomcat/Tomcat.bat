@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启Tomcat服务【隐藏窗口运行】
 
-echo   [2] 关闭Tomcat服务
+echo   [2] 关闭Tomcat服务【正常关闭】
 
 echo   [3] 开启Tomcat服务
 
@@ -55,12 +55,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Tomcat服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0extra\startUpTomcat"
+extra\hideWindow "%~dp0extra\startTomcat"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭Tomcat服务
+echo   [2] 关闭Tomcat服务【正常关闭】
 echo.
 pushd bin
 call bin\shutdown
@@ -81,7 +81,7 @@ goto begin
 echo.
 echo   [4] 开启Tomcat服务开机自启
 echo.
-call extra\startUp add current tomcat "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpTomcat.bat"""
+call extra\startUp add current tomcat "%~dp0extra\hideWindow" """%~dp0extra\startTomcat"""
 goto begin
 
 :e5

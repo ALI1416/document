@@ -13,7 +13,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启Minio服务【隐藏窗口运行】
 
-echo   [2] 关闭Minio服务
+echo   [2] 关闭Minio服务【杀死minio.exe进程】
 
 echo   [3] 开启Minio服务
 
@@ -29,7 +29,7 @@ echo   [7] 关闭Minio服务开机自启
 
 echo   --------------------
 
-echo   [8] 用浏览器打开Minio管理页面
+echo   [8] 用浏览器打开Minio管理页面http://localhost:9090
 
 echo   [9] 修复Minio管理页面一直转圈进不去的Bug
 
@@ -63,12 +63,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Minio服务【隐藏窗口运行】
 echo.
-extra\hideWindowMinio "%~dp0bin\"
+extra\hideWindow "extra\startMinio"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭Minio服务
+echo   [2] 关闭Minio服务【杀死minio.exe进程】
 echo.
 taskkill /f /im minio.exe
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -78,7 +78,7 @@ goto begin
 echo.
 echo   [3] 开启Minio服务
 echo.
-start bin\minio server "%~dp0bin\data" --console-address ":9090"
+start extra\startMinio
 goto begin
 
 :e4
@@ -99,7 +99,7 @@ goto begin
 echo.
 echo   [6] 开启Minio服务开机自启
 echo.
-call extra\startUp add current minio "%~dp0extra\hideWindowMinio.vbs" """%~dp0bin\\"""
+call extra\startUp add current minio "%~dp0extra\hideWindow" """%~dp0extra\startMinio"""
 goto begin
 
 :e7
@@ -111,7 +111,7 @@ goto begin
 
 :e8
 echo.
-echo   [8] 用浏览器打开Minio管理页面
+echo   [8] 用浏览器打开Minio管理页面http://localhost:9090
 echo.
 start http://localhost:9090
 goto begin

@@ -15,7 +15,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启ElasticSearch服务【隐藏窗口运行】
 
-echo   [2] 关闭ElasticSearch服务
+echo   [2] 关闭ElasticSearch服务【结束端口号为9200的进程】
 
 echo   [3] 开启ElasticSearch服务
 
@@ -57,12 +57,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启ElasticSearch服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0bin\bin\elasticsearch.bat"
+extra\hideWindow "%~dp0bin\bin\elasticsearch"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭ElasticSearch服务
+echo   [2] 关闭ElasticSearch服务【结束端口号为9200的进程】
 echo.
 set port=
 set num=1
@@ -89,7 +89,7 @@ goto begin
 echo.
 echo   [3] 开启ElasticSearch服务
 echo.
-start bin\bin\elasticsearch.bat
+start bin\bin\elasticsearch
 goto begin
 
 :e4
@@ -110,7 +110,7 @@ goto begin
 echo.
 echo   [6] 开启ElasticSearch服务开机自启
 echo.
-call extra\startUp add current elasticSearch "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\elasticsearch.bat"""
+call extra\startUp add current elasticSearch "%~dp0extra\hideWindow" """%~dp0bin\bin\elasticsearch"""
 goto begin
 
 :e7

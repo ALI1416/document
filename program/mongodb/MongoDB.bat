@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启MongoDB服务【隐藏窗口运行】
 
-echo   [2] 关闭MongoDB服务
+echo   [2] 关闭MongoDB服务【杀死mongod.exe进程】
 
 echo   [3] 开启MongoDB服务
 
@@ -56,12 +56,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启MongoDB服务【隐藏窗口运行】
 echo.
-extra\hideWindowMongoDB "%~dp0bin\"
+extra\hideWindow "extra\startMongoDB"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭MongoDB服务
+echo   [2] 关闭MongoDB服务【杀死mongod.exe进程】
 echo.
 taskkill /f /im mongod.exe
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -71,7 +71,7 @@ goto begin
 echo.
 echo   [3] 开启MongoDB服务
 echo.
-start bin\mongod --dbpath "%~dp0bin\data" --bind_ip_all
+start extra\startMongoDB
 goto begin
 
 :e4
@@ -92,7 +92,7 @@ goto begin
 echo.
 echo   [6] 开启MongoDB服务开机自启
 echo.
-call extra\startUp add current mongod "%~dp0extra\hideWindowMongoDB.vbs" """%~dp0bin\\"""
+call extra\startUp add current mongod "%~dp0extra\hideWindow" """%~dp0extra\startMongoDB"""
 goto begin
 
 :e7

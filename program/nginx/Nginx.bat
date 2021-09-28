@@ -14,13 +14,13 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启Nginx服务【隐藏窗口运行】
 
-echo   [2] 关闭Nginx服务
+echo   [2] 关闭Nginx服务【正常关闭】
 
 echo   [3] 开启Nginx服务
 
 echo   --------------------
 
-echo   [4] 强制关闭Nginx服务
+echo   [4] 强制关闭Nginx服务【杀死nginx.exe进程】
 
 echo   [5] 重新加载Nginx配置
 
@@ -65,16 +65,16 @@ echo.
 echo   [1] 开启Nginx服务【隐藏窗口运行】
 echo.
 pushd bin
-start nginx.exe
+start nginx
 popd
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭Nginx服务
+echo   [2] 关闭Nginx服务【正常关闭】
 echo.
 pushd bin
-call nginx.exe -s quit
+call nginx -s quit
 popd
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
@@ -84,13 +84,13 @@ echo.
 echo   [3] 开启Nginx服务
 echo.
 pushd bin
-start cmd /k nginx.exe
+start cmd /k nginx
 popd
 goto begin
 
 :e4
 echo.
-echo   [4] 强制关闭Nginx服务
+echo   [4] 强制关闭Nginx服务【杀死nginx.exe进程】
 echo.
 taskkill /f /im nginx.exe
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -101,7 +101,7 @@ echo.
 echo   [5] 重新加载Nginx配置
 echo.
 pushd bin
-call nginx.exe -s reload
+call nginx -s reload
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 popd
 goto begin
@@ -124,7 +124,7 @@ goto begin
 echo.
 echo   [8] 开启Nginx服务开机自启
 echo.
-call extra\startUp add current nginx "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpNginx.bat"""
+call extra\startUp add current nginx "%~dp0extra\hideWindow" """%~dp0extra\startNginx"""
 goto begin
 
 :e9

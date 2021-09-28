@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启MySQL服务【隐藏窗口运行】
 
-echo   [2] 关闭MySQL服务
+echo   [2] 关闭MySQL服务【杀死mysqld.exe进程】
 
 echo   [3] 开启MySQL服务
 
@@ -75,7 +75,7 @@ goto begin
 
 :e2
 echo.
-echo   [2] 关闭MySQL服务
+echo   [2] 关闭MySQL服务【杀死mysqld.exe进程】
 echo.
 call:kill
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -142,7 +142,7 @@ goto begin
 echo.
 echo   [A] 开启MySQL服务开机自启
 echo.
-call extra\startUp add current mysqld "%~dp0extra\hideWindow.vbs" """%~dp0bin\bin\mysqld.exe"""
+call extra\startUp add current mysqld "%~dp0extra\hideWindow" """%~dp0bin\bin\mysqld.exe"""
 goto begin
 
 :eb

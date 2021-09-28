@@ -13,7 +13,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启Redis服务【隐藏窗口运行】
 
-echo   [2] 关闭Redis服务
+echo   [2] 关闭Redis服务【杀死redis-server.exe进程】
 
 echo   [3] 开启Redis服务
 
@@ -55,12 +55,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Redis服务【隐藏窗口运行】
 echo.
-extra\hideWindowRedis "%~dp0bin\"
+extra\hideWindow "extra\startRedis"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭Redis服务
+echo   [2] 关闭Redis服务【杀死redis-server.exe进程】
 echo.
 taskkill /f /im redis-server.exe
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -70,7 +70,7 @@ goto begin
 echo.
 echo   [3] 开启Redis服务
 echo.
-start bin\redis-server bin\redis.conf
+start extra\startRedis
 goto begin
 
 :e4
@@ -91,7 +91,7 @@ goto begin
 echo.
 echo   [6] 开启Redis服务开机自启
 echo.
-call extra\startUp add current redis-server "%~dp0extra\hideWindowRedis.vbs" """%~dp0bin\\"""
+call extra\startUp add current redis-server "%~dp0extra\hideWindow" """%~dp0extra\startRedis"""
 goto begin
 
 :e7

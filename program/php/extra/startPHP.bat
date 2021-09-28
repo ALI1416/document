@@ -9,6 +9,6 @@ pushd %~dp0
 :begin
 
 cd ..\bin
-start nginx.exe
+php-cgi.exe -b 127.0.0.1:9000
 
 :end

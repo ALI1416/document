@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启ElasticSearchHead服务【隐藏窗口运行】
 
-echo   [2] 关闭ElasticSearchHead服务
+echo   [2] 关闭ElasticSearchHead服务【结束端口号为9100的进程】
 
 echo   [3] 开启ElasticSearchHead服务
 
@@ -28,7 +28,7 @@ echo   --------------------
 
 echo   [6] 构建ElasticSearchHead服务【首次使用必须构建】
 
-echo   [7] 用浏览器打开ElasticSearchHead管理页面
+echo   [7] 用浏览器打开ElasticSearchHead管理页面http://localhost:9100
 
 echo   --------------------
 
@@ -56,12 +56,12 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启ElasticSearchHead服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0extra\startUpESHead.bat"
+extra\hideWindow "%~dp0extra\startESHead"
 goto begin
 
 :e2
 echo.
-echo   [2] 关闭ElasticSearchHead服务
+echo   [2] 关闭ElasticSearchHead服务【结束端口号为9100的进程】
 echo.
 set port=
 set num=1
@@ -98,14 +98,14 @@ goto begin
 echo.
 echo   [3] 开启ElasticSearchHead服务
 echo.
-start extra\startUpESHead.bat
+start extra\startESHead
 goto begin
 
 :e4
 echo.
 echo   [4] 开启ElasticSearchHead服务开机自启
 echo.
-call extra\startUp add current elasticSearchHead "%~dp0extra\hideWindow.vbs" """%~dp0extra\startUpESHead.bat"""
+call extra\startUp add current elasticSearchHead "%~dp0extra\hideWindow" """%~dp0extra\startESHead"""
 goto begin
 
 :e5
@@ -126,7 +126,7 @@ goto begin
 
 :e7
 echo.
-echo   [7] 用浏览器打开ElasticSearchHead管理页面
+echo   [7] 用浏览器打开ElasticSearchHead管理页面http://localhost:9100
 echo.
 start http://localhost:9100
 goto begin

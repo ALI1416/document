@@ -14,7 +14,7 @@ echo   ----------请选择操作----------
 
 echo   [1] 开启RabbitMQ服务【隐藏窗口运行】
 
-echo   [2] 关闭RabbitMQ服务
+echo   [2] 关闭RabbitMQ服务【正常关闭】
 
 echo   [3] 开启RabbitMQ服务
 
@@ -32,7 +32,7 @@ echo   --------------------
 
 echo   [8] 启用RabbitMQ网页管理插件
 
-echo   [9] 用浏览器打开RabbitMQ管理页面
+echo   [9] 用浏览器打开RabbitMQ管理页面http://localhost:15672
 
 echo   [A] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
 
@@ -72,7 +72,7 @@ goto begin
 
 :e2
 echo.
-echo   [2] 关闭RabbitMQ服务
+echo   [2] 关闭RabbitMQ服务【正常关闭】
 echo.
 call bin\sbin\rabbitmqctl stop
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
@@ -122,7 +122,7 @@ goto begin
 
 :e9
 echo.
-echo   [9] 用浏览器打开RabbitMQ管理页面
+echo   [9] 用浏览器打开RabbitMQ管理页面http://localhost:15672
 echo.
 start http://localhost:15672
 goto begin

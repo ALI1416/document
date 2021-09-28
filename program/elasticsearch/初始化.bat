@@ -30,12 +30,11 @@ xcopy ..\..\jdk jdk /s /i /y
 xcopy ..\..\lib lib /s /i /y
 xcopy ..\..\modules modules /s /i /y
 xcopy ..\..\plugins plugins /s /i /y
-echo 调整占用内存为2g
+echo 正在调整占用内存为2g，请稍后...
 
 echo -Xms2g>> config\jvm.options
 echo -Xmx2g>> config\jvm.options
-
-echo 启用跨域
+echo 正在启用跨域，请稍后...
 
 echo http.cors.enabled: true>> config\elasticsearch.yml
 echo http.cors.allow-origin: "*">> config\elasticsearch.yml
