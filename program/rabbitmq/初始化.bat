@@ -21,9 +21,12 @@ pushd bin
 xcopy ..\..\escript escript /s /i /y
 xcopy ..\..\plugins plugins /s /i /y
 xcopy ..\..\sbin sbin /s /i /y
+popd
+call:downloadFile extra\startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
+call:downloadFile extra\environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
+call:downloadFile extra\createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+popd
 echo 初始化完成！
-popd
-popd
 pause
 goto end
 
@@ -31,6 +34,12 @@ goto end
 echo 初始化取消！
 popd
 pause
+goto end
+
+:downloadFile
+echo 正在下载文件"%~1"，下载路径为"%~2"
+powershell (new-object System.Net.WebClient).DownloadFile('%~2','%~1')
+if %errorlevel%==0 ( echo 下载成功！ ) else ( echo 下载失败！ )
 goto end
 
 :end

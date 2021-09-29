@@ -54,9 +54,13 @@ xcopy ..\..\extras extras /s /i /y
 xcopy ..\..\lib lib /s /i /y
 echo 正在启用cgi，请稍后...
 ..\extra\replaceFileString php.ini php.ini ";cgi.fix_pathinfo=1" "cgi.fix_pathinfo=1"
+popd
+call:downloadFile extra\startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
+call:downloadFile extra\createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+call:downloadFile extra\hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
+call:downloadFile extra\replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
+popd
 echo 初始化完成！
-popd
-popd
 pause
 goto end
 
@@ -64,6 +68,12 @@ goto end
 echo 初始化取消！
 popd
 pause
+goto end
+
+:downloadFile
+echo 正在下载文件"%~1"，下载路径为"%~2"
+powershell (new-object System.Net.WebClient).DownloadFile('%~2','%~1')
+if %errorlevel%==0 ( echo 下载成功！ ) else ( echo 下载失败！ )
 goto end
 
 :end
