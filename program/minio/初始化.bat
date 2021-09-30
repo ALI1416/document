@@ -16,16 +16,6 @@ if errorlevel 1 goto e1
 if errorlevel 0 goto end
 
 :e1
-md bin
-pushd bin
-md conf
-md contrib
-md html
-copy ..\..\nginx.exe
-xcopy ..\..\conf conf /s /i /y
-xcopy ..\..\contrib contrib /s /i /y
-xcopy ..\..\html html /s /i /y
-popd
 call:downloadFile extra\startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
 call:downloadFile extra\environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile extra\createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
