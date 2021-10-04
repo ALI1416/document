@@ -88,22 +88,26 @@
 |      | wmic                 | 在交互式命令shell中显示wmi信息。                        |
 
 ## 常用简单命令
-| 常用 | 命令    | 作用         | 示例                  | 解释                                                     |
-| ---- | ------- | ------------ | --------------------- | -------------------------------------------------------- |
-| ■■   | help    | 帮助         | ①help<br>②help 命令名 | ①显示所有系统命令<br>②显示该命令的帮助信息               |
-| ■■   | rem或:: | 注释         | rem 注释信息          | 注释                                                     |
-| ■    | color   | 颜色         | color 07              | 设置黑底白字(见颜色代码)                                 |
-| ■    | mode    | 设置窗口大小 | mode 100,30           | 设置窗口宽100高30                                        |
-| ■    | chcp    | 字符集       | ①chcp<br>②chcp 数字   | ①显示使用的字符集<br>②设置字符集(936是GBK，65001是UTF-8) |
-| ■    | date    | 日期         | ①date<br>②date /t     | ①显示并设置日期<br>②显示日期                             |
-| ■    | time    | 时间         | ①time<br>②time /t     | ①显示并设置时间<br>②显示时间                             |
-| ■■   | cls     | 清除屏幕     |                       |                                                          |
-| ■■   | pause   | 暂停         |                       |                                                          |
-| ■■   | exit    | 退出         |                       |                                                          |
-| ■■   | goto    | 跳转         | goto 标签             | 跳转到标签处                                             |
-| ■■   | :       | 标签         | :标签                 | goto可以跳转到的地方                                     |
-| ■■   | @       | 关闭本行回显 | @命令                 | 关闭本行回显                                             |
-| ■■   | /?      | 查看帮助     | 命令 /?               | 查看帮助信息                                             |
+| 常用 | 命令    | 作用         | 示例         | 解释                                |
+| ---- | ------- | ------------ | ------------ | ----------------------------------- |
+| ■■   | help    | 帮助         | ①help        | ①显示所有系统命令                   |
+|      |         |              | ②help 命令名 | ②显示该命令的帮助信息               |
+| ■■   | rem或:: | 注释         | rem 注释信息 | 注释                                |
+| ■    | color   | 颜色         | color 07     | 设置黑底白字(见颜色代码)            |
+| ■    | mode    | 设置窗口大小 | mode 100,30  | 设置窗口宽100高30                   |
+| ■    | chcp    | 字符集       | ①chcp        | ①显示使用的字符集                   |
+|      |         |              | ②chcp 数字   | ②设置字符集(936是GBK，65001是UTF-8) |
+| ■    | date    | 日期         | ①date        | ①显示并设置日期                     |
+|      |         |              | ②date /t     | ②显示日期                           |
+| ■    | time    | 时间         | ①time        | ①显示并设置时间                     |
+|      |         |              | ②time /t     | ②显示时间                           |
+| ■■   | cls     | 清除屏幕     |              |                                     |
+| ■■   | pause   | 暂停         |              |                                     |
+| ■■   | exit    | 退出         |              |                                     |
+| ■■   | goto    | 跳转         | goto 标签    | 跳转到标签处                        |
+| ■■   | :       | 标签         | :标签        | goto可以跳转到的地方                |
+| ■■   | @       | 关闭本行回显 | @命令        | 关闭本行回显                        |
+| ■■   | /?      | 查看帮助     | 命令 /?      | 查看帮助信息                        |
 
 ## 颜色代码
 | 代码 | 颜色代码 | 颜色   | 色块                                          | 代码 | 颜色代码 | 颜色     | 色块                                          |
@@ -118,18 +122,22 @@
 | 7    | C0C0C0   | 白色   | <div style="background:#C0C0C0;">&emsp;</div> | F    | FFFFFF   | 亮白色   | <div style="background:#FFFFFF;">&emsp;</div> |
 
 ## 特殊字符
-| 常用 | 字符            | 作用                                          | 示例                                                                        | 解释                                |
-| ---- | --------------- | --------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------- |
-| ■■   | ^               | 代码内换行符                                  | ec^<br>ho hello                                                             | 等价于echo hello                    |
-| ■■   | >               | 命令输出到文件                                | ①dir >1.txt<br>②dir >nul                                                    | ①内容覆盖到1.txt<br>②关闭dir回显    |
-| ■■   | >>              | 命令输出到文件(追加)                          | dir >>1.txt                                                                 | 内容追加到1.txt                     |
-| ■■   | <               | 文件中读取命令输入                            | sort <1.txt                                                                 | 对1.txt文件内容进行排序             |
-| ■■   | &#124;          | 管道符。左结果作为右参数                      | dir c:\                                                  &#124; findstr "w" | 输出c盘中含有w字符串                |
-| ■■   | &               | 命令分隔符。相当于换行符                      | dir a:\ & dir c:\                                                           | 输出找不到a盘，输出c盘              |
-| ■■   | &#124;&#124;    | 或。左失败，右执行；左成功，右不执行          | ①dir a:\ &#124;&#124; dir c:\ <br>②dir c:\ &#124;&#124; dir d:\             | ①输出找不到a盘，输出c盘<br>②输出c盘 |
-| ■■   | &&              | 且。左失败，右不执行；左成功，右执行          | ①dir a:\ && dir c:\ <br>②dir c:\ && dir d:\                                 | ①输出找不到a盘<br>②输出c盘和d盘     |
-| ■■   | && &#124;&#124; | 相当于if-else。左成功，执行中；左失败，执行右 | dir c:\ && echo ok &#124;&#124; echo error                                  | 输出c盘，输出ok                     |
-| ■■   | >&和<&          | 重定向左句柄到右                              | 见下                                                                        | 见下                                |
+| 常用 | 字符            | 作用                             | 示例                          | 解释                    |
+| ---- | --------------- | -------------------------------- | ----------------------------- | ----------------------- |
+| ■■   | ^               | 代码内换行符                     | ec^<br>ho hello               | 等价于echo hello        |
+| ■■   | >               | 命令输出到文件                   | ①dir >1.txt                   | ①内容覆盖到1.txt显      |
+|      |                 |                                  | ②dir >nul                     | ②关闭dir回显            |
+| ■■   | >>              | 命令输出到文件(追加)             | dir >>1.txt                   | 内容追加到1.txt         |
+| ■■   | <               | 文件中读取命令输入               | sort <1.txt                   | 对1.txt文件内容进行排序 |
+| ■■   | &#124;          | 管道符。左结果作为右参数         | dir c:\ &#124; findstr "w"    | 输出c盘中含有w字符串    |
+| ■■   | &               | 命令分隔符。相当于换行符         | dir a:\ & dir c:\             | 输出找不到a盘，输出c盘  |
+| ■■   | &#124;&#124;    | 或                               | ①dir a:\ &#124;&#124; dir c:\ | ①输出找不到a盘，输出c盘 |
+|      |                 | 左失败，右执行；左成功，右不执行 | ②dir c:\ &#124;&#124; dir d:\ | ②输出c盘                |
+| ■■   | &&              | 且                               | ①dir a:\ && dir c:\           | ①输出找不到a盘          |
+|      |                 | 左失败，右不执行；左成功，右执行 | ②dir c:\ && dir d:\           | ②输出c盘和d盘           |
+| ■■   | && &#124;&#124; | 相当于if-else                    | dir c:\ && echo ok            | 输出c盘，输出ok         |
+|      |                 | 左成功，执行中；左失败，执行右   | &#124;&#124; echo error       |                         |
+| ■■   | >&和<&          | 重定向左句柄到右                 | 见下                          | 见下                    |
 
 默认情况下，可以从键盘将命令输入(即stdin句柄)发送到cmd，然后由cmd将命令输出(即stdout句柄)发送到命令提示符窗口。
 
@@ -160,39 +168,40 @@
 | &#124; | ^&#124; |
 
 ## 系统常量
-| 常用 | 解释                               | 变量名                                 | 示例值                                                                                        |
-| ---- | ---------------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ■    | 公共软件安装路径(64位)             | ProgramFiles和ProgramW6432             | C:\Program Files                                                                              |
-| ■    | 公共软件安装路径(32位)             | ProgramFiles(x86)                      | C:\Program Files (x86)                                                                        |
-|      | 公共常用软件安装路径(64位)         | CommonProgramFiles和CommonProgramW6432 | C:\Program Files\Common Files                                                                 |
-|      | 公共常用软件安装路径(32位)         | CommonProgramFiles(x86)                | C:\Program Files (x86)\Common Files                                                           |
-|      | 公共软件数据路径                   | ALLUSERSPROFILE和ProgramData           | C:\ProgramData                                                                                |
-|      | 公共文件路径                       | PUBLIC                                 | C:\Users\Public                                                                               |
-|      | 当前用户软件安装路径               | APPDATA                                | C:\Users\Administrator\AppData\Roaming                                                        |
-|      | 当前用户软件数据                   | LOCALAPPDATA                           | C:\Users\Administrator\AppData\Local                                                          |
-| ■■   | 当前用户的主盘                     | HOMEDRIVE                              | C:                                                                                            |
-|      | 当前用户路径(无盘符)               | HOMEPATH                               | \Users\Administrator                                                                          |
-| ■■   | 当前用户路径                       | USERPROFILE                            | C:\Users\Administrator                                                                        |
-|      | 当前用户临时文件路径               | TEMP和TMP                              | C:\Users\ADMINI~1\AppData\Local\Temp                                                          |
-| ■■   | 当前用户名                         | USERNAME                               | Administrator                                                                                 |
-|      | 当前用户域名                       | USERDOMAIN和USERDOMAIN_ROAMINGPROFILE  | DESKTOP-6TL0M6V                                                                               |
-|      | 当前用户域名                       | LOGONSERVER                            | \\\DESKTOP-6TL0M6V                                                                            |
-| ■    | 系统盘符                           | SystemDrive                            | C:                                                                                            |
-| ■    | 系统路径                           | SystemRoot和windir                     | C:\Windows                                                                                    |
-|      | 系统驱动数据路径                   | DriverData                             | C:\Windows\System32\Drivers\DriverData                                                        |
-| ■    | 计算机名                           | COMPUTERNAME                           | DESKTOP-6TL0M6V                                                                               |
-| ■    | 操作系统名                         | OS                                     | Windows_NT                                                                                    |
-|      | 处理器的芯片架构                   | PROCESSOR_ARCHITECTURE                 | AMD64                                                                                         |
-|      | 处理器标识符                       | PROCESSOR_IDENTIFIER                   | Intel64 Family 6 Model 60 Stepping 3, GenuineIntel                                            |
-|      | 处理器的型号                       | PROCESSOR_LEVEL                        | 6                                                                                             |
-|      | 处理器的版本号                     | PROCESSOR_REVISION                     | 3c03                                                                                          |
-|      | 处理器数                           | NUMBER_OF_PROCESSORS                   | 4                                                                                             |
-|      | cmd路径                            | ComSpec                                | C:\Windows\system32\cmd.exe                                                                   |
-|      | cmd提示符设置                      | PROMPT                                 | &#36;P$G                                                                                      |
-| ■■   | 可执行文件的搜索路径               | Path                                   | C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files\Java\jdk1.8.0_201\jre\bin;等          |
-|      | 可被执行的文件扩展名               | PATHEXT                                | .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC                                         |
-|      | WindowsPowerShell模块路径          | PSModulePath                           | C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules |
-|      | 连接到终端服务会话时的连接和会话名 | SESSIONNAME                            | Console                                                                                       |
+| 常用 | 解释                               | 变量名                                 | 示例值                                                |
+| ---- | ---------------------------------- | -------------------------------------- | ----------------------------------------------------- |
+| ■    | 公共软件安装路径(64位)             | ProgramFiles和ProgramW6432             | C:\Program Files                                      |
+| ■    | 公共软件安装路径(32位)             | ProgramFiles(x86)                      | C:\Program Files (x86)                                |
+|      | 公共常用软件安装路径(64位)         | CommonProgramFiles和CommonProgramW6432 | C:\Program Files\Common Files                         |
+|      | 公共常用软件安装路径(32位)         | CommonProgramFiles(x86)                | C:\Program Files (x86)\Common Files                   |
+|      | 公共软件数据路径                   | ALLUSERSPROFILE和ProgramData           | C:\ProgramData                                        |
+|      | 公共文件路径                       | PUBLIC                                 | C:\Users\Public                                       |
+|      | 当前用户软件安装路径               | APPDATA                                | C:\Users\Administrator\AppData\Roaming                |
+|      | 当前用户软件数据                   | LOCALAPPDATA                           | C:\Users\Administrator\AppData\Local                  |
+| ■■   | 当前用户的主盘                     | HOMEDRIVE                              | C:                                                    |
+|      | 当前用户路径(无盘符)               | HOMEPATH                               | \Users\Administrator                                  |
+| ■■   | 当前用户路径                       | USERPROFILE                            | C:\Users\Administrator                                |
+|      | 当前用户临时文件路径               | TEMP和TMP                              | C:\Users\ADMINI~1\AppData\Local\Temp                  |
+| ■■   | 当前用户名                         | USERNAME                               | Administrator                                         |
+|      | 当前用户域名                       | USERDOMAIN和USERDOMAIN_ROAMINGPROFILE  | DESKTOP-6TL0M6V                                       |
+|      | 当前用户域名                       | LOGONSERVER                            | \\\DESKTOP-6TL0M6V                                    |
+| ■    | 系统盘符                           | SystemDrive                            | C:                                                    |
+| ■    | 系统路径                           | SystemRoot和windir                     | C:\Windows                                            |
+|      | 系统驱动数据路径                   | DriverData                             | C:\Windows\System32\Drivers\DriverData                |
+| ■    | 计算机名                           | COMPUTERNAME                           | DESKTOP-6TL0M6V                                       |
+| ■    | 操作系统名                         | OS                                     | Windows_NT                                            |
+|      | 处理器的芯片架构                   | PROCESSOR_ARCHITECTURE                 | AMD64                                                 |
+|      | 处理器标识符                       | PROCESSOR_IDENTIFIER                   | Intel64 Family 6 Model 60 Stepping 3, GenuineIntel    |
+|      | 处理器的型号                       | PROCESSOR_LEVEL                        | 6                                                     |
+|      | 处理器的版本号                     | PROCESSOR_REVISION                     | 3c03                                                  |
+|      | 处理器数                           | NUMBER_OF_PROCESSORS                   | 4                                                     |
+|      | cmd路径                            | ComSpec                                | C:\Windows\system32\cmd.exe                           |
+|      | cmd提示符设置                      | PROMPT                                 | &#36;P$G                                              |
+| ■■   | 可执行文件的搜索路径               | Path                                   | C:\Program Files\Java\jdk1.8.0_201\bin;等             |
+|      | 可被执行的文件扩展名               | PATHEXT                                | .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC |
+|      | WindowsPowerShell模块路径          | PSModulePath                           | C:\Program Files\WindowsPowerShell\Modules;           |
+|      |                                    |                                        | C:\Windows\system32\WindowsPowerShell\v1.0\Modules    |
+|      | 连接到终端服务会话时的连接和会话名 | SESSIONNAME                            | Console                                               |
 
 ## 系统变量
 | 常用 | 解释                  | 变量名             | 示例值                        |
@@ -944,50 +953,53 @@ E:.
 **遍历字符串格式：`for /f ["选项"] %变量名 in ("字符串") do 要执行的命令 [参数]`**  
 **遍历命令格式：`for /f ["选项"] %变量名 in ('命令') do 要执行的命令 [参数]`**
 ### 命令
-| 常用 | 命令                                                                | 解释                                             |
-| ---- | ------------------------------------------------------------------- | ------------------------------------------------ |
-| ■■   | for %a in (*) do @echo %a                                           | 遍历所有文件并打印(变量名为一个字母，区分大小写) |
-| ■■   | for %%a in (*) do @echo %%a                                         | bat中写法，变量名需要是双%                       |
-| ■■   | for %a in (*.txt) do @echo %a                                       | 遍历所有txt结尾的文件并打印                      |
-| ■    | for %a in (1 2 ab) do @echo %a                                      | 遍历指定字符串                                   |
-| ■■   | for /d %a in (*) do @echo %a                                        | 遍历文件夹                                       |
-| ■■   | for /d %a in ('echo %v%') do @echo %a                               | 遍历v变量                                        |
-| ■■   | for /r a %a in (*) do @echo %a                                      | 遍历a文件夹里的文件和文件夹                      |
-| ■■   | for /l %a in (1,2,11) do @echo %a                                   | 遍历1-11数字，增量为2，包括首尾数字              |
-| ■■   | for /f "tokens=1,3-4* delims=, " %i in (1.txt) do @echo %i %j %k %l | 单词以,分隔，读取1,3-4和剩余单词，并输出         |
-| ■■   | for /f "usebackq" %i in ("a a a.txt") do @echo %i                   | 文件名带空格                                     |
-| ■    | for /f "tokens=2-3 delims=, " %a in ("a b,c d") do @echo %a %b      | 分析字符串                                       |
-| ■■   | for /f %i in ('dir /b') do @echo %i                                 | 分析命令                                         |
-|      | for /f "usebackq" %i in (`dir /b`) do @echo %i                      | 分析命令                                         |
+| 常用 | 命令                                                                | 解释                                     |
+| ---- | ------------------------------------------------------------------- | ---------------------------------------- |
+| ■■   | for %a in (*) do @echo %a                                           | 遍历所有文件并打印                       |
+|      |                                                                     | (变量名为一个字母，区分大小写)           |
+| ■■   | for %%a in (*) do @echo %%a                                         | bat中写法，变量名需要是双%               |
+| ■■   | for %a in (*.txt) do @echo %a                                       | 遍历所有txt结尾的文件并打印              |
+| ■    | for %a in (1 2 ab) do @echo %a                                      | 遍历指定字符串                           |
+| ■■   | for /d %a in (*) do @echo %a                                        | 遍历文件夹                               |
+| ■■   | for /d %a in ('echo %v%') do @echo %a                               | 遍历v变量                                |
+| ■■   | for /r a %a in (*) do @echo %a                                      | 遍历a文件夹里的文件和文件夹              |
+| ■■   | for /l %a in (1,2,11) do @echo %a                                   | 遍历1-11数字，增量为2，包括首尾数字      |
+| ■■   | for /f "tokens=1,3-4* delims=, " %i in (1.txt) do @echo %i %j %k %l | 单词以,分隔，读取1,3-4和剩余单词，并输出 |
+| ■■   | for /f "usebackq" %i in ("a a a.txt") do @echo %i                   | 文件名带空格                             |
+| ■    | for /f "tokens=2-3 delims=, " %a in ("a b,c d") do @echo %a %b      | 分析字符串                               |
+| ■■   | for /f %i in ('dir /b') do @echo %i                                 | 分析命令                                 |
+|      | for /f "usebackq" %i in (`dir /b`) do @echo %i                      | 分析命令                                 |
 
 ### 选项
-| 常用 | 选项     | 解释                                        | 示例          | 解释                                                                 |
-| ---- | -------- | ------------------------------------------- | ------------- | -------------------------------------------------------------------- |
-|      | eol      | 忽略注释的行(一个字符)                      | eol=;         | 忽略;开头的行                                                        |
-|      | skip     | 跳过前多少行                                | skip=3        | 跳过前3行                                                            |
-| ■■   | delims   | 分隔符集(文件包括空格和tab，字符串包括空格) | delims=,;     | 以,和;为单词分隔符                                                   |
-| ■■   | tokens   | 单词传递给变量                              | tokens=1,3-4* | 读取1，3-4和剩余单词并赋值给do后变量(in前变量为起始，变量名递增赋值) |
-|      | usebackq | 指定in()括号里带引号的字符串为文件名        |               |                                                                      |
+| 常用 | 选项     | 解释                                        | 示例          | 解释                                 |
+| ---- | -------- | ------------------------------------------- | ------------- | ------------------------------------ |
+|      | eol      | 忽略注释的行(一个字符)                      | eol=;         | 忽略;开头的行                        |
+|      | skip     | 跳过前多少行                                | skip=3        | 跳过前3行                            |
+| ■■   | delims   | 分隔符集(文件包括空格和tab，字符串包括空格) | delims=,;     | 以,和;为单词分隔符                   |
+| ■■   | tokens   | 单词传递给变量                              | tokens=1,3-4* | 读取1，3-4和剩余单词并赋值给do后变量 |
+|      |          |                                             |               | (in前变量为起始，变量名递增赋值)     |
+|      | usebackq | 指定in()括号里带引号的字符串为文件名        |               |                                      |
 
 ### 拓展变量增强
-| 常用 | 命令        | 解释                                                                                                                                   |
-| ---- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ■    | %~I         | 删除任何引号(")扩展%I                                                                                                                  |
-| ■■   | %~fI        | 将%I扩展到一个完全合格的路径名                                                                                                         |
-| ■    | %~dI        | 仅将%I扩展到一个驱动器号                                                                                                               |
-| ■    | %~pI        | 仅将%I扩展到一个路径                                                                                                                   |
-| ■    | %~nI        | 仅将%I扩展到一个文件名                                                                                                                 |
-| ■    | %~xI        | 仅将%I扩展到一个文件扩展名                                                                                                             |
-|      | %~sI        | 扩展的路径只含有短名                                                                                                                   |
-|      | %~aI        | 将%I扩展到文件的文件属性                                                                                                               |
-|      | %~tI        | 将%I扩展到文件的日期/时间                                                                                                              |
-|      | %~zI        | 将%I扩展到文件的大小                                                                                                                   |
-|      | %~$PATH:I   | 查找列在路径环境变量的目录，并将%I扩展到找到的第一个完全合格的名称。如果环境变量名未被定义，或者没有找到文件，此组合键会扩展到空字符串 |
-| ■■   | %~dpI       | 仅将%I扩展到一个驱动器号和路径                                                                                                         |
-| ■■   | %~nxI       | 仅将%I扩展到一个文件名和扩展名                                                                                                         |
-|      | %~fsI       | 仅将%I扩展到一个带有短名的完整路径名                                                                                                   |
-|      | %~dp$PATH:I | 搜索列在路径环境变量的目录，并将%I扩展到找到的第一个驱动器号和路径。                                                                   |
-|      | %~ftzaI     | 将%I扩展到类似输出线路的dir                                                                                                            |
+| 常用 | 命令        | 解释                                                                 |
+| ---- | ----------- | -------------------------------------------------------------------- |
+| ■    | %~I         | 删除任何引号(")扩展%I                                                |
+| ■■   | %~fI        | 将%I扩展到一个完全合格的路径名                                       |
+| ■    | %~dI        | 仅将%I扩展到一个驱动器号                                             |
+| ■    | %~pI        | 仅将%I扩展到一个路径                                                 |
+| ■    | %~nI        | 仅将%I扩展到一个文件名                                               |
+| ■    | %~xI        | 仅将%I扩展到一个文件扩展名                                           |
+|      | %~sI        | 扩展的路径只含有短名                                                 |
+|      | %~aI        | 将%I扩展到文件的文件属性                                             |
+|      | %~tI        | 将%I扩展到文件的日期/时间                                            |
+|      | %~zI        | 将%I扩展到文件的大小                                                 |
+|      | %~$PATH:I   | 查找列在路径环境变量的目录，并将%I扩展到找到的第一个完全合格的名称。 |
+|      |             | 如果环境变量名未被定义，或者没有找到文件，此组合键会扩展到空字符串   |
+| ■■   | %~dpI       | 仅将%I扩展到一个驱动器号和路径                                       |
+| ■■   | %~nxI       | 仅将%I扩展到一个文件名和扩展名                                       |
+|      | %~fsI       | 仅将%I扩展到一个带有短名的完整路径名                                 |
+|      | %~dp$PATH:I | 搜索列在路径环境变量的目录，并将%I扩展到找到的第一个驱动器号和路径。 |
+|      | %~ftzaI     | 将%I扩展到类似输出线路的dir                                          |
 
 例如：`%%~na`为变量a的文件名
 
