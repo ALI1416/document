@@ -27,7 +27,11 @@ xcopy ..\..\boot boot /s /i /y
 xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\lib lib /s /i /y
 popd
-call:downloadFile extra\environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
+pushd extra
+call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe
+call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
+call unix2dos.exe environment.bat
+popd
 popd
 echo 初始化完成！
 pause

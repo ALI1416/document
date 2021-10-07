@@ -27,11 +27,16 @@ echo 正在设置隐藏窗口运行，请稍后...
 ..\extra\replaceFileString ..\..\bin\catalina.bat bin\catalina2.bat setclasspath.bat setclasspath2.bat
 ..\extra\replaceFileString2 ..\..\bin\setclasspath.bat bin\setclasspath2.bat
 popd
-call:downloadFile extra\startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
-call:downloadFile extra\environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
-call:downloadFile extra\createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
-call:downloadFile extra\hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
-call:downloadFile extra\replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
+pushd extra
+call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe
+call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
+call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
+call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
+call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
+call unix2dos.exe startUp.bat
+call unix2dos.exe environment.bat
+popd
 popd
 echo 初始化完成！
 pause

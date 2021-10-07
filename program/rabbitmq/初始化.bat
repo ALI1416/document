@@ -22,9 +22,14 @@ xcopy ..\..\escript escript /s /i /y
 xcopy ..\..\plugins plugins /s /i /y
 xcopy ..\..\sbin sbin /s /i /y
 popd
-call:downloadFile extra\startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
-call:downloadFile extra\environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
-call:downloadFile extra\createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+pushd extra
+call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe
+call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
+call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
+call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+call unix2dos.exe startUp.bat
+call unix2dos.exe environment.bat
+popd
 popd
 echo 初始化完成！
 pause
