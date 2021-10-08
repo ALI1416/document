@@ -1,113 +1,106 @@
 # 内部命令
 ## 所有命令
-| 常用 | 命令                 | 作用                                                    |
-| ---- | -------------------- | ------------------------------------------------------- |
-|      | assoc                | 显示或修改文件扩展名关联。                              |
-|      | attrib               | 显示或更改文件属性。                                    |
-|      | ~~break(无效)~~      | 设置或清除扩展式ctrl+c检查。                            |
-|      | bcdedit              | 设置启动数据库中的属性以控制启动加载。                  |
-|      | cacls(请使用icacls)  | 显示或修改文件的访问控制列表(ACL)。                     |
-| ■    | call                 | 从另一个批处理程序调用这一个。                          |
-| ■■   | cd                   | 显示当前目录的名称或将其更改。                          |
-| ■    | chcp                 | 显示或设置活动代码页数。                                |
-|      | chdir(同cd)          | 显示当前目录的名称或将其更改。                          |
-|      | chkdsk               | 检查磁盘并显示状态报告。                                |
-|      | chkntfs              | 显示或修改启动时间磁盘检查。                            |
-| ■■   | cls                  | 清除屏幕。                                              |
-| ■    | cmd                  | 打开另一个Windows命令解释程序窗口。                     |
-| ■    | color                | 设置默认控制台前景和背景颜色。                          |
-|      | comp                 | 比较两个或两套文件的内容。                              |
-|      | compact              | 显示或更改ntfs分区上文件的压缩。                        |
-|      | convert              | 将fat卷转换成ntfs。你不能转换当前驱动器。               |
-| ■■   | copy                 | 将至少一个文件复制到另一个位置。                        |
-| ■    | date                 | 显示或设置日期。                                        |
-| ■■   | del                  | 删除至少一个文件。                                      |
-| ■■   | dir                  | 显示一个目录中的文件和子目录。                          |
-|      | diskpart             | 显示或配置磁盘分区属性。                                |
-|      | doskey               | 编辑命令行、撤回Windows命令并创建宏。                   |
-|      | driverquery          | 显示当前设备驱动程序状态和属性。                        |
-| ■■   | echo                 | 显示消息，或将命令回显打开或关闭。                      |
-|      | endlocal             | 结束批文件中环境更改的本地化。                          |
-|      | erase(同del)         | 删除一个或多个文件。                                    |
-| ■■   | exit                 | 退出cmd.exe程序(命令解释程序)。                         |
-|      | fc                   | 比较两个文件或两个文件集并显示它们之间的不同。          |
-| ■■   | find                 | 在一个或多个文件中搜索一个文本字符串。                  |
-| ■■   | findstr              | 在多个文件中搜索字符串。                                |
-| ■■   | for                  | 为一组文件中的每个文件运行一个指定的命令。              |
-|      | format               | 格式化磁盘，以便用于Windows。                           |
-|      | fsutil               | 显示或配置文件系统属性。                                |
-|      | f类型                | 显示或修改在文件扩展名关联中使用的文件类型。            |
-| ■■   | goto                 | 将Windows命令解释程序定向到批处理程序中某个带标签的行。 |
-|      | gpresult             | 显示计算机或用户的组策略信息。                          |
-|      | ~~graftabl(不存在)~~ | 使Windows在图形模式下显示扩展字符集。                   |
-| ■■   | help                 | 提供Windows命令的帮助信息。                             |
-|      | icacls               | 显示、修改、备份或还原文件和目录的acl。                 |
-| ■■   | if                   | 在批处理程序中执行有条件的处理操作。                    |
-|      | label                | 创建、更改或删除磁盘的卷标。                            |
-| ■■   | md                   | 创建一个目录。                                          |
-|      | mkdir(同md)          | 创建一个目录。                                          |
-|      | mklink               | 创建符号链接和硬链接                                    |
-| ■    | mode                 | 配置系统设备。                                          |
-| ■    | more                 | 逐屏显示输出。                                          |
-| ■■   | move                 | 将一个或多个文件从一个目录移动到另一个目录。            |
-|      | openfiles            | 显示远程用户为了文件共享而打开的文件。                  |
-|      | path                 | 为可执行文件显示或设置搜索路径。                        |
-| ■■   | pause                | 暂停批处理文件的处理并显示消息。                        |
-|      | popd                 | 还原通过pushd保存的当前目录的上一个值。                 |
-|      | print                | 打印一个文本文件。                                      |
-|      | prompt               | 更改Windows命令提示。                                   |
-|      | pushd                | 保存当前目录，然后对其进行更改。                        |
-| ■■   | rd                   | 删除目录。                                              |
-|      | recover              | 从损坏的或有缺陷的磁盘中恢复可读信息。                  |
-| ■■   | rem                  | 记录批处理文件或config.sys中的注释(批注)。              |
-| ■■   | ren                  | 重命名文件。                                            |
-|      | rename(同ren)        | 重命名文件。                                            |
-| ■    | replace              | 替换文件。                                              |
-|      | rmdir(rd)            | 删除目录。                                              |
-|      | robocopy             | 复制文件和目录树的高级实用工具                          |
-| ■■   | set                  | 显示、设置或删除Windows环境变量。                       |
-|      | setlocal             | 开始本地化批处理文件中的环境更改。                      |
-|      | sc                   | 显示或配置服务(后台进程)。                              |
-|      | schtasks             | 安排在一台计算机上运行命令和程序。                      |
-|      | shift                | 调整批处理文件中可替换参数的位置。                      |
-| ■■   | shutdown             | 允许通过本地或远程方式正确关闭计算机。                  |
-| ■    | sort                 | 对输入排序。                                            |
-| ■■   | start                | 启动单独的窗口以运行指定的程序或命令。                  |
-|      | subst                | 将路径与驱动器号关联。                                  |
-|      | systeminfo           | 显示计算机的特定属性和配置。                            |
-| ■■   | tasklist             | 显示包括服务在内的所有当前运行的任务。                  |
-| ■■   | taskkill             | 中止或停止正在运行的进程或应用程序。                    |
-| ■    | time                 | 显示或设置系统时间。                                    |
-| ■    | title                | 设置cmd.exe会话的窗口标题。                             |
-| ■    | tree                 | 以图形方式显示驱动程序或路径的目录结构。                |
-| ■■   | type                 | 显示文本文件的内容。                                    |
-|      | ver                  | 显示Windows的版本。                                     |
-|      | verify               | 告诉Windows是否进行验证，以确保文件正确写入磁盘。       |
-|      | vol                  | 显示磁盘卷标和序列号。                                  |
-| ■■   | xcopy                | 复制文件和目录树。                                      |
-|      | wmic                 | 在交互式命令shell中显示wmi信息。                        |
+| 常用 | 命令        | 作用                                                    |
+| ---- | ----------- | ------------------------------------------------------- |
+|      | assoc       | 显示或修改文件扩展名关联。                              |
+|      | attrib      | 显示或更改文件属性。                                    |
+|      | bcdedit     | 设置启动数据库中的属性以控制启动加载。                  |
+| ■    | call        | 从另一个批处理程序调用这一个。                          |
+| ■■   | cd或chdir   | 显示当前目录的名称或将其更改。                          |
+| ■    | chcp        | 显示或设置活动代码页数。                                |
+|      | chkdsk      | 检查磁盘并显示状态报告。                                |
+|      | chkntfs     | 显示或修改启动时间磁盘检查。                            |
+| ■■   | cls         | 清除屏幕。                                              |
+| ■    | cmd         | 打开另一个Windows命令解释程序窗口。                     |
+| ■    | color       | 设置默认控制台前景和背景颜色。                          |
+|      | comp        | 比较两个或两套文件的内容。                              |
+|      | compact     | 显示或更改ntfs分区上文件的压缩。                        |
+|      | convert     | 将fat卷转换成ntfs。你不能转换当前驱动器。               |
+| ■■   | copy        | 将至少一个文件复制到另一个位置。                        |
+| ■    | date        | 显示或设置日期。                                        |
+| ■■   | del或erase  | 删除至少一个文件。                                      |
+| ■■   | dir         | 显示一个目录中的文件和子目录。                          |
+|      | diskpart    | 显示或配置磁盘分区属性。                                |
+|      | doskey      | 编辑命令行、撤回Windows命令并创建宏。                   |
+|      | driverquery | 显示当前设备驱动程序状态和属性。                        |
+| ■■   | echo        | 显示消息，或将命令回显打开或关闭。                      |
+|      | endlocal    | 结束批文件中环境更改的本地化。                          |
+| ■■   | exit        | 退出cmd.exe程序(命令解释程序)。                         |
+|      | fc          | 比较两个文件或两个文件集并显示它们之间的不同。          |
+| ■■   | find        | 在一个或多个文件中搜索一个文本字符串。                  |
+| ■■   | findstr     | 在多个文件中搜索字符串。                                |
+| ■■   | for         | 为一组文件中的每个文件运行一个指定的命令。              |
+|      | format      | 格式化磁盘，以便用于Windows。                           |
+|      | fsutil      | 显示或配置文件系统属性。                                |
+|      | f类型       | 显示或修改在文件扩展名关联中使用的文件类型。            |
+| ■■   | goto        | 将Windows命令解释程序定向到批处理程序中某个带标签的行。 |
+|      | gpresult    | 显示计算机或用户的组策略信息。                          |
+| ■■   | help        | 提供Windows命令的帮助信息。                             |
+|      | icacls      | 显示、修改、备份或还原文件和目录的访问控制列表(ACL)。   |
+| ■■   | if          | 在批处理程序中执行有条件的处理操作。                    |
+|      | label       | 创建、更改或删除磁盘的卷标。                            |
+| ■■   | md或mkdir   | 创建一个目录。                                          |
+|      | mklink      | 创建符号链接和硬链接                                    |
+| ■    | mode        | 配置系统设备。                                          |
+| ■    | more        | 逐屏显示输出。                                          |
+| ■■   | move        | 将一个或多个文件从一个目录移动到另一个目录。            |
+|      | openfiles   | 显示远程用户为了文件共享而打开的文件。                  |
+|      | path        | 为可执行文件显示或设置搜索路径。                        |
+| ■■   | pause       | 暂停批处理文件的处理并显示消息。                        |
+|      | popd        | 还原通过pushd保存的当前目录的上一个值。                 |
+|      | print       | 打印一个文本文件。                                      |
+|      | prompt      | 更改Windows命令提示。                                   |
+|      | pushd       | 保存当前目录，然后对其进行更改。                        |
+| ■■   | rd或rmdir   | 删除目录。                                              |
+|      | recover     | 从损坏的或有缺陷的磁盘中恢复可读信息。                  |
+| ■■   | rem         | 记录批处理文件或config.sys中的注释(批注)。              |
+| ■■   | ren或rename | 重命名文件。                                            |
+| ■    | replace     | 替换文件。                                              |
+|      | robocopy    | 复制文件和目录树的高级实用工具                          |
+| ■■   | set         | 显示、设置或删除Windows环境变量。                       |
+|      | setlocal    | 开始本地化批处理文件中的环境更改。                      |
+|      | sc          | 显示或配置服务(后台进程)。                              |
+|      | schtasks    | 安排在一台计算机上运行命令和程序。                      |
+|      | shift       | 调整批处理文件中可替换参数的位置。                      |
+| ■■   | shutdown    | 允许通过本地或远程方式正确关闭计算机。                  |
+| ■    | sort        | 对输入排序。                                            |
+| ■■   | start       | 启动单独的窗口以运行指定的程序或命令。                  |
+|      | subst       | 将路径与驱动器号关联。                                  |
+|      | systeminfo  | 显示计算机的特定属性和配置。                            |
+| ■■   | tasklist    | 显示包括服务在内的所有当前运行的任务。                  |
+| ■■   | taskkill    | 中止或停止正在运行的进程或应用程序。                    |
+| ■    | time        | 显示或设置系统时间。                                    |
+| ■    | title       | 设置cmd.exe会话的窗口标题。                             |
+| ■    | tree        | 以图形方式显示驱动程序或路径的目录结构。                |
+| ■■   | type        | 显示文本文件的内容。                                    |
+|      | ver         | 显示Windows的版本。                                     |
+|      | verify      | 告诉Windows是否进行验证，以确保文件正确写入磁盘。       |
+|      | vol         | 显示磁盘卷标和序列号。                                  |
+| ■■   | xcopy       | 复制文件和目录树。                                      |
+|      | wmic        | 在交互式命令shell中显示wmi信息。                        |
 
 ## 常用简单命令
-| 常用 | 命令    | 作用         | 示例         | 解释                                |
-| ---- | ------- | ------------ | ------------ | ----------------------------------- |
-| ■■   | help    | 帮助         | ①help        | ①显示所有系统命令                   |
-|      |         |              | ②help 命令名 | ②显示该命令的帮助信息               |
-| ■■   | rem或:: | 注释         | rem 注释信息 | 注释                                |
-| ■    | color   | 颜色         | color 07     | 设置黑底白字(见颜色代码)            |
-| ■    | mode    | 设置窗口大小 | mode 100,30  | 设置窗口宽100高30                   |
-| ■    | chcp    | 字符集       | ①chcp        | ①显示使用的字符集                   |
-|      |         |              | ②chcp 数字   | ②设置字符集(936是GBK，65001是UTF-8) |
-| ■    | date    | 日期         | ①date        | ①显示并设置日期                     |
-|      |         |              | ②date /t     | ②显示日期                           |
-| ■    | time    | 时间         | ①time        | ①显示并设置时间                     |
-|      |         |              | ②time /t     | ②显示时间                           |
-| ■■   | cls     | 清除屏幕     |              |                                     |
-| ■■   | pause   | 暂停         |              |                                     |
-| ■■   | exit    | 退出         |              |                                     |
-| ■■   | goto    | 跳转         | goto 标签    | 跳转到标签处                        |
-| ■■   | :       | 标签         | :标签        | goto可以跳转到的地方                |
-| ■■   | @       | 关闭本行回显 | @命令        | 关闭本行回显                        |
-| ■■   | /?      | 查看帮助     | 命令 /?      | 查看帮助信息                        |
+| 常用 | 命令    | 作用         | 示例         | 解释                     |
+| ---- | ------- | ------------ | ------------ | ------------------------ |
+| ■■   | help    | 帮助         | ①help        | ①显示所有系统命令        |
+|      |         |              | ②help 命令名 | ②显示该命令的帮助信息    |
+| ■■   | rem或:: | 注释         | rem 注释信息 | 注释                     |
+| ■    | color   | 颜色         | color 07     | 设置黑底白字(见颜色代码) |
+| ■    | mode    | 设置窗口大小 | mode 100,30  | 设置窗口宽100高30        |
+| ■    | chcp    | 字符集       | ①chcp        | ①显示使用的字符集        |
+|      |         |              | ②chcp 数字   | ②设置字符集              |
+|      |         |              |              | (936是GBK，65001是UTF-8) |
+| ■    | date    | 日期         | ①date        | ①显示并设置日期          |
+|      |         |              | ②date /t     | ②显示日期                |
+| ■    | time    | 时间         | ①time        | ①显示并设置时间          |
+|      |         |              | ②time /t     | ②显示时间                |
+| ■■   | cls     | 清除屏幕     |              |                          |
+| ■■   | pause   | 暂停         |              |                          |
+| ■■   | exit    | 退出         |              |                          |
+| ■■   | goto    | 跳转         | goto 标签    | 跳转到标签处             |
+| ■■   | :       | 标签         | :标签        | goto可以跳转到的地方     |
+| ■■   | @       | 关闭本行回显 | @命令        | 关闭本行回显             |
+| ■■   | /?      | 查看帮助     | 命令 /?      | 查看帮助信息             |
 
 ## 颜色代码
 | 代码 | 颜色代码 | 颜色   | 色块                                          | 代码 | 颜色代码 | 颜色     | 色块                                          |
@@ -131,9 +124,9 @@
 | ■■   | <               | 文件中读取命令输入               | sort <1.txt                   | 对1.txt文件内容进行排序 |
 | ■■   | &#124;          | 管道符。左结果作为右参数         | dir c:\ &#124; findstr "w"    | 输出c盘中含有w字符串    |
 | ■■   | &               | 命令分隔符。相当于换行符         | dir a:\ & dir c:\             | 输出找不到a盘，输出c盘  |
-| ■■   | &#124;&#124;    | 或                               | ①dir a:\ &#124;&#124; dir c:\ | ①输出找不到a盘，输出c盘 |
+| ■■   | &#124;&#124;    | 或操作                           | ①dir a:\ &#124;&#124; dir c:\ | ①输出找不到a盘，输出c盘 |
 |      |                 | 左失败，右执行；左成功，右不执行 | ②dir c:\ &#124;&#124; dir d:\ | ②输出c盘                |
-| ■■   | &&              | 且                               | ①dir a:\ && dir c:\           | ①输出找不到a盘          |
+| ■■   | &&              | 且操作                           | ①dir a:\ && dir c:\           | ①输出找不到a盘          |
 |      |                 | 左失败，右不执行；左成功，右执行 | ②dir c:\ && dir d:\           | ②输出c盘和d盘           |
 | ■■   | && &#124;&#124; | 相当于if-else                    | dir c:\ && echo ok            | 输出c盘，输出ok         |
 |      |                 | 左成功，执行中；左失败，执行右   | &#124;&#124; echo error       |                         |
@@ -168,40 +161,46 @@
 | &#124; | ^&#124; |
 
 ## 系统常量
-| 常用 | 解释                               | 变量名                                 | 示例值                                                |
-| ---- | ---------------------------------- | -------------------------------------- | ----------------------------------------------------- |
-| ■    | 公共软件安装路径(64位)             | ProgramFiles和ProgramW6432             | C:\Program Files                                      |
-| ■    | 公共软件安装路径(32位)             | ProgramFiles(x86)                      | C:\Program Files (x86)                                |
-|      | 公共常用软件安装路径(64位)         | CommonProgramFiles和CommonProgramW6432 | C:\Program Files\Common Files                         |
-|      | 公共常用软件安装路径(32位)         | CommonProgramFiles(x86)                | C:\Program Files (x86)\Common Files                   |
-|      | 公共软件数据路径                   | ALLUSERSPROFILE和ProgramData           | C:\ProgramData                                        |
-|      | 公共文件路径                       | PUBLIC                                 | C:\Users\Public                                       |
-|      | 当前用户软件安装路径               | APPDATA                                | C:\Users\Administrator\AppData\Roaming                |
-|      | 当前用户软件数据                   | LOCALAPPDATA                           | C:\Users\Administrator\AppData\Local                  |
-| ■■   | 当前用户的主盘                     | HOMEDRIVE                              | C:                                                    |
-|      | 当前用户路径(无盘符)               | HOMEPATH                               | \Users\Administrator                                  |
-| ■■   | 当前用户路径                       | USERPROFILE                            | C:\Users\Administrator                                |
-|      | 当前用户临时文件路径               | TEMP和TMP                              | C:\Users\ADMINI~1\AppData\Local\Temp                  |
-| ■■   | 当前用户名                         | USERNAME                               | Administrator                                         |
-|      | 当前用户域名                       | USERDOMAIN和USERDOMAIN_ROAMINGPROFILE  | DESKTOP-6TL0M6V                                       |
-|      | 当前用户域名                       | LOGONSERVER                            | \\\DESKTOP-6TL0M6V                                    |
-| ■    | 系统盘符                           | SystemDrive                            | C:                                                    |
-| ■    | 系统路径                           | SystemRoot和windir                     | C:\Windows                                            |
-|      | 系统驱动数据路径                   | DriverData                             | C:\Windows\System32\Drivers\DriverData                |
-| ■    | 计算机名                           | COMPUTERNAME                           | DESKTOP-6TL0M6V                                       |
-| ■    | 操作系统名                         | OS                                     | Windows_NT                                            |
-|      | 处理器的芯片架构                   | PROCESSOR_ARCHITECTURE                 | AMD64                                                 |
-|      | 处理器标识符                       | PROCESSOR_IDENTIFIER                   | Intel64 Family 6 Model 60 Stepping 3, GenuineIntel    |
-|      | 处理器的型号                       | PROCESSOR_LEVEL                        | 6                                                     |
-|      | 处理器的版本号                     | PROCESSOR_REVISION                     | 3c03                                                  |
-|      | 处理器数                           | NUMBER_OF_PROCESSORS                   | 4                                                     |
-|      | cmd路径                            | ComSpec                                | C:\Windows\system32\cmd.exe                           |
-|      | cmd提示符设置                      | PROMPT                                 | &#36;P$G                                              |
-| ■■   | 可执行文件的搜索路径               | Path                                   | C:\Program Files\Java\jdk1.8.0_201\bin;等             |
-|      | 可被执行的文件扩展名               | PATHEXT                                | .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC |
-|      | WindowsPowerShell模块路径          | PSModulePath                           | C:\Program Files\WindowsPowerShell\Modules;           |
-|      |                                    |                                        | C:\Windows\system32\WindowsPowerShell\v1.0\Modules    |
-|      | 连接到终端服务会话时的连接和会话名 | SESSIONNAME                            | Console                                               |
+| 常用 | 解释                               | 变量名                     | 示例值                                      |
+| ---- | ---------------------------------- | -------------------------- | ------------------------------------------- |
+| ■    | 公共软件安装路径(64位)             | ProgramFiles和ProgramW6432 | C:\Program Files                            |
+| ■    | 公共软件安装路径(32位)             | ProgramFiles(x86)          | C:\Program Files (x86)                      |
+|      | 公共常用软件安装路径(64位)         | CommonProgramFiles和       | C:\Program Files\Common Files               |
+|      |                                    | CommonProgramW6432         |                                             |
+|      | 公共常用软件安装路径(32位)         | CommonProgramFiles(x86)    | C:\Program Files (x86)\Common Files         |
+|      | 公共软件数据路径                   | ALLUSERSPROFILE和          | C:\ProgramData                              |
+|      |                                    | ProgramData                |                                             |
+|      | 公共文件路径                       | PUBLIC                     | C:\Users\Public                             |
+|      | 当前用户软件安装路径               | APPDATA                    | C:\Users\Administrator\AppData\Roaming      |
+|      | 当前用户软件数据                   | LOCALAPPDATA               | C:\Users\Administrator\AppData\Local        |
+| ■■   | 当前用户的主盘                     | HOMEDRIVE                  | C:                                          |
+|      | 当前用户路径(无盘符)               | HOMEPATH                   | \Users\Administrator                        |
+| ■■   | 当前用户路径                       | USERPROFILE                | C:\Users\Administrator                      |
+|      | 当前用户临时文件路径               | TEMP和TMP                  | C:\Users\ADMINI~1\AppData\Local\Temp        |
+| ■■   | 当前用户名                         | USERNAME                   | Administrator                               |
+|      | 当前用户域名                       | USERDOMAIN和               | DESKTOP-6TL0M6V                             |
+|      |                                    | USERDOMAIN_ROAMINGPROFILE  |                                             |
+|      | 当前用户域名                       | LOGONSERVER                | \\\DESKTOP-6TL0M6V                          |
+| ■    | 系统盘符                           | SystemDrive                | C:                                          |
+| ■    | 系统路径                           | SystemRoot和windir         | C:\Windows                                  |
+|      | 系统驱动数据路径                   | DriverData                 | C:\Windows\System32\Drivers\DriverData      |
+| ■    | 计算机名                           | COMPUTERNAME               | DESKTOP-6TL0M6V                             |
+| ■    | 操作系统名                         | OS                         | Windows_NT                                  |
+|      | 处理器的芯片架构                   | PROCESSOR_ARCHITECTURE     | AMD64                                       |
+|      | 处理器标识符                       | PROCESSOR_IDENTIFIER       | Intel64 Family 6 Model 60 Stepping 3        |
+|      |                                    |                            | , GenuineIntel                              |
+|      | 处理器的型号                       | PROCESSOR_LEVEL            | 6                                           |
+|      | 处理器的版本号                     | PROCESSOR_REVISION         | 3c03                                        |
+|      | 处理器数                           | NUMBER_OF_PROCESSORS       | 4                                           |
+|      | cmd路径                            | ComSpec                    | C:\Windows\system32\cmd.exe                 |
+|      | cmd提示符设置                      | PROMPT                     | &#36;P$G                                    |
+| ■■   | 可执行文件的搜索路径               | Path                       | C:\Program Files\Java\jdk1.8.0_201\bin;等   |
+|      | 可被执行的文件扩展名               | PATHEXT                    | .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;     |
+|      |                                    |                            | .WSF;.WSH;.MSC                              |
+|      | WindowsPowerShell模块路径          | PSModulePath               | C:\Program Files\WindowsPowerShell\Modules; |
+|      |                                    |                            | C:\Windows\system32\WindowsPowerShell       |
+|      |                                    |                            | \v1.0\Modules                               |
+|      | 连接到终端服务会话时的连接和会话名 | SESSIONNAME                | Console                                     |
 
 ## 系统变量
 | 常用 | 解释                  | 变量名             | 示例值                        |

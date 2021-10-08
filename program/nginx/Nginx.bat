@@ -36,6 +36,10 @@ echo   [9] 关闭Nginx服务开机自启
 
 echo   --------------------
 
+echo   [A] 用浏览器打开http://localhost
+
+echo   --------------------
+
 echo   [Y] 创建Nginx启动界面快捷方式到桌面
 
 echo   [Z] 获取管理员权限
@@ -45,10 +49,11 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456789YZ0
-if errorlevel 12 goto e0
-if errorlevel 11 goto ez
-if errorlevel 10 goto ey
+choice /c 123456789AYZ0
+if errorlevel 13 goto e0
+if errorlevel 12 goto ez
+if errorlevel 11 goto ey
+if errorlevel 10 goto ea
 if errorlevel 9 goto e9
 if errorlevel 8 goto e8
 if errorlevel 7 goto e7
@@ -132,6 +137,13 @@ echo.
 echo   [9] 关闭Nginx服务开机自启
 echo.
 call extra\startUp delete current nginx
+goto begin
+
+:ea
+echo.
+echo   [A] 用浏览器打开http://localhost
+echo.
+start http://localhost
 goto begin
 
 :ey

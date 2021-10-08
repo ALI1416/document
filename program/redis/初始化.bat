@@ -25,9 +25,6 @@ copy ..\..\redis-check-rdb.exe
 copy ..\..\redis-cli.exe
 copy ..\..\redis-server.exe
 copy ..\..\redis.windows.conf redis.conf
-echo 正在启用跨域，请稍后...
-..\extra\replaceFileString redis.conf redis.conf "bind 127.0.0.1" "bind 0.0.0.0"
-..\extra\replaceFileString redis.conf redis.conf "protected-mode yes" "protected-mode no"
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe
@@ -38,6 +35,11 @@ call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/v
 call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
 call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
+popd
+pushd bin
+echo 正在启用跨域，请稍后...
+..\extra\replaceFileString redis.conf redis.conf "bind 127.0.0.1" "bind 0.0.0.0"
+..\extra\replaceFileString redis.conf redis.conf "protected-mode yes" "protected-mode no"
 popd
 popd
 echo 初始化完成！

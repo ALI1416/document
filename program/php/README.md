@@ -17,7 +17,7 @@
 ## 提示
 1. 整合nginx
    打开`nginx`安装路径下`conf`文件夹下的`nginx.conf`配置文件，在`server`下新增以下内容
-   ```txt
+   ```ini
    location ~ \.php$ {
        root           html;
        fastcgi_pass   127.0.0.1:9000;
@@ -26,6 +26,12 @@
        include        fastcgi_params;
     }
    ```
+2. 启用插件
+   修改`bin\php.ini`文件，把`;extension_dir = "ext"`改成`extension_dir = "ext"`
+3. 启用mysqli插件
+   修改`bin\php.ini`文件，把`;extension=mysqli`改成`extension=mysqli`
+4. 启用openssl插件
+   修改`bin\php.ini`文件，把`;extension=openssl`改成`extension=openssl`
 
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK

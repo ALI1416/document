@@ -20,13 +20,17 @@ echo   [3] 开启Tomcat服务
 
 echo   --------------------
 
-echo   [4] 开启Tomcat服务开机自启
+echo   [4] 将Tomcat的bin目录添加进环境变量【需要以管理员身份运行】
 
-echo   [5] 关闭Tomcat服务开机自启
+echo   [5] 将Tomcat的bin目录从环境变量移除【需要以管理员身份运行】
+
+echo   [6] 开启Tomcat服务开机自启
+
+echo   [7] 关闭Tomcat服务开机自启
 
 echo   --------------------
 
-echo   [6] 用浏览器打开http://localhost:8080
+echo   [8] 用浏览器打开http://localhost:8080
 
 echo   --------------------
 
@@ -39,10 +43,12 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456YZ0
-if errorlevel 9 goto e0
-if errorlevel 8 goto ez
-if errorlevel 7 goto ey
+choice /c 12345678YZ0
+if errorlevel 11 goto e0
+if errorlevel 10 goto ez
+if errorlevel 9 goto ey
+if errorlevel 8 goto e8
+if errorlevel 7 goto e7
 if errorlevel 6 goto e6
 if errorlevel 5 goto e5
 if errorlevel 4 goto e4
@@ -79,21 +85,35 @@ goto begin
 
 :e4
 echo.
-echo   [4] 开启Tomcat服务开机自启
+echo   [4] 将Tomcat的bin目录添加进环境变量【需要以管理员身份运行】
 echo.
-call extra\startUp add current tomcat "%~dp0extra\hideWindow" """%~dp0extra\startTomcat"""
+call extra\environment add path "%~dp0bin\bin"
 goto begin
 
 :e5
 echo.
-echo   [5] 关闭Tomcat服务开机自启
+echo   [5] 将Tomcat的bin目录从环境变量移除【需要以管理员身份运行】
 echo.
-call extra\startUp delete current tomcat
+call extra\environment delete path "%~dp0bin\bin"
 goto begin
 
 :e6
 echo.
-echo   [6] 用浏览器打开http://localhost:8080
+echo   [6] 开启Tomcat服务开机自启
+echo.
+call extra\startUp add current tomcat "%~dp0extra\hideWindow" """%~dp0extra\startTomcat"""
+goto begin
+
+:e7
+echo.
+echo   [7] 关闭Tomcat服务开机自启
+echo.
+call extra\startUp delete current tomcat
+goto begin
+
+:e8
+echo.
+echo   [8] 用浏览器打开http://localhost:8080
 echo.
 start http://localhost:8080
 goto begin
