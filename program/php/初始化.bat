@@ -59,8 +59,15 @@ call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
 call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
+call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
 call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
+popd
+pushd bin
+echo 正在启用插件，请稍后...
+..\extra\replaceFileString2 php.ini php.ini
+..\extra\replaceFileString php.ini php.ini ";extension=mysqli" "extension=mysqli"
+..\extra\replaceFileString php.ini php.ini ";extension=openssl" "extension=openssl"
 popd
 popd
 echo 初始化完成！
