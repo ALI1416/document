@@ -14,6 +14,9 @@
 2. 运行示例  
 ![运行示例](img/运行示例.jpg)
 
+## 提示
+1. Nginx配置文件示例：[extra/nginx.conf](extra/nginx.conf)
+
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
 2. 天翼云盘 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q

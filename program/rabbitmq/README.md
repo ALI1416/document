@@ -18,10 +18,12 @@
 1. 运行RabbitMQ服务需要安装`erlang`，如果未安装，请到 https://www.erlang.org/downloads 下载并安装
 
 ## 提示
-1. RabbitMQ配置文件示例在[extra/rabbitmq.config.example](extra/rabbitmq.config.example)
+1. RabbitMQ配置文件示例
+   1. 官方文件1：[extra/rabbitmq.ini](extra/rabbitmq.ini)
+   2. 官方文件2：[extra/advanced.config](extra/advanced.config)
 2. 启用跨域  
    新建或编辑`C:\Users\用户名\AppData\Roaming\RabbitMQ\rabbitmq.config`文件，插入以下内容
-   ```js
+   ```txt
    [{rabbit, [{loopback_users, []}]}].
    ```
 3. 用户、角色、权限和密码  

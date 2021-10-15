@@ -132,7 +132,7 @@
 |      | env                     | 环境                                            |
 | ■■   | **error_log**           | 错误日志                                        |
 |      | events                  | 事件                                            |
-| ■    | include                 | 虚拟主机                                        |
+| ■    | include                 | 包含\加载虚拟主机                               |
 |      | load_module             | 加载动态模块                                    |
 |      | lock_file               | 锁定文件名称的前缀                              |
 |      | master_process          | 启动工作进程                                    |
@@ -145,7 +145,7 @@
 |      | use                     | 指定要使用的连接处理method                      |
 |      | user                    | 工作进程使用的定义user和group凭据               |
 |      | worker_aio_requests     | 单个工作进程未完成的异步I/O操作的最大值         |
-|      | worker_connections      | 工作进程可以打开的最大同时连接数                |
+|      | worker_connections      | 工作进程最大同时连接数                          |
 |      | worker_cpu_affinity     | 工作进程绑定到CPU集                             |
 |      | worker_priority         | 工作进程的调度优先级                            |
 |      | worker_processes        | 工作进程的数量                                  |
@@ -172,7 +172,7 @@
 |      | client_header_timeout         | 客户端请求标头的超时时间                              |
 |      | client_max_body_size          | 客户端请求正文的最大允许大小                          |
 |      | connection_pool_size          | 精确调整每个连接的内存分配                            |
-|      | default_type                  | 定义响应的默认MIME类型                                |
+|      | default_type                  | 默认响应的MIME类型                                    |
 |      | directio                      | 启用O_DIRECT标志                                      |
 |      | directio_alignment            | directio对齐大小                                      |
 |      | disable_symlinks              | 打开文件时应如何处理符号链接                          |
@@ -185,7 +185,7 @@
 |      | keepalive_disable             | 禁用与行为不当的浏览器的保持活动连接                  |
 |      | keepalive_requests            | 保持活动连接提供的最大请求数                          |
 |      | keepalive_time                | 保持活动连接处理请求的最长时间                        |
-|      | keepalive_timeout             | 保持活动连接将在服务器端保持打开状态超时时间          |
+|      | keepalive_timeout             | 保持活动连接超时时间                                  |
 |      | large_client_header_buffers   | 读取大型客户端请求标头的缓冲区的最大数量和大小        |
 |      | limit_except                  | 允许的HTTP方法(GET、POST等)                           |
 |      | limit_rate                    | 限制对客户端的响应传输速率                            |
