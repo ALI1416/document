@@ -21,10 +21,12 @@ pushd bin
 md conf
 md contrib
 md html
+copy ..\extra\favicon.ico html
 copy ..\..\nginx.exe
 xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\contrib contrib /s /i /y
 xcopy ..\..\html html /s /i /y
+copy ..\extra\nginx.conf conf /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe

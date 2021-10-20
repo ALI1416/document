@@ -64,6 +64,8 @@ call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
 popd
 pushd bin
+call:downloadFile xxfpm.exe https://gitee.com/ALI1416/document/raw/master/program/xxfpm/xxfpm.exe
+call:downloadFile pthreadGC2.dll https://gitee.com/ALI1416/document/raw/master/program/xxfpm/pthreadGC2.dll
 echo 正在启用插件，请稍后...
 ..\extra\replaceFileString2 php.ini php.ini
 ..\extra\replaceFileString php.ini php.ini ";extension=mysqli" "extension=mysqli"
