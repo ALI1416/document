@@ -54,7 +54,7 @@ xcopy ..\..\extras extras /s /i /y
 xcopy ..\..\lib lib /s /i /y
 popd
 pushd extra
-call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/program/dos2unix/unix2dos.exe
+call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
 call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
@@ -64,8 +64,8 @@ call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
 popd
 pushd bin
-call:downloadFile xxfpm.exe https://gitee.com/ALI1416/document/raw/master/program/xxfpm/xxfpm.exe
-call:downloadFile pthreadGC2.dll https://gitee.com/ALI1416/document/raw/master/program/xxfpm/pthreadGC2.dll
+call:downloadFile xxfpm.exe https://gitee.com/ALI1416/document/raw/master/software/xxfpm/xxfpm.exe
+call:downloadFile pthreadGC2.dll https://gitee.com/ALI1416/document/raw/master/software/xxfpm/pthreadGC2.dll
 echo 正在启用插件，请稍后...
 ..\extra\replaceFileString2 php.ini php.ini
 ..\extra\replaceFileString php.ini php.ini ";extension=mysqli" "extension=mysqli"

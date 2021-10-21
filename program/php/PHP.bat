@@ -62,7 +62,7 @@ goto begin
 echo.
 echo   [2] 关闭PHP服务【杀死php-cgi.exe进程】
 echo.
-taskkill /f /im php-cgi.exe
+taskkill /f /im xxfpm.exe
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto begin
 
