@@ -245,6 +245,22 @@
 | ■■   | **allow** | 允许 |
 | ■■   | **deny**  | 拒绝 |
 
+### ngx_http_gzip_module模块
+- 该ngx_http_gzip_module模块是一个使用`gzip`方法压缩响应的过滤器。
+- 这通常有助于将传输数据的大小减少一半甚至更多。
+
+| 常用 | 名称                | 用途                                  |
+| ---- | ------------------- | ------------------------------------- |
+| ■■   | **gzip**            | 是否启用gzip                          |
+|      | gzip_buffers        | 压缩响应的缓冲区大小                  |
+| ■■   | **gzip_comp_level** | 压缩级别                              |
+|      | gzip_disable        | 使用正则表达式匹配是否压缩            |
+|      | gzip_http_version   | 请求的最低HTTP版本                    |
+| ■■   | **gzip_min_length** | 压缩响应的最小长度                    |
+|      | gzip_proxied        | 根据请求头判断是否压缩                |
+| ■■   | **gzip_types**      | 指定压缩的MIME类型                    |
+| ■    | gzip_vary           | 是否返回`Vary: Accept-Encoding`响应头 |
+
 ### ngx_http_index_module模块
 该ngx_http_index_module模块处理请求以斜杠字符('/')结束。
 
@@ -253,8 +269,9 @@
 | ■■   | **index** | 索引 |
 
 ### ngx_http_log_module模块
-该ngx_http_log_module模块中指定的格式写入请求的日志。
-请求记录在处理结束的位置的上下文中。如果在请求处理期间发生内部重定向，它可能与原始位置不同。
+- 该ngx_http_log_module模块中指定的格式写入请求的日志。
+- 请求记录在处理结束的位置的上下文中。
+- 如果在请求处理期间发生内部重定向，它可能与原始位置不同。
 
 | 常用 | 名称                | 用途                                   |
 | ---- | ------------------- | -------------------------------------- |
@@ -351,12 +368,12 @@
 
 | 常用 | 名称                        | 用途                           |
 | ---- | --------------------------- | ------------------------------ |
-|      | break                       | 中断                           |
-|      | if                          | 如果                           |
-|      | return                      | 返回                           |
+|      | **break**                   | 中断                           |
+|      | **if**                      | 如果                           |
+|      | **return**                  | 返回                           |
 | ■■   | **rewrite**                 | 重写                           |
 |      | rewrite_log                 | 是否记录到日志                 |
-|      | set                         | 设置参数                       |
+|      | **set**                     | 设置参数                       |
 |      | uninitialized_variable_warn | 是否记录有关未初始化变量的警告 |
 
 ### ngx_http_upstream_module模块
@@ -389,19 +406,22 @@
 - 语法：`error_log file [level];`
 - 默认值：`error_log logs/error.log error;`
 - 语境：`main, http, mail, stream, server, location`
+
+---
+
 - 参数1：定义将存储日志的文件。
   - `stderr`：标准错误文件
   - `syslog:`：记录到`syslog`
   - `memory:+缓冲区大小`：有缓冲区的日志记录(通常用于调试)
 - ■■参数2：确定日志记录的级别，可以是以下参数之一：
-  - `debug`
-  - `info`
-  - `notice`
-  - `warn`
-  - `error`
-  - `crit`
-  - `alert`
-  - `emerg`  
+  - `debug`：调试
+  - `info`：信息
+  - `notice`：注意
+  - `warn`：警告
+  - `error`：错误
+  - `crit`：重要
+  - `alert`：警报
+  - `emerg`：紧急
   - 以上日志级别按严重性增加的顺序列出。
   - 设置某个日志级别将导致记录指定和更严重日志级别的所有消息。
   - 例如，默认级别`error`将导致记录`error`、`crit`、`alert`、`emerg`。
@@ -411,6 +431,9 @@
 ### error_page 错误页面
 - 语法：`error_page code ... [=[response]] uri;`
 - 语境：`http, server, location,if in location`
+
+---
+
 1. ■■例如将`404`定向到`404.html`，将`500`、`502`、`503`、`504`定向到`50x.html`：
     ```ini
     error_page 404             /404.html;
@@ -447,6 +470,9 @@
 - 语法3：`listen unix:path [default_server] [ssl] [http2 | spdy] [proxy_protocol] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deferred] [bind] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]];`
 - 默认值：`listen *:80 | *:8000;`
 - 语境：`server`
+
+---
+
 1. ■■设置IP地址和端口，或服务器将在其上接受请求的UNIX域套接字的路径。地址和端口都可以指定，或者只能指定地址或端口。地址也可以是主机名，例如：
     ```ini
     listen 127.0.0.1:8000;
@@ -496,13 +522,15 @@
 - 语法2：`location @name { ... }`
 - 语境：`server, location`
 
+---
+
 匹配规则：
 - `=`：严格匹配
+- `^~`：常规字符串，不检查正则表达式
 - `~`：区分大小写匹配
 - `~*`：不区分大小写匹配
 - `!~`：区分大小写不匹配
 - `!~*`：不区分大小写不匹配
-- `^~`：常规字符串，不检查正则表达式
 - `/`：通用匹配，任何请求都会匹配到
 - `@`：定义一个命名的location，使用在内部定向时，例如error_page,try_files
 - 多个location配置的情况下匹配顺序为：`=`->`^~`->文件中顺序的正则匹配->`/`
@@ -515,13 +543,13 @@
 2. 不区分大小写匹配任何以gif、jpg、jpeg结尾的请求，并将该请求重定向到/logo.png请求
     ```ini
     location ~* .(gif|jpg|jpeg)$ {
-    rewrite .(gif|jpg|jpeg)$ /logo.png;
+        rewrite .(gif|jpg|jpeg)$ /logo.png;
     }
     ```
 3. 区分大小写匹配以.txt结尾的请求，并设置此location的路径是/usr/local/nginx/html/。也就是以.txt结尾的请求将访问/usr/local/nginx/html/路径下的txt文件
     ```ini
     location ~ ^.+\.txt$ {
-    root /usr/local/nginx/html/;
+        root /usr/local/nginx/html/;
     }
     ```
 
@@ -529,6 +557,8 @@
 - 语法1：`allow address | CIDR | unix: | all;`
 - 语法2：`deny address | CIDR | unix: | all;`
 - 语境：`http, server, location, limit_except`
+
+---
 
 允许或拒绝访问指定的网络或地址。如果`unix:`指定了特殊值，则允许访问所有UNIX域套接字。
 
@@ -544,10 +574,53 @@ location / {
 ```
 规则按顺序检查，直到找到第一个匹配项。在此示例中，仅允许访问IPv4网络10.1.1.0/16(192.168.1.0/24不包括地址192.168.1.1)和IPv6网络2001:0db8::/32。如果规则很多，最好使用ngx_http_geo_module模块变量。
 
+### gzip 是否启用gzip
+- 语法：`gzip on | off;`
+- 默认值：`gzip off;`
+- 语境：`http, server, location,if in location`
+
+---
+
+启用或禁用响应的 gzipping。
+
+### gzip_comp_level 压缩级别
+- 语法：`gzip_comp_level level;`
+- 默认值：`gzip_comp_level 1;`
+- 语境：`http, server,location`
+
+---
+
+- 设置响应的gzip压缩级别。
+- 可接受的值在1到9的范围内。
+- 级别越大，压缩率越高，耗时越长。
+
+### gzip_min_length 压缩响应的最小长度
+- 语法：`gzip_min_length length;`
+- 默认值：`gzip_min_length 20;`
+- 语境：`http, server,location`
+
+---
+
+- 设置将被gzip压缩的响应的最小长度。
+- 长度仅由`Content-Length`响应头字段确定。
+
+### gzip_types 指定压缩的MIME类型
+- 语法：`gzip_types mime-type ...;`
+- 默认值：`gzip_types text/html;`
+- 语境：`http, server,location`
+
+---
+
+- 除了`text/html`之外，还为指定的MIME类型启用响应的gzip压缩。
+- 特殊值`*`匹配任何MIME类型。
+- 带有`text/html`类型的响应总是被压缩。
+
 ### index 索引
 - 语法：`index file ...;`
 - 默认值：`index index.html;`
 - 语境：`http, server, location`
+
+---
 
 定义将用作索引的文件。该file名称可以包含变量。按照指定的顺序检查文件。列表的最后一个元素可以是具有绝对路径的文件。例如：
 ```ini
@@ -569,6 +642,8 @@ location / {
 - 语法2：`access_log off;`
 - 默认值：`access_log logs/access.log combined;`
 - 语境：`http, server, location, if in location, limit_except`
+
+---
 
 设置缓冲日志写入的路径、格式和配置。可以在同一配置级别上指定多个日志。
 - `syslog:`：记录到syslog
@@ -614,6 +689,8 @@ access_log /path/to/access.log combined if=$loggable;
 - 默认值：`log_format combined "...";`
 - 语境：`http`
 
+---
+
 `escape`参数允许在变量中设置`json`或`default`字符转义，默认情况下使用`default`转义。`none`值禁用转义。
 对于`default`转义，值小于32或大于126的字符`"`、`\`和其他字符将转义为`\xXX`。如果未找到变量值，将记录连字符`-`。
 对于`json`转义，json字符串中不允许的所有字符都将转义，字符`"`和`\`将转义为`\"`和`\\`，值小于32的字符将转义为`\n`、`\r`、`\t`、`\b`、`\f`或`\u00XX`。
@@ -621,6 +698,8 @@ access_log /path/to/access.log combined if=$loggable;
 ### proxy_pass 设置代理服务器的协议和地址以及位置应映射到的可选URI
 - 语法：`proxy_pass URL;`
 - 语境：`location, if in location,limit_except`
+
+---
 
 设置代理服务器的协议和地址以及位置应映射到的可选URI。作为协议，可以指定`http`或`https`。地址可以指定为域名或IP地址，以及可选的端口：
 ```ini
@@ -675,6 +754,8 @@ proxy_pass http://unix:/tmp/backend.socket:/uri/;
     ```
 - 语境：`http, server, location`
 
+---
+
 允许重新定义或附加字段到传递给代理服务器的请求标头。该值可以包含文本、变量，以及它们的组合。当且仅当proxy_set_header当前级别上没有定义任何指令时，这些指令才从先前的配置级别继承。默认情况下，只重新定义了两个字段：
 ```ini
 proxy_set_header Host $proxy_host;
@@ -699,9 +780,81 @@ proxy_set_header Host $host:$proxy_port;
 proxy_set_header Accept-Encoding "";
 ```
 
+### break 中断
+- 语法：`break;`
+- 语境：`server, location, if`
+
+---
+
+- 停止处理。
+- 如果在该位置内指定了指令，则在该位置继续进一步处理该请求。
+
+例如：
+```ini
+if ($slow) {
+    limit_rate 10k;
+    break;
+}
+```
+
+### if 如果
+- 语法：`if (condition) { ... }`
+- 语境：`server, location`
+
+---
+
+- 对指定的条件进行评估。
+- 如果为true，则执行大括号内指定的此模块指令，并在if指令内为请求分配配置。
+- if指令中的配置继承自以前的配置级别。
+
+条件可以是以下任何一种：
+- 变量名：如果变量的值为`空字符串`或`0`，则为false。
+- 使用`=`和`!=`运算符将变量与字符串进行比较。
+- 使用`~`(区分大小写匹配)和`~*`(不区分大小写匹配)运算符将变量与正则表达式匹配。正则表达式可以包含可供以后在`$1`..`$9`变量中重用的捕获。非运算符`!~`和`!~*`也可用。如果正则表达式包含`}`或`;`字符，则整个表达式应该用单引号或双引号括起来。
+- 使用`-f`和`!-f`运算符检查文件是否存在。
+- 使用`-d`和`!-d`运算符检查目录是否存在。
+- 使用`-e`和`!-e`运算符检查文件、目录或符号链接是否存在。
+- 使用`-x`和`!-x`运算符检查可执行文件。
+
+例如：
+```ini
+if ($http_user_agent ~ MSIE) {
+    rewrite ^(.*)$ /msie/$1 break;
+}
+if ($http_cookie ~* "id=([^;]+)(?:;|$)") {
+    set $id $1;
+}
+if ($request_method = POST) {
+    return 405;
+}
+if ($slow) {
+    limit_rate 10k;
+}
+if ($invalid_referer) {
+    return 403;
+}
+```
+
+### return 返回
+- 语法1：`return code [text];`
+- 语法2：`return code URL;`
+- 语法3：`return URL;`
+- 语境：`server, location, if`
+
+---
+
+- 停止处理并将指定的返回响应码给客户端。
+- 非标准代码444关闭连接而不发送响应头。
+- 可以指定重定向URL(对于代码301、302、303、307和308)或响应正文text(对于其他代码)。
+- 响应正文文本和重定向URL可以包含变量。
+- 作为一种特殊情况，可以将重定向URL指定为该服务器本地的URI，在这种情况下，根据请求方案($scheme)以及server_name_in_redirect和port_in_redirect指令形成完整的重定向URL。
+- 此外，可以将用于代码为302的临时重定向的URL指定为唯一参数。此类参数应以`http://`、`https://`或`$scheme`字符串开头。URL可以包含变量。
+
 ### rewrite 重写
 - 语法：`rewrite regex replacement [flag];`
 - 语境：`server, location, if`
+
+---
 
 如果指定的正则表达式与请求URI匹配，则URI将按照replacement字符串中的指定进行更改。这些rewrite指令按照它们在配置文件中的出现顺序依次执行。可以使用标志来终止对指令的进一步处理。如果替换字符串以`http://`、`https://`或`$scheme`开头，则处理停止并将重定向返回给客户端。
 
@@ -710,7 +863,7 @@ proxy_set_header Accept-Encoding "";
 - last
     停止，并开始搜索与更改的URI匹配的新位置；
 - break
-    停止
+    停止；
 - redirect
     返回一个带有302代码的临时重定向；如果替换字符串不以`http://`、`https://`或`$scheme`开头，则使用；
 - permanent
@@ -741,9 +894,19 @@ rewrite ^/users/(.*)$ /show?user=$1? last;
 ```
 如果正则表达式包含`}`或`;`字符，则整个表达式应该用单引号或双引号括起来。
 
+### set 设置参数
+- 语法：`set $variable value;`
+- 语境：`server, location, if`
+
+---
+
+可设置文本、变量和他们的组合。
+
 ### upstream 定义一组服务器
 - 语法：`upstream name { ... }`
 - 语境：`http`
+
+---
 
 定义一组服务器。服务器可以侦听不同的端口。此外，侦听TCP和UNIX域套接字的服务器可以混合使用。例如：
 ```ini
@@ -759,6 +922,8 @@ upstream backend {
 ### server 定义服务器的地址和参数
 - 语法：`server address [parameters];`
 - 语境：`upstream`
+
+---
 
 定义服务器的地址和其他参数。该地址可以指定为域名或IP地址，带有可选端口，或者在`UNIX:`前缀后指定为UNIX域套接字路径。如果未指定端口，则使用端口80。解析为多个IP地址的域名一次定义多个服务器。
 
@@ -855,10 +1020,6 @@ upstream backend {
 - 该ngx_http_gunzip_module模块是一个过滤器，它`Content-Encoding: gzip`为不支持`gzip`编码方法的客户端使用解压缩响应。
 - 当需要存储压缩数据以节省空间和降低I/O成本时，该模块将非常有用。
 - 默认情况下不构建此模块，应使用--with-http_gunzip_module配置参数启用它。
-
-### ngx_http_gzip_module模块
-- 该ngx_http_gzip_module模块是一个使用`gzip`方法压缩响应的过滤器。
-- 这通常有助于将传输数据的大小减少一半甚至更多。
 
 ### ngx_http_gzip_static_module模块
 - 该ngx_http_gzip_static_module模块允许发送带有`.gz`文件扩展名的预压缩文件，而不是常规文件。
