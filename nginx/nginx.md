@@ -786,8 +786,7 @@ proxy_set_header Accept-Encoding "";
 
 ---
 
-- 停止处理。
-- 如果在该位置内指定了指令，则在该位置继续进一步处理该请求。
+- 停止执行rewrite模块的指令(break、if、return、rewrite、rewrite_log、set、uninitialized_variable_warn)，但是其他模块不受影响。
 
 例如：
 ```ini
@@ -859,11 +858,10 @@ if ($invalid_referer) {
 如果指定的正则表达式与请求URI匹配，则URI将按照replacement字符串中的指定进行更改。这些rewrite指令按照它们在配置文件中的出现顺序依次执行。可以使用标志来终止对指令的进一步处理。如果替换字符串以`http://`、`https://`或`$scheme`开头，则处理停止并将重定向返回给客户端。
 
 可选flag参数可以是以下之一：
-
 - last
-    停止，并开始搜索与更改的URI匹配的新位置；
+    停止，继续向下匹配；
 - break
-    停止；
+    停止，不再匹配；
 - redirect
     返回一个带有302代码的临时重定向；如果替换字符串不以`http://`、`https://`或`$scheme`开头，则使用；
 - permanent
