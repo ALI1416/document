@@ -9,6 +9,7 @@ pushd %~dp0
 :begin
 
 cd ..\bin
-xxfpm php-cgi -n 3 -p 9000
+echo started
+php-cgi -b 127.0.0.1:9000
 
 :end

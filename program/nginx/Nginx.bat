@@ -69,9 +69,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启Nginx服务【隐藏窗口运行】
 echo.
-pushd bin
-start nginx
-popd
+extra\hideWindow "%~dp0extra\startNginx"
 goto begin
 
 :e2
@@ -89,7 +87,7 @@ echo.
 echo   [3] 开启Nginx服务
 echo.
 pushd bin
-start cmd /k nginx
+start cmd /k "echo started & call nginx"
 popd
 goto begin
 

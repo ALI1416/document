@@ -85,7 +85,7 @@ goto begin
 echo.
 echo   [3] 开启MySQL服务
 echo.
-start bin\bin\mysqld --console
+start cmd /k bin\bin\mysqld --console
 goto begin
 
 :e4
@@ -142,7 +142,7 @@ goto begin
 echo.
 echo   [A] 开启MySQL服务开机自启
 echo.
-call extra\startUp add current mysqld "%~dp0extra\hideWindow" """%~dp0bin\bin\mysqld.exe"""
+call extra\startUp add current mysqld "%~dp0extra\hideWindow" """%~dp0bin\bin\mysqld"""
 goto begin
 
 :eb

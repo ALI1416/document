@@ -15,7 +15,13 @@
 ![运行示例](img/运行示例.jpg)
 
 ## 提示
-1. 整合nginx
+1. 直接启动php-cgi运行一段时间后可能会自动退出，需要使用xxfpm来维持php-cgi进程的数量，启动方式如下：
+   ```dos
+   xxfpm php-cgi -n 3 -p 9000
+   ```
+   - `-n 3`：启动3个php-cgi进程
+   - `-p 9000`：启动端口号为9000
+2. 整合nginx
    打开`nginx`安装路径下`conf`文件夹下的`nginx.conf`配置文件，在`server`下新增以下内容
    ```ini
    location ~ \.php$ {
@@ -26,11 +32,11 @@
        include        fastcgi_params;
     }
    ```
-2. 启用插件
+3. 启用插件
    修改`bin\php.ini`文件，把`;extension_dir = "ext"`改成`extension_dir = "ext"`
-3. 启用mysqli插件
+4. 启用mysqli插件
    修改`bin\php.ini`文件，把`;extension=mysqli`改成`extension=mysqli`
-4. 启用openssl插件
+5. 启用openssl插件
    修改`bin\php.ini`文件，把`;extension=openssl`改成`extension=openssl`
 
 ## 打包下载
@@ -38,8 +44,9 @@
 2. 天翼云盘 https://cloud.189.cn/web/share?code=ZnYFvuqINV3q
 3. 百度网盘 https://pan.baidu.com/s/19jzS-u2LhRGBn4L0KKIP3g 提取码：8888
 ### 修改功能
-1. 启用mysqli插件
-2. 启用openssl插件
+1. 使用xxfpm来维持php-cgi进程的数量
+2. 启用mysqli插件
+3. 启用openssl插件
 
 ## 网站
 1. 项目地址 https://gitee.com/ALI1416/document/tree/master/program/php
