@@ -21,9 +21,10 @@
 ' 模板 Templates
 ' 应用程序数据 AppData
 
-set ws=CreateObject("WScript.Shell")
-name="aaaa"
-set shortcut=ws.CreateShortcut(ws.SpecialFolders("Desktop") & "\" & name & ".lnk")
-shortcut.targetPath="D:\Program Files\Microsoft VS Code\Code.exe"
-shortcut.arguments=""
-shortcut.save
+set ws = CreateObject("WScript.Shell")
+name = "aaaa"
+set shortcut = ws.CreateShortcut(ws.SpecialFolders("Desktop") & "\" & name & ".lnk")
+shortcut.TargetPath = "D:\Program Files\Microsoft VS Code\Code.exe"
+shortcut.Arguments = ""
+shortcut.IconLocation = "E:\code\my\demo\demo-base\src\main\resources\static\favicon.ico"
+shortcut.Save

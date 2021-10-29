@@ -25,7 +25,6 @@ xcopy ..\..\bin bin /s /i /y
 xcopy ..\..\init.d init.d /s /i /y
 xcopy ..\..\lib lib /s /i /y
 popd
-md extra
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
