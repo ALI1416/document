@@ -156,7 +156,7 @@ goto begin
 echo.
 echo   [Y] 创建MySQL启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop MySQL "%~f0"
+call extra\createShortcut Desktop MySQL "%~f0" "" "%~dp0extra\mysql.ico"
 goto begin
 
 :ez

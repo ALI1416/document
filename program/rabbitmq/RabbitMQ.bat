@@ -139,7 +139,7 @@ goto begin
 echo.
 echo   [Y] 创建RabbitMQ启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop RabbitMQ "%~f0"
+call extra\createShortcut Desktop RabbitMQ "%~f0" "" "%~dp0extra\rabbitmq.ico"
 goto begin
 
 :ez

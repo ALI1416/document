@@ -122,7 +122,7 @@ goto begin
 echo.
 echo   [Y] 创建Tomcat启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop Tomcat "%~f0"
+call extra\createShortcut Desktop Tomcat "%~f0" "" "%~dp0extra\tomcat.ico"
 goto begin
 
 :ez

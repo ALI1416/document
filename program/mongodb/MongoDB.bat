@@ -106,7 +106,7 @@ goto begin
 echo.
 echo   [Y] 创建MongoDB启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop MongoDB "%~f0"
+call extra\createShortcut Desktop MongoDB "%~f0" "" "%~dp0extra\mongodb.ico"
 goto begin
 
 :ez

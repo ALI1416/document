@@ -34,7 +34,6 @@ xcopy ..\..\proxy proxy /s /i /y
 xcopy ..\..\src src /s /i /y
 xcopy ..\..\test test /s /i /y
 popd
-md extra
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
 call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat

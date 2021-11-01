@@ -105,7 +105,7 @@ goto begin
 echo.
 echo   [Y] 创建Redis启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop Redis "%~f0"
+call extra\createShortcut Desktop Redis "%~f0" "" "%~dp0extra\redis.ico"
 goto begin
 
 :ez

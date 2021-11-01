@@ -129,7 +129,7 @@ goto begin
 echo.
 echo   [Y] 创建PHP启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop PHP "%~f0"
+call extra\createShortcut Desktop PHP "%~f0" "" "%~dp0extra\php.ico"
 goto begin
 
 :ez

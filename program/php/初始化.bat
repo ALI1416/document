@@ -19,7 +19,6 @@ if errorlevel 0 goto end
 md bin
 pushd bin
 md ext
-md extras
 md lib
 copy ..\..\deplister.exe
 copy ..\..\glib-2.dll

@@ -127,7 +127,7 @@ goto begin
 echo.
 echo   [Y] 创建Minio启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop Minio "%~f0"
+call extra\createShortcut Desktop Minio "%~f0" "" "%~dp0extra\minio.ico"
 goto begin
 
 :ez

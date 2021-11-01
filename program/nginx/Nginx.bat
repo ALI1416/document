@@ -148,7 +148,7 @@ goto begin
 echo.
 echo   [Y] 创建Nginx启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop Nginx "%~f0"
+call extra\createShortcut Desktop Nginx "%~f0" "" "%~dp0extra\nginx.ico"
 goto begin
 
 :ez

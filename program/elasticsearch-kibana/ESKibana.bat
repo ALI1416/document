@@ -135,7 +135,7 @@ goto begin
 echo.
 echo   [Y] 创建ESKibana启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ESKibana "%~f0"
+call extra\createShortcut Desktop ESKibana "%~f0" "" "%~dp0extra\elastic-kibana.ico"
 goto begin
 
 :ez

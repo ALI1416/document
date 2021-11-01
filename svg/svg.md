@@ -195,11 +195,11 @@
 **示例**
 - 移动M、线段L、闭合Z：从(150,0)开始,画线段到(75,200),再到(225,200),闭合曲线  
 <svg style="background-color:#6cf">
-  <path d="M150 0 L75 200 L225 200 Z" />
+  <path d="M150 0 L75 200 L225 200 Z"/>
 </svg>
 - 水平线H、垂直线V、相对：从(40,100)开始,画垂直线段200单位,再画水平线段-80单位,相对移动(-40,40)单位,闭合曲线  
 <svg style="background-color:#6cf">
-  <path d="M40 100 h 200 v -80 l -40 40 Z" />
+  <path d="M40 100 h 200 v -80 l -40 40 Z"/>
 </svg>
 - 椭圆弧线A：xy轴半径、x轴旋转角度、取的角度大小(0小角度弧，1大角度弧)、弧线方向(0从起点到终点沿逆时针画弧，1顺时针)、弧线终点xy坐标  
 <svg width="320" height="320" style="background-color:#6cf">
@@ -406,7 +406,7 @@
 **示例**
 - 插入一个图片到svg中  
 <svg style="background-color:#6cf">
-  <image xlink:href="img\1.png" x="50" y="20" height="100" width="100"/>
+  <image xlink:href="img\1.jpg" x="50" y="20" height="100" width="100"/>
 </svg>
 
 ### 渲染HTML foreignObject
@@ -436,7 +436,7 @@
       overflow: auto;
     }
   </style>
-  <polygon points="5,5 295,10 285,135 10,145" />
+  <polygon points="5,5 295,10 285,135 10,145"/>
   <foreignObject x="20" y="20" width="260" height="100">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -617,7 +617,7 @@
     <circle cx="80" cy="50" r="20"/>
     <circle cx="100" cy="50" r="20"/>
   </g>
-  <use x="40" y="120" href="#Port" />
+  <use x="40" y="120" href="#Port"/>
   <use x="100" y="120" href="#Port" class="classA"/>
   <use x="160" y="120" href="#Port" style="fill: blue;"/>
 </svg>
@@ -658,8 +658,8 @@
 <svg style="background-color:#6cf">
   <defs>
     <radialGradient id="viewGradient">
-      <stop offset="0%" stop-color="#8cffa0" />
-      <stop offset="100%" stop-color="#8ca0ff" />
+      <stop offset="0%" stop-color="#8cffa0"/>
+      <stop offset="100%" stop-color="#8ca0ff"/>
     </radialGradient>
   </defs>
   <circle r="50" cx="180" cy="50" style="fill:url(#viewGradient)"/>
