@@ -17,6 +17,8 @@ echo   [2] 将Gradle的bin目录从环境变量移除【需要以管理员身份
 
 echo   --------------------
 
+echo   [Y] 创建Gradle启动界面快捷方式到桌面
+
 echo   [Z] 获取管理员权限
 
 echo   [0] 退出
@@ -24,9 +26,10 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 12Z0
-if errorlevel 4 goto e0
-if errorlevel 3 goto ez
+choice /c 12YZ0
+if errorlevel 5 goto e0
+if errorlevel 4 goto ez
+if errorlevel 3 goto ey
 if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto e0
@@ -43,6 +46,13 @@ echo.
 echo   [2] 将Gradle的bin目录从环境变量移除【需要以管理员身份运行】
 echo.
 call extra\environment delete path "%~dp0bin\bin"
+goto begin
+
+:ey
+echo.
+echo   [Y] 创建Gradle启动界面快捷方式到桌面
+echo.
+call extra\createShortcut Desktop Gradle "%~f0" "" "%~dp0extra\gradle.ico"
 goto begin
 
 :ez
