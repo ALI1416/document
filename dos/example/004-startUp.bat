@@ -84,7 +84,7 @@ goto end
 :e6
 if defined %5 ( goto e61 ) else ( goto e62 )
 :e61
-reg add HKEY_CURRENT_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d "%~4" /f
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d "%~4" /f
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto end
 :e62
@@ -92,11 +92,11 @@ set a=%5
 echo %a%
 if %a:~0,3%"=="""" ( goto e621 ) else ( goto e622 )
 :e621
-reg add HKEY_CURRENT_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d """"%~4""" %5" /f
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d """"%~4""" %5" /f
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto end
 :e622
-reg add HKEY_CURRENT_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d """"%~4""" %~5" /f
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "%~3" /t REG_SZ /d """"%~4""" %~5" /f
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
 goto end
 
