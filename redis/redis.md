@@ -173,25 +173,27 @@
 ## 集合命令
 文档地址 https://redis.io/commands/sadd
 
-| 常用 | 命令名      | 解释 | 用法 | 返回值 |
-| ---- | ----------- | ---- | ---- | ------ |
-|      | sadd        |      |      |        |
-|      | scard       |      |      |        |
-|      | sdiff       |      |      |        |
-|      | sdiffstore  |      |      |        |
-|      | sinter      |      |      |        |
-|      | sintercard  |      |      |        |
-|      | sinterstore |      |      |        |
-|      | sismember   |      |      |        |
-|      | smembers    |      |      |        |
-|      | smismember  |      |      |        |
-|      | smove       |      |      |        |
-|      | spop        |      |      |        |
-|      | srandmember |      |      |        |
-|      | srem        |      |      |        |
-|      | sscan       |      |      |        |
-|      | sunion      |      |      |        |
-|      | sunionstore |      |      |        |
+| 常用 | 命令名              | 解释                 | 用法                            | 返回值                       |
+| ---- | ------------------- | -------------------- | ------------------------------- | ---------------------------- |
+| ■■   | sadd                | 添加元素             | sadd 键 [值]...                 | 添加成功的个数(不包括已存在) |
+| ■■   | srem                | 删除多个值           | srem 键 [值]...                 | 成功个数                     |
+| ■■   | scard               | 个数                 | scard 键                        | 元素个数                     |
+| ■■   | smembers            | 所有元素             | smembers 键                     | 值数组                       |
+| ■■   | sismember           | 是否存在元素         | sismember 键 值                 | 存在:1;不存在:0              |
+|      | smismember (6.2.0+) | 是否存在多个元素     | smismember 键 [值]...           | [1,0]数组                    |
+| ■■   | sdiff               | 差集                 | sdiff [键]...                   | 第一个键与后面的差集         |
+|      | sdiffstore          | 差集并储存           | sdiffstore 源键 目的键 [键]...  | 元素个数(存储，存在会覆盖)   |
+| ■■   | sinter              | 交集                 | sinter [键]...                  | 第一个键与后面的交集         |
+|      | sintercard (7.0.0+) | 交集并限制元素个数   | sintercard [键]... limit 个数   | 元素个数                     |
+|      | sinterstore         | 交集并储存           | sinterstore 源键 目的键 [键]... | 元素个数(存储，存在会覆盖)   |
+| ■■   | sunion              | 并集                 | sunion [键]...                  | 第一个键与后面的交集         |
+|      | sunionstore         | 并集并储存           | sunionstore 源键 目的键 [键]... | 元素个数(存储，存在会覆盖)   |
+| ■    | spop                | 返回并删除1个随机值  | spop 键                         | 成功:值;失败:null            |
+| ■    |                     | 返回并删除多个随机值 | spop 键 个数                    | 成功:值数组;失败:空数组      |
+| ■    | srandmember         | 返回1个随机值        | srandmember 键                  | 成功:值;失败:null            |
+| ■    |                     | 返回多个随机值       | srandmember 键 个数             | 成功:值数组;失败:空数组      |
+|      | **sscan**           | 见scan               |                                 |                              |
+|      | smove               | 移动元素到目的键     | smove 源键 目的键 值            | 成功:1;失败:0                |
 
 ## 有序集合命令
 文档地址 https://redis.io/commands/bzmpop
