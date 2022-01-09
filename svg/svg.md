@@ -429,18 +429,9 @@ svg图标大全 https://www.60logo.com/
 **示例**
 - 嵌入HTML文本  
 <svg style="background-color:#6cf">
-  <style>
-    polygon { fill: black }
-    div {
-      color: white;
-      font:18px serif;
-      height: 100%;
-      overflow: auto;
-    }
-  </style>
   <polygon points="5,5 295,10 285,135 10,145"/>
   <foreignObject x="20" y="20" width="260" height="100">
-    <div>
+    <div style="color:white;font:18px serif;height:100%;overflow:auto;">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Sed mollis mollis mi ut ultricies. Nullam magna ipsum,
       porta vel dui convallis, rutrum imperdiet eros. Aliquam
