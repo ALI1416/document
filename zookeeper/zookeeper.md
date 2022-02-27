@@ -1,5 +1,6 @@
 # zookeeper
 
+下载地址 https://zookeeper.apache.org/releases.html
 文档地址 https://zookeeper.apache.org/doc/r3.7.0/zookeeperCLI.html
 ## 命令
 | 常用 | 命令名               | 解释              |
