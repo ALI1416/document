@@ -1003,6 +1003,7 @@ E:.
 例如：`%%~na`为变量a的文件名
 
 ## ansi.sys 控制字符输出
+详细说明： https://docs.microsoft.com/zh-cn/windows/console/console-virtual-terminal-sequences  
 使用前缀`[`作为ansi输出，ESC转义输入方法：在cmd界面按Ctrl+[或在bat中替换一个字符为(0x1b)  
 使用示例：`echo [36;43m设置字体青色背景黄色`  
 | 命令     | 解释                                      |
