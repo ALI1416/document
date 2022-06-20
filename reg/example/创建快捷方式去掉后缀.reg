@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+; 创建快捷方式去掉后缀
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"link"=hex:00,00,00,00
