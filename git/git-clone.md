@@ -44,7 +44,7 @@ git clone git@gitee.com:ALI1416/himalaya.git
 git clone git@gitee.com:ALI1416/svg-digit-num-generate-vue.git
 git clone git@gitee.com:ALI1416/cy.git
 
-# Fork(1)
+# Fork(2)
 git clone git@gitee.com:ALI1416/gitee-readme-stats.git
 git clone git@gitee.com:ALI1416/pure-admin-thin.git
 
