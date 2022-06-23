@@ -159,19 +159,13 @@ under the License.
       <id>intranetNexus</id>
       <mirrorOf>*</mirrorOf>
       <name>intranet nexus</name>
-      <url>http://192.168.2.102:8081/nexus/repository/maven-public/</url>
-    </mirror> -->
-    <!-- <mirror>
-      <id>extranetNexus</id>
-      <mirrorOf>*</mirrorOf>
-      <name>extranet nexus</name>
-      <url>http://nas.ycjdy.cn:5008/nexus/repository/maven-public/</url>
+      <url>http://192.168.2.102:8081/repository/maven-public/</url>
     </mirror> -->
     <!-- <mirror>
       <id>companyIntranetNexus</id>
       <mirrorOf>*</mirrorOf>
       <name>company intranet nexus</name>
-      <url>http://192.168.18.29:8081/repository/maven-public/</url>
+      <url>http://192.168.18.248:8081/repository/maven-public/</url>
     </mirror> -->
     <!-- mirror
      | Specifies a repository mirror site to use instead of a given repository. The repository that
@@ -210,15 +204,15 @@ under the License.
    |-->
   <profiles>
     <profile>
-      <id>jdk11</id>
+      <id>jdk8</id>
       <activation>
         <activeByDefault>true</activeByDefault>
-        <jdk>11</jdk>
+        <jdk>1.8</jdk>
       </activation>
       <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.compilerVersion>11</maven.compiler.compilerVersion>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
       </properties>
     </profile>
     <!-- profile

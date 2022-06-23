@@ -168,6 +168,7 @@ echo   rabbitmq.config文件缺失！
 echo.
 echo   正在创建rabbitmq.config文件...
 echo.
+mkdir "%APPDATA%\RabbitMQ"
 echo [{rabbit, [{loopback_users, []}]}].> "%APPDATA%\RabbitMQ\rabbitmq.config"
 echo   创建成功！
 goto end

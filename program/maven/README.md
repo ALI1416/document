@@ -17,8 +17,9 @@
 ## 提示
 1. Maven配置示例在[extra/settings.xml](extra/settings.xml)文件中
    1. 48行设置仓库在本地缓存的位置
-   2. 146-151行设置远程镜像仓库为阿里云仓库
-   3. 188-199行设置Maven使用Java版本为11
+   2. 112-116行设置发布到Maven仓库的账号和密码
+   3. 152-157行设置远程镜像仓库为阿里云仓库
+   4. 205-217行设置Maven使用Java版本为1.8
 
 ## 打包下载
 1. 阿里云盘 https://www.aliyundrive.com/s/JSqq7tgLvgK
