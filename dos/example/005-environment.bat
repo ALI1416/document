@@ -126,3 +126,4 @@ if not "%r:~-1%"==";" set r=%r%;
 if "%q:~-1%"=="\" set q=%q%\
 
 :end
+setLocal disableDelayedExpansion

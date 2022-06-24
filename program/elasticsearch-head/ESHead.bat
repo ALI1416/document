@@ -143,3 +143,4 @@ popd
 goto end
 
 :end
+setLocal disableDelayedExpansion

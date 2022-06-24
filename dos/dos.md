@@ -244,7 +244,8 @@ if %test%==aaa (
 输出`aaa`  
 **开启变量延迟**  
 使用`setLocal enableDelayedExpansion`开启变量延迟，使用`!变量名!`来使用变量。  
-使用`setLocal disableDelayedExpansion`关闭变量延迟
+使用`setLocal disableDelayedExpansion`关闭变量延迟。  
+注意：使用完及时关闭
 ```bat
 @echo off
 setLocal enableDelayedExpansion
@@ -254,6 +255,7 @@ if %test%==aaa (
     echo %test%
     echo !test!
 )
+setLocal disableDelayedExpansion
 ```
 输出`aaa`和`bbb`
 

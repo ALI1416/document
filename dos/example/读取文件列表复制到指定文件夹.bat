@@ -50,3 +50,4 @@ echo 
 pause
 
 :end
+setLocal disableDelayedExpansion

@@ -175,3 +175,4 @@ if "%q:~-1%"=="\" set q=%q%\
 goto end
 
 :end
+setLocal disableDelayedExpansion

@@ -158,3 +158,4 @@ echo   创建成功！
 goto end
 
 :end
+setLocal disableDelayedExpansion
