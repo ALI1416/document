@@ -1,21 +1,86 @@
 Windows Registry Editor Version 5.00
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; lnk文件
-; 360 不显示
-[-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\Safe360Ext]
+;; 图像文件
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\image\shellex\ContextMenuHandlers\PlayTo]
 
-[HKEY_CLASSES_ROOT\lnkfile\shellex\-ContextMenuHandlers\Safe360Ext]
-@="{7C0F6D57-E799-4C8A-A319-8E2B4D724CF0}"
+[HKEY_CLASSES_ROOT\SystemFileAssociations\image\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
 
-; 360软件管家 不显示
-[-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\SoftMgrExt]
 
-[HKEY_CLASSES_ROOT\lnkfile\shellex\-ContextMenuHandlers\SoftMgrExt]
-@="{5E19C0CE-C02C-46c2-98C3-A2E12EDE0E17}"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 视频文件
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\video\shellex\ContextMenuHandlers\PlayTo]
 
-; 百度网盘 不显示
-[-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\YunShellExt]
+[HKEY_CLASSES_ROOT\SystemFileAssociations\video\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
 
-[HKEY_CLASSES_ROOT\lnkfile\shellex\-ContextMenuHandlers\YunShellExt]
-@="{6D85624F-305A-491d-8848-C1927AA0D790}"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 音频文件
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shellex\ContextMenuHandlers\PlayTo]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
+
+; Windows Media Player 不显示
+[HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shell\Enqueue]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shell\Play]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 图像目录
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shellex\ContextMenuHandlers\PlayTo]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
+
+; Windows Media Player 不显示
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shell\Enqueue]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shell\Play]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 视频目录
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Video\shellex\ContextMenuHandlers\PlayTo]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Video\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 音频目录
+; 播放到设备 不显示
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shellex\ContextMenuHandlers\PlayTo]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shellex\-ContextMenuHandlers\PlayTo]
+@="{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"
+
+; Windows Media Player 不显示
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shell\Enqueue]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shell\Play]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
