@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,17 +19,17 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-copy ..\..\bin\mongo.exe
-copy ..\..\bin\mongod.exe
-copy ..\..\bin\mongos.exe
+md bin
+md init.d
+md lib
+xcopy ..\..\bin bin /s /i /y
+xcopy ..\..\init.d init.d /s /i /y
+xcopy ..\..\lib lib /s /i /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
-call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
-call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
-call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
 popd
 popd

@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,26 +19,9 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-md bin
-md config
-md jdk
-md lib
-md modules
-md plugins
-xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\config config /s /i /y
-xcopy ..\..\jdk jdk /s /i /y
-xcopy ..\..\lib lib /s /i /y
-xcopy ..\..\modules modules /s /i /y
-xcopy ..\..\plugins plugins /s /i /y
-echo 正在调整占用内存为2g，请稍后...
-
-echo -Xms2g>> config\jvm.options
-echo -Xmx2g>> config\jvm.options
-echo 正在启用跨域，请稍后...
-
-echo http.cors.enabled: true>> config\elasticsearch.yml
-echo http.cors.allow-origin: "*">> config\elasticsearch.yml
+copy ..\..\bin\mongo.exe
+copy ..\..\bin\mongod.exe
+copy ..\..\bin\mongos.exe
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe

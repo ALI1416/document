@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -16,23 +17,6 @@ if errorlevel 1 goto e1
 if errorlevel 0 goto end
 
 :e1
-md bin
-pushd bin
-md bin
-md lib\plugin
-md share
-copy ..\extra\my.ini
-copy ..\..\bin\libcrypto-1_1-x64.dll bin
-copy ..\..\bin\libprotobuf-lite.dll bin
-copy ..\..\bin\libssl-1_1-x64.dll bin
-copy ..\..\bin\mysql.exe bin
-copy ..\..\bin\mysqladmin.exe bin
-copy ..\..\bin\mysqld.exe bin
-copy ..\..\bin\mysqldump.exe bin
-copy ..\..\bin\mysqlimport.exe bin
-copy ..\..\lib\plugin\component_reference_cache.dll lib\plugin
-xcopy ..\..\share share /s /i /y
-popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
 call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat

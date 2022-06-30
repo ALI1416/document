@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,18 +19,26 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-md bin
-md init.d
-md lib
 xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\init.d init.d /s /i /y
+xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\lib lib /s /i /y
+xcopy ..\..\webapps webapps /s /i /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
+call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/example/004-startUp.bat
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
+call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
+call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
+call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
+popd
+pushd bin
+echo 正在设置隐藏窗口运行，请稍后...
+..\extra\replaceFileString ..\..\bin\startup.bat bin\startup2.bat catalina.bat catalina2.bat
+..\extra\replaceFileString ..\..\bin\catalina.bat bin\catalina2.bat setclasspath.bat setclasspath2.bat
+..\extra\replaceFileString2 ..\..\bin\setclasspath.bat bin\setclasspath2.bat
 popd
 popd
 echo 初始化完成！

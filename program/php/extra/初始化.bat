@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,10 +19,38 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-xcopy ..\..\bin bin /s /i /y
-xcopy ..\..\conf conf /s /i /y
+md ext
+md lib
+copy ..\..\deplister.exe
+copy ..\..\glib-2.dll
+copy ..\..\gmodule-2.dll
+copy ..\..\icudt70.dll
+copy ..\..\icuin70.dll
+copy ..\..\icuio70.dll
+copy ..\..\icuuc70.dll
+copy ..\..\libcrypto-1_1-x64.dll
+copy ..\..\libenchant2.dll
+copy ..\..\libpq.dll
+copy ..\..\libsasl.dll
+copy ..\..\libsodium.dll
+copy ..\..\libsqlite3.dll
+copy ..\..\libssh2.dll
+copy ..\..\libssl-1_1-x64.dll
+copy ..\..\nghttp2.dll
+copy ..\..\phar.phar.bat
+copy ..\..\pharcommand.phar
+copy ..\..\php.exe
+copy ..\..\php.ini-development
+copy ..\..\php.ini-production
+copy ..\..\php8.dll
+copy ..\..\php8phpdbg.dll
+copy ..\..\php-cgi.exe
+copy ..\..\phpdbg.exe
+copy ..\..\php-win.exe
+copy ..\..\php.ini-development php.ini
+xcopy ..\..\ext ext /s /i /y
+xcopy ..\..\extras extras /s /i /y
 xcopy ..\..\lib lib /s /i /y
-xcopy ..\..\webapps webapps /s /i /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
@@ -34,10 +63,12 @@ call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
 popd
 pushd bin
-echo 正在设置隐藏窗口运行，请稍后...
-..\extra\replaceFileString ..\..\bin\startup.bat bin\startup2.bat catalina.bat catalina2.bat
-..\extra\replaceFileString ..\..\bin\catalina.bat bin\catalina2.bat setclasspath.bat setclasspath2.bat
-..\extra\replaceFileString2 ..\..\bin\setclasspath.bat bin\setclasspath2.bat
+call:downloadFile xxfpm.exe https://gitee.com/ALI1416/document/raw/master/software/xxfpm/xxfpm.exe
+call:downloadFile pthreadGC2.dll https://gitee.com/ALI1416/document/raw/master/software/xxfpm/pthreadGC2.dll
+echo 正在启用插件，请稍后...
+..\extra\replaceFileString2 php.ini php.ini
+..\extra\replaceFileString php.ini php.ini ";extension=mysqli" "extension=mysqli"
+..\extra\replaceFileString php.ini php.ini ";extension=openssl" "extension=openssl"
 popd
 popd
 echo 初始化完成！

@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,39 +19,26 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-md ext
+md bin
+md config
+md jdk
 md lib
-copy ..\..\deplister.exe
-copy ..\..\glib-2.dll
-copy ..\..\gmodule-2.dll
-copy ..\..\icudt68.dll
-copy ..\..\icuin68.dll
-copy ..\..\icuio68.dll
-copy ..\..\icuuc68.dll
-copy ..\..\libcrypto-1_1-x64.dll
-copy ..\..\libenchant2.dll
-copy ..\..\libpq.dll
-copy ..\..\libsasl.dll
-copy ..\..\libsodium.dll
-copy ..\..\libsqlite3.dll
-copy ..\..\libssh2.dll
-copy ..\..\libssl-1_1-x64.dll
-copy ..\..\nghttp2.dll
-copy ..\..\phar.phar.bat
-copy ..\..\pharcommand.phar
-copy ..\..\php.exe
-copy ..\..\php.ini-development
-copy ..\..\php.ini-production
-copy ..\..\php8.dll
-copy ..\..\php8phpdbg.dll
-copy ..\..\php-cgi.exe
-copy ..\..\phpdbg.exe
-copy ..\..\php-win.exe
-copy ..\..\php.ini-development php.ini
-xcopy ..\..\dev dev /s /i /y
-xcopy ..\..\ext ext /s /i /y
-xcopy ..\..\extras extras /s /i /y
+md modules
+md plugins
+xcopy ..\..\bin bin /s /i /y
+xcopy ..\..\config config /s /i /y
+xcopy ..\..\jdk jdk /s /i /y
 xcopy ..\..\lib lib /s /i /y
+xcopy ..\..\modules modules /s /i /y
+xcopy ..\..\plugins plugins /s /i /y
+echo 正在调整占用内存为2g，请稍后...
+
+echo -Xms2g>> config\jvm.options
+echo -Xmx2g>> config\jvm.options
+echo 正在启用跨域，请稍后...
+
+echo http.cors.enabled: true>> config\elasticsearch.yml
+echo http.cors.allow-origin: "*">> config\elasticsearch.yml
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
@@ -58,17 +46,8 @@ call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
 call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
-call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
 call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
-popd
-pushd bin
-call:downloadFile xxfpm.exe https://gitee.com/ALI1416/document/raw/master/software/xxfpm/xxfpm.exe
-call:downloadFile pthreadGC2.dll https://gitee.com/ALI1416/document/raw/master/software/xxfpm/pthreadGC2.dll
-echo 正在启用插件，请稍后...
-..\extra\replaceFileString2 php.ini php.ini
-..\extra\replaceFileString php.ini php.ini ";extension=mysqli" "extension=mysqli"
-..\extra\replaceFileString php.ini php.ini ";extension=openssl" "extension=openssl"
 popd
 popd
 echo 初始化完成！

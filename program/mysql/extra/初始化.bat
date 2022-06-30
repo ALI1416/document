@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,13 +19,20 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-copy ..\..\EventLog.dll
-copy ..\..\redis-benchmark.exe
-copy ..\..\redis-check-aof.exe
-copy ..\..\redis-check-rdb.exe
-copy ..\..\redis-cli.exe
-copy ..\..\redis-server.exe
-copy ..\..\redis.windows.conf redis.conf
+md bin
+md lib\plugin
+md share
+copy ..\extra\my.ini
+copy ..\..\bin\libcrypto-1_1-x64.dll bin
+copy ..\..\bin\libprotobuf-lite.dll bin
+copy ..\..\bin\libssl-1_1-x64.dll bin
+copy ..\..\bin\mysql.exe bin
+copy ..\..\bin\mysqladmin.exe bin
+copy ..\..\bin\mysqld.exe bin
+copy ..\..\bin\mysqldump.exe bin
+copy ..\..\bin\mysqlimport.exe bin
+copy ..\..\lib\plugin\component_reference_cache.dll lib\plugin
+xcopy ..\..\share share /s /i /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
@@ -32,14 +40,8 @@ call:downloadFile startUp.bat https://gitee.com/ALI1416/document/raw/master/dos/
 call:downloadFile environment.bat https://gitee.com/ALI1416/document/raw/master/dos/example/005-environment.bat
 call:downloadFile createShortcut.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/001-createShortcut.vbs
 call:downloadFile hideWindow.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/002-hideWindow.vbs
-call:downloadFile replaceFileString.vbs https://gitee.com/ALI1416/document/raw/master/vbs/example/003-replaceFileString.vbs
 call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
-popd
-pushd bin
-echo 正在启用跨域，请稍后...
-..\extra\replaceFileString redis.conf redis.conf "bind 127.0.0.1" "bind 0.0.0.0"
-..\extra\replaceFileString redis.conf redis.conf "protected-mode yes" "protected-mode no"
 popd
 popd
 echo 初始化完成！

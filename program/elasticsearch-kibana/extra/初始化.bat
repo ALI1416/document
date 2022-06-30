@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -14,19 +15,28 @@ choice /c yn /m "确定初始化吗？"
 if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto end
-
 :e1
 md bin
 pushd bin
-md conf
-md contrib
-md html
-copy ..\extra\favicon.ico html
-copy ..\..\nginx.exe
-xcopy ..\..\conf conf /s /i /y
-xcopy ..\..\contrib contrib /s /i /y
-xcopy ..\..\html html /s /i /y
-copy ..\extra\nginx.conf conf /y
+md bin
+md config
+md node
+md node_modules
+md plugins
+md src
+md x-pack
+copy ..\..\.i18nrc.json
+copy ..\..\package.json
+robocopy ..\..\bin bin /e
+robocopy ..\..\config config /e
+robocopy ..\..\node node /e
+robocopy ..\..\node_modules node_modules /e
+robocopy ..\..\plugins plugins /e
+robocopy ..\..\src src /e
+robocopy ..\..\x-pack x-pack /e
+echo 正在启用跨域，请稍后...
+
+echo server.host: "0.0.0.0">> config/kibana.yml
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe

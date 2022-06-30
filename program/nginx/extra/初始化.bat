@@ -5,6 +5,7 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 pushd %~dp0
+cd ..
 
 :begin
 
@@ -18,21 +19,15 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-md _site
-md crx
-md proxy
-md src
-md test
-copy ..\..\.jshintrc
-copy ..\..\grunt_fileSets.js
-copy ..\..\Gruntfile.js
-copy ..\..\index.html
-copy ..\..\package.json
-xcopy ..\..\_site _site /s /i /y
-xcopy ..\..\crx crx /s /i /y
-xcopy ..\..\proxy proxy /s /i /y
-xcopy ..\..\src src /s /i /y
-xcopy ..\..\test test /s /i /y
+md conf
+md contrib
+md html
+copy ..\extra\favicon.ico html
+copy ..\..\nginx.exe
+xcopy ..\..\conf conf /s /i /y
+xcopy ..\..\contrib contrib /s /i /y
+xcopy ..\..\html html /s /i /y
+copy ..\extra\nginx.conf conf /y
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
