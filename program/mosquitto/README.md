@@ -22,7 +22,14 @@
 
    ```conf
    allow_anonymous true
+
    listener 1883 0.0.0.0
+   protocol mqtt
+   socket_domain ipv4
+
+   listener 9001 0.0.0.0
+   protocol websockets
+   socket_domain ipv4
    ```
 
 2. 添加用户名和密码
