@@ -1,5 +1,9 @@
 Windows Registry Editor Version 5.00
 
+; Author:ALI
+; GitHub:https://github.com/ali1416
+; Version:1.0
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 图像文件
 ; 播放到设备 不显示
@@ -81,6 +85,14 @@ Windows Registry Editor Version 5.00
 "ProgrammaticAccessOnly"=""
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shell\Play]
+"HideBasedOnVelocityId"=dword:00639bc8
+"LegacyDisable"=""
+"ProgrammaticAccessOnly"=""
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 未知格式
+; opendlg 不显示
+[HKEY_CLASSES_ROOT\Unknown\shell\opendlg]
 "HideBasedOnVelocityId"=dword:00639bc8
 "LegacyDisable"=""
 "ProgrammaticAccessOnly"=""

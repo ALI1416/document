@@ -2,7 +2,7 @@
 
 ## 下载
 
-1. 下载地址 <https://windows.php.net/download/> `VS16 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.0.11-nts-Win32-vs16-x64.zip`，，新建`php-8.0.11-nts-Win32-vs16-x64`文件夹并把文件解压进去
+1. 下载地址 <https://windows.php.net/download/> `VS16 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.0.11-nts-Win32-vs16-x64.zip`，新建`php-8.0.11-nts-Win32-vs16-x64`文件夹并把文件解压进去
 2. 快速下载地址 <https://windows.php.net/downloads/releases/php-8.0.11-nts-Win32-vs16-x64.zip> 版本号参考 <https://windows.php.net/downloads/releases/archives/>
 
 ## 初始化
