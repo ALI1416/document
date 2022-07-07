@@ -1,4 +1,4 @@
-# 好压
+# 2345好压
 
 官方下载地址：<https://haozip.2345.cc/>
 
@@ -15,8 +15,8 @@
    - `$PLUGINSDIR`(无用)
    - `Protect`(广告)
    - `tool`(升级)
-   - `$R0`(无用)
 4. 删掉文件
+   - `$R0`(无用)
    - `Haozip_2345Upgrade.exe`(升级)
    - `Haozip_2345Upgrade.dll`(升级)
    - `HaoZipHomePage.exe`(2345网址导航)
