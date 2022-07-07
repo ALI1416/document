@@ -2,17 +2,20 @@
 
 ## 下载
 
-1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.0.14-install-windows-x64.exe`，双击安装
+1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.0.14-install-windows-x64.exe`，把后缀`exe`改成`zip`新建`mosquitto-2.0.14-install-windows-x64`文件夹并把文件解压进去
 2. 快速下载地址 <https://mosquitto.org/files/binary/win64/mosquitto-2.0.14-install-windows-x64.exe> 版本号参考 <https://mosquitto.org/files/binary/win64/>
+
+## 初始化
+
+1. 把本压缩包解压到`mosquitto-2.0.14-install-windows-x64`文件夹内，如图所示：  
+![初始化示例](img/初始化示例.png)
+2. 双击`extra`文件夹里的`初始化.bat`文件
 
 ## 运行
 
-- 首次安装成功后需要到`服务`里去手动开启
-   1. 打开`任务管理器`
-   2. 打开`服务`
-   3. 找到`Mosquitto Broker`
-   4. 右键`开始`
-- 重启后会自动启动，如需禁用，请到`服务`里修改`启动类型`
+1. 双击`Mosquitto.bat`文件
+2. 运行示例  
+![运行示例](img/运行示例.png)
 
 ## 提示
 
@@ -45,6 +48,10 @@
 1. 阿里云盘 <https://www.aliyundrive.com/s/JSqq7tgLvgK>
 2. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
 3. 百度网盘 <https://pan.baidu.com/s/19jzS-u2LhRGBn4L0KKIP3g> 提取码：8888
+
+### 修改功能
+
+1. 开启外网匿名访问
 
 ## 网站
 
