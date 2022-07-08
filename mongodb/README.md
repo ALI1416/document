@@ -1,8 +1,9 @@
 # mongodb
 
-文档地址 https://docs.mongodb.com/manual/tutorial/getting-started/
+文档地址 <https://docs.mongodb.com/manual/tutorial/getting-started/>
 
 ## 数据库命令
+
 | 常用 | 命令         | 解释                             |
 | ---- | ------------ | -------------------------------- |
 | ■■   | show dbs     | 查看数据库列表                   |
@@ -62,6 +63,7 @@
 |      | version()                           | 版本                                                       |
 
 ## 集合命令
+
 **以下命令都以`db.集合名.`开头，通过`db.集合名.help()`获取**
 | 常用 | 命令                                            | 解释                             |
 | ---- | ----------------------------------------------- | -------------------------------- |
@@ -107,7 +109,7 @@
 |      | storageSize()                                   | 包括分配给此集合的可用空间       |
 |      | totalIndexSize()                                | 所有索引的大小                   |
 |      | totalSize()                                     | 所有数据和索引的大小             |
-|      | validate(<full>)                                |                                  |
+|      | validate()                                      |                                  |
 |      | getShardVersion()                               | 仅用于分片                       |
 |      | getShardDistribution()                          | 打印有关集群中数据分布的统计信息 |
 |      | latencyStats()                                  | 显示此集合的操作延迟直方图       |
@@ -132,12 +134,14 @@
 |      | setVerbosity(verbosity) |            |
 
 ## 插入操作
+
 - `save()`：如果`_id`主键存在则更新数据，如果不存在就插入数据。该方法新版本中已废弃，可以使用db.collection.insertOne()或db.collection.replaceOne()来代替。
 - `insert()`：若插入的数据主键已经存在，则会抛org.springframework.dao.DuplicateKeyException异常，提示主键重复，不保存当前数据。
 - `insertOne()`：用于向集合插入一个新文档。
 - `insertMany()`：用于向集合插入一个多个文档。
 
 ### insertOne() 插入一个
+
 ```js
 db.a.insertOne({
     _id: 1,
@@ -160,11 +164,13 @@ db.a.insertOne({
     date: ISODate("2018-06-05T15:28:33.705+08:00")
 })
 ```
+
 向集合a中插入一条数据，指定`_id`是`1`，不指定则自动生成`ObjectId()`。  
 插入成功返回{"acknowledged":true,"insertedId":_id}  
 如果_id重复，会报错。
 
 ### insertMany() 插入多个
+
 ```js
 db.a.insertMany([
     {
@@ -192,7 +198,9 @@ db.a.insertMany([
 ```
 
 ## 更新操作
+
 ### updateOne() 更新一个
+
 ```js
 db.a.updateOne(
     {
@@ -208,15 +216,17 @@ db.a.updateOne(
     }
 )
 ```
+
 - 第一个括号内是匹配的条件，为`int=123`
 - 第二个括号是修改的内容
   - `$set`是修改字段的值，修改`double=111.11`
   - `$currentDate`是修改时间，指定字段`lastModified`
 - 如果有多个匹配的，则修改查询到的第一条数据
 
-
 ## 删除
+
 ### deleteOne() 删除一个
+
 ```js
 db.a.deleteOne(
     {
@@ -226,9 +236,13 @@ db.a.deleteOne(
 ```
 
 ## 查询操作
+
 ### find() 查询
+
 #### 普通查询
+
 查询int字段为124的所有记录，显示所有字段。
+
 ```js
 db.a.find(
     {
@@ -238,7 +252,9 @@ db.a.find(
 ```
 
 #### AND条件查询
+
 查询int为124，long为123的记录。
+
 ```js
 db.a.find(
     {
@@ -249,7 +265,9 @@ db.a.find(
 ```
 
 #### OR条件查询
+
 查询boolean为true或(int为124，long为123)的记录。
+
 ```js
 db.a.find(
     {
@@ -265,7 +283,9 @@ db.a.find(
     }
 )
 ```
+
 查询boolean为true或int为124或long为123的记录。
+
 ```js
 db.a.find(
     {
@@ -285,7 +305,9 @@ db.a.find(
 ```
 
 #### 指定字段
+
 只显示字段int和long，去除字段_id(不去除会默认显示)。
+
 ```js
 db.a.find(
     {
@@ -300,7 +322,9 @@ db.a.find(
 ```
 
 #### 判断条件查询
+
 查询int小于124的记录。
+
 ```js
 db.a.find(
     {
@@ -310,7 +334,9 @@ db.a.find(
     }
 )
 ```
+
 ##### 判断条件
+
 | 条件 | 语句                     |
 | ---- | ------------------------ |
 | `=`  | `{<key>:<value>}`        |
@@ -321,13 +347,17 @@ db.a.find(
 | `!=` | `{<key>:{$ne:<value>}}`  |
 
 #### limit()与skip() 限制与跳过
+
 跳过第一条，只显示2条。
+
 ```js
 db.a.find().limit(2).skip(1)
 ```
 
 #### sort() 排序
+
 先long降序，在int升序显示。
+
 ```js
 db.a.find().sort(
     {
@@ -338,7 +368,9 @@ db.a.find().sort(
 ```
 
 #### aggregate() 聚合
+
 以long字段分组，计算个数。
+
 ```js
 db.a.aggregate(
     [
@@ -353,7 +385,9 @@ db.a.aggregate(
     ]
 )
 ```
+
 以long字段分组，计算int字段总和。
+
 ```js
 db.a.aggregate(
     [
@@ -368,7 +402,9 @@ db.a.aggregate(
     ]
 )
 ```
+
 ##### 聚合表达式
+
 | 常用 | 表达式    | 描述                                                                               |
 | ---- | --------- | ---------------------------------------------------------------------------------- |
 | ■■   | $sum      | 计算总和。                                                                         |
@@ -381,6 +417,7 @@ db.a.aggregate(
 |      | $last     | 根据资源文档的排序获取最后一个文档数据                                             |
 
 ##### 聚合管道操作
+
 MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。  
 表达式：处理输入文档并输出。表达式是无状态的，只能用于计算当前聚合管道的文档，不能处理其它的文档。
 
@@ -396,6 +433,7 @@ MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传
 |      | $geoNear | 输出接近某一地理位置的有序文档。                                                       |
 
 只显示int和long字段，不显示_id字段
+
 ```js
 db.a.aggregate(
     {
@@ -409,6 +447,7 @@ db.a.aggregate(
 ```
 
 先执行match，int字段在122和126之间，再执行group操作
+
 ```js
 db.a.aggregate(
     [
@@ -431,7 +470,9 @@ db.a.aggregate(
     ]
 )
 ```
+
 跳过前1个文档
+
 ```js
 db.a.aggregate(
     {
@@ -441,7 +482,9 @@ db.a.aggregate(
 ```
 
 ## 索引
+
 ### createIndex() 创建索引
+
 创建字段int升序索引
 db.a.createIndex(
     {

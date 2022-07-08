@@ -9,7 +9,7 @@
 ## 去除垃圾
 
 1. 选中文件，右键，选择`解压到"haozip_v6.3.1.11144_compliant\"`，如提示文件重复，选择`全部跳过`
-2. 选中文件，右键，选择`用好压打开`，找到名为`$R0`的文件，提取出`700+kb`的文件，重命名为`HaoZipExt.dll`，并放入到文件夹`haozip_v6.3.1.11144_compliant\`中(这个文件是显示右键菜单)
+2. 选中文件，右键，选择`用好压打开`，找到名为`$R0`的文件，提取出`700+kb`的文件，重命名为`HaoZipExt.dll`，并放入到文件夹`haozip_v6.3.1.11144_compliant`中(这个文件是显示右键菜单)
 3. 删掉文件夹
    - `$0`(无用)
    - `$PLUGINSDIR`(无用)
@@ -44,7 +44,7 @@
 
 ## 网站
 
-1. 项目地址 <https://gitee.com/ALI1416/document/tree/master/program/HaoZip>
+1. 项目地址 <https://gitee.com/ALI1416/document/tree/master/program/2345HaoZip>
 2. 个人网站 <http://404z.cn>
 3. GitHub <https://github.com/ALI1416>
 4. Gitee <https://gitee.com/ALI1416>

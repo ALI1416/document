@@ -1,6 +1,7 @@
 # nexus
 
 ## docker安装过程
+
 - 查找镜像: `docker search xxx`
 - 安装镜像: `docker pull sonatype/nexus3`
 - 创建目录: `mkdir -p /data/nexus/data`
@@ -15,9 +16,11 @@
   - `sonatype/nexus3`: 容器名称
 
 ## 查找初始密码
+
 默认位置: `/data/nexus/data/admin.password`
 
 ## 新增代理
+
 - 设置
 - Repository
 - Repositories
@@ -25,13 +28,15 @@
 - maven2 (proxy)
 - 填写内容
   - Name: maven-aliyun
-  - Remote storage: https://maven.aliyun.com/repository/public
+  - Remote storage: <https://maven.aliyun.com/repository/public>
 
 ## 设置仓库顺序
+
 - maven-public
 - Group
 - Member repositories
 - 把maven-aliyun添加进去并移动到顶部
 
 ## 仓库地址
-http://192.168.2.102:8081/repository/maven-public/
+
+<http://192.168.2.102:8081/repository/maven-public/>

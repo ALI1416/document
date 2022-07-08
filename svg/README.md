@@ -1,10 +1,13 @@
 # svg
 
-svg图标大全 https://www.60logo.com/
+svg图标大全 <https://www.60logo.com/>
 
 ## 形状
+
 ### 画布 svg
+
 **属性**
+
 - width : 宽度
   - 默认值 : 300
   - 100% : 屏幕宽度
@@ -18,6 +21,7 @@ svg图标大全 https://www.60logo.com/
   - height : 截取画布高度，并缩放到画布实际高度
 
 **示例**
+
 - 默认:宽300,高150  
 <svg style="background-color:#6cf"></svg>
 - 宽400,高100  
@@ -75,7 +79,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 矩形 rect
+
 **属性**
+
 - x : 距离左侧长度
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -94,13 +100,16 @@ svg图标大全 https://www.60logo.com/
   - 范围 : 0-100
 
 **示例**
+
 - 距离左侧长度40,距离顶部高度20,宽100,高60  
 <svg style="background-color:#6cf">
    <rect x="40" y="20" width="100" height="60"/>
 </svg>
 
 ### 圆形 circle
+
 **属性**
+
 - cx : 圆点的x坐标
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -111,13 +120,16 @@ svg图标大全 https://www.60logo.com/
   - 100% : 237.17px
 
 **示例**
+
 - 圆点的坐标(60,50),半径30  
 <svg style="background-color:#6cf">
    <circle cx="60" cy="50" r="30"/>
 </svg>
 
 ### 椭圆 ellipse
+
 **属性**
+
 - cx : 椭圆中心的x坐标
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -130,13 +142,16 @@ svg图标大全 https://www.60logo.com/
   - 100% : 父元素高度
 
 **示例**
+
 - 椭圆中心的坐标(130,80),水平半径40,垂直半径60  
 <svg style="background-color:#6cf">
    <ellipse cx="130" cy="80" rx="40" ry="60"/>
 </svg>
 
 ### 直线 line
+
 **属性**
+
 - x1 : 线条开始的x坐标
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -153,33 +168,42 @@ svg图标大全 https://www.60logo.com/
 注意：必须设置颜色，例如`style="stroke:black"`
 
 **示例**
+
 - 线条开始的坐标(10,80),线条结束的坐标(290,120)  
 <svg style="background-color:#6cf">
    <line x1="10" y1="80" x2="290" y2="120" style="stroke:black"/>
 </svg>
 
 ### 多边形 polygon
+
 **属性**
+
 - point : 多边形每个点的xy坐标(xy坐标用逗号隔开，每个点用空格隔开)
 
 **示例**
+
 - 多边形每个点的坐标(200,10),(250,110),(50,140)  
 <svg style="background-color:#6cf">
    <polygon points="200,10 250,110 50,140"/>
 </svg>
 
 ### 多段线 polyline
+
 **属性**
+
 - point : 多线段每个点的xy坐标(xy坐标用逗号隔开，每个点用空格隔开)
 
 **示例**
+
 - 多线段每个点的坐标(20,20),(40,25),(60,40),(80,120),(120,140),(200,180)  
 <svg style="background-color:#6cf">
    <polyline points="20,20 40,25 60,40 80,120 120,140 200,180" style="fill:none;stroke:black"/>
 </svg>
 
 ### 路径 path
+
 **属性**
+
 - d : 命令
   - M : 移动
   - L : 线段
@@ -195,6 +219,7 @@ svg图标大全 https://www.60logo.com/
 注意：命令区分大小写，大写表示绝对定位，小写表示相对定位。
 
 **示例**
+
 - 移动M、线段L、闭合Z：从(150,0)开始,画线段到(75,200),再到(225,200),闭合曲线  
 <svg style="background-color:#6cf">
   <path d="M150 0 L75 200 L225 200 Z"/>
@@ -223,8 +248,11 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ## 文本
+
 ### 文本 text
+
 **属性**
+
 - x : 文本左侧距离父元素左侧长度
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -238,6 +266,7 @@ svg图标大全 https://www.60logo.com/
 - textLength : 字符串总长度
 
 **示例**
+
 - 红色：文本左侧距离父元素左侧长度0,文本底部距离父元素顶部高度20
 - 蓝色：每个字符x坐标偏移量分别为10 30 40，每个字符y坐标偏移量分别为40 20 20
 - 绿色：所有字符旋转角度为45
@@ -254,10 +283,13 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 块 tspan
+
 **元素**
+
 - tspan : 对文本块单独设置属性
 
 **示例**
+
 - 红色粗体  
 <svg style="background-color:#6cf">
   <text x="30" y="50">
@@ -267,10 +299,13 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 文本路径 textPath
+
 **属性**
+
 - xlink:href : 引用链接
 
 **示例**
+
 - 文本在曲线内部显示  
 <svg style="background-color:#6cf">
 <path id="my_path" d="M70,20 a1,1 0 0,0 150,0" fill="none" stroke="black"/>
@@ -280,7 +315,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ## 渐变
+
 **公共元素**
+
 - stop : 终止
   - offset : 偏移位置
     - 默认值 : 0%(左侧)
@@ -292,6 +329,7 @@ svg图标大全 https://www.60logo.com/
     - 范围 : 0-1
 
 **公共属性**
+
 - xlink:href : 引用另一个渐变的stop
 - spreadMethod : 渐变过程
   - pad : 当渐变到达终点时，最终的偏移颜色被用于填充对象剩下的空间(默认)
@@ -303,7 +341,9 @@ svg图标大全 https://www.60logo.com/
 - gradientTransform : 渐变
 
 ### 线性渐变 linearGradient
+
 **属性**
+
 - x1,x2,y1,y2 : 倾斜角度矩阵
   - 默认值 : 0,1,0,0(0度)
   - 45度 : 0,1,0,1
@@ -315,6 +355,7 @@ svg图标大全 https://www.60logo.com/
   - -135度 : 1,0,1,0
 
 **示例**
+
 - 水平线性渐变：使用css显示
 - 垂直线性渐变：使用svg显示  
 <svg style="background-color:#6cf">
@@ -338,10 +379,13 @@ svg图标大全 https://www.60logo.com/
   </defs>
   <rect id="rect1" x="20" y="20" rx="15" ry="15" width="100" height="100"/>
   <rect x="180" y="20" rx="15" ry="15" width="100" height="100" fill="url(#Gradient2)"/>
+
 </svg>
 
 ### 径向渐变 radialGradient
+
 **属性**
+
 - cx,cy : 圆心xy坐标在xy轴所占最大长度的比例
   - 默认值 : 0.5(一半)
   - 范围 : 0-1
@@ -353,6 +397,7 @@ svg图标大全 https://www.60logo.com/
   - 范围 : 0-1
 
 **示例**
+
 - 径向渐变成椭圆
 - 径向渐变成圆
 - 焦点不在圆心
@@ -389,8 +434,11 @@ svg图标大全 https://www.60logo.com/
 ## 动画
 
 ## 其他元素
+
 ### 图片 image
+
 **属性**
+
 - xlink:href : 引用链接
 - x : 距离左侧长度
   - 默认值 : 0
@@ -406,13 +454,16 @@ svg图标大全 https://www.60logo.com/
   - 100% : 父元素高度
 
 **示例**
+
 - 插入一个图片到svg中  
 <svg style="background-color:#6cf">
   <image xlink:href="img\1.jpg" x="50" y="20" height="100" width="100"/>
 </svg>
 
 ### 渲染HTML foreignObject
+
 **属性**
+
 - x : 距离左侧长度
   - 默认值 : 0
   - 100% : 父元素宽度
@@ -427,6 +478,7 @@ svg图标大全 https://www.60logo.com/
   - 100% : 父元素高度
 
 **示例**
+
 - 嵌入HTML文本  
 <svg style="background-color:#6cf">
   <polygon points="5,5 295,10 285,135 10,145"/>
@@ -438,10 +490,13 @@ svg图标大全 https://www.60logo.com/
       erat volutpat.
     </div>
   </foreignObject>
+
 </svg>
 
 ### 模板 pattern
+
 **属性**
+
 - x : 向右偏移模板个数
   - 默认值 : 0
   - 范围 : 0-width
@@ -459,6 +514,7 @@ svg图标大全 https://www.60logo.com/
   - userSpaceOnUse : 数值属性使用绝对定位
 
 **示例**
+
 - pattern内组合图案最大宽高和父元素宽高所成的比例等于width和height时，完美平铺。例如组合图案宽50，父元素宽200，比例是0.25，width也是0.25。
 - pattern比例小时图案被压缩，大时被拉伸。xy上下左右平移  
 <svg width="450" height="200" style="background-color:#6cf">
@@ -487,10 +543,13 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 剪切 clip-path
+
 **属性**
+
 - clip-path : 剪切路径，重叠部分保留
 
 **示例**
+
 - 绘制圆心为(100,100)半径为100的圆，只留(0,0,200,100)这部分  
 <svg style="background-color:#6cf">
   <defs>
@@ -502,10 +561,13 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 遮罩 mask
+
 **元素**
+
 - mask : 指定可见和透明度
 
 **示例**
+
 - 绘制由绿到红的渐变色  
 <svg width="200" height="200">
   <defs>
@@ -522,7 +584,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 超链接 a
+
 **属性**
+
 - href : 链接地址
 - target : 跳转目的地
   - _self : 当前svg(默认)
@@ -532,6 +596,7 @@ svg图标大全 https://www.60logo.com/
   - 指定名称 : 指定iframe框架内
 
 **示例**
+
 - 当前svg
 - 弹窗
 - 当前网页  
@@ -548,10 +613,13 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 定义 defs
+
 **元素**
+
 - defs : 定义图形对象以备后用
 
 **示例**
+
 - 定义一个linearGradient并指定id，使用`url(#id名称)`引用  
 <svg style="background-color:#6cf">
   <defs>
@@ -564,21 +632,27 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 描述 desc、标题title
+
 **元素**
+
 - desc : 描述信息，不显示
 - title : 标题，不显示
 
 **示例**
+
 - 描述信息，不显示  
 - 标题，不显示  
 <svg style="background-color:#6cf">
    <title>这是标题</title>
    <desc>描述：这是一个矩形</desc>
    <rect x="40" y="20" width="100" height="60"/>
+
 </svg>
 
 ### 组 g、复制 use
+
 **元素**
+
 - g : 所有公共属性会被子元素继承
 - use : 复制组
   - x : 中心距离左侧长度
@@ -591,6 +665,7 @@ svg图标大全 https://www.60logo.com/
   - height : 高度(无效)
 
 **示例**
+
 - 所有公共属性被子元素继承
 - 复制了3个圆  
 <svg style="background-color:#6cf">
@@ -613,15 +688,19 @@ svg图标大全 https://www.60logo.com/
   <use x="40" y="120" href="#Port"/>
   <use x="100" y="120" href="#Port" class="classA"/>
   <use x="160" y="120" href="#Port" style="fill: blue;"/>
+
 </svg>
 
 ### 开关 switch
+
 **元素**
-- requiredFeatures : 
-- requiredExtensions : 
+
+- requiredFeatures :
+- requiredExtensions :
 - systemLanguage : 系统语言
 
 **示例**
+
 - 根据系统语言显示不同文字  
 <svg width="100%" viewBox="0 -20 100 30" style="background-color:#6cf">
    <switch>
@@ -640,13 +719,16 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 视图 view
+
 **元素**
+
 - viewBox : 缩放
-- preserveAspectRatio : 
-- zoomAndPan : 
-- viewTarget : 
+- preserveAspectRatio :
+- zoomAndPan :
+- viewTarget :
 
 **示例**
+
 - 缩放图片(无效)  
 <svg style="background-color:#6cf">
   <defs>
@@ -671,13 +753,17 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ## 公共属性
+
 ### 透明度 opacity
+
 **属性**
+
 - opacity : 透明度
   - 默认值 : 1(不透明)
   - 范围 : 0-1
 
 **示例**
+
 - 透明度默认不透明
 - 透明度0.5  
 <svg style="background-color:#6cf">
@@ -686,7 +772,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 填充颜色 fill
+
 **属性**
+
 - fill : 填充颜色
   - 默认值 : #000(黑色)
 - fill-opacity : 填充透明度
@@ -695,6 +783,7 @@ svg图标大全 https://www.60logo.com/
 - fill-rule : 填充规则
 
 **示例**
+
 - 填充颜色默认#000(黑色),透明度默认1(不透明)
 - 填充颜色红色
 - 透明度0.5  
@@ -705,7 +794,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 轮廓 stroke
+
 **属性**
+
 - stroke : 颜色
   - 默认值 : #000(黑色)
 - stroke-width : 宽度
@@ -728,6 +819,7 @@ svg图标大全 https://www.60logo.com/
 - stroke-miterlimit : 斜接长度与长度之比的限制
 
 **示例**
+
 - 颜色默认值#000(黑色)
 - 颜色红色,宽度默认值1(实际为2，透明度为0.5)
 - 宽度10
@@ -770,7 +862,9 @@ svg图标大全 https://www.60logo.com/
 </svg>
 
 ### 转型 transform
+
 **属性**
+
 - translate(x) : 平移(x,0)
 - translate(x,y) : 平移(x,y)
 - rotate(a) : 绕点(0,0)旋转a度
@@ -782,6 +876,7 @@ svg图标大全 https://www.60logo.com/
 - matrix(a,b,c,d,e,f) : 复杂变形
 
 **示例**
+
 - 红色：translate(10)，x坐标平移10单位
 - 黑色：translate(10,40)，x坐标平移10单位，y坐标平移40单位
 - 蓝色：rotate(25)，绕点(0,0)旋转25度

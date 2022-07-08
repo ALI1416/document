@@ -1,17 +1,22 @@
 # git
 
 ## 全局设置
+
 ### 设置姓名和邮箱
+
 ```bat
 git config --global user.name "ALI"
 git config --global user.email "1416978277@qq.com"
 ```
+
 ### 使用https替代git来获取资源
+
 ```bat
 git config --global url."https://".insteadOf git://
 ```
 
 ## 常用命令
+
 | 命令          | 示例                                                 | 解释                             |
 | ------------- | ---------------------------------------------------- | -------------------------------- |
 | init          | git init                                             | 初始化为git项目                  |
@@ -48,15 +53,21 @@ git config --global url."https://".insteadOf git://
 | merge         | git merge dev                                        | 将dev分支合并到当前分支          |
 
 ## 特殊操作
+
 ### 删除已提交的文件
+
 删除所有版本里的`node_modules`文件夹
+
 ```sh
 git filter-branch -f --prune-empty --index-filter "git rm --cached --ignore-unmatch -fr ./node_modules" -- --all
 ```
 
 ### 修改已提交的用户名和邮箱
+
 #### 分别修改所有用户名和邮箱
+
 分别为作者名和邮箱、推送者名和邮箱
+
 ```bat
 git filter-branch -f --env-filter "GIT_AUTHOR_NAME=ALI" -- --all
 git filter-branch -f --env-filter "GIT_AUTHOR_EMAIL=1416978277@qq.com" -- --all
@@ -65,7 +76,9 @@ git filter-branch -f --env-filter "GIT_COMMITTER_EMAIL=1416978277@qq.com" -- --a
 ```
 
 #### 修改所有用户名和邮箱
+
 保存为文件`update.sh`，运行`bash update.sh`
+
 ```sh
 #!/bin/sh
 git filter-branch --env-filter '
@@ -79,7 +92,9 @@ export GIT_COMMITTER_EMAIL="$NEW_EMAIL"
 ```
 
 #### 替换指定用户名和邮箱
+
 保存为文件`update.sh`，运行`bash update.sh`
+
 ```sh
 #!/bin/sh
 git filter-branch --env-filter '
