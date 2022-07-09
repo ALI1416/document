@@ -5,4 +5,4 @@
 ( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process """%~f0""" -Verb RunAs )&&( exit )
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-schtasks /create /sc onlogon /tn radar /tr """%~dp0radar.exe""" /rl highest
+schtasks /create /sc onlogon /tn radar /tr "'%~dp0radar.exe'" /rl highest
