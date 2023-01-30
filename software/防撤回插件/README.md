@@ -2,4 +2,4 @@
 
 当前版本号： 1.6
 
-下载地址： https://github.com/huiyadanli/RevokeMsgPatcher
+下载地址： <https://github.com/huiyadanli/RevokeMsgPatcher>
