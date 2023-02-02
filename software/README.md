@@ -65,6 +65,7 @@
   - <https://weishi.360.cn/>
 - `360极速浏览器X`
   - <https://browser.360.cn/ee/>
+  - Tampermonkey插件<https://ext.chrome.360.cn/csex_web/index.html#/details?crx_id=dhdgffkkebhmkfjojejmpbldmpobfkfo>
 - `QQ`
   - <https://im.qq.com/pcqq>
 - `微信`
