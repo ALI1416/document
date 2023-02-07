@@ -51,9 +51,7 @@
 
 ## 打包下载
 
-1. 阿里云盘 <https://www.aliyundrive.com/s/JSqq7tgLvgK>
-2. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
-3. 百度网盘 <https://pan.baidu.com/s/19jzS-u2LhRGBn4L0KKIP3g> 提取码：8888
+1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
 
 ## 网站
 

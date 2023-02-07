@@ -41,7 +41,7 @@ git clone git@gitee.com:ALI1416/python.git
 git clone git@gitee.com:ALI1416/cpp.git
 ```
 
-## StudyNotes(8)
+## StudyNotes(12)
 
 ```sh
 git clone git@gitee.com:ALI1416/document.git
@@ -50,6 +50,10 @@ git clone git@gitee.com:ALI1416/cloud-demo.git
 git clone git@gitee.com:ALI1416/springboot-api-demo.git
 git clone git@gitee.com:ALI1416/vue-test.git
 git clone git@gitee.com:ALI1416/vue3-demo.git
+git clone git@gitee.com:ALI1416/canvas-demo.git
+git clone git@gitee.com:ALI1416/threejs-demo.git
+git clone git@gitee.com:ALI1416/c-test.git
+git clone git@gitee.com:ALI1416/c-console-demo.git
 git clone git@gitee.com:ALI1416/scm.git
 git clone git@gitee.com:ALI1416/himalaya.git
 ```
@@ -61,10 +65,9 @@ git clone git@gitee.com:ALI1416/svg-digit-num-generate-vue.git
 git clone git@gitee.com:ALI1416/cy.git
 ```
 
-## Fork(2)
+## Fork(1)
 
 ```sh
-git clone git@gitee.com:ALI1416/gitee-readme-stats.git
 git clone git@gitee.com:ALI1416/pure-admin-thin.git
 ```
 
