@@ -4,6 +4,6 @@ Windows Registry Editor Version 5.00
 ; GitHub:https://github.com/ali1416
 ; Version:1.0
 
-; 创建快捷方式去掉后缀
+; 创建快捷方式去掉`快捷方式`后缀
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
