@@ -1,3 +1,8 @@
+@echo off
+@REM Author:ALI
+@REM GitHub:https://github.com/ali1416
+@REM Version:1.0
+
 @REM 关闭指定端口进程
 setLocal enableDelayedExpansion
 @REM 下面port修改端口号

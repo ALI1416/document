@@ -48,8 +48,8 @@ git config --global url."https://".insteadOf git://
 | branch        | git branch a                                         | 新建分支                         |
 | branch -d     | git branch -d a                                      | 删除分支                         |
 | branch -D     | git branch -D a                                      | 强制删除分支                     |
-| checkout      | git chechout a                                       | 切换分支                         |
-| chechout -b   | git chechout -b a                                    | 创建分支并切换过去               |
+| checkout      | git checkout a                                       | 切换分支                         |
+| checkout -b   | git checkout -b a                                    | 创建分支并切换过去               |
 | merge         | git merge dev                                        | 将dev分支合并到当前分支          |
 
 ## 特殊操作

@@ -1,3 +1,8 @@
+@echo off
+@REM Author:ALI
+@REM GitHub:https://github.com/ali1416
+@REM Version:1.0
+
 @REM 代理222.186.139.72:5009到127.0.0.1:445
 netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=445 connectaddress=222.186.139.72 connectport=5009
 
