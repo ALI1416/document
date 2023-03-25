@@ -1,14 +1,11 @@
 # document 学习文档
 
-## 项目链接
+[![License](https://img.shields.io/github/license/ali1416/document?label=License)](https://opensource.org/licenses/BSD-3-Clause)
+[![Repo Size](https://img.shields.io/github/repo-size/ali1416/document?label=Repo%20Size&color=success)](https://github.com/ALI1416/document/archive/refs/heads/master.zip)
 
-[Github](https://github.com/ALI1416/document)
+## 简介
 
-[Gitee](https://gitee.com/ALI1416/document)
-
-## 许可证
-
-[![License](https://img.shields.io/badge/license-BSD-brightgreen)](https://opensource.org/licenses/BSD-3-Clause)
+学习文档
 
 ## 交流
 
