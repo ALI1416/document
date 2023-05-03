@@ -39,6 +39,8 @@
   - `ed2k://|file|cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso|2144010240|3BB6E1FB513204D8D2C6991B14B35D9B|/`
 - deepin
   - <https://www.deepin.org/zh/download/>
+- openmediavault_6.0.24-amd64.iso
+  - <https://www.openmediavault.org/download.html>
 
 ### `Office` 办公软件
 
@@ -59,6 +61,10 @@
 
 - `Snipaste` 截图工具
   - <https://zh.snipaste.com/>
+- `FreeFileSync` 文件同步
+  - <https://freefilesync.org/download.php>
+- `syncthing` 网络文件同步
+  - <https://syncthing.net/downloads/>
 - `Adobe` 破解版
   - <https://www.weibo.com/vposy>
 - `360`
@@ -85,7 +91,6 @@
   - 去广告版<https://www.ghxi.com/2345pic.html>
 - `阿里云盘`
   - <https://www.aliyundrive.com/>
-  - 小白羊版<https://github.com/liupan1890/aliyunpan/>
 - `百度网盘`
   - <https://pan.baidu.com/download>
   - 去广告版<https://www.ghxi.com/pcbdwp.html>
@@ -99,8 +104,6 @@
   - <https://www.i4.cn/>
 - `谷歌浏览器`
   - <https://www.google.cn/chrome/?standalone=1&platform=win64>
-- `Synology Drive Client` 群晖同步
-  - <https://www.synology.cn/zh-cn/support/download/DS918+#utilities>
 - `飞鸽传书`
   - <http://www.ipmsg.org.cn/home/index/download>
 
@@ -152,7 +155,7 @@
   - <http://www.pcgeshi.com/>
 - `Waifu2x-Extension-GUI` 图片、视频放大
   - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
-- `genymotion` 安卓高级模拟器
+- `genymotion` 安卓模拟器
   - <https://www.genymotion.com/download/>
 - `RaiDrive` 网盘映射
   - <http://www.raidrive.com/download>
@@ -294,7 +297,7 @@
   - <https://tika.apache.org/download.html>
 - `unlock-music` 音乐解码
   - <https://demo.unlock-music.dev/>
-  - 源码<https://github.com/unlock-music/unlock-music>
+  - 源码<https://git.unlock-music.dev/um/web>
 
 ## `Software-4-patch` 补丁软件
 
