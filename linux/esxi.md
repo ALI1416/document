@@ -38,3 +38,12 @@
     - 第二行: 使用`echo`命令在`/var/spool/cron/crontabs/root`文件中追加我们要设置的计划任务的命令
     - 第三行: 重启crond进程
   - 保存更改: `auto-backup.sh`(直接执行)
+
+## 硬盘直通
+
+1. 储存-数据储存-记录下`datastore1`的`位置`为`/vmfs/volumes/60c36517-4707e614-d0f0-7085c279011c`
+2. 储存-设备-记录下要直通硬盘的`路径`为`/vmfs/devices/disks/t10.ATA_____ST4000VN0082D2DR166__________________________________ZGY9BBHC`
+3. 主机-操作-服务-启用安全Shell(SSH)
+4. 使用ssh去连接esxi
+5. 执行命令`vmkfstools -z <直通硬盘的路径> <保存硬盘的位置>/<VMDK名字>.vmdk`
+6. 例如`vmkfstools -z /vmfs/devices/disks/t10.ATA_____ST4000VN0082D2DR166__________________________________ZGY9BBHC /vmfs/volumes/60c36517-4707e614-d0f0-7085c279011c/omv4t.vmdk`

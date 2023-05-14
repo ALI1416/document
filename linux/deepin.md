@@ -12,9 +12,28 @@
 
 ### 安装软件
 
-- xrdp: `apt install xrdp`
 - ssh: `apt install openssh-server`
+- xrdp: `apt install xrdp`
 - docker: `apt install docker-ce`
+
+#### ssh
+
+1. 已经默认安装了，但是没有启动和开机自启
+2. 启动：`systemctl start ssh`
+3. 开机自启：`systemctl enable ssh`
+
+#### xrdp
+
+1. 开机自启：`systemctl enable xrdp`
+2. 远程连接会黑屏，使用以下操作
+3. 添加到用户组`sudo adduser xrdp ssl-cert`
+4. 修改配置文件`/etc/xrdp/startwm.sh`，在`fi`后，`if test -r /etc/profile; then`前（在文件尾部），加上以下配置
+
+   ```ini
+   unset DBUS_SESSION_BUS_ADDRESS
+   unset XDG_RUNTIME_DIR
+   .$ HOME/.profile
+   ```
 
 ### 启动
 

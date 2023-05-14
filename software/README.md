@@ -37,10 +37,14 @@
 - Microsoft Hyper-V Server 2012 R2 (x64) - DVD (Chinese-Simplified)
   - cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso
   - `ed2k://|file|cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso|2144010240|3BB6E1FB513204D8D2C6991B14B35D9B|/`
+- esxi
+  - <https://customerconnect.vmware.com/cn/evalcenter?p=free-esxi8>
+- ikuai
+  - <https://www.ikuai8.com/component/download>
+- openmediavault
+  - <https://www.openmediavault.org/download.html>
 - deepin
   - <https://www.deepin.org/zh/download/>
-- openmediavault_6.0.24-amd64.iso
-  - <https://www.openmediavault.org/download.html>
 
 ### `Office` 办公软件
 
