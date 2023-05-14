@@ -14,6 +14,7 @@
 
 - ssh: `apt install openssh-server`
 - xrdp: `apt install xrdp`
+- ftp: `apt install vsftpd`
 - docker: `apt install docker-ce`
 
 #### ssh
