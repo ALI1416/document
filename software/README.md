@@ -41,10 +41,11 @@
   - <https://customerconnect.vmware.com/cn/evalcenter?p=free-esxi8>
 - ikuai
   - <https://www.ikuai8.com/component/download>
-- openmediavault
-  - <https://www.openmediavault.org/download.html>
 - deepin
   - <https://www.deepin.org/zh/download/>
+- 群晖
+  - arpl<https://github.com/fbelavenuto/arpl>
+  - DSM<https://archive.synology.cn/download/Os/DSM>
 
 ### `Office` 办公软件
 
@@ -283,6 +284,7 @@
   - <https://github.com/rabbitmq/rabbitmq-server/releases>
 - `apache-tomcat`
   - <https://tomcat.apache.org/whichversion.html>
+  - 8.0.53<https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53-windows-x64.zip>
 - `minio`
   - <https://min.io/download>
 - `mongodb`

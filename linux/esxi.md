@@ -46,4 +46,4 @@
 3. 主机-操作-服务-启用安全Shell(SSH)
 4. 使用ssh去连接esxi
 5. 执行命令`vmkfstools -z <直通硬盘的路径> <保存硬盘的位置>/<VMDK名字>.vmdk`
-6. 例如`vmkfstools -z /vmfs/devices/disks/t10.ATA_____ST4000VN0082D2DR166__________________________________ZGY9BBHC /vmfs/volumes/60c36517-4707e614-d0f0-7085c279011c/omv4t.vmdk`
+6. 例如`vmkfstools -z /vmfs/devices/disks/t10.ATA_____ST4000VN0082D2DR166__________________________________ZGY9BBHC /vmfs/volumes/60c36517-4707e614-d0f0-7085c279011c/disk4t.vmdk`

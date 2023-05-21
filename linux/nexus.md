@@ -2,7 +2,7 @@
 
 ## docker安装过程
 
-- 查找镜像: `docker search xxx`
+- 查找镜像: `docker search sonatype/nexus3`
 - 安装镜像: `docker pull sonatype/nexus3`
 - 创建目录: `mkdir -p /data/nexus/data`
 - 设置目录权限: `chmod 777 -R /data/nexus/data`
@@ -17,7 +17,9 @@
 
 ## 查找初始密码
 
-默认位置: `/data/nexus/data/admin.password`
+- 查看容器id： `docker ps`
+- 进入容器： `docker exec -it 容器id bash`
+- 查看密码: `cat sonatype-work/nexus3/admin.password`
 
 ## 新增代理
 
@@ -26,7 +28,10 @@
 - Repositories
 - Create repository
 - maven2 (proxy)
-- 填写内容
+- 新增华为云代理
+  - Name: maven-huawei
+  - Remote storage: <https://mirrors.huaweicloud.com/repository/maven/>
+- 新增阿里云代理
   - Name: maven-aliyun
   - Remote storage: <https://maven.aliyun.com/repository/public>
 
@@ -35,7 +40,7 @@
 - maven-public
 - Group
 - Member repositories
-- 把maven-aliyun添加进去并移动到顶部
+- 把maven-huawei和maven-aliyun添加进去并移动到顶部
 
 ## 仓库地址
 
