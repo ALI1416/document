@@ -34,6 +34,7 @@ git config --global url."https://".insteadOf git://
 | push          | git push origin master --force                       | 强制推送到远端(危险)             |
 | pull          | git pull                                             | 从远端拉取项目并合并             |
 | fetch         | git fetch                                            | 从远端拉取项目并覆盖             |
+| fetch origin  | git fetch origin                                     | 从远端拉取所有分支               |
 | reset         | git reset --hard origin/master                       | 替换本地改动                     |
 | log           | git log                                              | 查看日志                         |
 | log           | git log README.md                                    | 查看指定文件的日志               |
@@ -50,6 +51,7 @@ git config --global url."https://".insteadOf git://
 | branch -D     | git branch -D a                                      | 强制删除分支                     |
 | checkout      | git checkout a                                       | 切换分支                         |
 | checkout -b   | git checkout -b a                                    | 创建分支并切换过去               |
+| checkout -b   | git checkout -b a origin/a                           | 从远端拉取a分支                  |
 | merge         | git merge dev                                        | 将dev分支合并到当前分支          |
 
 ## 特殊操作

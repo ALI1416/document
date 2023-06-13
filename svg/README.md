@@ -358,29 +358,7 @@ svg图标大全 <https://www.60logo.com/>
 
 - 水平线性渐变：使用css显示
 - 垂直线性渐变：使用svg显示  
-<svg style="background-color:#6cf">
-  <defs>
-    <style>
-      #rect1 { fill: url(#Gradient1); }
-      .stop1 { stop-color: red; }
-      .stop2 { stop-color: black; stop-opacity: 0; }
-      .stop3 { stop-color: blue; }
-    </style>
-    <linearGradient id="Gradient1">
-      <stop class="stop1" offset="0%"/>
-      <stop class="stop2" offset="50%"/>
-      <stop class="stop3" offset="100%"/>
-    </linearGradient>
-    <linearGradient id="Gradient2" x1="1" x2="0" y1="0" y2="0">
-      <stop offset="0%" stop-color="red"/>
-      <stop offset="50%" stop-color="black" stop-opacity="0"/>
-      <stop offset="100%" stop-color="blue"/>
-    </linearGradient>
-  </defs>
-  <rect id="rect1" x="20" y="20" rx="15" ry="15" width="100" height="100"/>
-  <rect x="180" y="20" rx="15" ry="15" width="100" height="100" fill="url(#Gradient2)"/>
-
-</svg>
+![linearGradient](./img//linearGradient.svg)
 
 ### 径向渐变 radialGradient
 
@@ -641,7 +619,8 @@ svg图标大全 <https://www.60logo.com/>
 **示例**
 
 - 描述信息，不显示  
-- 标题，不显示  
+- 标题，不显示
+
 <svg style="background-color:#6cf">
    <title>这是标题</title>
    <desc>描述：这是一个矩形</desc>
@@ -667,7 +646,8 @@ svg图标大全 <https://www.60logo.com/>
 **示例**
 
 - 所有公共属性被子元素继承
-- 复制了3个圆  
+- 复制了3个圆
+
 <svg style="background-color:#6cf">
   <style>
     .classA {
@@ -729,28 +709,8 @@ svg图标大全 <https://www.60logo.com/>
 
 **示例**
 
-- 缩放图片(无效)  
-<svg style="background-color:#6cf">
-  <defs>
-    <radialGradient id="viewGradient">
-      <stop offset="0%" stop-color="#8cffa0"/>
-      <stop offset="100%" stop-color="#8ca0ff"/>
-    </radialGradient>
-  </defs>
-  <circle r="50" cx="180" cy="50" style="fill:url(#viewGradient)"/>
-  <view id="halfSizeView" viewBox="0 0 1200 400"/>
-  <view id="normalSizeView" viewBox="0 0 600 200"/>
-  <view id="doubleSizeView" viewBox="0 0 300 100"/>
-  <a xlink:href="#halfSizeView">
-    <text x="5" y="20" font-size="20">half size</text>
-  </a>
-  <a xlink:href="#normalSizeView">
-    <text x="5" y="40" font-size="20">normal size</text>
-  </a>
-  <a xlink:href="#doubleSizeView">
-    <text x="5" y="60" font-size="20">double size</text>
-  </a>
-</svg>
+- 缩放图片(浏览器打开)  
+![view](./img/view.svg)
 
 ## 公共属性
 

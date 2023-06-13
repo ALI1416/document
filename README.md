@@ -1,20 +1,17 @@
 # document 学习文档
 
-[![License](https://img.shields.io/github/license/ali1416/document?label=License)](https://opensource.org/licenses/BSD-3-Clause)
-[![Repo Size](https://img.shields.io/github/repo-size/ali1416/document?label=Repo%20Size&color=success)](https://github.com/ALI1416/document/archive/refs/heads/master.zip)
+[![License](https://img.shields.io/github/license/ALI1416/document?label=License)](https://opensource.org/licenses/BSD-3-Clause)
+[![Repo Size](https://img.shields.io/github/repo-size/ALI1416/document?label=Repo%20Size&color=success)](https://github.com/ALI1416/document/archive/refs/heads/master.zip)
 
 ## 简介
 
 学习文档
 
-## 交流
+## 关于
 
-- [x] QQ：`1416978277`
-- [x] 微信：`1416978277`
-- [x] 支付宝：`1416978277@qq.com`
-
-![交流](https://cdn.jsdelivr.net/gh/ALI1416/ALI1416/image/contact.png)
-
-## 赞助
-
-![赞助](https://cdn.jsdelivr.net/gh/ALI1416/ALI1416/image/donate.png)
+<object data="https://404z.cn/images/about.svg" style="max-width:100%;">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://404z.cn/images/about.dark.svg">
+    <img alt="About" src="https://404z.cn/images/about.light.svg">
+  </picture>
+</object>
