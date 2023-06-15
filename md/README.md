@@ -378,9 +378,9 @@ ___粗斜体文本，三下划线`___`包围___(不推荐)
 格式：`[![无效图片显示文字](图片本地地址或网络地址 "鼠标放图片上显示的文字")](跳转链接)`，例如：
 
 ```md
-[![License](https://img.shields.io/github/license/ali1416/id?label=License)](https://opensource.org/licenses/BSD-3-Clause)
+[![License](https://img.shields.io/github/license/ALI1416/id?label=License)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 ```
 
 示例：
 
-[![License](https://img.shields.io/github/license/ali1416/id?label=License)](https://opensource.org/licenses/BSD-3-Clause)
+[![License](https://img.shields.io/github/license/ALI1416/id?label=License)](https://www.apache.org/licenses/LICENSE-2.0.txt)
