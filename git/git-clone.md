@@ -66,10 +66,10 @@ git clone git@gitee.com:ALI1416/python-code.git
 ## 其他
 
 ```sh
-git clone git@gitee.com:cn404z/.github.git
+git clone git@github.com:cn404z/.github.git
+git clone git@github.com:ALI1416/github-readme-stats.git
 git clone git@gitee.com:cn404z/github.git
 git clone git@gitee.com:ALI1416/cy.git
-git clone git@gitee.com:ALI1416/github-readme-stats.git
 git clone git@gitee.com:ALI1241/ALI1241.git
 git clone git@gitee.com:ALI1241/springboot-test.git
 git clone git@gitee.com:ALI1241/springboot-demo.git
