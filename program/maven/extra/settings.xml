@@ -155,17 +155,17 @@ under the License.
       <name>aliyun maven</name>
       <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
+    <mirror>
+      <id>huaweicloudMaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>huaweicloud maven</name>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+    </mirror>
     <!-- <mirror>
       <id>intranetNexus</id>
       <mirrorOf>*</mirrorOf>
       <name>intranet nexus</name>
       <url>http://192.168.2.102:8081/repository/maven-public/</url>
-    </mirror> -->
-    <!-- <mirror>
-      <id>companyIntranetNexus</id>
-      <mirrorOf>*</mirrorOf>
-      <name>company intranet nexus</name>
-      <url>http://192.168.18.248:8081/repository/maven-public/</url>
     </mirror> -->
     <!-- mirror
      | Specifies a repository mirror site to use instead of a given repository. The repository that

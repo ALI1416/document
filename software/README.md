@@ -218,7 +218,7 @@
 
 - `dev-sidecar` GitHub加速
   - <https://github.com/docmirror/dev-sidecar/releases>
-  - 迅雷下载`1.7.3`版<https://github.com/docmirror/dev-sidecar/releases/download/v1.7.3/DevSidecar-1.7.3.exe>
+  - `1.7.3`<https://github.com/docmirror/dev-sidecar/releases/download/v1.7.3/DevSidecar-1.7.3.exe>
 - `jdk`
   - <https://www.oracle.com/java/technologies/downloads/#java8>
 - `git`
@@ -235,6 +235,7 @@
   - <https://www.jetbrains.com/idea/download/#section=windows>
 - `navicat` SQL客户端
   - <https://www.navicat.com.cn/download/navicat-premium>
+  - `16.0.14`<https://download.navicat.com.cn/download/navicat160_premium_cs_x64.exe>
 - `anotherRedisDesktopManager` Redis客户端
   - <https://gitee.com/qishibo/AnotherRedisDesktopManager>
 - `node`
@@ -285,7 +286,7 @@
   - <https://github.com/rabbitmq/rabbitmq-server/releases>
 - `apache-tomcat`
   - <https://tomcat.apache.org/whichversion.html>
-  - 8.0.53<https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53-windows-x64.zip>
+  - `8.0.53`<https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53-windows-x64.zip>
 - `minio`
   - <https://min.io/download>
 - `mongodb`

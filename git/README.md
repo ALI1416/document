@@ -4,14 +4,14 @@
 
 ### 设置姓名和邮箱
 
-```bat
+```sh
 git config --global user.name "ALI"
 git config --global user.email "1416978277@qq.com"
 ```
 
 ### 使用https替代git来获取资源
 
-```bat
+```sh
 git config --global url."https://".insteadOf git://
 ```
 
