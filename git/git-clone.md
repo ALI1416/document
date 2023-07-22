@@ -1,6 +1,6 @@
 # git仓库
 
-## Release(13) 已发布的项目
+## Release(16) 已发布的项目
 
 ```sh
 git clone git@gitee.com:ALI1416/QRCodeEncoder.Net.git
@@ -18,6 +18,7 @@ git clone git@gitee.com:ALI1416/qrcode-encoder.git
 git clone git@gitee.com:ALI1416/qrcode-encoder-js.git
 git clone git@gitee.com:ALI1416/snk.git
 git clone git@gitee.com:ALI1416/svg-digit-num-generate-vue.git
+git clone git@gitee.com:ALI1416/tiny-token.git
 ```
 
 ## Notes(14) 笔记
@@ -67,8 +68,8 @@ git clone git@gitee.com:ALI1416/python-code.git
 
 ```sh
 git clone git@github.com:cn404z/.github.git
-git clone git@github.com:ALI1416/github-readme-stats.git
 git clone git@gitee.com:cn404z/github.git
+git clone git@github.com:ALI1416/github-readme-stats.git
 git clone git@gitee.com:ALI1416/cy.git
 git clone git@gitee.com:ALI1241/ALI1241.git
 git clone git@gitee.com:ALI1241/springboot-test.git
