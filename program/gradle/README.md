@@ -30,15 +30,10 @@
             // 本地仓库
             mavenLocal()
             // 私有仓库内网
-    //        maven {
-    //            url "http://192.168.2.102:8081/repository/maven-public/"
-    //            allowInsecureProtocol true
-    //        }
-            // 公司私有仓库外网
-    //        maven {
-    //            url "http://192.168.18.248:8081/repository/maven-public/"
-    //            allowInsecureProtocol true
-    //        }
+            // maven {
+            //     url "http://192.168.2.102:8081/repository/maven-public/"
+            //     allowInsecureProtocol true
+            // }
             // 阿里云仓库
             maven { url "https://maven.aliyun.com/repository/public" }
             // central仓库

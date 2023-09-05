@@ -108,7 +108,6 @@ under the License.
    | Authentication profiles can be used whenever maven must make a connection to a remote server.
    |-->
   <servers>
-    <!-- 项目发布到Maven(sonatype仓库)教程 http://www.imcoder.fun/archives/1583402240367 -->
     <server>
       <id>ossrh</id>
       <username>ALI141</username>
@@ -149,24 +148,6 @@ under the License.
    | server for that repository.
    |-->
   <mirrors>
-    <mirror>
-      <id>aliyunMaven</id>
-      <mirrorOf>*</mirrorOf>
-      <name>aliyun maven</name>
-      <url>https://maven.aliyun.com/repository/public</url>
-    </mirror>
-    <mirror>
-      <id>huaweicloudMaven</id>
-      <mirrorOf>*</mirrorOf>
-      <name>huaweicloud maven</name>
-      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
-    </mirror>
-    <!-- <mirror>
-      <id>intranetNexus</id>
-      <mirrorOf>*</mirrorOf>
-      <name>intranet nexus</name>
-      <url>http://192.168.2.102:8081/repository/maven-public/</url>
-    </mirror> -->
     <!-- mirror
      | Specifies a repository mirror site to use instead of a given repository. The repository that
      | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
@@ -179,6 +160,24 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
+    <!-- <mirror>
+      <id>intranetNexus</id>
+      <mirrorOf>*</mirrorOf>
+      <name>intranet nexus</name>
+      <url>http://192.168.2.102:8081/repository/maven-public/</url>
+    </mirror> -->
+    <mirror>
+      <id>huaweiCloudMaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>huaweiCloud maven</name>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+    </mirror>
+    <mirror>
+      <id>aliyunMaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>aliyun maven</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
   </mirrors>
 
   <!-- profiles
