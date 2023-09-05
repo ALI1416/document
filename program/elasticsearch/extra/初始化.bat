@@ -31,14 +31,22 @@ xcopy ..\..\jdk jdk /s /i /y
 xcopy ..\..\lib lib /s /i /y
 xcopy ..\..\modules modules /s /i /y
 xcopy ..\..\plugins plugins /s /i /y
-echo 正在调整占用内存为2g，请稍后...
+echo 正在调整占用内存，请稍后...
 
-echo -Xms2g>> config\jvm.options
-echo -Xmx2g>> config\jvm.options
+echo -Xms512m>> config\jvm.options
+echo -Xmx512m>> config\jvm.options
 echo 正在启用跨域，请稍后...
 
 echo http.cors.enabled: true>> config\elasticsearch.yml
 echo http.cors.allow-origin: "*">> config\elasticsearch.yml
+echo network.host: 0.0.0.0>> config\elasticsearch.yml
+echo discovery.seed_hosts: ["0.0.0.0", "[::0]"]>> config\elasticsearch.yml
+echo 正在关闭账号密码访问，请稍后...
+
+echo xpack.security.enabled: false>> config\elasticsearch.yml
+echo 正在关闭SSL验证，请稍后...
+
+echo xpack.security.http.ssl.enabled: false>> config\elasticsearch.yml
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe

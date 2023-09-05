@@ -21,6 +21,6 @@
 ## 网站
 
 1. 项目地址 <https://gitee.com/ALI1416/document/tree/master/program/radar>
-2. 个人网站 <http://404z.cn>
+2. 个人网站 <https://www.404z.cn>
 3. GitHub <https://github.com/ALI1416>
 4. Gitee <https://gitee.com/ALI1416>

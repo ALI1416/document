@@ -56,7 +56,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 开启ElasticSearchHead服务【隐藏窗口运行】
 echo.
-extra\hideWindow "%~dp0extra\startESHead"
+extra\hideWindow "%~dp0extra\startElasticSearchHead"
 goto begin
 
 :e2
@@ -98,14 +98,14 @@ goto begin
 echo.
 echo   [3] 开启ElasticSearchHead服务
 echo.
-start extra\startESHead
+start extra\startElasticSearchHead
 goto begin
 
 :e4
 echo.
 echo   [4] 开启ElasticSearchHead服务开机自启
 echo.
-call extra\startUp add current elasticSearchHead "%~dp0extra\hideWindow" """%~dp0extra\startESHead"""
+call extra\startUp add current elasticSearchHead "%~dp0extra\hideWindow" """%~dp0extra\startElasticSearchHead"""
 goto begin
 
 :e5
@@ -135,7 +135,7 @@ goto begin
 echo.
 echo   [Y] 创建ElasticSearchHead启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ESHead "%~f0" "" "%~dp0extra\elastic.ico"
+call extra\createShortcut Desktop ElasticSearchHead "%~f0" "" "%~dp0extra\elastic.ico"
 goto begin
 
 :e0

@@ -213,6 +213,8 @@
 - `Duplicate Cleaner` 文件去重
   - <https://www.ittel.cn/archives/8553.html>
   - 原版<https://www.duplicatecleaner.com/>
+- `Advanced Port Scanner` IP端口扫描
+  - <https://www.advanced-port-scanner.com/cn/>
 
 ## `Software-3-programmer` 程序员软件
 

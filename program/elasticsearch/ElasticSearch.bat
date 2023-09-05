@@ -124,7 +124,7 @@ goto begin
 echo.
 echo   [Y] 创建ElasticSearch启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ES "%~f0" "" "%~dp0extra\elastic-search.ico"
+call extra\createShortcut Desktop ElasticSearch "%~f0" "" "%~dp0extra\elastic-search.ico"
 goto begin
 
 :ez
