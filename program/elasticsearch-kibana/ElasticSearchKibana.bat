@@ -34,7 +34,7 @@ echo   [8] 用浏览器打开Kibana管理页面http://localhost:5601
 
 echo   --------------------
 
-echo   [Y] 创建ESKibana启动界面快捷方式到桌面
+echo   [Y] 创建ElasticSearchKibana启动界面快捷方式到桌面
 
 echo   [Z] 获取管理员权限
 
@@ -133,9 +133,9 @@ goto begin
 
 :ey
 echo.
-echo   [Y] 创建ESKibana启动界面快捷方式到桌面
+echo   [Y] 创建ElasticSearchKibana启动界面快捷方式到桌面
 echo.
-call extra\createShortcut Desktop ESKibana "%~f0" "" "%~dp0extra\elastic-kibana.ico"
+call extra\createShortcut Desktop ElasticSearchKibana "%~f0" "" "%~dp0extra\elastic-kibana.ico"
 goto begin
 
 :ez

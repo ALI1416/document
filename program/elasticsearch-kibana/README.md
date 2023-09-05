@@ -13,7 +13,7 @@
 
 ## 运行
 
-1. 双击`ESKibana.bat`文件
+1. 双击`ElasticSearchKibana.bat`文件
 2. 运行示例  
 ![运行示例](img/运行示例.jpg)
 
