@@ -19,13 +19,12 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-copy ..\..\EventLog.dll
+copy ..\..\redis.conf
 copy ..\..\redis-benchmark.exe
 copy ..\..\redis-check-aof.exe
 copy ..\..\redis-check-rdb.exe
 copy ..\..\redis-cli.exe
 copy ..\..\redis-server.exe
-copy ..\..\redis.windows.conf redis.conf
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe

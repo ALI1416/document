@@ -15,12 +15,12 @@ choice /c yn /m "确定初始化吗？"
 if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto end
-
+ 
 :e1
 md bin
 pushd bin
-copy ..\..\libcrypto-1_1-x64.dll
-copy ..\..\libssl-1_1-x64.dll
+copy ..\..\libcrypto-3-x64.dll
+copy ..\..\libssl-3-x64.dll
 copy ..\..\mosquitto.conf
 copy ..\..\mosquitto.dll
 copy ..\..\mosquitto.exe

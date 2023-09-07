@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://dev.mysql.com/downloads/mysql/> 版本选择`Windows (x86, 64-bit), ZIP Archive`，名称应为`mysql-8.0.26-winx64.zip`，解压后文件夹名称应为`mysql-8.0.26-winx64`
-2. 快速下载地址 <https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.26-winx64.zip> 版本号参考 <https://downloads.mysql.com/archives/community/>
+1. 下载地址 <https://dev.mysql.com/downloads/mysql/> 版本选择`Windows (x86, 64-bit), ZIP Archive`，名称应为`mysql-8.1.0-winx64.zip`，解压后文件夹名称应为`mysql-8.1.0-winx64`
+2. 快速下载地址 <https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.1.0-winx64.zip> 版本号参考 <https://downloads.mysql.com/archives/community/>
 
 ## 初始化
 
-1. 把本压缩包解压到`mysql-8.0.26-winx64`文件夹内，如图所示：  
+1. 把本压缩包解压到`mysql-8.1.0-winx64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -20,8 +20,8 @@
 ## 提示
 
 1. 跨域、用户、角色、权限和密码  
-   数据库内设置
-2. MySQL配置文件示例：[extra/my.ini](extra/my.ini)
+数据库内设置
+1. MySQL配置文件示例：[extra/my.ini](extra/my.ini)
 
 ## 注意
 

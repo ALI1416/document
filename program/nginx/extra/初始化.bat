@@ -22,7 +22,7 @@ pushd bin
 md conf
 md contrib
 md html
-copy ..\extra\favicon.ico html
+copy ..\extra\nginx.ico html\favicon.ico
 copy ..\..\nginx.exe
 xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\contrib contrib /s /i /y

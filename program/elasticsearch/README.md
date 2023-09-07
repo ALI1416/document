@@ -29,36 +29,36 @@
 ## 提示
 
 1. 调整占用内存  
-   编辑`config\jvm.options`文件，在尾部添加以下两行
+编辑`config\jvm.options`文件，在尾部添加以下两行
 
-   ```yml
-   -Xms512m
-   -Xmx512m
-   ```
+```yml
+-Xms512m
+-Xmx512m
+```
 
-2. 启用跨域  
-   编辑`config\elasticsearch.yml`，在尾部添加以下两行
+1. 启用跨域  
+编辑`config\elasticsearch.yml`，在尾部添加以下两行
 
-   ```yml
-   http.cors.enabled: true
-   http.cors.allow-origin: "*"
-   network.host: 0.0.0.0
-   discovery.seed_hosts: ["0.0.0.0", "[::0]"]
-   ```
+```yml
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+network.host: 0.0.0.0
+discovery.seed_hosts: ["0.0.0.0", "[::0]"]
+```
 
 3. 关闭账号密码访问  
-   编辑`config\elasticsearch.yml`，在尾部添加以下两行
+编辑`config\elasticsearch.yml`，在尾部添加以下两行
 
-   ```yml
-   xpack.security.enabled: false
-   ```
+```yml
+xpack.security.enabled: false
+```
 
 4. 关闭SSL验证  
-   编辑`config\elasticsearch.yml`，在尾部添加以下两行
+编辑`config\elasticsearch.yml`，在尾部添加以下两行
 
-   ```yml
-   xpack.security.http.ssl.enabled: false
-   ```
+```yml
+xpack.security.http.ssl.enabled: false
+```
 
 ## 打包下载
 

@@ -23,9 +23,9 @@ md bin
 md lib\plugin
 md share
 copy ..\extra\my.ini
-copy ..\..\bin\libcrypto-1_1-x64.dll bin
+copy ..\..\bin\libcrypto-3-x64.dll bin
 copy ..\..\bin\libprotobuf-lite.dll bin
-copy ..\..\bin\libssl-1_1-x64.dll bin
+copy ..\..\bin\libssl-3-x64.dll bin
 copy ..\..\bin\mysql.exe bin
 copy ..\..\bin\mysqladmin.exe bin
 copy ..\..\bin\mysqld.exe bin

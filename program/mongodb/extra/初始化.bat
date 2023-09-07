@@ -19,7 +19,6 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-copy ..\..\bin\mongo.exe
 copy ..\..\bin\mongod.exe
 copy ..\..\bin\mongos.exe
 popd

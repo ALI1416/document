@@ -19,16 +19,14 @@
 
 ## 提示
 
-1. 修改端口号
-   编辑`conf\server.xml`文件，搜索`8080`，找到
+1. 修改端口号  
+编辑`conf\server.xml`文件，搜索`8080`，找到
 
-   ```xml
-    <Connector port="8080" protocol="HTTP/1.1"
-               connectionTimeout="20000"
-               redirectPort="8443" />
-   ```
-
-   修改默认端口号`8080`即可
+```xml
+<Connector port="8080" protocol="HTTP/1.1"
+         connectionTimeout="20000"
+         redirectPort="8443" />
+```
 
 ## 打包下载
 
