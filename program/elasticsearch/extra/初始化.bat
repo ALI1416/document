@@ -39,8 +39,9 @@ echo 正在启用跨域，请稍后...
 
 echo http.cors.enabled: true>> config\elasticsearch.yml
 echo http.cors.allow-origin: "*">> config\elasticsearch.yml
+echo node.name: node-1>> config\elasticsearch.yml
 echo network.host: 0.0.0.0>> config\elasticsearch.yml
-echo discovery.seed_hosts: ["0.0.0.0", "[::0]"]>> config\elasticsearch.yml
+echo cluster.initial_master_nodes: ["node-1"]>> config\elasticsearch.yml
 echo 正在关闭账号密码访问，请稍后...
 
 echo xpack.security.enabled: false>> config\elasticsearch.yml

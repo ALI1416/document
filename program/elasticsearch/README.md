@@ -42,8 +42,9 @@
 ```yml
 http.cors.enabled: true
 http.cors.allow-origin: "*"
+node.name: node-1
 network.host: 0.0.0.0
-discovery.seed_hosts: ["0.0.0.0", "[::0]"]
+cluster.initial_master_nodes: ["node-1"]
 ```
 
 3. 关闭账号密码访问  
