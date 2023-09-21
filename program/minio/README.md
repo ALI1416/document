@@ -3,7 +3,7 @@
 ## 下载
 
 1. 下载地址 <https://www.minio.org.cn/download.shtml#/windows> 下载`MINIO 服务器`和`MINIO 客户端`，名称分别为`minio.exe`和`mc.exe`
-2. `minio.exe`快速下载地址 <https://dl.minio.org.cn/server/minio/release/windows-amd64/minio.exe> 版本号参考 <https://dl.min.io/server/minio/release/windows-amd64/archive/>
+2. `minio.exe`快速下载地址 <https://dl.minio.org.cn/server/minio/release/windows-amd64/minio.exe> 版本号参考 <http://dl.minio.org.cn/server/minio/release/windows-amd64/archive/>
 3. `mc.exe`快速下载地址 <https://dl.minio.org.cn/client/mc/release/windows-amd64/mc.exe> 版本号参考 <https://dl.minio.org.cn/client/mc/release/windows-amd64/archive/>
 
 ## 初始化
