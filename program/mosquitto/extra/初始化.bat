@@ -37,7 +37,7 @@ echo allow_anonymous true>> mosquitto.conf
 echo listener 1883 0.0.0.0>> mosquitto.conf
 echo protocol mqtt>> mosquitto.conf
 echo socket_domain ipv4>> mosquitto.conf
-echo listener 9001 0.0.0.0>> mosquitto.conf
+echo listener 15675 0.0.0.0>> mosquitto.conf
 echo protocol websockets>> mosquitto.conf
 echo socket_domain ipv4>> mosquitto.conf
 popd

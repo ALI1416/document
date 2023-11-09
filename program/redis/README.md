@@ -19,7 +19,7 @@
 
 ## 提示
 
-1. 启用跨域  
+1. 启用外网访问  
 编辑`redis.conf`文件  
    1. `bind 127.0.0.1`改成`bind 0.0.0.0`  
    2. `protected-mode yes`改成`protected-mode no`
@@ -36,7 +36,7 @@ requirepass Alibaba2021!
 
 ### 修改功能
 
-1. 启用跨域
+1. 启用外网访问
 
 ## 网站
 

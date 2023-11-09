@@ -26,7 +26,7 @@
 1. RabbitMQ配置文件示例
    1. 官方文件1：[extra/rabbitmq.ini](extra/rabbitmq.ini)
    2. 官方文件2：[extra/advanced.config](extra/advanced.config)
-2. 启用跨域  
+2. 启用外网访问  
 新建或编辑`C:\Users\用户名\AppData\Roaming\RabbitMQ\rabbitmq.config`文件，插入以下内容
 
 ```conf
@@ -42,7 +42,7 @@
 
 ### 修改功能
 
-1. 启用跨域
+1. 启用外网访问
 
 ## 网站
 

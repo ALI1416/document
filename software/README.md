@@ -175,8 +175,7 @@
   - <https://gitee.com/wanglifree/tianruoocr-cl/releases>
   - 原版<http://ocr.tianruo.net/>
 - `XMind` 思维导图
-  - <https://soft.macxf.com/soft/2859.html>
-  - 原版<https://www.xmind.cn/>
+  - <https://www.xmind.cn/>
 - `CrystalDiskInfo`和`CrystalDiskMark` 硬盘详情和硬盘测速
   - <https://crystalmark.info/en/download/>
 - `GNS3` 网络模拟
@@ -218,9 +217,8 @@
 
 ## `Software-3-programmer` 程序员软件
 
-- `dev-sidecar` GitHub加速
-  - <https://github.com/docmirror/dev-sidecar/releases>
-  - `1.7.3`<https://github.com/docmirror/dev-sidecar/releases/download/v1.7.3/DevSidecar-1.7.3.exe>
+- `SteamTools` GitHub加速
+  - <https://gitee.com/rmbgame/SteamTools/releases>
 - `jdk`
   - <https://www.oracle.com/java/technologies/downloads/#java8>
 - `git`
@@ -301,8 +299,6 @@
   - <https://github.com/tporadowski/redis/releases>
 - `typora` markdown文档编辑器
   - <https://typoraio.cn/>
-- `ja-netfilter` idea破解
-  - <https://gitee.com/ja-netfilter/ja-netfilter>
 - `tika` 文件解析
   - <https://tika.apache.org/download.html>
 - `unlock-music` 音乐解码
@@ -315,8 +311,6 @@
   - <https://blog.csdn.net/vbcom/article/details/7245186>
 - `MSVBCRT.AIO` 微软常用运行库合集
   - <https://www.ghxi.com/yxkhj.html>
-- `lombok`
-  - <https://projectlombok.org/download>
 
 ## `Software-5-game` 游戏
 

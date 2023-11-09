@@ -36,7 +36,7 @@
 -Xmx512m
 ```
 
-1. 启用跨域  
+2. 启用跨域、外网访问  
 编辑`config\elasticsearch.yml`，在尾部添加以下两行
 
 ```yml
@@ -69,8 +69,9 @@ xpack.security.http.ssl.enabled: false
 
 1. 附带ElasticSearch-Analysis-IK
 2. 调整占用内存
-3. 关闭账号密码访问
-4. 关闭SSL验证
+3. 启用跨域、外网访问
+4. 关闭账号密码访问
+5. 关闭SSL验证
 
 ## 网站
 
