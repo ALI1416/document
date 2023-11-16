@@ -18,7 +18,6 @@
 | ■■   | getName()                           | 显示数据库名                                               |
 |      | adminCommand(nameOrDocument)        | 切换到admin数据库，并运行命令[只调用db.runCommand(...)]    |
 |      | aggregate(pipeline,选项)            | 在此数据库上执行无集合聚合；返回一个游标                   |
-|      | auth(用户名,密码)                   |                                                            |
 |      | cloneDatabase(主机名)               | 克隆数据库                                                 |
 |      | commandHelp(命令名)                 | 命令帮助                                                   |
 |      | copyDatabase(fromdb,todb,fromhost)  | 拷贝数据库                                                 |
@@ -61,6 +60,31 @@
 |      | setProfilingLevel(level,slowms)     | 0=off 1=slow 2=all                                         |
 |      | stats()                             | 状态                                                       |
 |      | version()                           | 版本                                                       |
+
+## 登录验证
+
+### 创建用户
+
+```js
+// 切换到admin数据库
+use admin
+// 创建超级管理员账号root密码root
+db.createUser({user: "root", pwd: "root", roles: [{role: "root", db:"admin"}]})
+// 显示账号
+show users
+// 删除用户root
+db.dropUser('root')
+// 修改用户root的密码为root
+db.updateUser('root', {pwd: 'root'})
+// 切换到rw数据库
+use rw
+// 创建读写用户账号rw密码rw，指定数据库rw
+db.createUser({user: "rw", pwd: "rw", roles: [{role: "readWrite", db:"rw"}]})
+```
+
+### 开启登录验证
+
+`mongod --auth`
 
 ## 集合命令
 
@@ -486,15 +510,22 @@ db.a.aggregate(
 ### createIndex() 创建索引
 
 创建字段int升序索引
+
+```js
 db.a.createIndex(
     {
         "int": 1
     }
 )
+```
+
 创建字段int升序，long降序索引
+
+```js
 db.a.createIndex(
     {
-        int: 1,
-        long:  - 1
+        "int": 1,
+        "long":  - 1
     }
 )
+```
