@@ -158,7 +158,7 @@
 |      | worker_shutdown_timeout | 正常关闭工作进程配置超时                        |
 |      | working_directory       | 工作进程的当前工作目录                          |
 
-### ngx_http_core_module模块
+### ngx_http_core_module 模块
 
 | 常用 | 名称                          | 用途                                                  |
 | ---- | ----------------------------- | ----------------------------------------------------- |
@@ -242,7 +242,7 @@
 |      | variables_hash_bucket_size    | 设置变量哈希表的桶大小                                |
 |      | variables_hash_max_size       | 设置变量哈希表的最大值                                |
 
-### ngx_http_access_module模块
+### ngx_http_access_module 模块
 
 该ngx_http_access_module模块允许限制对某些客户端地址的访问。
 
@@ -251,7 +251,7 @@
 | ■■   | **allow** | 允许 |
 | ■■   | **deny**  | 拒绝 |
 
-### ngx_http_gzip_module模块
+### ngx_http_gzip_module 模块
 
 - 该ngx_http_gzip_module模块是一个使用`gzip`方法压缩响应的过滤器。
 - 这通常有助于将传输数据的大小减少一半甚至更多。
@@ -268,7 +268,7 @@
 | ■■   | **gzip_types**      | 指定压缩的MIME类型                    |
 | ■    | gzip_vary           | 是否返回`Vary: Accept-Encoding`响应头 |
 
-### ngx_http_index_module模块
+### ngx_http_index_module 模块
 
 该ngx_http_index_module模块处理请求以斜杠字符('/')结束。
 
@@ -276,7 +276,7 @@
 | ---- | --------- | ---- |
 | ■■   | **index** | 索引 |
 
-### ngx_http_log_module模块
+### ngx_http_log_module 模块
 
 - 该ngx_http_log_module模块中指定的格式写入请求的日志。
 - 请求记录在处理结束的位置的上下文中。
@@ -288,7 +288,7 @@
 | ■■   | **log_format**      | 指定日志格式                           |
 |      | open_log_file_cache | 存储名称包含变量的常用日志的文件描述符 |
 
-### ngx_http_proxy_module模块
+### ngx_http_proxy_module 模块
 
 该ngx_http_proxy_module模块允许将请求传递到另一台服务器。
 
@@ -373,7 +373,7 @@
 |      | proxy_temp_file_write_size     | 限制一次写入临时文件的数据                               |
 |      | proxy_temp_path                | 存储从代理服务器接收到的数据的临时文件的目录             |
 
-### ngx_http_rewrite_module模块
+### ngx_http_rewrite_module 模块
 
 该ngx_http_rewrite_module模块用于使用PCRE正则表达式更改请求URI、返回重定向和有条件地选择配置。
 
@@ -387,7 +387,7 @@
 |      | **set**                     | 设置参数                       |
 |      | uninitialized_variable_warn | 是否记录有关未初始化变量的警告 |
 
-### ngx_http_upstream_module模块
+### ngx_http_upstream_module 模块
 
 该ngx_http_upstream_module模块用于定义可由proxy_pass、fastcgi_pass、uwsgi_pass、scgi_pass、memcached_pa​​ss和grpc_pass指令引用的服务器组。
 
@@ -1052,29 +1052,29 @@ upstream backend {
 
 ## 其他模块
 
-### ngx_http_addition_module模块
+### ngx_http_addition_module 模块
 
 - 该ngx_http_addition_module模块是一个过滤器，用于在响应前后添加文本。
 - 默认情况下不构建此模块，应使用--with-http_addition_module配置参数启用它。
 
-### ngx_http_api_module模块
+### ngx_http_api_module 模块
 
 - 该ngx_http_api_module模块提供了REST API，用于访问各种状态信息、即时配置上游服务器组以及管理键值对，而无需重新配置nginx。
 - 该模块取代了ngx_http_status_module和ngx_http_upstream_conf_module模块。
 - 使用PATCH或POST方法时，请确保负载不超过读取客户端请求正文的缓冲区大小，否则可能会返回413(Request Entity Too Large)错误。
 
-### ngx_http_auth_basic_module模块
+### ngx_http_auth_basic_module 模块
 
 - 该ngx_http_auth_basic_module模块允许通过使用`HTTP基本身份验证`协议验证用户名和密码来限制对资源的访问。
 - 访问也可以通过地址、子请求的结果或JWT进行限制。通过地址和密码访问的同时限制由满足指令控制。
 
-### ngx_http_auth_jwt_module模块
+### ngx_http_auth_jwt_module 模块
 
 - 该ngx_http_auth_jwt_module通过验证所提供的模块实现客户机授权JSON网络令牌使用指定键(JWT)。
 - 该模块支持JSON Web签名(JWS)、JSON Web加密(JWE)和嵌套JWT。
 - 该模块可用于OpenID Connect身份验证。
 
-### ngx_http_auth_request_module模块
+### ngx_http_auth_request_module 模块
 
 - 该ngx_http_auth_request_module模块根据子请求的结果实现客户端授权。
 - 如果子请求返回2xx响应码，则允许访问。
@@ -1083,15 +1083,15 @@ upstream backend {
 - 对于401错误，客户端还会从子请求响应中收到`WWW-Authenticate`标头。
 - 默认情况下不构建此模块，应使用--with-http_auth_request_module配置参数启用它。
 
-### ngx_http_autoindex_module模块
+### ngx_http_autoindex_module 模块
 
 - 该ngx_http_autoindex_module模块处理以斜杠字符('/')结尾的请求并生成目录列表。
 
-### ngx_http_browser_module模块
+### ngx_http_browser_module 模块
 
 - 该ngx_http_browser_module模块创建变量，其值取决于`User-Agent`请求标头字段的值。
 
-### ngx_http_charset_module模块
+### ngx_http_charset_module 模块
 
 - 该ngx_http_charset_module模块将指定的字符集添加到`Content-Type`响应头字段中。
 - 此外，该模块可以将数据从一种字符集转换为另一种字符集，但有一些限制：
@@ -1099,63 +1099,63 @@ upstream backend {
   - 只能转换单字节字符集
   - 或单字节字符集到/从UTF-8。
 
-### ngx_http_dav_module模块
+### ngx_http_dav_module 模块
 
 - 该ngx_http_dav_module模块旨在通过WebDAV协议实现文件管理自动化。
 - 该模块处理HTTP和WebDAV方法PUT、DELETE、MKCOL、COPY和MOVE。
 - 默认情况下不构建此模块，应使用--with-http_dav_module配置参数启用它。
 
-### ngx_http_empty_gif_module模块
+### ngx_http_empty_gif_module 模块
 
 - 该ngx_http_empty_gif_module模块发出单像素透明GIF。
 
-### ngx_http_f4f_module模块
+### ngx_http_f4f_module 模块
 
 - 该ngx_http_f4f_module模块为Adob​​e HTTP动态流(HDS)提供服务器端支持。
 - 该模块以`/videoSeg1-Frag1`形式实现对HTTP动态流请求的处理videoSeg1.f4f使用videoSeg1.f4x索引文件从文件中提取所需的片段。
 - 该模块是用于Apache的Adob​​e f4f模块(HTTP Origin模块)的替代方案。
 
-### ngx_http_fastcgi_module模块
+### ngx_http_fastcgi_module 模块
 
 - 该ngx_http_fastcgi_module模块允许将请求传递到FastCGI服务器。
 
-### ngx_http_flv_module模块
+### ngx_http_flv_module 模块
 
 - 该ngx_http_flv_module模块为Flash视频(FLV)文件提供伪流服务器端支持。
 - 它特别处理带有start请求URI查询字符串中的参数的请求，方法是发回从请求的字节偏移量开始并带有前置FLV标头的文件内容。
 - 默认情况下不构建此模块，应使用--with-http_flv_module配置参数启用它。
 
-### ngx_http_geo_module模块
+### ngx_http_geo_module 模块
 
 - 该ngx_http_geo_module模块根据客户端IP地址创建具有值的变量。
 
-### ngx_http_geoip_module模块
+### ngx_http_geoip_module 模块
 
 - 所述ngx_http_geoip_module模块与根据客户端的IP地址值，并使用预编译创建变量的MaxMind数据库。
 - 当使用支持IPv6的数据库时，IPv4地址被查找为IPv4映射的IPv6地址。
 - 默认情况下不构建此模块，应使用--with-http_geoip_module配置参数启用它。
 
-### ngx_http_grpc_module模块
+### ngx_http_grpc_module 模块
 
 - 该ngx_http_grpc_module模块允许将请求传递到gRPC服务器。
 - 该模块需要ngx_http_v2_module模块。
 
-### ngx_http_gunzip_module模块
+### ngx_http_gunzip_module 模块
 
 - 该ngx_http_gunzip_module模块是一个过滤器，它`Content-Encoding: gzip`为不支持`gzip`编码方法的客户端使用解压缩响应。
 - 当需要存储压缩数据以节省空间和降低I/O成本时，该模块将非常有用。
 - 默认情况下不构建此模块，应使用--with-http_gunzip_module配置参数启用它。
 
-### ngx_http_gzip_static_module模块
+### ngx_http_gzip_static_module 模块
 
 - 该ngx_http_gzip_static_module模块允许发送带有`.gz`文件扩展名的预压缩文件，而不是常规文件。
 - 默认情况下不构建此模块，应使用--with-http_gzip_static_module配置参数启用它。
 
-### ngx_http_headers_module模块
+### ngx_http_headers_module 模块
 
 - 该ngx_http_headers_module模块允许将`Expires`和`Cache-Control`标头字段以及任意字段添加到响应标头中。
 
-### ngx_http_hls_module模块
+### ngx_http_hls_module 模块
 
 - 该ngx_http_hls_module模块为MP4和MOV媒体文件提供HTTP Live Streaming(HLS)服务器端支持。
 - 这些文件通常具有.mp4，.m4v，.m4a，.mov，或.qt文件扩展名。
@@ -1168,77 +1168,77 @@ upstream backend {
   - 带有`.ts`文件扩展名的片段URI。URI可以接受可选参数：
     - `start`和`end`以秒为单位定义片段边界。
 
-### ngx_http_image_filter_module模块
+### ngx_http_image_filter_module 模块
 
 - 该ngx_http_image_filter_module模块是一个过滤器，可以转换JPEG、GIF、PNG和WebP格式的图像。
 - 默认情况下不构建此模块，应使用--with-http_image_filter_module配置参数启用它。
 
-### ngx_http_js_module模块
+### ngx_http_js_module 模块
 
 - 该ngx_http_js_module模块用于在njs(JavaScript语言的一个子集)中实现位置和变量处理程序。
 
-### ngx_http_keyval_module模块
+### ngx_http_keyval_module 模块
 
 - 该ngx_http_keyval_module模块使用从被管理的键值对中获得的值的变量的API的是还可以与设置或可变NJS。
 
-### ngx_http_limit_conn_module模块
+### ngx_http_limit_conn_module 模块
 
 - 该ngx_http_limit_conn_module模块用于限制每个定义的键的连接数，特别是来自单个IP地址的连接数。
 - 并非所有连接都被计算在内。
 - 仅当服务器正在处理请求并且已读取整个请求标头时，才会对连接进行计数。
 
-### ngx_http_limit_req_module模块
+### ngx_http_limit_req_module 模块
 
 - 该ngx_http_limit_req_module模块用于限制每个定义的键的请求处理率，特别是来自单个IP地址的请求的处理率。
 - 限制是使用“漏桶”方法完成的。
 
-### ngx_http_map_module模块
+### ngx_http_map_module 模块
 
 - 该ngx_http_map_module模块创建其值取决于其他变量值的变量。
 
-### ngx_http_memcached_module模块
+### ngx_http_memcached_module 模块
 
 - 该ngx_http_memcached_module模块用于从memcached服务器获取响应。
 - 密钥设置在$memcached_key变量中。
 - 响应应提前通过nginx外部的方式放入memcached。
 
-### ngx_http_mirror_module模块
+### ngx_http_mirror_module 模块
 
 - 该ngx_http_mirror_module模块实现通过创建背景镜子请求镜像的原始请求的。
 - 对镜像子请求的响应将被忽略。
 
-### ngx_http_mp4_module模块
+### ngx_http_mp4_module 模块
 
 - 该ngx_http_mp4_module模块为MP4文件提供伪流服务器端支持。
 - 这些文件通常具有.mp4，.m4v或.m4a文件扩展名。
 
-### ngx_http_perl_module模块
+### ngx_http_perl_module 模块
 
 - 该ngx_http_perl_module模块用于在Perl中实现位置和变量处理程序，并将Perl调用插入SSI。
 - 默认情况下不构建此模块，应使用--with-http_perl_module配置参数启用它。
 
-### ngx_http_random_index_module模块
+### ngx_http_random_index_module 模块
 
 - 该ngx_http_random_index_module模块处理以斜线字符('/')结尾的请求，并在目录中随机选取一个文件作为索引文件。
 - 该模块在ngx_http_index_module模块之前处理。
 - 默认情况下不构建此模块，应使用--with-http_random_index_module配置参数启用它。
 
-### ngx_http_realip_module模块
+### ngx_http_realip_module 模块
 
 - 该ngx_http_realip_module模块用于将客户端地址和可选端口更改为在指定头字段中发送的那些。
 - 默认情况下不构建此模块，应使用--with-http_realip_module配置参数启用它。
 
-### ngx_http_referer_module模块
+### ngx_http_referer_module 模块
 
 - 该ngx_http_referer_module模块用于阻止对`Referer`标头字段中具有无效值的请求的访问。
 - 应该记住，使用适当的`Referer`字段值制作请求非常容易，因此该模块的预期目的不是彻底阻止此类请求，而是阻止常规浏览器发送的大量请求流。
 - 还应该考虑到，即使对于有效请求，常规浏览器也可能不会发送`Referer`字段。
 
-### ngx_http_scgi_module模块
+### ngx_http_scgi_module 模块
 
 - 该ngx_http_scgi_module模块允许将请求传递给SCGI服务器。
 
-### ngx_http_secure_link_module模块
+### ngx_http_secure_link_module 模块
 
 - 该ngx_http_secure_link_module模块用于检查请求链接的真实性，保护资源免受未经授权的访问，并限制链接寿命。
 - 通过比较请求中传递的校验和值与为请求计算的值来验证请求链接的真实性。
@@ -1248,54 +1248,54 @@ upstream backend {
   - 第二种模式由secure_link和secure_link_md5指令启用，也用于限制链接的生命周期。
 - 默认情况下不构建此模块，应使用--with-http_secure_link_module配置参数启用它。
 
-### ngx_http_session_log_module模块
+### ngx_http_session_log_module 模块
 
 - 该ngx_http_session_log_module模块启用日志记录会话(多个HTTP请求的聚合)而不是单个HTTP请求。
 
-### ngx_http_slice_module模块
+### ngx_http_slice_module 模块
 
 - 所述ngx_http_slice_module模块是一个分割请求转换成子请求，每个返回一定范围内响应的滤波器。过滤器为大响应提供更有效的缓存。
 - 默认情况下不构建此模块，应使用--with-http_slice_module配置参数启用它。
 
-### ngx_http_spdy_module模块
+### ngx_http_spdy_module 模块
 
 - 该ngx_http_spdy_module模块为SPDY提供实验支持。目前，SPDY协议草案3.1正在实施。
 - 默认情况下不构建此模块，应使用--with-http_spdy_module配置参数启用它。
 
-### ngx_http_split_clients_module模块
+### ngx_http_split_clients_module 模块
 
 - 该ngx_http_split_clients_module模块创建适合A/B测试(拆分测试)的变量。
 
-### ngx_http_ssi_module模块
+### ngx_http_ssi_module 模块
 
 - 该ngx_http_ssi_module模块是一个过滤器，用于处理通过它的响应中的SSI(服务器端包含)命令。
 - 目前，支持的SSI命令列表不完整。
 
-### ngx_http_ssl_module模块
+### ngx_http_ssl_module 模块
 
 - 该ngx_http_ssl_module模块为HTTPS提供了必要的支持。
 - 默认情况下不构建此模块，应使用--with-http_ssl_module配置参数启用它。
 
-### ngx_http_status_module模块
+### ngx_http_status_module 模块
 
 - 该ngx_http_status_module模块提供对各种状态信息的访问。
 
-### ngx_http_stub_status_module模块
+### ngx_http_stub_status_module 模块
 
 - 该ngx_http_stub_status_module模块提供对基本状态信息的访问。
 - 默认情况下不构建此模块，应使用--with-http_stub_status_module配置参数启用它。
 
-### ngx_http_sub_module模块
+### ngx_http_sub_module 模块
 
 - 该ngx_http_sub_module模块是一个过滤器，它通过将一个指定的字符串替换为另一个来修改响应。
 - 默认情况下不构建此模块，应使用--with-http_sub_module配置参数启用它。
 
-### ngx_http_upstream_conf_module模块
+### ngx_http_upstream_conf_module 模块
 
 - 该ngx_http_upstream_conf_module模块允许通过简单的HTTP接口即时配置上游服务器组，而无需重新启动nginx。
 - HTTP或流服务器组必须驻留在共享存储器中。
 
-### ngx_http_upstream_hc_module模块
+### ngx_http_upstream_hc_module 模块
 
 - 该ngx_http_upstream_hc_module模块允许对周围位置引用的组中的服务器进行定期健康检查。
 - 服务器组必须驻留在共享内存中。
@@ -1303,126 +1303,126 @@ upstream backend {
 - 如果为同一组服务器定义了多个健康检查，则任何检查的单个失败都会使相应的服务器被视为不健康。
 - 客户端请求不会传递到不健康的服务器和处于“正在检查”状态的服务器。
 
-### ngx_http_userid_module模块
+### ngx_http_userid_module 模块
 
 - 该ngx_http_userid_module模块设置适合客户端识别的cookie。
 - 可以使用嵌入变量$uid_got和$uid_set记录接收和设置的cookie。
 - 此模块与Apache的mod_uid模块兼容。
 
-### ngx_http_uwsgi_module模块
+### ngx_http_uwsgi_module 模块
 
 - 该ngx_http_uwsgi_module模块允许将请求传递到uwsgi服务器。
 
-### ngx_http_v2_module模块
+### ngx_http_v2_module 模块
 
 - 该ngx_http_v2_module模块提供对HTTP/2的支持并取代ngx_http_spdy_module模块。
 - 默认情况下不构建此模块，应使用--with-http_v2_module配置参数启用它。
 
-### ngx_http_xslt_module模块
+### ngx_http_xslt_module 模块
 
 - 该ngx_http_xslt_module是一个过滤器，使用一个或多个XSLT样式表转换的XML响应。
 - 默认情况下不构建此模块，应使用--with-http_xslt_module配置参数启用它。
 
-### ngx_mail_core_module模块
+### ngx_mail_core_module 模块
 
 - 默认情况下不构建此模块，应使用--with-mail配置参数启用它。
 
-### ngx_mail_auth_http_module模块
+### ngx_mail_auth_http_module 模块
 
-### ngx_mail_proxy_module模块
+### ngx_mail_proxy_module 模块
 
-### ngx_mail_realip_module模块
+### ngx_mail_realip_module 模块
 
 - 该ngx_mail_realip_module模块用于将客户端地址和端口更改为在PROXY协议头中发送的地址和端口。
 - 必须事先通过在指令中设置proxy_protocol参数来启用PROXY协议listen。
 
-### ngx_mail_ssl_module模块
+### ngx_mail_ssl_module 模块
 
 - 该ngx_mail_ssl_module模块为使用SSL/TLS协议的邮件代理服务器提供必要的支持。
 - 默认情况下不构建此模块，应使用--with-mail_ssl_module配置参数启用它。
 
-### ngx_mail_imap_module模块
+### ngx_mail_imap_module 模块
 
-### ngx_mail_pop3_module模块
+### ngx_mail_pop3_module 模块
 
-### ngx_mail_smtp_module模块
+### ngx_mail_smtp_module 模块
 
-### ngx_stream_core_module模块
+### ngx_stream_core_module 模块
 
 - 默认情况下不构建此模块，应使用--with-stream配置参数启用它。
 
-### ngx_stream_access_module模块
+### ngx_stream_access_module 模块
 
 - 该ngx_stream_access_module模块允许限制对某些客户端地址的访问。
 
-### ngx_stream_geo_module模块
+### ngx_stream_geo_module 模块
 
 - 该ngx_stream_geo_module模块创建了这取决于客户端的IP地址值的变量。
 
-### ngx_stream_geoip_module模块
+### ngx_stream_geoip_module 模块
 
 - 该ngx_stream_geoip_module模块，依赖于客户端的IP地址值，并使用预编译创建变量的MaxMind数据库。
 - 使用支持IPv6的数据库时IPv4地址将作为IPv4映射的IPv6地址进行查找。
 - 默认情况下不构建此模块，应使用--with-stream_geoip_module配置参数启用它。
 
-### ngx_stream_js_module模块
+### ngx_stream_js_module 模块
 
 - 该ngx_stream_js_module模块用于在njs中实现处理程序JavaScript语言的一个子集。
 
-### ngx_stream_keyval_module模块
+### ngx_stream_keyval_module 模块
 
 - 该ngx_stream_keyval_module模块使用从被管理的键值对获得的值的变量的API。
 
-### ngx_stream_limit_conn_module模块
+### ngx_stream_limit_conn_module 模块
 
 - 该ngx_stream_limit_conn_module模块被用于限制每个定义的键连接的数量，尤其是，从一个单一的IP地址的连接的数量。
 
-### ngx_stream_log_module模块
+### ngx_stream_log_module 模块
 
 - 该ngx_stream_log_module模块在指定的格式写入会话日志。
 
-### ngx_stream_map_module模块
+### ngx_stream_map_module 模块
 
 - 该ngx_stream_map_module模块创建变量，其值依赖于其它变量的值。
 
-### ngx_stream_proxy_module模块
+### ngx_stream_proxy_module 模块
 
 - 该ngx_stream_proxy_module模块允许通过TCP、UDP和UNIX域套接字代理数据流。
 
-### ngx_stream_realip_module模块
+### ngx_stream_realip_module 模块
 
 - 该ngx_stream_realip_module模块用于将客户端地址和端口更改为在PROXY协议头中发送的地址和端口。
 - 必须事先通过在指令中设置proxy_protocol参数来启用PROXY协议listen。
 - 默认情况下不构建此模块，应使用--with-stream_realip_module配置参数启用它。
 
-### ngx_stream_return_module模块
+### ngx_stream_return_module 模块
 
 - 该ngx_stream_return_module模块允许发送一个指定的值给客户端，然后关闭连接。
 
-### ngx_stream_set_module模块
+### ngx_stream_set_module 模块
 
 - 该ngx_stream_set_module模块允许设置一个变量的值。
 
-### ngx_stream_split_clients_module模块
+### ngx_stream_split_clients_module 模块
 
 - 该ngx_stream_split_clients_module模块创建一个适合于A/B测试，也称为分割测试变量。
 
-### ngx_stream_ssl_module模块
+### ngx_stream_ssl_module 模块
 
 - 该ngx_stream_ssl_module模块为流代理服务器与SSL/TLS协议一起工作提供了必要的支持。
 - 默认情况下不构建此模块，应使用--with-stream_ssl_module配置参数启用它。
 
-### ngx_stream_ssl_preread_module模块
+### ngx_stream_ssl_preread_module 模块
 
 - 该ngx_stream_ssl_preread_module模块允许在不终止SSL/TLS的情况下从ClientHello消息中提取信息。
 - 例如，通过SNI请求的服务器名称或在ALPN中公布的协议。
 - 默认情况下不构建此模块，应使用--with-stream_ssl_preread_module配置参数启用它。
 
-### ngx_stream_upstream_module模块
+### ngx_stream_upstream_module 模块
 
 - 该ngx_stream_upstream_module模块被用于定义可以由被引用的服务器组proxy_pass指令。
 
-### ngx_stream_upstream_hc_module模块
+### ngx_stream_upstream_hc_module 模块
 
 - 该ngx_stream_upstream_hc_module模块允许启用组中服务器的定期健康检查。
 - 服务器组必须驻留在共享内存中。
@@ -1430,13 +1430,13 @@ upstream backend {
 - 如果为同一组服务器定义了多个健康检查，则任何检查的单个失败都会使相应的服务器被视为不健康。
 - 客户端连接不会传递到不健康的服务器和处于“检查”状态的服务器。
 
-### ngx_stream_zone_sync_module模块
+### ngx_stream_zone_sync_module 模块
 
 - 该ngx_stream_zone_sync_module模块为在集群节点之间同步共享内存区域的内容提供了必要的支持。
 - 要为特定区域启用同步，相应的模块必须支持此功能。
 - 目前，可以在http和stream中同HTTP粘性会话、有关过多HTTP请求的信息和键值对。
 
-### ngx_google_perftools_module模块
+### ngx_google_perftools_module 模块
 
 - 该ngx_google_perftools_module模块支持使用Google Performance Tools对nginx工作进程进行分析。
 - 该模块适用于nginx开发人员。
