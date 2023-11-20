@@ -4,13 +4,17 @@
 @REM Version:1.0
 
 @REM 修改内存 jenkins.xml 找到 <arguments> 修改 -Xms128m -Xmx128m
-@REM 安装插件 管理 -> 插件 -> 可用插件 -> 搜索 maven -> 安装 Maven Integration
+@REM 设置前缀 以上新增 --prefix=/jenkins
+@REM Manage Jenkins -> System -> Jenkins Location -> Jenkins URL 改为新地址
+@REM 安装插件 Manage Jenkins -> Plugins -> Available plugis -> 搜索 maven -> 安装 Maven Integration
 
 @REM 项目配置 -> 构建环境 -> 勾选 Add timestamps to the Console Output
 @REM Build -> Goals and options 填写如下(demo-base为项目名)
 @REM clean install -pl demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 @REM Post Steps -> Run regardless of build result -> Execute Windows batch command 填写如下
 
+@REM 切换UTF8编码
+chcp 65001
 @REM 关闭指定端口进程
 setLocal enableDelayedExpansion
 @REM 端口号
