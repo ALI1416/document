@@ -8,8 +8,7 @@ title %~n0
 
 :begin
 
-@REM 隐藏窗口启动程序
-start mshta vbscript:CreateObject("WScript.Shell").Run("javaw -jar app.jar",0)(close)
+start mshta vbscript:CreateObject("WScript.Shell").Run("notepad",0)(close)
 
 pause
 

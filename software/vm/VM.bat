@@ -5,8 +5,6 @@
 @REM Please open it by UTF-8 encoding
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-setLocal enableDelayedExpansion
-
 title %~n0
 
 :begin
@@ -40,6 +38,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 查看VM服务状态、网络连接情况、程序运行状态
 echo.
+setLocal enableDelayedExpansion
 set num=1
 for /f "skip=3 tokens=4" %%i in ('sc query "VMAuthdService"') do (
   if !num!==1 set r=%%i
@@ -102,6 +101,7 @@ if %num%==1 ( echo [33m网络连接VMware Network Adapter VMnet8不存在[0m )
 )
 echo VMware正在运行程序如下：
 tasklist /fi "imagename eq VMware* "
+setLocal disableDelayedExpansion
 goto begin
 
 :e2
@@ -176,4 +176,3 @@ goto begin
 goto end
 
 :end
-setLocal disableDelayedExpansion

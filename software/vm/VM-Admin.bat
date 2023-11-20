@@ -6,8 +6,6 @@
 ( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process """%~f0""" -Verb RunAs )&&( exit )
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-setLocal enableDelayedExpansion
-
 title %~n0
 
 :begin
@@ -38,6 +36,7 @@ if errorlevel 0 goto e0
 echo.
 echo   [1] 查看VM服务状态、网络连接情况、程序运行状态
 echo.
+setLocal enableDelayedExpansion
 set num=1
 for /f "skip=3 tokens=4" %%i in ('sc query "VMAuthdService"') do (
   if !num!==1 set r=%%i
@@ -126,6 +125,7 @@ netsh interface set interface "VMware Network Adapter VMnet8" enable
 if %errorlevel%==0 ( echo [32m成功！[0m ) else ( echo [31m失败！[0m )
 echo 正在启用VMware程序...
 start vmware.exe
+setLocal disableDelayedExpansion
 goto begin
 
 :e3
@@ -159,4 +159,3 @@ goto begin
 goto end
 
 :end
-setLocal disableDelayedExpansion

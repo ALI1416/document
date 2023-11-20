@@ -4,7 +4,6 @@
 @REM Version:1.0
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
-setLocal enableDelayedExpansion
 pushd %~dp0
 
 :begin
@@ -63,6 +62,7 @@ goto begin
 echo.
 echo   [2] 关闭ElasticSearchHead服务【结束端口号为9100的进程】
 echo.
+setLocal enableDelayedExpansion
 set port=
 set num=1
 for /f "tokens=1 delims=" %%i in ( 'netstat -ano ^| findstr /c:"TCP    0.0.0.0:9100"' ) do (
@@ -92,6 +92,7 @@ for /f "tokens=1 delims= skip=1" %%i in ( '"wmic process where ProcessId=%pidPar
 )
 taskkill /pid %pidParent% /t /f
 if %errorlevel%==0 ( echo 成功！ ) else ( echo 失败！ )
+setLocal disableDelayedExpansion
 goto begin
 
 :e3
@@ -143,4 +144,3 @@ popd
 goto end
 
 :end
-setLocal disableDelayedExpansion

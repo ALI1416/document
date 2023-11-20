@@ -5,7 +5,6 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 title %~n0
-setLocal enableDelayedExpansion
 
 :begin
 
@@ -25,12 +24,14 @@ set sFolder=E:\a
 @REM set dFolder=D:\Music
 set dFolder=E:\b
 if not exist "%dFolder%" md "%dFolder%"
+setLocal enableDelayedExpansion
 for /f "tokens=1 delims=" %%i in (%index%) do (
     echo %%i
     copy "%sFolder%\%%i" "%dFolder%"
     set /a count=count+1
     if !errorlevel!==0 ( set /a success=success+1 ) else ( set failList=!failList!%%i\ )
 )
+setLocal disableDelayedExpansion
 echo.
 echo 总数量 %count%
 echo.
@@ -50,4 +51,3 @@ echo 
 pause
 
 :end
-setLocal disableDelayedExpansion

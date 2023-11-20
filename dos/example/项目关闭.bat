@@ -8,8 +8,9 @@ title %~n0
 
 :begin
 
-setLocal enableDelayedExpansion
 @REM 关闭指定端口进程
+setLocal enableDelayedExpansion
+@REM 端口号
 set port=8080
 set num=1
 set portString=

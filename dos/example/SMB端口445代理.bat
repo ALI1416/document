@@ -13,6 +13,6 @@ netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=445 conn
 @REM netsh interface portproxy show all
 
 @REM 关闭本机SMB服务：
-@REM 1. 控制面板->程序->程序和功能->启用或关闭Windows功能->关闭`SMB 1.0/CIFS 文件共享支持`和`SMB 直通`
+@REM 1. 控制面板 -> 程序 -> 程序和功能 -> 启用或关闭Windows功能 -> 关闭`SMB 1.0/CIFS 文件共享支持`和`SMB 直通`
 @REM 2. 重启电脑
 @REM 3. 访问\\127.0.0.1\

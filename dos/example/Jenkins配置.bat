@@ -3,10 +3,18 @@
 @REM GitHub:https://github.com/ali1416
 @REM Version:1.0
 
+@REM 修改内存 jenkins.xml 找到 <arguments> 修改 -Xms128m -Xmx128m
+@REM 安装插件 管理 -> 插件 -> 可用插件 -> 搜索 maven -> 安装 Maven Integration
+
+@REM 项目配置 -> 构建环境 -> 勾选 Add timestamps to the Console Output
+@REM Build -> Goals and options 填写如下(demo-base为项目名)
+@REM clean install -pl demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+@REM Post Steps -> Run regardless of build result -> Execute Windows batch command 填写如下
+
 @REM 关闭指定端口进程
 setLocal enableDelayedExpansion
-@REM 下面port修改端口号
-set port=8888
+@REM 端口号
+set port=8080
 set num=1
 set portString=
 for /f "tokens=1 delims=" %%i in ( 'netstat -ano ^| findstr /c:"TCP    0.0.0.0:%port%"' ) do (
@@ -22,23 +30,19 @@ if not "!pid!" == "" (
 )
 setLocal disableDelayedExpansion
 
-@REM 构建项目
-call mvn clean install -pl demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-@REM 提示Jenkins不杀死此进程
+@REM 提示Jenkins不要杀死此进程
 set BUILD_ID=dontKillMe
 
-@REM 复制构建后的文件到指定路径
-xcopy demo-base\target\*.jar D:\service\demo-base /i /y
+@REM 项目名
+set projectName=demo-base
+@REM jar名
+set jarName=demo-base-1.0.0.jar
+@REM 部署路径
+set deployPath=E:\server\demo-base\
 
-@REM 切换到指定路径
-pushd D:\service\demo-base
-
-@REM 运行项目
-start javaw -jar demo-base-1.0.0.jar
-
-@REM 切换回原路径
-popd
-
-@REM 关闭窗口
-exit
+@REM 复制构建后的项目文件到部署路径
+xcopy %projectName%\target\%jarName% %deployPath% /i /y
+@REM 切换到部署路径
+pushd %deployPath%
+@REM 运行项目文件
+start javaw -jar %jarName%

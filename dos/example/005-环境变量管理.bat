@@ -5,7 +5,6 @@
 for /f "delims=: tokens=1,2" %%i in (' chcp ') do ( if not "%%j"==" 65001" ( chcp 65001 > nul ) )
 
 title %~n0
-setLocal enableDelayedExpansion
 
 :begin
 
@@ -127,7 +126,9 @@ echo "%r%" | findstr /i /c:";%q%;" && goto e7c1 || goto e7c2
 @REM 去除输入值的多余\
 if "%q:~-1%"=="\" set q=%q:~0,-1%
 @REM 去除输入的值
+setLocal enableDelayedExpansion
 set r=!r:;%q%;=;!
+setLocal disableDelayedExpansion
 @REM 去除头部;
 if "%r:~0,1%"==";" set r=%r:~1%
 @REM 去除尾部;
@@ -175,4 +176,3 @@ if "%q:~-1%"=="\" set q=%q%\
 goto end
 
 :end
-setLocal disableDelayedExpansion

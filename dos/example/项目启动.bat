@@ -8,7 +8,10 @@ title %~n0
 
 :begin
 
-java -jar app.jar
+@REM jar名
+set jarName=app.jar
+
+start javaw -jar %jarName%
 
 pause
 
