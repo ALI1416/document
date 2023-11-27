@@ -24,24 +24,45 @@
    2. 新增以下内容
 
 ```conf
+# 允许匿名访问
 allow_anonymous true
-
+# mqtt连接
 listener 1883 0.0.0.0
 protocol mqtt
 socket_domain ipv4
-
+# WebSocket连接
 listener 15675 0.0.0.0
 protocol websockets
 socket_domain ipv4
 ```
 
-2. 添加用户名和密码
+2. 账号密码配置
    1. 找到安装目录，配置文件`mosquitto.conf`新增一行`password_file D:\Program Files\mosquitto\pwfile.conf`
       1. 其中`D:\Program Files\mosquitto\pwfile.conf`是密码配置文件路径
    2. 在当前目录下打开`CMD`，输入`mosquitto_passwd -c pwfile.conf root`，再输入2次密码即可
       1. 其中`-c`是创建密码配置文件
       2. `pwfile.conf`是密码配置文件名
-      3. `root`是创建的用户名
+      3. `root`是创建的账号
+   3. 如果允许匿名访问，不输入账号密码也能连接成功
+
+3. SSL配置
+   1. 使用OpenSSL生成CA、server证书
+   2. 添加以下配置文件
+   3. 连接的时候提供CA证书、client证书和私钥即可，不需要账号密码
+
+```conf
+listener 8883 0.0.0.0
+# 需要证书(false自动分配证书)
+require_certificate true
+# 单(false)双(true)向验证
+use_identity_as_username true
+# CA证书路径
+cafile D:\Program Files\mosquitto\cert\ca.crt
+# server证书路径
+certfile D:\Program Files\mosquitto\cert\server.crt
+# server私钥路径
+keyfile D:\Program Files\mosquitto\cert\server.key
+```
 
 ## 打包下载
 
