@@ -49,12 +49,13 @@ socket_domain ipv4
    1. 使用OpenSSL生成CA、server证书
    2. 添加以下配置文件
    3. 连接的时候提供CA证书、client证书和私钥即可，不需要账号密码
+   4. 如果`自动分配证书`，需要使用`单向认证`，但是要启用`允许匿名访问`或`使用账号密码访问`
 
 ```conf
 listener 8883 0.0.0.0
 # 需要证书(false自动分配证书)
 require_certificate true
-# 单(false)双(true)向验证
+# 双向验证(false单向认证)
 use_identity_as_username true
 # CA证书路径
 cafile D:\Program Files\mosquitto\cert\ca.crt
