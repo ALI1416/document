@@ -1,8 +1,8 @@
 # 彻底关闭Windows Defender
 
-当前版本号： 2.1
+当前版本号：`2.1`
 
-下载地址： <https://www.sordum.org/9480/>
+下载地址：<https://www.sordum.org/9480/>
 
 ## 禁用实时保护
 

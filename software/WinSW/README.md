@@ -1,8 +1,8 @@
 # Windows服务包装
 
-当前版本号：3.0.0-alpha.10(net461)
+当前版本号：`3.0.0-alpha.11`
 
-下载地址： <https://github.com/winsw/winsw>
+下载地址：<https://github.com/winsw/winsw>
 
 ## 命令
 

@@ -1,6 +1,6 @@
 # FastCGI进程管理器
 
-下载地址： <https://github.com/78/xxfpm>
+下载地址：<https://github.com/78/xxfpm>
 
 作用： 维持php-cgi数量，防止崩溃
 
