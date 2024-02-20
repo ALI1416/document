@@ -217,6 +217,8 @@
   - `破解版`<https://www.ittel.cn/archives/8553.html>
 - `Advanced Port Scanner` IP端口扫描
   - <https://www.advanced-port-scanner.com/cn/>
+- `HackBGRT` 修改BIOS启动图片
+  - <https://github.com/Metabolix/HackBGRT>
 
 ## `Software-3-programmer` 程序员软件
 
