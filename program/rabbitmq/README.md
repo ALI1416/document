@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-3.12.4.zip`，解压后文件夹名称应为`rabbitmq_server-3.12.4`
-2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.12.4/rabbitmq-server-windows-3.12.4.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
+1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-3.12.13.zip`，解压后文件夹名称应为`rabbitmq_server-3.12.13`
+2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.12.13/rabbitmq-server-windows-3.12.13.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
 
 ## 初始化
 
-1. 把本压缩包解压到`rabbitmq_server-3.12.4`文件夹内，如图所示：  
+1. 把本压缩包解压到`rabbitmq_server-3.12.13`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -27,7 +27,7 @@
    1. 官方文件1：[extra/rabbitmq.ini](extra/rabbitmq.ini)
    2. 官方文件2：[extra/advanced.config](extra/advanced.config)
 2. 启用外网访问  
-新建或编辑`C:\Users\用户名\AppData\Roaming\RabbitMQ\rabbitmq.config`文件，插入以下内容
+新建或编辑`%AppData%\RabbitMQ\rabbitmq.config`文件，插入以下内容
 
 ```conf
 [{rabbit, [{loopback_users, []}]}].

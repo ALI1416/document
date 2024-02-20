@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://windows.php.net/download/> `VS16 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.2.10-nts-Win32-vs16-x64.zip`，新建`php-8.2.10-nts-Win32-vs16-x64`文件夹并把文件解压进去
-2. 快速下载地址 <https://windows.php.net/downloads/releases/php-8.2.10-nts-Win32-vs16-x64.zip> 版本号参考 <https://windows.php.net/downloads/releases/archives/>
+1. 下载地址 <https://windows.php.net/download/> `VS16 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.3.3-nts-Win32-vs16-x64.zip`，新建`php-8.3.3-nts-Win32-vs16-x64`文件夹并把文件解压进去
+2. 快速下载地址 <https://windows.php.net/downloads/releases/php-8.3.3-nts-Win32-vs16-x64.zip> 版本号参考 <https://windows.php.net/downloads/releases/archives/>
 
 ## 初始化
 
-1. 把本压缩包解压到`php-8.2.10-nts-Win32-vs16-x64`文件夹内，如图所示：  
+1. 把本压缩包解压到`php-8.3.3-nts-Win32-vs16-x64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 

@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.0.17-install-windows-x64.exe`，把后缀`exe`改成`zip`新建`mosquitto-2.0.17-install-windows-x64`文件夹并把文件解压进去
-2. 快速下载地址 <https://mosquitto.org/files/binary/win64/mosquitto-2.0.17-install-windows-x64.exe> 版本号参考 <https://mosquitto.org/files/binary/win64/>
+1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.0.18-install-windows-x64.exe`，把后缀`exe`改成`zip`新建`mosquitto-2.0.18-install-windows-x64`文件夹并把文件解压进去
+2. 快速下载地址 <https://mosquitto.org/files/binary/win64/mosquitto-2.0.18-install-windows-x64.exe> 版本号参考 <https://mosquitto.org/files/binary/win64/>
 
 ## 初始化
 
-1. 把本压缩包解压到`mosquitto-2.0.17-install-windows-x64`文件夹内，如图所示：  
+1. 把本压缩包解压到`mosquitto-2.0.18-install-windows-x64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.png)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 

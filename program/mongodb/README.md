@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://www.mongodb.com/try/download/community> 版本选择`MongoDB Community Server`，Package选择`zip`，名称应为`mongodb-windows-x86_64-7.0.1.zip`，解压后文件夹名称应为`mongodb-win32-x86_64-windows-7.0.1`
-2. 快速下载地址 <https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.1.zip> 版本号参考 <https://docs.mongodb.com/v5.0/release-notes/>
+1. 下载地址 <https://www.mongodb.com/try/download/community> 版本选择`Community Server`，Package选择`zip`，名称应为`mongodb-windows-x86_64-7.0.5.zip`，解压后文件夹名称应为`mongodb-win32-x86_64-windows-7.0.5`
+2. 快速下载地址 <https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.5.zip> 版本号参考 <https://docs.mongodb.com/v5.0/release-notes/>
 
 ## 初始化
 
-1. 把本压缩包解压到`mongodb-win32-x86_64-windows-7.0.1`文件夹内，如图所示：  
+1. 把本压缩包解压到`mongodb-win32-x86_64-windows-7.0.5`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 

@@ -24,10 +24,10 @@ md lib
 copy ..\..\deplister.exe
 copy ..\..\glib-2.dll
 copy ..\..\gmodule-2.dll
-copy ..\..\icudt71.dll
-copy ..\..\icuin71.dll
-copy ..\..\icuio71.dll
-copy ..\..\icuuc71.dll
+copy ..\..\icudt72.dll
+copy ..\..\icuin72.dll
+copy ..\..\icuio72.dll
+copy ..\..\icuuc72.dll
 copy ..\..\libcrypto-3-x64.dll
 copy ..\..\libenchant2.dll
 copy ..\..\libpq.dll
