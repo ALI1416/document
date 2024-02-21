@@ -23,9 +23,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\lnkfile\shellex\-ContextMenuHandlers\YunShellExt]
 @="{6D85624F-305A-491d-8848-C1927AA0D790}"
-
-; 群晖 不显示
-[-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\CloudStation.SyncFolderContextMenu]
-
-[HKEY_CLASSES_ROOT\lnkfile\shellex\-ContextMenuHandlers\CloudStation.SyncFolderContextMenu]
-@="{2C4A5D61-009C-4561-9A33-6AFD542FD237}"
