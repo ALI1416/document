@@ -8,7 +8,7 @@ title %~n0
 
 :begin
 
-for /f "tokens=1 delims=" %%i in (%~dp0ALI1416.txt) do (
+for /f "tokens=1 delims=" %%i in (%~dp0code.txt) do (
   md %%i\.git\objects\info
   md %%i\.git\objects\pack
   md %%i\.git\refs\heads
