@@ -301,6 +301,15 @@
   - <http://nginx.org/en/download.html>
 - `redis`
   - <https://github.com/tporadowski/redis/releases>
+- `nacos`
+  - <https://github.com/alibaba/nacos/releases>
+  - 启动`bin\startup.cmd -m standalone`
+- `seata`
+  - <https://github.com/apache/incubator-seata/releases>
+  - 启动`bin\seata-server.bat`
+- `Sentinel`
+  - <https://github.com/alibaba/Sentinel/releases>
+  - 启动`java -Dserver.port=8849 -Dcsp.sentinel.dashboard.server=127.0.0.1:8849 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.7.jar`
 - `typora` markdown文档编辑器
   - <https://typoraio.cn/>
 - `tika` 文件解析
