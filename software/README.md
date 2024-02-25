@@ -219,6 +219,8 @@
   - <https://www.advanced-port-scanner.com/cn/>
 - `HackBGRT` 修改BIOS启动图片
   - <https://github.com/Metabolix/HackBGRT>
+- `Dism++` 挂载系统镜像
+  - <https://github.com/Chuyu-Team/Dism-Multi-language>
 
 ## `Software-3-programmer` 程序员软件
 

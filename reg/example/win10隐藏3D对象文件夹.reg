@@ -4,7 +4,7 @@ Windows Registry Editor Version 5.00
 ; GitHub:https://github.com/ali1416
 ; Version:1.0
 
-; 隐藏3D对象文件夹
+; 3D对象
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag]
 "ThisPCPolicy"="Hide"
 
