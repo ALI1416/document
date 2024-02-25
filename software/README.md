@@ -221,6 +221,8 @@
   - <https://github.com/Metabolix/HackBGRT>
 - `Dism++` 挂载系统镜像
   - <https://github.com/Chuyu-Team/Dism-Multi-language>
+- `Registry Finder` 注册表编辑器
+  - <https://registry-finder.com/>
 
 ## `Software-3-programmer` 程序员软件
 
