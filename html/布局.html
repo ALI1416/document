@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  #top {
+    display: flex;
+    background-color: aliceblue;
+    height: 50px;
+    align-items: start;
+    justify-content: center;
+  }
+
+  #middle {
+    display: flex;
+    height: calc(100vh - 100px);
+  }
+
+  #left {
+    display: flex;
+    background-color: antiquewhite;
+    width: 20%;
+    align-items: start;
+    justify-content: start;
+  }
+
+  #center {
+    display: flex;
+    background-color: aqua;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #right {
+    display: flex;
+    background-color: aquamarine;
+    width: 20%;
+    align-items: end;
+    justify-content: end;
+  }
+
+  #bottom {
+    display: flex;
+    background-color: azure;
+    height: 50px;
+    align-items: end;
+    justify-content: center;
+  }
+</style>
+
+<body>
+  <div id="top">
+    <span>顶部</span>
+  </div>
+  <div id="middle">
+    <div id="left">
+      <span>左侧</span>
+    </div>
+    <div id="center">
+      <span>中间</span>
+    </div>
+    <div id="right">
+      <span>右侧</span>
+    </div>
+  </div>
+  <div id="bottom">
+    <span>底部</span>
+  </div>
+</body>
+
+</html>
