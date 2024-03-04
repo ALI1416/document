@@ -80,6 +80,8 @@
   - `泡芙云`<https://www.paofu.cloud>
 - `360`
   - <https://weishi.360.cn/>
+- `360驱动大师`
+  - <https://dm.weishi.360.cn/home.html>
 - `SteamTools` 加速器
   - <https://gitee.com/rmbgame/SteamTools/releases>
   - `2.8.6`<https://gitee.com/rmbgame/SteamTools/releases/download/2.8.6/Steam%20%20_win_x64_v2.8.6.exe>
@@ -244,6 +246,8 @@
   - <https://www.navicat.com.cn/download/navicat-premium>
 - `NavicatCracker` navicat破解
   - <https://github.com/shuhongfan/NavicatCracker>
+- `Figma`
+  - <https://www.figma.com/>
 - `AnotherRedisDesktopManager` Redis客户端
   - <https://gitee.com/qishibo/AnotherRedisDesktopManager>
 - `nodejs`
