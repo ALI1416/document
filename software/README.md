@@ -181,6 +181,7 @@
   - `升级版`<https://gitee.com/wanglifree/tianruoocr-cl/releases>
 - `XMind` 思维导图
   - <https://www.xmind.cn/>
+  - `破解版`<https://www.jb51.net/softs/851357.html>
 - `CrystalDiskInfo`和`CrystalDiskMark` `硬盘详情`和`硬盘测速`
   - <https://crystalmark.info/en/download/>
 - `GNS3` 网络模拟
@@ -225,6 +226,11 @@
   - <https://github.com/Chuyu-Team/Dism-Multi-language>
 - `Registry Finder` 注册表编辑器
   - <https://registry-finder.com/>
+- `Keil C51`
+  - <https://www.keil.com/demo/eval/c51.htm>
+- `Keil MDK`
+  - <https://www.keil.com/demo/eval/arm.htm>
+  - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
 
 ## `Software-3-programmer` 程序员软件
 
