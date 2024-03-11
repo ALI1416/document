@@ -236,6 +236,9 @@
 
 - `jdk`
   - <https://www.oracle.com/cn/java/technologies/downloads/>
+- `openjdk`
+  - <https://openjdk.org/>
+  - `下载`<https://adoptium.net/zh-CN/temurin/releases/>
 - `git`
   - <https://git-scm.com/download/win>
 - `tortoiseGit`
