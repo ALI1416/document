@@ -34,13 +34,13 @@
 - `Microsoft Hyper-V Server 2012 R2 (x64) - DVD (Chinese-Simplified)`
   - cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso
   - `ed2k://|file|cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso|2144010240|3BB6E1FB513204D8D2C6991B14B35D9B|/`
-- esxi
+- `esxi`
   - <https://customerconnect.vmware.com/cn/evalcenter?p=free-esxi8>
-- ikuai
+- `ikuai`
   - <https://www.ikuai8.com/component/download>
-- deepin
+- `deepin`
   - <https://www.deepin.org/zh/download/>
-- 群晖
+- `群晖`
   - `arpl`<https://github.com/fbelavenuto/arpl>
   - `DSM`<https://archive.synology.cn/download/Os/DSM>
 
@@ -113,6 +113,7 @@
   - <https://pan.quark.cn/>
 - `迅雷`
   - `在线安装`<https://www.xunlei.com/>
+  - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.0.7.2366.exe>
 - `爱思助手`
   - <https://www.i4.cn/>
 - `谷歌浏览器`
