@@ -54,6 +54,19 @@
 
 - `radar` 软媒系统雷达
   - 提取
+- `WindowsDefender` 彻底关闭Windows Defender
+  - <https://www.sordum.org/9480/>
+- `MAS` 系统激活
+  - <https://github.com/massgravel/Microsoft-Activation-Scripts>
+- `RevokeMsgPatcher` 防撤回补丁
+  - <https://github.com/huiyadanli/RevokeMsgPatcher>
+- `LiteLoaderQQNT` QQNT防撤回插件
+  - <https://liteloaderqqnt.github.io/>
+  - `下载`<https://github.com/LiteLoaderQQNT/LiteLoaderQQNT>
+  - `Windows版补丁`<https://github.com/LiteLoaderQQNT/QQNTFileVerifyPatch>
+  - `防撤回插件`<https://github.com/xh321/LiteLoaderQQNT-Anti-Recall>
+- `ContextMenuManager` 右键管理
+  - <https://gitee.com/BluePointLilac/ContextMenuManager>
 
 - `Snipaste` 截图工具
   - <https://zh.snipaste.com/>
@@ -333,6 +346,8 @@
 - `Keil MDK`
   - <https://www.keil.com/demo/eval/arm.htm>
   - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
+- `WinSW` Windows服务包装
+  - <https://github.com/winsw/winsw>
 
 ## `Patch` 补丁
 
