@@ -1,27 +1,15 @@
 # 软件列表
 
-## 特殊软件
+## `NetworkDisk` 网盘
 
 - <https://gitee.com/ALI1416/document/tree/master/software>
 - <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
 
-## `Software-1-common` 常用软件
+## `SystemImage` 系统镜像
 
-### 修改过的软件
-
-- `软媒魔方`
-  - <https://mofang.ruanmei.com/>
-  - 免安装
-- `radar` 软媒系统雷达
-  - 提取
-- `关机助手`
-  - <http://www.wsgsoft.net/ash/>
-  - 免安装
-
-### `SystemImage` 系统镜像
-
-- <https://msdn.itellyou.cn/>
-- <https://next.itellyou.cn/Original/Index>
+- `下载地址`
+  - <https://msdn.itellyou.cn/>
+  - <https://next.itellyou.cn/Original/Index>
 - `Windows 10 (Multiple Editions), Version 1607 (Updated Jul 2016) (x64) - DVD (Chinese-Simplified)`
   - cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso
   - `ed2k://|file|cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso|4347183104|35EA5DB0F3BB714F5CE0740FB89D82D1|/`
@@ -44,15 +32,16 @@
   - `arpl`<https://github.com/fbelavenuto/arpl>
   - `DSM`<https://archive.synology.cn/download/Os/DSM>
 
-### `Office` 办公软件
+## `Office` 办公软件
 
-- <https://msdn.itellyou.cn/>
-- <https://www.xitongku.com/>
-- <https://blog.csdn.net/kupepoem/article/details/123540978>
+- `下载地址`
+  - <https://msdn.itellyou.cn/>
+  - <https://www.xitongku.com/>
+  - <https://blog.csdn.net/kupepoem/article/details/123540978>
 - `Office Professional Plus 2010 (x64) - (Chinese-Simplified)`
   - cn_office_professional_plus_2010_x64_515528.exe
   - `ed2k://|file|cn_office_professional_plus_2010_x64_515528.exe|912825496|B4F9B4635A6D440DD619592330D246B6|/`
-- `Office 2016 专业版 简体中文 64位`
+- `Office 2016 专业增强版 简体中文 64位`
   - SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO
   - `ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/`
 - `Visio 2016 专业版 简体中文 64位`
@@ -61,23 +50,15 @@
 - `Office Tool Plus` 在线安装
   - <https://otp.landian.vip/zh-cn/>
 
-### 普通软件
+### `Necessary` 必备软件
+
+- `radar` 软媒系统雷达
+  - 提取
 
 - `Snipaste` 截图工具
   - <https://zh.snipaste.com/>
 - `FreeFileSync` 文件同步
   - <https://freefilesync.org/download.php>
-- `syncthing` 网络文件同步
-  - <https://syncthing.net/downloads/>
-- `Adobe`
-  - <https://creativecloud.adobe.com/apps/download/creative-cloud>
-- `Adobe-GenP` Adobe破解器
-  - <https://github.com/cw2k/Adobe-GenP>
-  - `3.1`<https://github.com/cw2k/Adobe-GenP/releases/download/3.0/Adobe-GenP-3.1.zip>
-- `SSR`
-  - <https://github.com/HMBSbige/ShadowsocksR-Windows>
-  - `6.1.0`<https://github.com/HMBSbige/ShadowsocksR-Windows/releases/download/6.1.0/ShadowsocksR-Win64-6.1.0.7z>
-  - `泡芙云`<https://www.paofu.cloud>
 - `360`
   - <https://weishi.360.cn/>
 - `360驱动大师`
@@ -116,14 +97,57 @@
   - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.0.7.2366.exe>
 - `爱思助手`
   - <https://www.i4.cn/>
-- `谷歌浏览器`
-  - <https://www.google.cn/chrome/?standalone=1&platform=win64>
-- `飞鸽传书`
-  - <http://www.ipmsg.org.cn/home/index/download>
+- `ToDesk` 远程桌面
+  - `在线安装`<https://www.todesk.com/>
+- `向日葵` 远程桌面
+  - <https://sunlogin.oray.com/>
+- `唧唧Down` 下载bilibili视频
+  - <https://client.jijidown.com/>
 
-## `Software-2-seldom` 不常用软件
+## `Seldom` 不常用软件
 
-### `EXE` exe文件
+- `软媒魔方`
+  - <https://mofang.ruanmei.com/>
+  - 免安装
+- `关机助手`
+  - <http://www.wsgsoft.net/ash/>
+  - 免安装
+
+- `UltraISO` 软碟通
+  - <https://www.ultraiso.com/>
+  - `破解版`<https://www.ghxi.com/ultraiso.html>
+- `PCtoLCD2002` 取模
+  - <https://www.cr173.com/soft/37775.html>
+- `VeryPDF Password Remover` PDF密码移除
+  - <https://www.verypdf.com/app/pdf-password-remover/index.html>
+  - `破解版`<https://www.onlinedown.net/soft/974931.htm>
+- `实用汉字转拼音`
+  - <http://www.kxdw.com/soft/12966.html>
+- `UltraReplace` 批量替换
+  - <http://www.yestudio.cn/>
+- `ReNamer` 批量重命名
+  - <http://www.den4b.com/products/renamer>
+- `Duplicate Cleaner` 文件去重
+  - <https://www.duplicatecleaner.com/>
+  - `破解版`<https://www.ittel.cn/archives/8553.html>
+- `3dMax`
+  - <https://www.autodesk.com.cn/products/3ds-max/overview>
+  - `破解版`<https://www.ghxi.com/3dsmax2021lite.html>
+- `XMind` 思维导图
+  - <https://www.xmind.cn/>
+  - `破解版`<https://www.jb51.net/softs/851357.html>
+- `Camtasia` 屏幕录制
+  - <https://www.techsmith.com/video-editor.html>
+  - `破解版`<https://www.ghxi.com/camtasia2023.html>
+- `BB FlashBack` 屏幕录制
+  - <https://www.flashbackrecorder.com/>
+  - `破解版`<https://www.aiweibk.com/242201.html>
+- `PowerShadow` 影子系统
+  - <http://www.yingzixitong.cn/>
+  - `破解版`<http://www.ddooo.com/softdown/1872.htm>
+- `FontCreator` 字体编辑器
+  - <https://www.high-logic.com/font-editor/fontcreator>
+  - `破解版`<http://www.ddooo.com/softdown/201781.htm>
 
 - `cpuz` 查询电脑信息
   - <https://www.cpuid.com/softwares/cpu-z.html>
@@ -138,24 +162,16 @@
 - `upxShell` 加壳(UI界面)
   - <http://upxshell.sourceforge.net/>
   - `升级版`<https://www.ghxi.com/upx.html>
-- `UltraISO` 软碟通
-  - <https://www.ultraiso.com/>
-  - `破解版`<https://www.ghxi.com/ultraiso.html>
-
-### 普通软件2
-
-- `ToDesk` 远程桌面
-  - `在线安装`<https://www.todesk.com/>
-- `向日葵` 远程桌面
-  - <https://sunlogin.oray.com/>
+- `Adobe`
+  - <https://creativecloud.adobe.com/apps/download/creative-cloud>
+- `Adobe-GenP` Adobe破解器
+  - <https://github.com/cw2k/Adobe-GenP>
+  - `3.1`<https://github.com/cw2k/Adobe-GenP/releases/download/3.0/Adobe-GenP-3.1.zip>
+- `syncthing` 网络文件同步
+  - <https://syncthing.net/downloads/>
 - `Flash`
   - <https://www.flash.cn/>
   - `去广告`<http://www.cyxitong.com/post-73.html>
-- `3dMax`
-  - <https://www.autodesk.com.cn/products/3ds-max/overview>
-  - `破解版`<https://www.ghxi.com/3dsmax2021lite.html>
-- `唧唧Down` 下载bilibili视频
-  - <https://client.jijidown.com/>
 - `DiskGenius` 磁盘管理
   - <https://www.diskgenius.cn/download.php>
 - `大白菜` PE盘
@@ -180,45 +196,16 @@
 - `天若OCR`
   - <http://ocr.tianruo.net/>
   - `升级版`<https://gitee.com/wanglifree/tianruoocr-cl/releases>
-- `XMind` 思维导图
-  - <https://www.xmind.cn/>
-  - `破解版`<https://www.jb51.net/softs/851357.html>
 - `CrystalDiskInfo`和`CrystalDiskMark` `硬盘详情`和`硬盘测速`
   - <https://crystalmark.info/en/download/>
 - `GNS3` 网络模拟
   - <https://www.gns3.com/>
 - `SysinternalsSuite` 微软工具箱
   - <https://docs.microsoft.com/zh-cn/sysinternals/downloads/sysinternals-suite>
-- `Camtasia` 屏幕录制
-  - <https://www.techsmith.com/video-editor.html>
-  - `破解版`<https://www.ghxi.com/camtasia2023.html>
-- `BB FlashBack` 屏幕录制
-  - <https://www.flashbackrecorder.com/>
-  - `破解版`<https://www.aiweibk.com/242201.html>
-- `PowerShadow` 影子系统
-  - <http://www.yingzixitong.cn/>
-  - `破解版`<http://www.ddooo.com/softdown/1872.htm>
 - `XDM` 下载器
   - <https://xtremedownloadmanager.com/>
 - `Tickeys` 声音键盘
   - <http://www.yingdev.com/projects/tickeys>
-- `FontCreator` 字体编辑器
-  - <https://www.high-logic.com/font-editor/fontcreator>
-  - `破解版`<http://www.ddooo.com/softdown/201781.htm>
-- `PCtoLCD2002` 取模
-  - <https://www.cr173.com/soft/37775.html>
-- `VeryPDF Password Remover` PDF密码移除
-  - <https://www.verypdf.com/app/pdf-password-remover/index.html>
-  - `破解版`<https://www.onlinedown.net/soft/974931.htm>
-- `实用汉字转拼音`
-  - <http://www.kxdw.com/soft/12966.html>
-- `UltraReplace` 批量替换
-  - <http://www.yestudio.cn/>
-- `ReNamer` 批量重命名
-  - <http://www.den4b.com/products/renamer>
-- `Duplicate Cleaner` 文件去重
-  - <https://www.duplicatecleaner.com/>
-  - `破解版`<https://www.ittel.cn/archives/8553.html>
 - `Advanced Port Scanner` IP端口扫描
   - <https://www.advanced-port-scanner.com/cn/>
 - `HackBGRT` 修改BIOS启动图片
@@ -227,16 +214,17 @@
   - <https://github.com/Chuyu-Team/Dism-Multi-language>
 - `Registry Finder` 注册表编辑器
   - <https://registry-finder.com/>
-- `Keil C51`
-  - <https://www.keil.com/demo/eval/c51.htm>
-- `Keil MDK`
-  - <https://www.keil.com/demo/eval/arm.htm>
-  - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
+- `SSR`
+  - <https://github.com/HMBSbige/ShadowsocksR-Windows>
+  - `6.1.0`<https://github.com/HMBSbige/ShadowsocksR-Windows/releases/download/6.1.0/ShadowsocksR-Win64-6.1.0.7z>
+  - `泡芙云`<https://www.paofu.cloud>
+- `谷歌浏览器`
+  - <https://www.google.cn/chrome/?standalone=1&platform=win64>
+- `飞鸽传书`
+  - <http://www.ipmsg.org.cn/home/index/download>
 
-## `Software-3-programmer` 程序员软件
+## `Programmer` 程序员软件
 
-- `jdk`
-  - <https://www.oracle.com/cn/java/technologies/downloads/>
 - `openjdk`
   - <https://openjdk.org/>
   - `下载`<https://adoptium.net/zh-CN/temurin/releases/>
@@ -340,15 +328,20 @@
   - <https://sourceforge.net/projects/com0com/>
 - `AccessPort` 串口调试
   - <http://www.sudt.com/cn/download.htm>
+- `Keil C51`
+  - <https://www.keil.com/demo/eval/c51.htm>
+- `Keil MDK`
+  - <https://www.keil.com/demo/eval/arm.htm>
+  - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
 
-## `Software-4-patch` 补丁软件
+## `Patch` 补丁
 
 - `DirectX` DirectX修复工具增强版
   - <https://blog.csdn.net/vbcom/article/details/7245186>
 - `MSVBCRT.AIO` 微软常用运行库合集
   - <https://www.ghxi.com/yxkhj.html>
 
-## `Software-5-game` 游戏
+## `Game` 游戏
 
 - `TPT (The Powder Toy)` 物理沙盘
   - <https://powdertoy.co.uk/>
