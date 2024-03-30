@@ -118,6 +118,8 @@
   - <https://www.i4.cn/>
 - `谷歌浏览器`
   - <https://www.google.cn/chrome/?standalone=1&platform=win64>
+- `火狐浏览器`
+  - <https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-release>
 - `飞鸽传书`
   - <http://www.ipmsg.org.cn/home/index/download>
 
