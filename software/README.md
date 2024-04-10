@@ -179,8 +179,7 @@
   - `升级版`<https://www.ghxi.com/upx.html>
 - `Adobe`
   - <https://creativecloud.adobe.com/apps/download/creative-cloud>
-- `Adobe-GenP` Adobe破解器
-  - <https://github.com/cw2k/Adobe-GenP>
+  - `注册机`<https://github.com/cw2k/Adobe-GenP>
   - `3.1`<https://github.com/cw2k/Adobe-GenP/releases/download/3.0/Adobe-GenP-3.1.zip>
 - `syncthing` 网络文件同步
   - <https://syncthing.net/downloads/>
@@ -259,10 +258,13 @@
   - <https://www.jetbrains.com.cn/idea/download/?section=windows>
 - `navicat`
   - <https://www.navicat.com.cn/download/navicat-premium>
-- `NavicatCracker` navicat破解
-  - <https://github.com/shuhongfan/NavicatCracker>
+  - `注册机`<https://github.com/shuhongfan/NavicatCracker>
 - `Figma`
   - <https://www.figma.com/>
+- `CorelDRAW`
+  - `试用版`<https://www.coreldraw.com/cn/>
+  - `注册机及正式版下载`<https://www.rjcxb.com/1637.html>
+  - <https://www.corel.com/akdlm/6763/downloads/ELD/CDGS/2024/JwdAS58QP32/CorelDRAWGraphicsSuite2024Installer_MF01.iso>
 - `AnotherRedisDesktopManager` Redis客户端
   - <https://gitee.com/qishibo/AnotherRedisDesktopManager>
 - `nodejs`
