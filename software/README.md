@@ -238,6 +238,8 @@
   - <https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-release>
 - `飞鸽传书`
   - <http://www.ipmsg.org.cn/home/index/download>
+- `进程截杀器`
+  - <http://shajincheng.com/>
 
 ## `Programmer` 程序员软件
 
