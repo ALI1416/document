@@ -238,11 +238,20 @@
   - <http://www.ipmsg.org.cn/home/index/download>
 - `进程截杀器`
   - <http://shajincheng.com/>
+- `Figma`
+  - <https://www.figma.com/>
+- `CorelDRAW`
+  - `试用版`<https://www.coreldraw.com/cn/>
+  - `注册机及正式版`<https://www.rjcxb.com/1637.html>
+  - <https://www.corel.com/akdlm/6763/downloads/ELD/CDGS/2024/JwdAS58QP32/CorelDRAWGraphicsSuite2024Installer_MF01.iso>
+- `SketchUp`
+  - `试用版`<https://www.sketchup.com/zh-cn/setup-confirmation/start>
+  - `破解文件及正式版` <https://www.gfxcamp.com/sketchup-pro-2024/>
 - `Waifu2x-Extension-GUI`
   - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
 - `绘世启动器`
   - `NVIDIA 独显` <https://www.bilibili.com/video/BV1iM4y1y7oA>
-  - `AMD Arc 独显`和`Intel Ultra 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
+  - `AMD Arc 独显`和`Intel Ultra Arc 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
 
 ## `Programmer` 程序员软件
 
@@ -264,15 +273,6 @@
 - `navicat`
   - <https://www.navicat.com.cn/download/navicat-premium>
   - `注册机`<https://github.com/shuhongfan/NavicatCracker>
-- `Figma`
-  - <https://www.figma.com/>
-- `CorelDRAW`
-  - `试用版`<https://www.coreldraw.com/cn/>
-  - `注册机及正式版下载`<https://www.rjcxb.com/1637.html>
-  - <https://www.corel.com/akdlm/6763/downloads/ELD/CDGS/2024/JwdAS58QP32/CorelDRAWGraphicsSuite2024Installer_MF01.iso>
-- `SketchUp`
-  - <https://www.sketchup.com/zh-CN>
-  - `破解版` <https://www.gfxcamp.com/sketchup-pro-2024/>
 - `AnotherRedisDesktopManager` Redis客户端
   - <https://gitee.com/qishibo/AnotherRedisDesktopManager>
 - `nodejs`
