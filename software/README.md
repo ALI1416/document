@@ -242,7 +242,7 @@
   - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
 - `绘世启动器`
   - `NVIDIA 独显` <https://www.bilibili.com/video/BV1iM4y1y7oA>
-  - `AMD Arc 独显`和`Intel Ultra 核显`
+  - `AMD Arc 独显`和`Intel Ultra 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
 
 ## `Programmer` 程序员软件
 
