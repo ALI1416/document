@@ -195,8 +195,6 @@
   - `下载`<https://gitee.com/longpanda/Ventoy/releases/>
 - `格式工厂`
   - <http://www.pcgeshi.com/>
-- `Waifu2x-Extension-GUI` 图片放大
-  - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
 - `genymotion` 安卓模拟器
   - <https://www.genymotion.com/download/>
 - `RaiDrive` 网盘映射
@@ -240,6 +238,11 @@
   - <http://www.ipmsg.org.cn/home/index/download>
 - `进程截杀器`
   - <http://shajincheng.com/>
+- `Waifu2x-Extension-GUI`
+  - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
+- `绘世启动器`
+  - `NVIDIA 独显` <https://www.bilibili.com/video/BV1iM4y1y7oA>
+  - `AMD Arc 独显`和`Intel Ultra 核显`
 
 ## `Programmer` 程序员软件
 
@@ -267,6 +270,9 @@
   - `试用版`<https://www.coreldraw.com/cn/>
   - `注册机及正式版下载`<https://www.rjcxb.com/1637.html>
   - <https://www.corel.com/akdlm/6763/downloads/ELD/CDGS/2024/JwdAS58QP32/CorelDRAWGraphicsSuite2024Installer_MF01.iso>
+- `SketchUp`
+  - <https://www.sketchup.com/zh-CN>
+  - `破解版` <https://www.gfxcamp.com/sketchup-pro-2024/>
 - `AnotherRedisDesktopManager` Redis客户端
   - <https://gitee.com/qishibo/AnotherRedisDesktopManager>
 - `nodejs`
