@@ -247,6 +247,8 @@
 - `SketchUp`
   - `试用版`<https://www.sketchup.com/zh-cn/setup-confirmation/start>
   - `破解文件及正式版` <https://www.gfxcamp.com/sketchup-pro-2024/>
+  - `enscape插件` <https://enscape3d.com/>
+  - `enscape插件破解版` <https://www.gfxcamp.com/enscape-3d-v3/>
 - `Waifu2x-Extension-GUI`
   - <https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI/releases>
 - `绘世启动器`
