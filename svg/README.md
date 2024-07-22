@@ -826,14 +826,15 @@ svg图标大全 <https://www.60logo.com/>
 **属性**
 
 - translate(x) : 平移(x,0)
-- translate(x,y) : 平移(x,y)
-- rotate(a) : 绕点(0,0)旋转a度
+- translate(x,y) : 平移(x,y) -> matrix(1, 0, 0, 1, x, y)
+- rotate(a) : 绕点(0,0)旋转a度 -> matrix(cos(a), sin(a), -sin(a), cos(a), 0, 0)
 - rotate(a,x,y) : 绕点(x,y)旋转a度
 - skewX(a) : 从点(0,0)斜切x轴a度
 - skewY(a) : 从点(0,0)斜切y轴a度
+- skew(a,b) [无效] : 从点(0,0)斜切x轴a度，y轴b度 -> matrix(1, tan(y), tan(x), 1, 0, 0)
 - scale(x) : x,y坐标缩放x倍
-- scale(x,y) : x坐标缩放x倍，y坐标缩放y倍
-- matrix(a,b,c,d,e,f) : 复杂变形
+- scale(x,y) : x坐标缩放x倍，y坐标缩放y倍 -> matrix(x, 0, 0, y, 0, 0)
+- matrix(a,b,c,d,e,f) : 复杂变形 -> matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY())
 
 **示例**
 
@@ -852,4 +853,20 @@ svg图标大全 <https://www.60logo.com/>
   <rect x="70" y="70" width="20" height="20" transform="skewX(45) skewY(5)" fill="pink"/>
   <rect x="70" y="10" width="20" height="20" transform="scale(2)" fill="grey"/>
   <rect x="100" y="10" width="20" height="20" transform="scale(2,4)" fill="white"/>
+</svg>
+
+**matrix示例**
+
+<svg style="background-color:#6cf">
+  <defs>
+    <image id="g" xlink:href="img\1.jpg" height="50" width="50" />
+  </defs>
+  <!-- 原图 -->
+  <use href="#g" />
+  <!-- 水平镜像对称 -->
+  <use href="#g" transform="matrix(-1,0,0,1,120,0)" />
+  <!-- 垂直镜像对称 -->
+  <use href="#g" transform="matrix(1,0,0,-1,0,120)" />
+  <!-- 原点镜像对称 -->
+  <use href="#g" transform="matrix(-1,0,0,-1,120,120)" />
 </svg>

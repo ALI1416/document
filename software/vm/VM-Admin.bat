@@ -1,6 +1,6 @@
 @echo off
 @REM Author:ALI
-@REM GitHub:https://github.com/ali1416
+@REM GitHub:https://github.com/ALI1416
 @REM Version:1.0
 @REM Please open it by UTF-8 encoding
 ( reg query "HKU\S-1-5-19">nul 2>&1 )||( powershell Start-Process """%~f0""" -Verb RunAs )&&( exit )

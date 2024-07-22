@@ -1,6 +1,6 @@
 @echo off
 @REM Author:ALI
-@REM GitHub:https://github.com/ali1416
+@REM GitHub:https://github.com/ALI1416
 @REM Version:1.0
 
 @REM 修改内存 jenkins.xml 找到 <arguments> 修改 -Xms128m -Xmx128m
