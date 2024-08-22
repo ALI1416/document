@@ -303,9 +303,11 @@
   - <https://www.wireshark.org/download.html>
 - `xampp` apache、php、tomcat、mysql合集
   - <https://www.apachefriends.org/download.html>
-- `putty`
+- `putty` ssh客户端
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
-- `xshell`和`xftp`
+- `Tabby` ssh和sftp客户端
+  - <https://github.com/Eugeny/tabby>
+- `Xshell`和`Xftp` ssh和sftp客户端
   - <https://www.xshell.com/zh/free-for-home-school/>
 - `mosquitto` MQTT服务器
   - <https://mosquitto.org/download/>
