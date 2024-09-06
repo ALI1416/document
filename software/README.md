@@ -338,13 +338,17 @@
   - <http://nginx.org/en/download.html>
 - `redis`
   - <https://github.com/tporadowski/redis/releases>
+- `influxdb`
+  - <https://www.influxdata.com/>
+  - <https://github.com/influxdata/influxdb/releases>
+  - <https://github.com/influxdata/chronograf/releases>
 - `nacos`
   - <https://github.com/alibaba/nacos/releases>
   - 启动`bin\startup.cmd -m standalone`
 - `seata`
   - <https://github.com/apache/incubator-seata/releases>
   - 启动`bin\seata-server.bat`
-- `Sentinel`
+- `sentinel`
   - <https://github.com/alibaba/Sentinel/releases>
   - 启动`java -Dserver.port=8849 -Dcsp.sentinel.dashboard.server=127.0.0.1:8849 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.7.jar`
 - `typora` markdown文档编辑器
@@ -366,6 +370,9 @@
   - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
 - `WinSW` Windows服务包装
   - <https://github.com/winsw/winsw>
+- `微信小程序解密和反编译`
+  - <https://github.com/Angels-Ray/UnpackMiniApp>
+  - <https://github.com/system-cpu/wxappUnpacker>
 
 ## `Patch` 补丁
 
@@ -378,3 +385,5 @@
 
 - `TPT (The Powder Toy)` 物理沙盘
   - <https://powdertoy.co.uk/>
+- `黑神话悟空抢先版`
+  - <https://space.bilibili.com/7435788>
