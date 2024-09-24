@@ -284,7 +284,8 @@
 - `otp(erlang)`
   - <https://www.erlang.org/downloads>
 - `vm` 虚拟机
-  - <https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html>
+  - <https://www.vmware.com/>
+  - `下载`<https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro>
 - `mqttx` MQTT客户端
   - <https://mqttx.app/zh#download>
 - `gpg`
@@ -301,14 +302,10 @@
   - <https://eternallybored.org/misc/wget/>
 - `wireshark` 抓包
   - <https://www.wireshark.org/download.html>
-- `xampp` apache、php、tomcat、mysql合集
-  - <https://www.apachefriends.org/download.html>
 - `putty` ssh客户端
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
-- `Tabby` ssh和sftp客户端
-  - <https://github.com/Eugeny/tabby>
-- `Xshell`和`Xftp` ssh和sftp客户端
-  - <https://www.xshell.com/zh/free-for-home-school/>
+- `WindTerm` ssh和sftp客户端
+  - <https://github.com/kingToolbox/WindTerm>
 - `mosquitto` MQTT服务器
   - <https://mosquitto.org/download/>
 - `elasticsearch`
