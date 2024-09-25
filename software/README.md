@@ -10,6 +10,8 @@
 - `下载地址`
   - <https://msdn.itellyou.cn/>
   - <https://next.itellyou.cn/Original/Index>
+  - <https://www.xitongku.com/>
+  - <https://hellowindows.cn/>
 - `Windows 10 (Multiple Editions), Version 1607 (Updated Jul 2016) (x64) - DVD (Chinese-Simplified)`
   - cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso
   - `ed2k://|file|cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso|4347183104|35EA5DB0F3BB714F5CE0740FB89D82D1|/`
@@ -26,11 +28,13 @@
   - <https://customerconnect.vmware.com/cn/evalcenter?p=free-esxi8>
 - `ikuai`
   - <https://www.ikuai8.com/component/download>
-- `deepin`
-  - <https://www.deepin.org/zh/download/>
-- `群晖`
-  - `arpl`<https://github.com/fbelavenuto/arpl>
+- `ubuntu`
+  - <https://cn.ubuntu.com/download/desktop>
+- `黑群晖`
+  - `rr`<https://github.com/RROrg/rr>
   - `DSM`<https://archive.synology.cn/download/Os/DSM>
+- `黑苹果`
+  - <https://yuexiang.fun/>
 
 ## `Office` 办公软件
 
@@ -370,6 +374,9 @@
 - `微信小程序解密和反编译`
   - <https://github.com/Angels-Ray/UnpackMiniApp>
   - <https://github.com/system-cpu/wxappUnpacker>
+- `IDA` 反编译
+  - `官网`<https://hex-rays.com/>
+  - `破解`<https://www.jb51.net/softs/580025.html>
 
 ## `Patch` 补丁
 
