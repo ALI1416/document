@@ -35,6 +35,8 @@
   - `DSM`<https://archive.synology.cn/download/Os/DSM>
 - `黑苹果`
   - <https://yuexiang.fun/>
+  - `VM解锁macOS`<https://github.com/BDisp/unlocker>
+  - `VM安装macOS`<https://yuexiang.fun/175.html>
 
 ## `Office` 办公软件
 
