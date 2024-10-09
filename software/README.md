@@ -12,6 +12,7 @@
   - <https://next.itellyou.cn/Original/Index>
   - <https://www.xitongku.com/>
   - <https://hellowindows.cn/>
+  - <https://sysin.cn/>
 - `Windows 10 (Multiple Editions), Version 1607 (Updated Jul 2016) (x64) - DVD (Chinese-Simplified)`
   - cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso
   - `ed2k://|file|cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso|4347183104|35EA5DB0F3BB714F5CE0740FB89D82D1|/`
@@ -33,10 +34,6 @@
 - `黑群晖`
   - `rr`<https://github.com/RROrg/rr>
   - `DSM`<https://archive.synology.cn/download/Os/DSM>
-- `黑苹果`
-  - <https://yuexiang.fun/>
-  - `VM解锁macOS`<https://github.com/BDisp/unlocker>
-  - `VM安装macOS`<https://yuexiang.fun/175.html>
 
 ## `Office` 办公软件
 
@@ -292,6 +289,7 @@
 - `vm` 虚拟机
   - <https://www.vmware.com/>
   - `下载`<https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro>
+  - `解锁macOS`<https://github.com/BDisp/unlocker>
 - `mqttx` MQTT客户端
   - <https://mqttx.app/zh#download>
 - `gpg`
