@@ -169,6 +169,8 @@
 
 - `cpuz` 查询电脑信息
   - <https://www.cpuid.com/softwares/cpu-z.html>
+- `map3tag`
+  - <https://www.mp3tag.de/dodownload64.html>
 - `Keyboard Test Utility` 键盘测试
   - <http://www.7xdown.com/downinfo/101027.html>
 - `EasyAccess`和`ShutdownClock` `Access数据库编辑器`和`定时开关机`
@@ -290,6 +292,7 @@
   - <https://www.vmware.com/>
   - `下载`<https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro>
   - `解锁macOS`<https://github.com/BDisp/unlocker>
+  - `macOS安装VMware Tools文件darwin.iso`<https://packages.vmware.com/tools/frozen/darwin/>
 - `mqttx` MQTT客户端
   - <https://mqttx.app/zh#download>
 - `gpg`
