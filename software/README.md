@@ -377,6 +377,10 @@
 - `微信小程序解密和反编译`
   - <https://github.com/Angels-Ray/UnpackMiniApp>
   - <https://github.com/system-cpu/wxappUnpacker>
+- `微信解锁F12`
+  - <https://github.com/x0tools/WeChatOpenDevTools>
+  - <https://github.com/JaveleyQAQ/WeChatOpenDevTools-Python>
+  - <https://github.com/tom-snow/wechat-windows-versions>
 - `IDA` 反编译
   - `官网`<https://hex-rays.com/>
   - `破解`<https://www.jb51.net/softs/580025.html>
