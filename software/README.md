@@ -188,9 +188,6 @@
   - `3.1`<https://github.com/cw2k/Adobe-GenP/releases/download/3.0/Adobe-GenP-3.1.zip>
 - `syncthing` 网络文件同步
   - <https://syncthing.net/downloads/>
-- `Flash`
-  - <https://www.flash.cn/>
-  - `去广告`<http://www.cyxitong.com/post-73.html>
 - `DiskGenius` 磁盘管理
   - <https://www.diskgenius.cn/download.php>
 - `大白菜` PE盘
@@ -204,8 +201,6 @@
   - <https://www.genymotion.com/download/>
 - `RaiDrive` 网盘映射
   - <http://www.raidrive.com/download>
-- `CAJViewer` 知网CAJ阅读器
-  - <http://cajviewer.cnki.net/download.html>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
 - `nps` 内网穿透
@@ -396,5 +391,3 @@
 
 - `TPT (The Powder Toy)` 物理沙盘
   - <https://powdertoy.co.uk/>
-- `黑神话悟空抢先版`
-  - <https://space.bilibili.com/7435788>
