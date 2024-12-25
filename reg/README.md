@@ -1,1 +1,1 @@
-# regedit 注册表
+# reg 注册表
