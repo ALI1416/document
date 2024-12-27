@@ -1,87 +1,87 @@
 # dos
 
-## 所有命令
+## 命令
 
-| 常用 | 命令         | 作用                |
-| ---- | ------------ | ------------------- |
-| ■    | call         | 调用                |
-| ■■   | cd / chdir   | 目录                |
-| ■    | tree         | 树形目录            |
-| ■    | chcp         | 字符集编码          |
-| ■■   | cls          | 清屏                |
-| ■    | cmd          | CMD                 |
-| ■    | title        | 标题                |
-| ■    | color        | 颜色                |
-| ■■   | type         | 文件内容            |
-| ■■   | copy         | 复制                |
-| ■■   | xcopy        | 高级复制            |
-|      | robocopy     | 高级复制            |
-| ■    | date         | 日期                |
-| ■    | time         | 时间                |
-| ■■   | del / erase  | 删除                |
-| ■■   | dir          | 目录内容            |
-|      | diskpart     | 磁盘分区            |
-| ■■   | echo         | 显示消息            |
-| ■■   | exit         | 退出                |
-| ■■   | find         | 查找字符串          |
-| ■■   | findstr      | 查找字符串          |
-| ■■   | goto         | 跳转到标签          |
-| ■■   | help         | 帮助                |
-| ■■   | md / mkdir   | 创建目录            |
-|      | mklink       | 创建符号链接        |
-| ■    | mode         | 系统状态            |
-| ■    | more         | 更多                |
-| ■■   | move         | 移动                |
-| ■■   | pause        | 暂停                |
-|      | pushd        | 保存当前目录        |
-|      | popd         | 还原pushd保存的目录 |
-| ■■   | rd / rmdir   | 删除目录            |
-| ■■   | rem / ::     | 注释                |
-| ■■   | ren / rename | 重命名              |
-| ■    | replace      | 替换                |
-| ■■   | set          | 设置变量            |
-| ■■   | shutdown     | 关机                |
-| ■    | sort         | 排序                |
-| ■■   | start        | 启动                |
-| ■■   | tasklist     | 进程列表            |
-| ■■   | taskkill     | 结束进程            |
-| ■■   | timeout      | 倒计时              |
-| ■■   | choice       | 选项                |
-| ■■   | reg          | 注册表              |
-| ■■   | netstat      | 网络                |
-| ■    | schtasks     | 计划任务            |
-|      | setlocal     | 开始环境更改本地化  |
-|      | endlocal     | 结束环境更改本地化  |
-|      | assoc        | 文件扩展名关联      |
-|      | ftype        | 文件扩展名关联      |
-|      | attrib       | 文件属性            |
-|      | bcdedit      | 数据存储编辑器      |
-|      | chkdsk       | 磁盘检查            |
-|      | chkntfs      | 磁盘检查            |
-|      | label        | 磁盘卷标            |
-|      | format       | 磁盘格式化          |
-|      | recover      | 磁盘恢复            |
-|      | subst        | 磁盘路径            |
-|      | vol          | 磁盘信息            |
-|      | compact      | NTFS文件压缩        |
-|      | convert      | FAT转NTFS           |
-|      | comp         | 比较文件            |
-|      | fc           | 比较                |
-|      | doskey       | 编辑命令行          |
-|      | driverquery  | 驱动                |
-|      | fsutil       | 文件系统属性        |
-|      | systeminfo   | 操作系统配置信息    |
-|      | gpresult     | 策略信息            |
-|      | icacls       | 访问控制列表(ACL)   |
-|      | openfiles    | 文件共享            |
-|      | path         | 可执行文件搜索路径  |
-|      | print        | 打印                |
-|      | prompt       | 更改CMD             |
-|      | sc           | 服务                |
-|      | schtasks     | 计划任务            |
-|      | shift        | 更改参数位置        |
-|      | ver          | Windows的版本       |
-|      | verify       | 验证文件            |
+| 常用 | 命令         | 作用               |
+| ---- | ------------ | ------------------ |
+| ■    | call         | 调用               |
+| ■■   | cd / chdir   | 切换目录           |
+| ■■   | dir          | 目录内容           |
+| ■    | tree         | 树形目录内容       |
+| ■■   | md / mkdir   | 创建目录           |
+| ■■   | rd / rmdir   | 删除目录           |
+|      | pushd        | 保存当前目录       |
+|      | popd         | 还原保存目录       |
+| ■■   | move         | 移动文件或目录     |
+| ■■   | ren / rename | 重命名文件         |
+| ■■   | del / erase  | 删除文件           |
+| ■    | replace      | 替换文件           |
+| ■    | chcp         | 字符集编码         |
+| ■■   | cls          | 清屏               |
+| ■    | cmd          | CMD                |
+| ■    | title        | 标题               |
+| ■    | color        | 颜色               |
+| ■■   | type         | 文件内容           |
+| ■■   | copy         | 复制               |
+| ■■   | xcopy        | 高级复制           |
+|      | robocopy     | 高级复制           |
+| ■    | date         | 日期               |
+| ■    | time         | 时间               |
+| ■■   | echo         | 显示消息           |
+| ■■   | exit         | 退出               |
+| ■■   | find         | 查找字符串         |
+| ■■   | findstr      | 查找字符串         |
+| ■■   | goto         | 跳转到标签         |
+| ■■   | help         | 帮助               |
+| ■    | mode         | 系统状态           |
+| ■    | more         | 更多               |
+| ■■   | pause        | 暂停               |
+| ■■   | rem / ::     | 注释               |
+| ■■   | set          | 设置变量           |
+| ■■   | shutdown     | 关机               |
+| ■    | sort         | 排序               |
+| ■■   | start        | 启动               |
+| ■■   | tasklist     | 进程列表           |
+| ■■   | taskkill     | 结束进程           |
+| ■■   | timeout      | 倒计时             |
+| ■■   | choice       | 选项               |
+| ■■   | reg          | 注册表             |
+| ■■   | netstat      | 网络               |
+| ■    | schtasks     | 计划任务           |
+|      | mklink       | 创建符号链接       |
+|      | setlocal     | 开始环境更改本地化 |
+|      | endlocal     | 结束环境更改本地化 |
+|      | assoc        | 文件扩展名关联     |
+|      | ftype        | 文件扩展名关联     |
+|      | attrib       | 文件属性           |
+|      | bcdedit      | 数据存储编辑器     |
+|      | diskpart     | 磁盘分区           |
+|      | chkdsk       | 磁盘检查           |
+|      | chkntfs      | 磁盘检查           |
+|      | label        | 磁盘卷标           |
+|      | format       | 磁盘格式化         |
+|      | recover      | 磁盘恢复           |
+|      | subst        | 磁盘路径           |
+|      | vol          | 磁盘信息           |
+|      | compact      | NTFS文件压缩       |
+|      | convert      | FAT转NTFS          |
+|      | comp         | 比较文件           |
+|      | fc           | 比较               |
+|      | doskey       | 编辑命令行         |
+|      | driverquery  | 驱动               |
+|      | fsutil       | 文件系统属性       |
+|      | systeminfo   | 操作系统配置信息   |
+|      | gpresult     | 策略信息           |
+|      | icacls       | 访问控制列表(ACL)  |
+|      | openfiles    | 文件共享           |
+|      | path         | 可执行文件搜索路径 |
+|      | print        | 打印               |
+|      | prompt       | 更改CMD            |
+|      | sc           | 服务               |
+|      | schtasks     | 计划任务           |
+|      | shift        | 更改参数位置       |
+|      | ver          | Windows的版本      |
+|      | verify       | 验证文件           |
 
 ## 常用命令
 
@@ -373,10 +373,10 @@ echo 原字符串b并没有被合并 %b%
 | ■■   | lt / lss | <    |
 | ■■   | le / leq | <=   |
 
-## echo 显示消息，或者启用或关闭命令回显
+## echo 显示消息、开关命令回显
 
+**显示格式：`echo [消息]`**  
 **开关格式：`echo [on | off]`**  
-**打印格式：`echo [消息]`**  
 
 ### 示例
 
@@ -391,7 +391,7 @@ echo 原字符串b并没有被合并 %b%
 | ■■   | echo !a!  | 使用a变量的延迟值     |
 | ■■   | echo %~f0 | 显示拓展变量(仅限bat) |
 
-## set 显示、设置或删除cmd.exe环境变量
+## set 显示、设置、删除变量
 
 **编辑格式：`set [变量名=[值]]`**  
 **计算格式：`set /a [变量名=]表达式`**  
@@ -412,7 +412,7 @@ echo 原字符串b并没有被合并 %b%
 |      | set /p a=       | 用户手动赋值a                 |
 | ■■   | set /p a=请输入 | 用户手动赋值a，并提示“请输入” |
 
-## cd 显示当前目录名或改变当前目录
+## cd 显示当前目录名、改变当前目录
 
 **格式：`cd [/d] [盘符:][路径]`**
 
@@ -427,7 +427,7 @@ echo 原字符串b并没有被合并 %b%
 | ■    | cd /d e:     | 打开e盘，同命令e:    |
 | ■    | cd /d e:/abc | 打开e盘下的abc文件夹 |
 
-## dir 显示目录中的文件和子目录列表
+## dir 树型显示文件夹内容
 
 **格式：`dir [盘符:][路径][文件名] [/a[[:]属性]] [/b] [/c] [/d] [/l] [/n] [/o[[:]排列顺序]] [/p] [/q] [/r] [/s] [/t[[:]时间段]] [/w] [/x] [/4]`**
 
@@ -569,7 +569,7 @@ E:\>dir /d
                6 个目录 237,119,971,328 可用字节
 ```
 
-## tree 以图形显示驱动器或路径的文件夹结构
+## tree 树型显示文件夹内容
 
 **格式：`tree [盘符:][路径] [/f] [/a]`**
 
@@ -831,9 +831,9 @@ E:.
 |      | del /q *.txt      | 不提示删除信息                  |
 | ■    | del /a /ah *。txt | 删除隐藏文件                    |
 
-## md 创建目录(文件夹)
+## md 创建目录
 
-**格式：`md [盘符:]路径(文件夹名)`**
+**格式：`md [盘符:]路径`**
 
 ### 示例
 
@@ -842,9 +842,9 @@ E:.
 | ■■   | md a     | 创建a文件夹    |
 | ■■   | md a\b\c | 创建多级文件夹 |
 
-## rd 删除目录(文件夹)
+## rd 删除目录
 
-**格式：`md [/s] [/q] [盘符:]路径(文件夹名)`**
+**格式：`md [/s] [/q] [盘符:]路径`**
 
 ### 示例
 
@@ -854,7 +854,7 @@ E:.
 | ■■   | rd /s a    | 以及删除子文件和子文件夹    |
 | ■■   | rd /s /q a | 不提示确认信息              |
 
-## move 移动文件(剪切)并重命名文件和目录
+## move 移动文件文件或目录
 
 **移动文件格式：`move [/y | /-y] [盘符:][路径]文件名[,...] 目标位置`**  
 **重命名格式：`move [/y | /-y] [盘符:][路径]文件夹名 新文件夹名`**
