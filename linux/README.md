@@ -125,13 +125,15 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■    | touch               | 创建文件                                   |
 | ■■   | cp                  | 复制文件                                   |
 | ■    | dd                  | 转换和复制文件                             |
-| ■■   | scp                 | 远程复制文件(已禁用)                       |
-| ■■   | rsync               | 远程同步                                   |
-| ■■   | ftp                 | FTP                                        |
-| ■■   | sftp                | 远程FTP                                    |
+| ■■   | scp                 | 远程复制文件                               |
+| ■    | rsync               | 远程同步                                   |
+| ■■   | sh                  | 执行程序                                   |
+| ■■   | ssh                 | SSH                                        |
+| ■    | ftp                 | FTP                                        |
+| ■    | sftp                | SFTP                                       |
 | ■■   | mv                  | 移动文件或目录                             |
 | ■■   | rm                  | 删除文件                                   |
-| ■    | file                | 文件属性                                   |
+| ■    | file                | 探测文件类型                               |
 | ■■   | grep                | 查找文件内容                               |
 | ■■   | cat                 | 显示文件内容                               |
 | ■    | tac                 | 按行倒序显示文件内容                       |
@@ -682,10 +684,227 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 ### 示例
 
-| 常用 | 命令                                                          | 解释               |
-| ---- | ------------------------------------------------------------- | ------------------ |
-| ■    | dd if=/dev/zero of=2k.txt bs=1K count=2                       | 创建2K的空文件     |
-|      | dd if=/dev/urandom of=random.txt bs=1K count=1                | 创建1K的随机数文件 |
-| ■    | dd if=l.txt of=u.txt conv=ucase                               | 转为大写字符       |
-| ■    | ssh 192.168.30.127 dd if=/home/ali/test/2k.txt \| dd of=1.txt | 从远端复制到本地   |
-| ■    | dd if=2k.txt \| ssh 192.168.30.127 dd of=/home/ali/test/1.txt | 从本地复制到远端   |
+| 常用 | 命令                                                              | 解释               |
+| ---- | ----------------------------------------------------------------- | ------------------ |
+| ■■   | dd if=2k.txt of=1.txt                                             | 复制文件           |
+| ■    | dd if=/dev/zero of=2k.txt bs=1K count=2                           | 创建2K的空文件     |
+|      | dd if=/dev/urandom of=random.txt bs=1K count=1                    | 创建1K的随机数文件 |
+| ■    | dd if=l.txt of=u.txt conv=ucase                                   | 转为大写字符       |
+| ■    | ssh ali@192.168.30.127 dd if=/home/ali/test/2k.txt \| dd of=1.txt | 从远端复制到本地   |
+| ■    | dd if=2k.txt \| ssh ali@192.168.30.127 dd of=/home/ali/test/1.txt | 从本地复制到远端   |
+
+## scp 远程复制
+
+- **格式：`scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config] [-i identity_file] [-J destination] [-l limit] [-o ssh_option]`**
+
+### 选项
+
+| 常用 | 选项                | 解释                                          |
+| ---- | ------------------- | --------------------------------------------- |
+|      | -3                  | 远程复制(默认)                                |
+|      | -4                  | 仅使用IPv4                                    |
+|      | -6                  | 仅使用IPv6                                    |
+|      | -A                  | 身份验证代理转发                              |
+|      | -B                  | 选择批处理模式                                |
+|      | -C                  | 启用压缩                                      |
+|      | -c cipher           | 选择用于加密数据传输的密码                    |
+|      | -D sftp_server_path | 通过ssh直接连接到本地SFTP服务器程序           |
+|      | -F ssh_config       | 为ssh指定一个备选的每个用户配置文件           |
+|      | -i identity_file    | 选择私钥文件                                  |
+|      | -J destination      | 跳转主机TCP转发                               |
+|      | -l limit            | 限制使用的带宽                                |
+|      | -O                  | 使用传统的SCP协议进行文件传输，而不是SFTP协议 |
+|      | -o ssh_option       | ssh选项                                       |
+|      | -P port             | 指定远程主机上要连接的端口                    |
+|      | -p                  | 保留源文件中的修改时间、访问时间和文件模式    |
+|      | -q                  | 禁用进度计以及来自ssh的警告和诊断消息         |
+|      | -R                  | 从远程主机执行                                |
+| ■■   | -r                  | 递归复制整个目录                              |
+|      | -S program          | 用于加密连接的程序名称                        |
+|      | -T                  | 禁用严格的文件名检查                          |
+|      | -v                  | 显示操作记录                                  |
+|      | -X sftp_option      | SFTP选项                                      |
+
+### 示例
+
+| 常用 | 命令                                               | 解释                   |
+| ---- | -------------------------------------------------- | ---------------------- |
+| ■■   | scp ali@192.168.30.127:/home/ali/test/2k.txt 1.txt | 从远端复制到本地       |
+| ■■   | scp -r ali@192.168.30.127:/home/ali/test/folder f1 | 从远端复制到本地(目录) |
+| ■■   | scp 2k.txt ali@192.168.30.127:/home/ali/test/1.txt | 从本地复制到远端       |
+| ■■   | scp -r folder ali@192.168.30.127:/home/ali/test/f1 | 从本地复制到远端(目录) |
+
+## ssh SSH
+
+- **格式1：`ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_spec] [-D [bind_address:]port] [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file] [-J destination] [-L address] [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address] [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]] destination [command [argument ...]]`**
+- **格式2：`ssh [-Q query_option]`**
+
+### 选项
+
+| 常用 | 选项                                 | 解释                                          |
+| ---- | ------------------------------------ | --------------------------------------------- |
+|      | -4                                   | 仅使用IPv4                                    |
+|      | -6                                   | 仅使用IPv6                                    |
+|      | -A                                   | 身份验证代理转发                              |
+|      | -a                                   | 禁用身份验证代理转发                          |
+|      | -B bind_interface                    | 绑定地址                                      |
+|      | -C                                   | 启用压缩                                      |
+|      | -c cipher_spec                       | 选择加密会话的密码规范                        |
+|      | -D [bind_address:]port               | 指定端口                                      |
+|      | -E log_file                          | 调试日志                                      |
+|      | -e escape_char                       | 设置转义字符(默认~)                           |
+|      | -F configfile                        | 指定每个用户的备选配置文件                    |
+|      | -f                                   | 请求ssh在命令执行之前转到后台                 |
+|      | -G                                   | 使ssh在评估Host和Match块并退出后打印其配置    |
+|      | -g                                   | 允许远程主机连接到本地转发端口                |
+|      | -I pkcs11                            | 指定ssh应用于与PKCS#11令牌通信的PKCS#11共享库 |
+|      | -i identity_file                     | 选择私钥文件                                  |
+|      | -J destination                       | 跳转主机TCP转发                               |
+|      | -K                                   | 启用基于GSSAPI的身份验证                      |
+|      | -k                                   | 禁用将GSSAPI凭据转发                          |
+|      | -L [bind_address:]port:host:hostport |                                               |
+|      | -L [bind_address:]port:remote_socket |                                               |
+|      | -L local_socket:host:hostport        |                                               |
+|      | -L local_socket:remote_socket        | 本地TCP或Unix端口转发到服务器                 |
+|      | -l login_name                        | 指定以远程计算机上的身份登录的用户            |
+|      | -M                                   | 将ssh客户端置于主模式以进行连接共享。         |
+|      | -m mac_spec                          | 以逗号分隔的MAC算法列表                       |
+|      | -N                                   | 不要执行远程命令                              |
+|      | -n                                   | 阻止从stdin读取                               |
+|      | -O ctl_cmd                           | 控制活动连接多路复用主进程                    |
+|      | -o option                            | 可用于以配置文件中使用的格式提供选项          |
+|      | -P tag                               | 选择配置的标记名称                            |
+|      | -p port                              | 端口号                                        |
+|      | -Q                                   | 算法                                          |
+|      | -q                                   | 安静模式                                      |
+|      | -R [bind_address:]port:host:hostport |                                               |
+|      | -R [bind_address:]port:local_socket  |                                               |
+|      | -R remote_socket:host:hostport       |                                               |
+|      | -R remote_socket:local_socket        |                                               |
+|      | -R [bind_address:]port               | 服务器TCP或Unix端口转发到本地                 |
+|      | -S ctl_path                          | 指定用于连接共享的控制套接字的位置            |
+|      | -s                                   | 可用于请求调用远程系统上的子系统              |
+|      | -T                                   | 禁用伪终端分配                                |
+|      | -t                                   | 强制伪终端分配                                |
+|      | -V                                   | 显示版本号并退出                              |
+|      | -v                                   | 显示操作记录                                  |
+|      | -W host:port                         | 本地标准输入和输出转发到服务器                |
+|      | -w local_tun[:remote_tun]            | 隧道设备转发                                  |
+|      | -X                                   | 启用X11转发                                   |
+|      | -x                                   | 禁用X11转发                                   |
+|      | -Y                                   | 启用受信任的X11转发                           |
+|      | -y                                   | 使用syslog系统模块发送日志信息                |
+
+### 示例
+
+| 常用 | 命令                                                 | 解释                |
+| ---- | ---------------------------------------------------- | ------------------- |
+| ■■   | ssh ali@192.168.30.127                               | SSH                 |
+| ■    | ssh -o HostKeyAlgorithms=+ssh-rsa ali@192.168.30.127 | 使用不安全的RSA算法 |
+
+## mv 将<源>重命名为<目标>，或将<源>移动至<目录>
+
+- **格式1：`mv [选项]... [-T] 源 目标`**
+- **格式2：`mv [选项]... 源... 目录`**
+- **格式3：`mv [选项]... -t 目录 源...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                   | 解释                                        |
+| ---- | ------ | ------------------------ | ------------------------------------------- |
+|      |        | --backup=[控制]          | 为每个已存在的目标文件创建备份              |
+|      | -b     |                          | 类似--backup，但不接受任何参数              |
+|      |        | --debug                  | 解释文件是如何复制的                        |
+| ■    | -f     | --force                  | 覆盖前不询问                                |
+| ■    | -i     | --interactive            | 覆盖前询问                                  |
+| ■    | -n     | --no-clobber             | 不覆盖已存在的文件                          |
+|      |        | --no-copy                | 如果重命名失败，则不复制                    |
+|      | -S     | --suffix=后缀            | 替换通常使用的备份文件后缀                  |
+|      |        | --strip-trailing-slashes | 去掉每个<源>尾部的斜杠                      |
+|      | -t     | --target-directory=目录  | 将所有<源>参数复制到<目录>                  |
+|      | -T     | --no-target-directory    | 将<目标>视为普通文件                        |
+|      |        | --update[=更新]          | 控制更新哪些已存在的文件：                  |
+|      |        |                          | all、none、older(默认)                      |
+|      | -u     |                          | 等价于--update[=older]                      |
+|      | -v     | --verbose                | 显示操作记录                                |
+|      | -Z     | --context                | 将目标文件的SELinux安全上下文设置为默认类型 |
+
+### 示例
+
+| 常用 | 命令              | 解释                                      |
+| ---- | ----------------- | ----------------------------------------- |
+| ■■   | mv file file1     | 将文件file重命名为file1(存在将覆盖)       |
+| ■■   | mv file folder    | 将文件file移动到文件夹folder              |
+| ■■   | mv folder folder1 | 将文件夹folder重命名为folder1             |
+| ■■   | mv folder folder1 | 将文件夹foldere移动到folder1(folder1存在) |
+
+## rm 删除一个或多个<文件>
+
+- **格式：`rm [选项]... [文件]...`**
+
+### 选项
+
+| 常用 | 短选项  | 长选项                | 解释                                            |
+| ---- | ------- | --------------------- | ----------------------------------------------- |
+| ■■   | -f      | --force               | 忽略不存在的文件和参数，且从不询问              |
+|      | -i      |                       | 每次删除前询问                                  |
+|      | -I      |                       | 在删除超过三个文件或者递归删除前询问一次        |
+|      |         | --interactive[=何时]  | 根据<何时>的值进行询问                          |
+|      |         | --one-file-system     | 递归删除目录时，跳过所有和该目录所对应的        |
+|      |         |                       | 命令行参数不在同一个文件系统上的目录            |
+|      |         | --no-preserve-root    | 不要对/特殊处理                                 |
+|      |         | --preserve-root[=all] | 不要删除/(默认)                                 |
+|      |         |                       | all拒绝处理与其父目录位于不同设备上的命令行参数 |
+| ■■   | -r / -R | --recursive           | 递归删除目录及其内容                            |
+| ■■   | -d      | --dir                 | 删除空目录                                      |
+|      | -v      | --verbose             | 显示操作记录                                    |
+
+### 示例
+
+| 常用 | 命令         | 解释             |
+| ---- | ------------ | ---------------- |
+| ■■   | rm file      | 删除文件file     |
+| ■■   | rm -r folder | 删除文件夹folder |
+
+## file 探测文件类型
+
+- **格式：`file [OPTION...] [FILE...]`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                | 解释                                           |
+| ---- | ------ | --------------------- | ---------------------------------------------- |
+|      | -m     | --magic-file LIST     | 指定魔术文件列表                               |
+|      | -z     | --uncompress          | 解压文件                                       |
+|      | -Z     | --uncompress-noreport | 仅打印压缩文件的内容                           |
+|      | -b     | --brief               | 不要在输出行前添加文件名                       |
+|      | -c     | --checking-printout   | 打印魔术文件的解析形式                         |
+|      | -e     | --exclude TEST        | 排除测试                                       |
+|      |        | --exclude-quiet TEST  | 类似，但忽略未知测试                           |
+|      | -f     | -files-from FILE      | 从FILE读取要检查的文件名                       |
+|      | -F     | --separator STRING    | 使用STRING作为分隔符，而不是:                  |
+|      | -i     | --mime                | 输出MIME字符串(--mime-type 和 --mime-encoding) |
+|      |        | --apple               | 输出Apple CREATOR/TYPE                         |
+|      |        | --extension           | 输出以斜线分隔的扩展名列表                     |
+|      |        | --mime-type           | 输出MIME类型                                   |
+|      |        | --mime-encoding       | 输出MIME编码                                   |
+|      | -k     | --keep-going          | 匹配多个                                       |
+|      | -l     | --list                | 列出魔术力度                                   |
+|      | -L     | --dereference         | 遵循符号链接                                   |
+|      | -h     | --no-dereference      | 不遵循符号链接                                 |
+|      | -n     | --no-buffer           | 不使用缓冲输出                                 |
+|      | -N     | --no-pad              | 不使用填充输出                                 |
+|      | -0     | --print0              | 用ASCII NUL终止文件名                          |
+|      | -p     | --preserve-date       | 保留文件的访问时间                             |
+|      | -P     | --parameter           | 设置文件引擎参数限制                           |
+|      | -r     | --raw                 | 不要将无法打印的字符转换为\ooo                 |
+|      | -s     | --special-files       | 将特殊(块/字符设备)文件视为普通文件            |
+|      | -S     | --no-sandbox          | 禁用系统调用沙盒                               |
+|      | -C     | --compile             | 由-m指定的编译文件                             |
+|      | -d     | --debug               | 打印调试信息                                   |
+
+### 示例
+
+| 常用 | 命令      | 解释         |
+| ---- | --------- | ------------ |
+| ■■   | file file | 探测文件file |
