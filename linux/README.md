@@ -908,3 +908,91 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | 常用 | 命令      | 解释         |
 | ---- | --------- | ------------ |
 | ■■   | file file | 探测文件file |
+
+## grep 查找文件内容
+
+- **格式：`grep [选项]... 模式 [文件]...`**
+
+### 模式选择
+
+| 常用 | 短选项 | 长选项            | 解释                        |
+| ---- | ------ | ----------------- | --------------------------- |
+|      | -E     | --extended-regexp | <模式>是扩展正则表达式      |
+| ■    | -F     | --fixed-strings   | <模式>是字符串              |
+|      | -G     | --basic-regexp    | <模式>是基本正则表达式      |
+|      | -P     | --perl-regexp     | <模式>是Perl正则表达式      |
+|      | -e     | --regexp=模式     | 使用指定的<模式>进行匹配    |
+|      | -f     | --file=文件       | 从指定的<文件>中获得<模式>  |
+| ■■   | -i     | --ignore-case     | 对于模式和数据，忽略大小写  |
+|      |        | --no-ignore-case  | 不要忽略大小写(默认)        |
+| ■    | -w     | --word-regexp     | 仅匹配整个单词              |
+| ■    | -x     | --line-regexp     | 仅匹配整行                  |
+|      | -z     | --null-data       | 数据行以NUL结束，而非换行符 |
+
+### 杂项
+
+| 常用 | 短选项 | 长选项         | 解释           |
+| ---- | ------ | -------------- | -------------- |
+|      | -s     | --no-messages  | 不显示错误信息 |
+| ■■   | -v     | --invert-match | 选中不匹配的行 |
+
+### 输出控制
+
+| 常用 | 短选项 | 长选项                | 解释                                     |
+| ---- | ------ | --------------------- | ---------------------------------------- |
+|      | -m     | --max-count=数值      | 选中<数值>行后停止执行                   |
+|      | -b     | --byte-offset         | 输出的同时打印字节偏移量                 |
+| ■■   | -n     | --line-number         | 输出的同时打印行号                       |
+|      |        | --line-buffered       | 每行输出后排空输出缓冲区                 |
+|      | -H     | --with-filename       | 输出的同时打印文件名                     |
+|      | -h     | --no-filename         | 输出时不显示文件名前缀                   |
+|      |        | --label=标签          | 使用指定<标签>作为标准输入文件名前缀     |
+|      | -q     | --quiet / --silent    | 不显示所有常规输出                       |
+|      |        | --binary-files=类型   | 假定二进制文件是<类型>：                 |
+|      |        |                       | binary、text、without-match              |
+|      | -a     | --text                | 等价于--binary-files=text                |
+|      | -I     |                       | 等价于--binary-files=without-match       |
+|      | -d     | --directories=动作    | 处理目录的方式：                         |
+|      |        |                       | read、recurse、skip                      |
+|      | -D     | --devices=动作        | 处理设备、FIFO 和套接字的方式：          |
+|      |        |                       | read、skip                               |
+|      | -r     | --recursive           | 等价于--directories=recurse              |
+|      |        | --include=GLOB        | 只查找匹配GLOB(含通配符的文件模式)的文件 |
+|      |        | --exclude=GLOB        | 跳过匹配GLOB的文件                       |
+|      |        | --exclude-from=文件   | 跳过匹配<文件>内容中任一文件模式的文件   |
+|      |        | --exclude-dir=GLOB    | 跳过匹配GLOB的目录                       |
+|      | -L     | --files-without-match | 只打印没有被选中的行的<文件>的名称       |
+|      | -l     | --files-with-matches  | 只打印有被选中的行的<文件>的名称         |
+| ■■   | -c     | --count               | 只打印每个<文件>的被选中的行的数量       |
+|      | -T     | --initial-tab         | 使制表符对齐                             |
+|      | -Z     | --null                | 在<文件>名后打印NUL                      |
+
+### 文件控制
+
+| 常用 | 短选项 | 长选项                   | 解释                                   |
+| ---- | ------ | ------------------------ | -------------------------------------- |
+| ■    | -B     | --before-context=数值    | 打印前面<数值>行上下文                 |
+| ■    | -A     | --after-context=数值     | 打印后面<数值>行上下文                 |
+|      | -C     | --context=数值           | 打印前后<数值>行上下文                 |
+| ■■   | -数值  |                          | 等价于--context=数值                   |
+|      |        | --group-separator=分隔符 | 在带有上下文的匹配块之间打印<分隔符>   |
+|      |        | --no-group-separator     | 不要在带有上下文的匹配块之间打印分隔符 |
+|      |        | --color[=何时]           | 使用标记高亮匹配的字符串：             |
+|      |        |                          | always、never、auto                    |
+|      | -U     | --binary                 | 不要清除行尾的CR字符(MSDOS/Windows)    |
+
+### 示例
+
+| 常用 | 命令               | 解释                  |
+| ---- | ------------------ | --------------------- |
+| ■■   | grep abc file      | abc字符串             |
+| ■■   | grep 'abc de' file | abc de字符串          |
+| ■■   | grep ^abc file     | abc开头的字符串       |
+| ■■   | grep -F ^abc file  | ^abc字符串            |
+| ■■   | grep -i abc file   | 不区分大小写abc字符串 |
+| ■■   | grep -w abc file   | abc单词               |
+| ■    | grep -x abc file   | abc行                 |
+| ■    | grep -v abc file   | 不含abc字符串         |
+| ■■   | grep -n abc file   | 打印行号              |
+| ■    | grep -c abc file   | 记录行数              |
+| ■■   | grep -1n abc file  | 打印行号和上下一行    |
