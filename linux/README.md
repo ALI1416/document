@@ -144,6 +144,9 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■    | history             | 命令历史列表                               |
 | ■■   | ps                  | 进程列表                                   |
 | ■■   | kill                | 杀死进程                                   |
+| ■■   | tar                 | tar打包和解包                              |
+| ■■   | gzip                | gz压缩和解压                               |
+| ■■   | zip / unzip         | zip压缩和解压                              |
 | ■■   | less                | less文档查看器                             |
 | ■■   | vi                  | vi文档编辑器                               |
 | ■■   | nano                | nano文档编辑器                             |
@@ -1150,7 +1153,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 | 常用 | 选项                            | 解释                                  |
 | ---- | ------------------------------- | ------------------------------------- |
-|      | a                               | 所有进程(解除BSD风格的只有你自己限制) |
+| ■■   | a                               | 所有进程(解除BSD风格的只有你自己限制) |
 |      | -A / -e                         | 所有进程                              |
 |      | -a                              | 同一终端下的所有进程                  |
 |      | -d                              | 排除同一终端下的所有进程              |
@@ -1158,7 +1161,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | g                               | 真的是所有人，甚至是会议负责人        |
 |      | T                               | 选择与此终端关联的所有进程            |
 |      | r                               | 当前终端的进程                        |
-|      | x                               | 所有进程(解除BSD风格的必须有tty限制)  |
+| ■■   | x                               | 所有进程(解除BSD风格的必须有tty限制)  |
 |      | -C<命令>                        | 列出指定命令的状况                    |
 |      | -G<组列表> / --Group            | 按真实组ID(RGID)或名称选择            |
 |      | -g<组列表> / --group            | 按有效组ID(EGID)或名称选择            |
@@ -1188,7 +1191,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | O<格式> / -O            | BSD风格用户定义的格式        |
 |      | -P                      | 添加一列显示psr              |
 |      | s                       | 显示信号格式                 |
-|      | u                       | 显示面向用户的格式           |
+| ■■   | u                       | 显示面向用户的格式           |
 |      | v                       | 显示虚拟内存格式             |
 |      | X                       | 注册格式                     |
 |      | -y                      | 与-l使用不要展示旗帜         |
@@ -1232,6 +1235,59 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | --info | 打印调试信息       |
 |      | L      | 列出所有格式说明符 |
 |      | V      | 打印procps-ng版本  |
+
+### 示例
+
+| 常用 | 命令                | 解释                        |
+| ---- | ------------------- | --------------------------- |
+| ■■   | ps aux              | BSD格式展示系统中的每个进程 |
+| ■■   | ps aux \| grep java | 查找java进程                |
+
+### ps aux BSD格式展示系统中的每个进程
+
+```txt
+ali@ali-PC:~$ ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.1  23424 14048 ?        Ss   10:23   0:01 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    10:23   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    10:23   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   10:23   0:00 [kworker/R-rcu_g]
+ali         2798  0.0  0.2 279220 21140 ?        Sl   10:51   0:00 /snap/snapd-desktop-integration/253/usr/bin/snapd-desktop-integration
+root        2803  0.0  0.0      0     0 ?        I    10:51   0:00 [kworker/u257:1-events_unbound]
+ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
+```
+
+- `USER`用户
+- `PID`进程ID
+- `%CPU`CPU使用率
+- `%MEM`内存使用率
+- `VSZ`使用的虚拟内存KB
+- `RSS`占用的虚拟内存KB
+- `TTY`控制终端
+- `STAT`进程状态标志
+- `START`执行时间。24小时以内HH:MM(时:分)，否则Mmm:SS(三位数的月份:秒)
+- `TIME`累计CPU时间MMM:SS(分:秒)
+- `COMMAND`完整命令
+
+### STAT 进程状态标志
+
+| 标志 | 解释                             |
+| ---- | -------------------------------- |
+| D    | 不可中断休眠(IO)                 |
+| I    | 空闲内核线程                     |
+| R    | 正在运行或可运行(在运行队列)     |
+| S    | 可中断休眠(等一个时间来完成)     |
+| T    | 因作业控制信号而停止             |
+| t    | 在跟踪期间被调试器停止           |
+| W    | 分页                             |
+| X    | 已杀死                           |
+| Z    | 僵尸进程                         |
+| <    | 高优先级                         |
+| N    | 低优先级                         |
+| L    | 内存有被锁定的页(实时和自定义IO) |
+| s    | 会话领导                         |
+| l    | 多线程                           |
+| +    | 在前台进程组里                   |
 
 ## kill 杀死进程
 
@@ -1294,3 +1350,151 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ---- | ------------- | ------------- |
 | ■    | kill 12345    | 杀死进程12345 |
 | ■■   | kill -9 12345 | 强制杀死12345 |
+
+## tar 打包和解包
+
+- **格式：`tar [选项...] [FILE]...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                       | 解释                         |
+| ---- | ------ | ---------------------------- | ---------------------------- |
+|      | -A     | --catenate / --concatenate   | 追加tar文件至归档            |
+| ■■   | -c     | --create                     | 创建一个新归档               |
+|      |        | --delete                     | 从归档中删除                 |
+|      | -d     | --diff / --compare           | 找出归档和文件系统的差异     |
+|      | -r     | --append                     | 追加文件至归档结尾           |
+|      |        | --test-label                 | 测试归档卷标并退出           |
+|      | -t     | --list                       | 列出归档内容                 |
+|      | -u     | --update                     | 仅追加比归档中副本更新的文件 |
+| ■■   | -x     | --extract / --get            | 从归档中解出文件             |
+| ■■   | -z     | --gzip / --gunzip / --ungzip | 通过gzip过滤归档             |
+| ■■   | -f     | --file=ARCHIVE               | 压缩文件名                   |
+| ■■   | -C     | --directory=DIR              | 解压目录                     |
+|      | -v     | --verbose                    | 显示操作记录                 |
+
+### 示例
+
+| 常用 | 命令                             | 解释                            |
+| ---- | -------------------------------- | ------------------------------- |
+| ■    | tar -cf file.tar file            | 打包file文件为file.tar          |
+| ■    | tar -xf file.tar                 | 解包file.tar到当前目录          |
+| ■    | tar -cf folder.tar folder        | 打包folder文件夹为folder.tar    |
+| ■    | tar -xf folder.tar -C folder     | 解包folder.tar到folder目录      |
+| ■■   | tar -czf file.tar.gz file        | 压缩file文件为file.tar.gz       |
+| ■■   | tar -xzf file.tar.gz             | 解压file.tar.gz到当前目录       |
+| ■■   | tar -czf folder.tar.gz folder    | 压缩folder文件夹为folder.tar.gz |
+| ■■   | tar -xzf folder.tar.gz -C folder | 解压folder.tar.gz到folder目录   |
+
+## gzip 压缩和解压
+
+- **格式：`gzip [OPTION]... [FILE]...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项        | 解释                                   |
+| ---- | ------ | ------------- | -------------------------------------- |
+|      | -c     | --stdout      | 在标准输出上写入，保持原始文件不变     |
+| ■■   | -d     | --decompress  | 解压                                   |
+|      | -f     | --force       | 强制覆盖输出文件并压缩链接             |
+| ■■   | -k     | --keep        | 不删除输入文件                         |
+|      | -l     | --list        | 列出压缩文件内容                       |
+|      | -L     | --license     | 显示软件许可证                         |
+|      | -n     | --no-name     | 不保存或恢复原始名称和时间戳           |
+|      | -N     | --name        | 保存或恢复原始名称和时间戳             |
+|      | -q     | --quiet       | 抑制所有警告                           |
+| ■    | -r     | --recursive   | 在目录上递归操作                       |
+|      |        | --rsyncable   | 制作rsync友好的存档                    |
+|      | -S     | --suffix=SUF  | 在压缩文件上使用后缀SUF                |
+|      |        | --synchronous | 同步输出(系统崩溃时更安全，但速度较慢) |
+|      | -t     | --test        | 测试压缩文件的完整性                   |
+|      | -1     | --fast        | 快速的压缩                             |
+|      | -9     | --best        | 最好的压缩                             |
+|      | -v     | --verbose     | 显示操作记录                           |
+
+### 示例
+
+| 常用 | 命令            | 解释                                |
+| ---- | --------------- | ----------------------------------- |
+| ■    | gzip file       | 压缩file文件为file.gz(删除原文件)   |
+| ■■   | gzip -k file    | 压缩file文件为file.gz(不删除原文件) |
+| ■■   | gzip -d file.gz | 解压file.gz文件为file               |
+| ■    | gzip -r folder  | 把folder文件夹里的所有文件压缩      |
+| ■    | gzip -rd folder | 解压folder文件夹里的所有压缩文件    |
+
+## zip / unzip 压缩和解压
+
+- **格式：`zip [-options] [-b path] [-t mmddyyyy] [-n suffixes] [zipfile list] [-xi list]`**
+- **格式：`unzip [-Z] [-opts[modifiers]] file[.zip] [list] [-x xlist] [-d exdir]`**
+
+### zip选项
+
+| 常用 | 选项 | 解释                                   |
+| ---- | ---- | -------------------------------------- |
+|      | -f   | 仅更改文件                             |
+|      | -u   | 仅更改或新建文件                       |
+|      | -d   | 删除zip文件中的条目                    |
+|      | -m   | 移动到zip文件(删除操作系统文件)        |
+| ■■   | -r   | 递归到目录中                           |
+|      | -j   | 不记录目录名                           |
+|      | -J   | 不记录压缩文件前缀                     |
+|      | -q   | 安静操作                               |
+|      | -c   | 添加一行注释                           |
+|      | -z   | 添加zip文件注释                        |
+|      | -@   | 从stdin读取名称                        |
+|      | -o   | 使zipfile与最新条目一样旧              |
+|      | -x   | 排除以下名称                           |
+|      | -i   | 仅包括以下名称                         |
+|      | -F   | 修复压缩文件(-FF更努力)                |
+|      | -D   | 不添加目录项                           |
+|      | -A   | 调整自解压exe                          |
+|      | -T   | 测试zip文件完整性                      |
+|      | -X   | 排除eXtra文件属性                      |
+|      | -y   | 将符号链接存储为链接，而不是引用的文件 |
+|      | -e   | 加密                                   |
+|      | -n   | 不要压缩这些后缀                       |
+|      | -0   | 仅存档                                 |
+|      | -1   | 快速的压缩                             |
+|      | -9   | 最好的压缩                             |
+|      | -v   | 显示操作记录                           |
+
+### unzip选项
+
+| 常用 | 选项 | 解释                                 |
+| ---- | ---- | ------------------------------------ |
+|      | -p   | 将文件提取到管道，无消息             |
+|      | -l   | 列表文件（短格式）                   |
+|      | -f   | 刷新现有文件，不创建任何文件         |
+|      | -t   | 测试压缩存档数据                     |
+|      | -u   | 更新文件，必要时创建                 |
+|      | -z   | 仅显示存档注释                       |
+|      | -v   | 显示版本信息                         |
+|      | -T   | 时间戳存档到最新                     |
+|      | -x   | 排除以下文件                         |
+| ■■   | -d   | 将文件解压缩到指定目录               |
+|      | -n   | 从不覆盖现有文件                     |
+|      | -q   | 安静模式(-qq更安静)                  |
+|      | -o   | 在不提示的情况下覆盖文件             |
+|      | -a   | 自动转换任何文本文件                 |
+|      | -aa  | 将所有文件视为文本                   |
+|      | -j   | 不创建目录                           |
+|      | -U   | 对所有非ASCII Unicode使用转义        |
+|      | -UU  | 忽略任何Unicode字段                  |
+|      | -C   | 不区分大小写匹配文件名               |
+|      | -L   | 文件名转为小写                       |
+|      | -X   | 还原UID/GID信息                      |
+|      | -V   | 保留VMS版本号                        |
+|      | -K   | 保留setuid/setgid/tacky权限          |
+|      | -M   | 管道通过more页                       |
+|      | -O   | 为DOS、Windows和OS/2存档指定字符编码 |
+|      | -I   | 为UNIX和其他存档指定字符编码         |
+
+### 示例
+
+| 常用 | 命令                       | 解释                         |
+| ---- | -------------------------- | ---------------------------- |
+| ■■   | zip file.zip file          | 压缩file文件为file.zip       |
+| ■■   | unzip file.zip             | 解压file.zip到当前目录       |
+| ■■   | zip -r folder.zip folder   | 压缩folder文件夹为folder.zip |
+| ■■   | unzip folder.zip           | 解压folder.zip到当前目录     |
+| ■■   | unzip folder.zip -d folder | 解压folder.zip到folder目录   |
