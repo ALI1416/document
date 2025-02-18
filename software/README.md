@@ -198,26 +198,19 @@
 - `格式工厂`
   - <http://www.pcgeshi.com/>
 - `genymotion` 安卓模拟器
-  - <https://www.genymotion.com/download/>
+  - <https://www.genymotion.com/product-desktop/download/>
+- `GNS3` 网络模拟器
+  - <https://www.gns3.com/software/download>
 - `RaiDrive` 网盘映射
   - <http://www.raidrive.com/download>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
-- `nps` 内网穿透
-  - <https://github.com/ehang-io/nps>
-- `天若OCR`
-  - <http://ocr.tianruo.net/>
-  - `升级版`<https://gitee.com/wanglifree/tianruoocr-cl/releases>
 - `CrystalDiskInfo`和`CrystalDiskMark` `硬盘详情`和`硬盘测速`
   - <https://crystalmark.info/en/download/>
-- `GNS3` 网络模拟
-  - <https://www.gns3.com/>
 - `SysinternalsSuite` 微软工具箱
   - <https://docs.microsoft.com/zh-cn/sysinternals/downloads/sysinternals-suite>
 - `XDM` 下载器
   - <https://xtremedownloadmanager.com/>
-- `Tickeys` 声音键盘
-  - <http://www.yingdev.com/projects/tickeys>
 - `Advanced Port Scanner` IP端口扫描
   - <https://www.advanced-port-scanner.com/cn/>
 - `HackBGRT` 修改BIOS启动图片
