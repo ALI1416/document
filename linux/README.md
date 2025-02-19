@@ -144,6 +144,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■    | history             | 命令历史列表                               |
 | ■■   | ps                  | 进程列表                                   |
 | ■■   | kill                | 杀死进程                                   |
+| ■■   | systemctl           | 杀死进程                                   |
 | ■■   | tar                 | tar打包和解包                              |
 | ■■   | gzip                | gz压缩和解压                               |
 | ■■   | zip / unzip         | zip压缩和解压                              |
@@ -1350,6 +1351,188 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 | ---- | ------------- | ------------- |
 | ■    | kill 12345    | 杀死进程12345 |
 | ■■   | kill -9 12345 | 强制杀死12345 |
+
+## systemctl 查询或向系统管理员发送控制命令
+
+- **格式：`systemctl [OPTIONS...] COMMAND ...`**
+
+### 单位命令
+
+| 常用 | 命令                                | 解释                                                               |
+| ---- | ----------------------------------- | ------------------------------------------------------------------ |
+|      | list-units [PATTERN...]             | 列出当前内存中的单位                                               |
+|      | list-automounts [PATTERN...]        | 按路径顺序列出当前内存中的自动装载单元                             |
+|      | list-paths [PATTERN...]             | 按路径顺序列出当前内存中的路径单元                                 |
+|      | list-sockets [PATTERN...]           | 按地址顺序列出当前内存中的套接字单元                               |
+|      | list-timers [PATTERN...]            | 按下一次时间顺序列出当前内存中的计时器单位                         |
+|      | is-active PATTERN...                | 检查装置是否处于活动状态                                           |
+|      | is-failed [PATTERN...]              | 检查单元是否出现故障或系统是否处于降级状态                         |
+| ■■   | status [PATTERN...\|PID...]         | 显示一个或多个单元的运行时状态                                     |
+|      | show [PATTERN...\|JOB...]           | 显示一个或多个单位/作业或经理的属性                                |
+|      | cat PATTERN...                      | 显示指定单位的文件和插件                                           |
+|      | help PATTERN...\|PID...             | 显示一个或多个单元的手册                                           |
+|      | list-dependencies [UNIT...]         | 递归显示单位所需或想要的单位，或这些单位所需的单位                 |
+| ■■   | start UNIT...                       | 启动(激活)一个或多个装置                                           |
+| ■■   | stop UNIT...                        | 停止(停用)一个或多个装置                                           |
+| ■■   | reload UNIT...                      | 重新加载一个或多个单元                                             |
+| ■■   | restart UNIT...                     | 启动或重新启动一个或多个装置                                       |
+|      | try-restart UNIT...                 | 如果处于活动状态，请重新启动一个或多个单元                         |
+|      | reload-or-restart UNIT...           | 如果可能，重新加载一个或多个单元，否则启动或重新启动               |
+|      | try-reload-or-restart UNIT...       | 如果处于活动状态，请重新加载一个或多个单元(如果支持)，否则重新启动 |
+|      | isolate UNIT                        | 启动一个单元并停止所有其他单元                                     |
+|      | kill UNIT...                        | 向单元的进程发送信号                                               |
+|      | clean UNIT...                       | 清理运行时、缓存、状态、日志或单元配置                             |
+|      | freeze PATTERN...                   | 冻结单元流程的执行                                                 |
+|      | thaw PATTERN...                     | 恢复冻结单元的执行                                                 |
+|      | set-property UNIT PROPERTY=VALUE... | 设置单元的一个或多个属性                                           |
+|      | bind UNIT PATH [PATH]               | 绑定挂载从主机到单元命名空间的路径                                 |
+|      | mount-image UNIT PATH [PATH [OPTS]] | 将映像从主机装载到单元的命名空间中                                 |
+|      | service-log-level SERVICE [LEVEL]   | 获取/设置服务的日志记录阈值                                        |
+|      | service-log-target SERVICE [TARGET] | 获取/设置服务的日志记录目标                                        |
+|      | reset-failed [PATTERN...]           | 重置所有、一个或多个单元的失败状态                                 |
+|      | whoami [PID...]                     | 返回单元调用者或指定的PID                                          |
+
+### 单位文件命令
+
+| 常用 | 命令                         | 解释                                               |
+| ---- | ---------------------------- | -------------------------------------------------- |
+|      | list-unit-files [PATTERN...] | 列出已安装的单元文件                               |
+| ■■   | enable [UNIT...\|PATH...]    | 启用一个或多个单位文件                             |
+| ■■   | disable UNIT...              | 禁用一个或多个单位文件                             |
+|      | reenable UNIT...             | 重新启用一个或多个单位文件                         |
+|      | preset UNIT...               | 根据预设配置启用/禁用一个或多个单元文件            |
+|      | preset-all                   | 根据预设配置启用/禁用所有单元文件                  |
+|      | is-enabled UNIT...           | 检查单位文件是否启用                               |
+|      | mask UNIT...                 | 屏蔽一个或多个单元                                 |
+|      | unmask UNIT...               | 取消屏蔽一个或多个单元                             |
+|      | link PATH...                 | 将一个或多个单位文件链接到搜索路径                 |
+|      | revert UNIT...               | 将一个或多个单元文件还原为供应商版本               |
+|      | add-wants TARGET UNIT...     | 在指定的一个或多个单元上为目标添加Wants依赖关系    |
+|      | add-requires TARGET UNIT...  | 在指定的一个或多个单元上为目标添加Requires依赖关系 |
+|      | edit UNIT...                 | 编辑一个或多个单位文件                             |
+|      | get-default                  | 获取默认目标的名称                                 |
+|      | set-default TARGET           | 设置默认目标                                       |
+
+### 机器命令
+
+| 常用 | 命令                       | 解释               |
+| ---- | -------------------------- | ------------------ |
+|      | list-machines [PATTERN...] | 列出本地容器和主机 |
+
+### 作业命令
+
+| 常用 | 命令                   | 解释                     |
+| ---- | ---------------------- | ------------------------ |
+|      | list-jobs [PATTERN...] | 列出作业                 |
+|      | cancel [JOB...]        | 取消所有、一个或多个作业 |
+
+### 环境命令
+
+| 常用 | 命令                              | 解释                       |
+| ---- | --------------------------------- | -------------------------- |
+|      | show-environment                  | 导出环境                   |
+|      | set-environment VARIABLE=VALUE... | 设置一个或多个环境变量     |
+|      | unset-environment VARIABLE...     | 取消设置一个或多个环境变量 |
+|      | import-environment VARIABLE...    | 导入全部或部分环境变量     |
+
+### 管理状态命令
+
+| 常用 | 命令                     | 解释                          |
+| ---- | ------------------------ | ----------------------------- |
+|      | daemon-reload            | 重新加载systemd管理器配置     |
+|      | daemon-reexec            | 重新执行systemd管理器         |
+|      | log-level [LEVEL]        | 获取/设置管理器的日志记录阈值 |
+|      | log-target [TARGET]      | 获取/设置管理器的日志记录目标 |
+|      | service-watchdogs [BOOL] | 获取/设置服务监视器状态       |
+
+### 系统命令
+
+| 常用 | 命令                      | 解释                           |
+| ---- | ------------------------- | ------------------------------ |
+|      | is-system-running         | 检查系统是否完全运行           |
+|      | default                   | 进入系统默认模式               |
+|      | rescue                    | 进入系统救援模式               |
+|      | emergency                 | 进入系统紧急模式               |
+|      | halt                      | 关闭并停止系统                 |
+|      | poweroff                  | 关闭并关闭系统电源             |
+|      | reboot                    | 关闭并重新启动系统             |
+|      | kexec                     | 使用kexec关闭并重新启动系统    |
+|      | soft-reboot               | 关闭并重新启动用户空间         |
+|      | exit [EXIT_CODE]          | 请求用户实例或容器退出         |
+|      | switch-root [ROOT [INIT]] | 更改为其他根文件系统           |
+|      | suspend                   | 暂停系统                       |
+|      | hibernate                 | 使系统休眠                     |
+|      | hybrid-sleep              | 休眠并挂起系统                 |
+|      | suspend-then-hibernate    | 暂停系统，一段时间后唤醒并休眠 |
+
+### 选项
+
+| 常用 | 短选项  | 长选项                  | 解释                                                         |
+| ---- | ------- | ----------------------- | ------------------------------------------------------------ |
+|      |         | --system                | 连接到系统管理器                                             |
+|      |         | --user                  | 连接到用户服务管理器                                         |
+|      | -H      | --host=[USER@]HOST      | 在远程主机上操作                                             |
+|      | -M      | --machine=CONTAINER     | 在本地容器上操作                                             |
+|      | -t      | --type=TYPE             | 列出特定类型的单位                                           |
+|      |         | --state=STATE           | 列出具有特定LOAD、SUB、ACTIVE状态的单元                      |
+|      |         | --failed                | 等同于--state=failed                                         |
+|      | -p      | --property=NAME         | 仅显示此名称的属性                                           |
+|      | -P NAME |                         | 等同于--value --property=NAME                                |
+|      | -a      | --all                   | 显示当前内存中的所有属性或单元                               |
+|      | -l      | --full                  | 不要在输出中省略单位名称                                     |
+|      | -r      | --recursive             | 显示主机和本地容器的单元列表                                 |
+|      |         | --with-dependencies     | 使用status、cat、list-units、list-unit-files显示单元依赖关系 |
+|      |         | --job-mode=MODE         | 指定在排队新作业时如何处理已排队的作业                       |
+|      | -T      | --show-transaction      | 查询单位作业时，显示完整事务记录                             |
+|      |         | --show-types            | 显示套接字时，明确显示其类型                                 |
+|      |         | --value                 | 显示属性时，仅打印值                                         |
+|      |         | --check-inhibitors=MODE | 是否在关机、睡觉或休眠前检查抑制                             |
+|      | -i      |                         | 等同于--check-inhibitors=no                                  |
+|      |         | --kill-whom=WHOM        | 向谁发送信号                                                 |
+|      |         | --kill-value=INT        | 排队信号值                                                   |
+|      | -s      | --signal=SIGNAL         | 发送哪个信号                                                 |
+|      |         | --what=RESOURCES        | 要删除哪些类型的资源                                         |
+|      |         | --now                   | 启用或禁用后启动或停止装置                                   |
+|      |         | --dry-run               | 只打印将要执行的操作                                         |
+|      | -q      | --quiet                 | 抑制输出                                                     |
+|      |         | --no-warn               | 抑制默认显示的几个警告                                       |
+|      |         | --wait                  | 对于重新启动，请等待服务再次停止                             |
+|      |         |                         | 如果系统正在运行，请等待启动完成                             |
+|      |         | --no-block              | 不要等到操作完成                                             |
+|      |         | --no-wall               | 挂起/关机/重启前不要发送墙消息                               |
+|      |         | --no-reload             | 打开/关闭单元文件后，不要重新加载守护进程                    |
+|      |         | --legend=BOOL           | 启用/禁用图例(列标题和提示)                                  |
+|      |         | --no-pager              | 不要将输出管道传输到页                                       |
+|      |         | --no-ask-password       | 不要询问系统密码                                             |
+|      |         | --global                | 全局编辑/启用/禁用/屏蔽默认用户单元文件                      |
+|      |         | --runtime               | 临时编辑/启用/禁用/屏蔽单元文件，直到下次重新启动            |
+|      | -f      | --force                 | 启用单元文件时，覆盖现有符号链接关闭时，立即执行操作         |
+|      |         | --preset-mode=          | 仅应用启用、仅禁用或所有预设                                 |
+|      |         | --root=PATH             | 编辑/启用/禁用/屏蔽指定根目录中的单元文件                    |
+|      |         | --image=PATH            | 编辑/启用/禁用/屏蔽指定磁盘映像中的单元文件                  |
+|      |         | --image-policy=POLICY   | 指定磁盘映像解析策略                                         |
+|      | -n      | --lines=INTEGER         | 要显示的日记账分录数                                         |
+|      | -o      | --output=STRING         | 更改日志输出模式                                             |
+|      |         | --firmware-setup        | 告诉固件在下次启动时显示设置菜单                             |
+|      |         | --boot-loader-menu=TIME | 下次启动时启动到引导加载程序菜单                             |
+|      |         | --plain                 | 将单元依赖关系打印为列表而不是树                             |
+|      |         | --timestamp=FORMAT      | 更改打印时间戳的格式                                         |
+|      |         | --read-only             | 创建只读绑定挂载                                             |
+|      |         | --mkdir                 | 如果缺少，请在装载前创建目录                                 |
+|      |         | --drop-in=NAME          | 使用指定的插入文件名编辑单位文件                             |
+|      |         | --when=TIME             | 在特定时间戳后安排暂停/关机/重启/kexec操作                   |
+
+### 示例
+
+| 常用 | 命令                    | 解释             |
+| ---- | ----------------------- | ---------------- |
+| ■■   | systemctl status nginx  | 检查服务状态     |
+| ■■   | systemctl start nginx   | 启动服务         |
+| ■■   | systemctl stop nginx    | 停止服务         |
+| ■■   | systemctl reload nginx  | 重新加载服务     |
+| ■■   | systemctl restart nginx | 重启服务         |
+| ■■   | systemctl enable nginx  | 设置服务开机自启 |
+| ■■   | systemctl disable nginx | 取消服务开机自启 |
 
 ## tar 打包和解包
 
