@@ -14,7 +14,7 @@
 3. 分配可执行权限`chmod 755 /usr/local/bin/frp/frps /usr/local/bin/frp/frpc`
 4. 在`/etc/systemd/system`目录下创建以下文件
 
-`frps.service`
+服务端 `frps.service`
 
 ```ini
 [Unit]
@@ -30,7 +30,7 @@ ExecStart = /usr/local/bin/frp/frps -c /usr/local/bin/frp/frps.json
 WantedBy = multi-user.target
 ```
 
-`frpc.service`
+客户端 `frpc.service`
 
 ```ini
 [Unit]
@@ -64,14 +64,34 @@ WantedBy = multi-user.target
   "auth": {
     "method": "token",
     "token": "xxx"
+  },
+  "log": {
+    "to": "./frps.log",
+    "level": "info",
+    "maxDays": 7
+  },
+  "webServer": {
+    "addr": "0.0.0.0",
+    "port": 7001,
+    "user": "xxx",
+    "password": "xxx"
   }
 }
 ```
 
 - `bindPort` : 绑定端口 `7000`
-- `auth` : 需要认证
+- `auth` : 认证
   - `method` : 认证方法 `token`
   - `token` : token值 `xxx`
+- `log` : 日志
+  - `to` : 文件 `./frps.log`
+  - `level` : 级别 `info`
+  - `maxDays` : 最多保留天数 `7`
+- `webServer` : 仪表盘
+  - `addr` : 地址 `0.0.0.0`
+  - `port` : 端口 `7001`
+  - `user` : 用户名 `xxx`
+  - `password` : 密码 `xxx`
 
 ## 客户端
 
@@ -85,20 +105,22 @@ WantedBy = multi-user.target
     "method": "token",
     "token": "xxx"
   },
-  "proxies": []
+  "proxies": [],
+  "visitors": []
 }
 ```
 
 - `serverAddr` : 服务器地址 `47.106.194.72`
 - `serverPort` : 服务器端口 `7000`
-- `auth` : 需要认证
+- `auth` : 认证
   - `method` : 认证方法 `token`
-  - `token` : token值 `xxx`
+  - `token` : token值(需要与服务端一致) `xxx`
 - `proxies` : 代理配置
+- `visitors` : 访问者配置
 
-## 代理SSH
+## TCP代理
 
-访问地址 `ssh -o Port=6000 ali@47.106.194.72`
+命令行访问 `ssh -o Port=6000 ali@47.106.194.72`
 
 ```json
 {
@@ -125,3 +147,115 @@ WantedBy = multi-user.target
 - `localIP` : 本地IP `127.0.0.1`
 - `localPort` : 本地端口 `22`
 - `remotePort` : 远端端口 `6000`
+
+## STCP(安全TCP)代理
+
+客户端
+
+```json
+{
+  "serverAddr": "47.106.194.72",
+  "serverPort": 7000,
+  "auth": {
+    "method": "token",
+    "token": "xxx"
+  },
+  "proxies": [
+    {
+      "name": "secret_ssh",
+      "type": "stcp",
+      "secretKey":"xxx",
+      "localIP": "127.0.0.1",
+      "localPort": 22
+    }
+  ]
+}
+```
+
+- `secretKey` : 秘钥 `xxx`
+
+访问者
+
+命令行访问 `ssh -o Port=6000 ali@127.0.0.1`
+
+```json
+{
+  "serverAddr": "47.106.194.72",
+  "serverPort": 7000,
+  "auth": {
+    "method": "token",
+    "token": "xxx"
+  },
+  "visitors": [
+    {
+      "name": "secret_ssh_visitor",
+      "type": "stcp",
+      "serverName": "secret_ssh",
+      "secretKey":"xxx",
+      "bindAddr": "127.0.0.1",
+      "bindPort": 6000
+    }
+  ]
+}
+```
+
+- `serverName` : 服务名称(需要与客户端一致) `secret_ssh`
+- `secretKey` : 秘钥(需要与客户端一致) `xxx`
+- `bindAddr` : 绑定地址 `127.0.0.1`
+- `bindPort` : 绑定端口 `6000`
+
+## XTCP(点对点TCP)代理
+
+客户端
+
+```json
+{
+  "serverAddr": "47.106.194.72",
+  "serverPort": 7000,
+  "auth": {
+    "method": "token",
+    "token": "xxx"
+  },
+  "natHoleStunServer" : "stun.easyvoip.com:3478",
+  "proxies": [
+    {
+      "name": "p2p_ssh",
+      "type": "stcp",
+      "secretKey":"xxx",
+      "localIP": "127.0.0.1",
+      "localPort": 22
+    }
+  ]
+}
+```
+
+- `natHoleStunServer` : STUN打洞服务器
+
+- 需要收到判断是否正常工作`frpc nathole discover --nat_hole_stun_server stun.easyvoip.com:3478`
+- 需要自己搭建STUN打洞服务器
+
+访问者
+
+命令行访问 `ssh -o Port=6000 ali@127.0.0.1`
+
+```json
+{
+  "serverAddr": "47.106.194.72",
+  "serverPort": 7000,
+  "auth": {
+    "method": "token",
+    "token": "xxx"
+  },
+  "natHoleStunServer" : "stun.easyvoip.com:3478",
+  "visitors": [
+    {
+      "name": "p2p_ssh_visitor",
+      "type": "xtcp",
+      "serverName": "p2p_ssh",
+      "secretKey":"xxx",
+      "bindAddr": "127.0.0.1",
+      "bindPort": 6000
+    }
+  ]
+}
+```
