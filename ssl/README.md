@@ -1,6 +1,8 @@
-# OpenSSL
+# SSL
 
-## 生成CA证书
+## OpenSSL
+
+### 生成CA证书
 
 - 生成私钥
 `openssl genrsa -out ca.key 2048`
@@ -21,12 +23,20 @@
 - 生成证书
 `openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt -days 3650`
 
-## 生成普通证书
+### 生成普通证书
 
 - `openssl genrsa -out server.key 2048`
 - `openssl req -new -key server.key -out server.csr`
 - `openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 3650`
 
-## 校验证书
+### 校验证书
 
 `openssl verify -CAfile ca.crt server.crt`
+
+## EasyRSA
+
+1. 初始化pki `easyrsa init-pki`
+2. 生成无密码CA证书 `easyrsa build-ca nopass`
+3. 生成无密码服务端证书 `easyrsa build-server-full server nopass`
+4. 生成无密码客户端证书 `easyrsa build-client-full client nopass`
+5. 创建密钥交换文件 `easyrsa gen-dh`

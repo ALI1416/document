@@ -121,6 +121,12 @@
   - <https://sunlogin.oray.com/>
 - `唧唧Down` 下载bilibili视频
   - <https://client.jijidown.com/>
+- `洛雪音乐助手`
+  - <https://github.com/lyswhut/lx-music-desktop/releases>
+  - `Huibq音源`<https://github.com/Huibq/keep-alive>
+  - `六音音源`<https://www.sixyin.com/>
+  - `Flower音源`<https://github.com/OneCodeMonkey/music-sources>
+  - `音源合集`<https://github.com/pdone/lx-music-source>
 
 ## `Seldom` 不常用软件
 
@@ -203,11 +209,18 @@
   - <https://www.gns3.com/software/download>
 - `RaiDrive` 网盘映射
   - <http://www.raidrive.com/download>
+- `V2RayN` 翻墙
+  - <https://github.com/2dust/v2rayN/releases>
+  - `免费节点`<https://v2rayshare.com/>
+  - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
+  - `教程2`<https://doc.miyun.app/v2rayn/>
 - `OpenVPN`
-  - <https://openvpn.net/>
+  - `服务端`<https://github.com/openvpn/openvpn/releases>
+  - `Linux服务端安装脚本`<https://github.com/Nyr/openvpn-install>
+  - `Windows客户端和服务端`(翻墙)<https://openvpn.net/community-downloads/>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
-- `coturn` NAT打洞STUN服务器
+- `coturn` NAT打洞STUN服务器(Linux)
   - <https://github.com/coturn/coturn/releases>
 - `CrystalDiskInfo`和`CrystalDiskMark` `硬盘详情`和`硬盘测速`
   - <https://crystalmark.info/en/download/>
@@ -223,10 +236,6 @@
   - <https://github.com/Chuyu-Team/Dism-Multi-language>
 - `Registry Finder` 注册表编辑器
   - <https://registry-finder.com/>
-- `SSR`
-  - <https://github.com/HMBSbige/ShadowsocksR-Windows>
-  - `6.1.0`<https://github.com/HMBSbige/ShadowsocksR-Windows/releases/download/6.1.0/ShadowsocksR-Win64-6.1.0.7z>
-  - `泡芙云`<https://www.paofu.cloud>
 - `谷歌浏览器`
   - <https://www.google.cn/chrome/?standalone=1&platform=win64>
 - `火狐浏览器`
