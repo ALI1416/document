@@ -88,7 +88,7 @@ webServer.password = "xxx"
 运行程序 `frpc -c frpc.toml`
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 
@@ -97,7 +97,7 @@ auth.token = "xxx"
 [[visitors]]
 ```
 
-- `serverAddr` : 服务器地址 `47.106.194.72`
+- `serverAddr` : 服务器地址 `192.168.1.1`
 - `serverPort` : 服务器端口 `7000`
 - `auth` : 认证
   - `token` : token(需要与服务端一致) `xxx`
@@ -106,10 +106,10 @@ auth.token = "xxx"
 
 ## TCP代理(也可以代理HTTP)
 
-命令行访问 `ssh -o Port=6000 ali@47.106.194.72`
+命令行访问 `ssh -o Port=6000 ali@192.168.1.1`
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 
@@ -132,7 +132,7 @@ remotePort = 6000
 客户端
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 
@@ -151,7 +151,7 @@ localPort = 22
 命令行访问 `ssh -o Port=6000 ali@127.0.0.1`
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 
@@ -174,7 +174,7 @@ bindPort = 6000
 客户端
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 natHoleStunServer = "stun.easyvoip.com:3478"
@@ -197,7 +197,7 @@ localPort = 22
 命令行访问 `ssh -o Port=6000 ali@127.0.0.1`
 
 ```ini
-serverAddr = "47.106.194.72"
+serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
 natHoleStunServer = "stun.easyvoip.com:3478"

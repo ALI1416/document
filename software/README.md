@@ -215,10 +215,12 @@
   - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
   - `教程2`<https://doc.miyun.app/v2rayn/>
 - `OpenVPN`
-  - `服务端`<https://github.com/openvpn/openvpn/releases>
+  - <https://github.com/openvpn/openvpn/releases>
+  - `官网(翻墙)`<https://openvpn.net/community-downloads/>
+  - `下载`<https://www.npackd.org/p/openvpn64>
   - `Linux服务端安装脚本`<https://github.com/Nyr/openvpn-install>
-  - `Windows客户端和服务端`(翻墙)<https://openvpn.net/community-downloads/>
-  - `Windows客户端和服务端`<https://www.npackd.org/p/openvpn64>
+- `StrongSwan` 支持IKEv2和IPSec的VPN(Linux)
+  - <https://github.com/strongswan/strongswan/releases>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
 - `coturn` NAT打洞STUN服务器(Linux)

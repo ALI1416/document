@@ -1,8 +1,6 @@
-# SSL
+# OpenSSL
 
-## OpenSSL
-
-### 生成CA证书
+## 生成CA证书
 
 - 生成私钥
 `openssl genrsa -out ca.key 2048`
@@ -23,12 +21,12 @@
 - 生成证书
 `openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt -days 3650`
 
-### 生成普通证书
+## 生成普通证书
 
 - `openssl genrsa -out server.key 2048`
 - `openssl req -new -key server.key -out server.csr`
 - `openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 3650`
 
-### 校验证书
+## 校验证书
 
 `openssl verify -CAfile ca.crt server.crt`
