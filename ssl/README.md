@@ -32,11 +32,3 @@
 ### 校验证书
 
 `openssl verify -CAfile ca.crt server.crt`
-
-## EasyRSA
-
-1. 初始化pki `easyrsa init-pki`
-2. 生成无密码CA证书 `easyrsa build-ca nopass`
-3. 生成无密码服务端证书 `easyrsa build-server-full server nopass`
-4. 生成无密码客户端证书 `easyrsa build-client-full client nopass`
-5. 创建密钥交换文件 `easyrsa gen-dh`

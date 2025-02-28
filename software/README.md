@@ -218,6 +218,7 @@
   - `服务端`<https://github.com/openvpn/openvpn/releases>
   - `Linux服务端安装脚本`<https://github.com/Nyr/openvpn-install>
   - `Windows客户端和服务端`(翻墙)<https://openvpn.net/community-downloads/>
+  - `Windows客户端和服务端`<https://www.npackd.org/p/openvpn64>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
 - `coturn` NAT打洞STUN服务器(Linux)
