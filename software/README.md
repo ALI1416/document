@@ -215,6 +215,7 @@
   - `节点转换`<https://suburl.v1.mk/>
   - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
   - `教程2`<https://doc.miyun.app/v2rayn/>
+  - `搭建VPS教程`<https://v2xtls.org/搬瓦工vps购买教程/>
 - `OpenVPN`
   - <https://github.com/openvpn/openvpn/releases>
   - `官网(翻墙)`<https://openvpn.net/community-downloads/>
@@ -222,6 +223,9 @@
   - `Linux服务端安装脚本`<https://github.com/Nyr/openvpn-install>
 - `StrongSwan` 支持IKEv2和IPSec的VPN(Linux)
   - <https://github.com/strongswan/strongswan/releases>
+- `TinyProxy` 代理(Linux)
+  - <https://github.com/tinyproxy/tinyproxy/releases>
+  - `squid`<https://github.com/squid-cache/squid/releases>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
 - `coturn` NAT打洞STUN服务器(Linux)
