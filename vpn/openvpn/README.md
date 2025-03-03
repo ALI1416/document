@@ -41,19 +41,20 @@ ca ca.crt
 cert server.crt
 key server.key
 dh dh.pem
-tls-auth ta.key 0
+tls-auth ta.key 0 # 0代表服务端
+;key-direction 0 # 此选项可以代替以上的0
 
 # 网段IP和掩码
 server 10.8.0.0 255.255.255.0
 
 # 固定客户端IP(duplicate-cn开启后无效)
-ifconfig-pool-persist ipp.txt
+;ifconfig-pool-persist ipp.txt
 
 # 允许客户端访问其他客户端
 client-to-client
 
 # 允许相同客户登录多个
-;duplicate-cn
+duplicate-cn
 
 # 用户名密码验证脚本
 auth-user-pass-verify author.bat via-env
@@ -82,8 +83,8 @@ explicit-exit-notify 1
 - 固定客户端IP，修改文件`ipp.txt`，格式为`<用户名>,<ipv4网段>,<ipv6网段>`，例如
 
 ```txt
-root,10.8.0.1,
-admin,10.8.0.2,
+root,10.8.0.2,
+admin,10.8.0.3,
 ```
 
 - 用户名密码验证脚本，新增文件`author.bat`，用户名密码格式为`<用户名> <密码>`，例如
@@ -95,6 +96,22 @@ findstr /be "%username%:%password%" user.txt && exit 0 || exit 1
 ```txt
 root:root
 admin:123456
+```
+
+- 如果要把证书等文件放入到配置文件中，可以用以下方法
+
+```ini
+# ca文件
+;ca ca.crt
+<ca>
+ca.crt文件内容
+</ca>
+# ta文件
+;tls-auth ta.key 0
+key-direction 0
+<tls-auth>
+ta.key文件内容
+<tls-auth>
 ```
 
 ## 客户端配置
@@ -120,7 +137,8 @@ remote 192.168.1.1 1194
 ca ca.crt
 ;cert client.crt
 ;key client.key
-tls-auth ta.key 1
+tls-auth ta.key 1 # 1代表客户端
+;key-direction 1 # 此选项可以代替以上的1
 
 # 使用用户名密码登录(不需要cert和key，但是需要ca和tls-auth(如果开启的话))
 auth-user-pass
