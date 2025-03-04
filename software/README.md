@@ -336,6 +336,8 @@
   - <https://gradle.org/releases/>
 - `maven`
   - <https://maven.apache.org/download.cgi>
+- `nexus`
+  - <https://help.sonatype.com/en/download.html>
 - `rabbitmq`
   - <https://github.com/rabbitmq/rabbitmq-server/releases>
 - `apache-tomcat`

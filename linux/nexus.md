@@ -1,5 +1,9 @@
 # nexus
 
+1. 访问官网 <https://help.sonatype.com/en/download.html>
+2. 下载`Unix archive`版本
+3. 安装`Java 21`，`apt install openjdk-21-jdk`
+
 ## docker安装过程
 
 - 查找镜像: `docker search sonatype/nexus3`
