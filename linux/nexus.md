@@ -1,29 +1,38 @@
 # nexus
 
-1. 访问官网 <https://help.sonatype.com/en/download.html>
-2. 下载`Unix archive`版本
-3. 安装`Java 21`，`apt install openjdk-21-jdk`
+- 下载地址 <https://help.sonatype.com/en/download.html>
 
-## docker安装过程
+## Linux使用nexus
 
-- 查找镜像: `docker search sonatype/nexus3`
-- 安装镜像: `docker pull sonatype/nexus3`
-- 创建目录: `mkdir -p /data/nexus/data`
-- 设置目录权限: `chmod 777 -R /data/nexus/data`
-- 启动镜像: `docker run -d -e "INSTALL4J_ADD_VM_PARAMS=-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m -Djava.util.prefs.userRoot=/nexus-data/javaprefs" --name nexus3 -p 8081:8081 --restart always -v /data/nexus/data:/nexus-data sonatype/nexus3`
-  - 解释：
-  - `-e "INSTALL4J_ADD_VM_PARAMS=-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m -Djava.util.prefs.userRoot=/nexus-data/javaprefs"`: 限制最大1GB内存使用
-  - `--name nexus3`: 名称：nexus3
-  - `-p 8081:8081`: 端口映射
-  - `--restart always`: docker启动时，启动该容器
-  - `-v /data/nexus/data:/nexus-data`: 映射数据文件
-  - `sonatype/nexus3`: 容器名称
+1. 安装`Java 17`：`apt install openjdk-17-jdk`
+2. 下载`Unix archive`版本：`nexus-xxx-unix.tar.gz`
+3. 压缩包复制到`/opt`
+4. 解压：`tar -xzf nexus-xxx-unix.tar.gz`
+5. 简化目录名，将`nexus-xxx`改为`nexus3`：`mv nexus-xxx nexus3`
+6. 以root用户启动：修改文件`/opt/nexus3/bin/nexus`，找到`run_as_root=true`修改为`run_as_root=false`
+7. 限制最大1GB内存使用：修改文件`/opt/nexus3/bin/nexus.vmoptions`，修改`-Xms128m`，修改`-Xmx512m`，新增`-XX:MaxDirectMemorySize=512m`
+8. 启动：`sh /opt/nexus3/bin/nexus start`
+9. 查询是否启动成功：`ps aux | grep nexus3`
+10. 查看密码：`/opt/nexus3/sonatype-work/nexus3/admin.password`
+11. 停止：`sh /opt/nexus3/bin/nexus stop`
 
-## 查找初始密码
+### 创建服务
 
-- 查看容器id： `docker ps`
-- 进入容器： `docker exec -it 容器id bash`
-- 查看密码: `cat sonatype-work/nexus3/admin.password`
+在`/etc/systemd/system`目录下创建文件`nexus3.service`
+
+```ini
+[Unit]
+Description = nexus3 server
+After = network.target
+
+[Service]
+Type = simple
+ExecStart = /opt/nexus3/bin/nexus start
+ExecStop = /opt/nexus3/bin/nexus stop
+
+[Install]
+WantedBy = multi-user.target
+```
 
 ## 新增代理
 

@@ -115,7 +115,14 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■■   | bg / &              | 后台运行                                   |
 | ■■   | fg                  | 前台运行                                   |
 | ■■   | jobs                | 显示后台任务状态                           |
+| ■    | users               | 所有用户                                   |
+| ■■   | useradd             | 新增用户                                   |
+| ■■   | userdel             | 删除用户                                   |
+| ■■   | usermod             | 修改用户                                   |
+| ■■   | passwd              | 更改用户密码                               |
 | ■■   | chmod               | 修改文件或文件夹权限                       |
+| ■■   | chown               | 修改文件或文件夹所有者                     |
+| ■■   | id                  | 显示用户的用户和组信息                     |
 | ■■   | cd                  | 切换目录                                   |
 | ■    | pwd                 | 当前目录                                   |
 | ■■   | ls                  | 目录内容                                   |
@@ -265,6 +272,143 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | jobs -r | 显示运行中任务   |
 |      | jobs -s | 显示已停止任务   |
 
+## useradd 新增用户
+
+- **格式1：`useradd [选项] 登录名`**
+- **格式2：`useradd -D`**
+- **格式3：`useradd -D [选项]`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                   | 解释                                         |
+| ---- | ------ | ------------------------ | -------------------------------------------- |
+|      |        | --badname                | 允许不符合标准的名称                         |
+|      | -b     | --base-dir BASE_DIR      | 新账户的主目录的基目录                       |
+|      |        | --btrfs-subvolume-home   | 使用BTRFS子卷作为主目录                      |
+|      | -c     | --comment COMMENT        | 新账户的备注                                 |
+| ■■   | -d     | --home-dir HOME_DIR      | 新账户的主目录                               |
+|      | -D     | --defaults               | 显示或更改默认的useradd配置                  |
+|      | -e     | --expiredate EXPIRE_DATE | 新账户的过期日期                             |
+|      | -f     | --inactive INACTIVE      | 新账户的密码不活动期                         |
+|      | -F     | --add-subids-for-system  | 即使在添加系统用户时，也要向子[ud]id添加条目 |
+|      | -g     | --gid GROUP              | 新账户主组的名称或ID                         |
+|      | -G     | --groups GROUPS          | 新账户的附加组列表                           |
+|      | -k     | --skel SKEL_DIR          | 使用此目录作为骨架目录                       |
+|      | -K     | --key KEY=VALUE          | 不使用/etc/login.defs中的默认值              |
+|      | -l     | --no-log-init            | 不要将此用户添加到最近登录和登录失败数据库   |
+| ■■   | -m     | --create-home            | 创建用户的主目录                             |
+| ■■   | -M     | --no-create-home         | 不创建用户的主目录                           |
+|      | -N     | --no-user-group          | 不创建同名的组                               |
+|      | -o     | --non-unique             | 允许使用重复的UID创建用户                    |
+| ■    | -p     | --password PASSWORD      | 加密后的新账户密码                           |
+| ■■   | -r     | --system                 | 创建一个系统账户                             |
+|      | -R     | --root CHROOT_DIR        | chroot到的目录                               |
+|      | -P     | --prefix PREFIX_DIR      | /etc/*文件所在的前缀目录                     |
+| ■■   | -s     | --shell SHELL            | 新账户的登录shell                            |
+|      | -u     | --uid UID                | 新账户的用户ID                               |
+|      | -U     | --user-group             | 创建与用户同名的组                           |
+|      | -Z     | --selinux-user SEUSER    | 为SELinux用户映射使用指SEUSER                |
+|      |        | --extrausers             | 使用额外用户数据库                           |
+
+### 示例
+
+| 常用 | 命令                                      | 解释                              |
+| ---- | ----------------------------------------- | --------------------------------- |
+| ■■   | useradd -m newuser                        | 创建一个普通用户并自动创建主目录  |
+| ■■   | useradd -m -d /home/nu -s /bin/nu newuser | 创建一个指定主目录和 shell 的用户 |
+| ■    | useradd -c "New User" -m newuser          | 创建一个带注释的用户              |
+| ■    | useradd -r -m systemuser                  | 创建一个系统用户                  |
+
+## userdel 删除用户
+
+- **格式：`userdel [选项] 登录名`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项              | 解释                            |
+| ---- | ------ | ------------------- | ------------------------------- |
+| ■■   | -f     | --force             | 强制删除                        |
+| ■■   | -r     | --remove            | 删除主目录和信件池              |
+|      | -R     | --root CHROOT_DIR   | chroot到的目录                  |
+|      | -P     | --prefix PREFIX_DIR | /etc/*文件所在的前缀目录        |
+|      | -Z     | --selinux-user      | 为用户删除所有的SELinux用户映射 |
+|      |        | --extrausers        | 使用额外用户数据库              |
+
+### 示例
+
+| 常用 | 命令                | 解释               |
+| ---- | ------------------- | ------------------ |
+| ■■   | userdel -rf newuser | 强制删除用户和目录 |
+
+## usermod 修改用户
+
+- **格式：`usermod [选项] 登录名`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                   | 解释                                                         |
+| ---- | ------ | ------------------------ | ------------------------------------------------------------ |
+|      | -a     | --append GROUP           | 将用户追加至上边-G中提到的附加组中，并不从其它组中删除此用户 |
+|      | -r     | --remove                 | 仅从-G选项提到的补充组中删除用户，而不从其他组中删除该用户   |
+|      | -q     | --badname                | 允许不符合标准的名称                                         |
+| ■    | -c     | --comment COMMENT        | 新的备注                                                     |
+| ■■   | -d     | --home HOME_DIR          | 用户的新主目录                                               |
+| ■■   | -m     | --move-home              | 将家目录内容移至新位置(仅于-d一起使用)                       |
+|      | -e     | --expiredate EXPIRE_DATE | 设定帐户过期的日期为EXPIRE_DATE                              |
+|      | -f     | --inactive INACTIVE      | 过期INACTIVE天数后，设定密码为失效状态                       |
+|      | -g     | --gid GROUP              | 强制使用GROUP为新主组                                        |
+|      | -G     | --groups GROUPS          | 新的附加组列表GROUPS                                         |
+| ■■   | -l     | --login NEW_LOGIN        | 新的登录名称                                                 |
+|      | -u     | --uid UID                | 用户帐号的新UID                                              |
+| ■■   | -s     | --shell SHELL            | 该用户帐号的新登录shell                                      |
+|      | -Z     | --selinux-user SEUSER    | 用户的新的SELinux用户映射                                    |
+| ■■   | -L     | --lock                   | 锁定用户帐号                                                 |
+| ■■   | -U     | --unlock                 | 解锁用户帐号                                                 |
+|      | -o     | --non-unique             | 允许使用重复的(非唯一的)UID                                  |
+|      | -p     | --password PASSWORD      | 将加密过的密码(PASSWORD)设为新密码                           |
+|      | -P     | --prefix PREFIX_DIR      | /etc/*文件所在的前缀目录                                     |
+|      | -R     | --root CHROOT_DIR        | chroot到的目录                                               |
+|      | -v     | --add-subuids FIRST-LAST | 添加子UID范围                                                |
+|      | -V     | --del-subuids FIRST-LAST | 移除子UID范围                                                |
+|      | -w     | --add-subgids FIRST-LAST | 添加子GID范围                                                |
+|      | -W     | --del-subgids FIRST-LAST | 移除子GID范围                                                |
+
+### 示例
+
+| 常用 | 命令               | 解释     |
+| ---- | ------------------ | -------- |
+| ■■   | usermod -L newuser | 锁定用户 |
+| ■■   | usermod -U newuser | 解锁用户 |
+
+## passwd 更改用户密码
+
+- **格式：`passwd [选项] [登录名]`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                  | 解释                                           |
+| ---- | ------ | ----------------------- | ---------------------------------------------- |
+| ■■   | -a     | --all                   | 报告所有帐户的密码状态                         |
+| ■■   | -S     | --status                | 报告指定帐户密码的状态                         |
+| ■■   | -d     | --delete                | 删除指定帐户的密码                             |
+| ■■   | -e     | --expire                | 强制使指定帐户的密码过期                       |
+|      | -k     | --keep-tokens           | 仅在过期后修改密码                             |
+|      | -i     | --inactive INACTIVE     | 密码过期后设置密码不活动为INACTIVE             |
+| ■■   | -l     | --lock                  | 锁定指定的帐户                                 |
+| ■■   | -u     | --unlock                | 解锁被指定帐户                                 |
+|      | -r     | --repository REPOSITORY | 在REPOSITORY库中改变密码                       |
+|      | -R     | --root CHROOT_DIR       | chroot到的目录                                 |
+|      | -w     | --warndays WARN_DAYS    | 设置过期警告天数为WARN_DAYS                    |
+|      | -n     | --mindays MIN_DAYS      | 设置到下次修改密码所须等待的最短天数为MIN_DAYS |
+|      | -x     | --maxdays MAX_DAYS      | 设置到下次修改密码所须等待的最多天数为MAX_DAYS |
+|      | -q     | --quiet                 | 安静模式                                       |
+
+### 示例
+
+| 常用 | 命令              | 解释             |
+| ---- | ----------------- | ---------------- |
+| ■■   | passwd -S newuser | 查看用户密码状态 |
+
 ## chmod 修改文件或文件夹权限
 
 - **格式1：`chmod [选项]... 模式[,模式]... 文件...`**
@@ -335,6 +479,56 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■■   | chmod a-w file      | 所有用户去除写权限                    |
 | ■■   | chmod g=rx file     | 组用户为读和执行权限                  |
 | ■■   | chmod -R 777 folder | 修改folder文件夹以及所有项目权限为777 |
+
+## chown 修改文件或文件夹所有者
+
+- **格式1：`chown [选项]... [所有者][:[组]] 文件...`**
+- **格式2：`chown [选项]... --reference=参考文件 文件...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                   | 解释                                                                             |
+| ---- | ------ | ------------------------ | -------------------------------------------------------------------------------- |
+|      | -c     | --changes                | 类似verbose选项，但仅在做出修改时进行报告                                        |
+|      | -f     | --silent/ --quiet        | 不显示大多数错误消息                                                             |
+|      | -v     | --verbose                | 为每个处理的文件输出一条诊断信息                                                 |
+|      |        | --dereference            | 影响每个符号链接指向的文件(默认) ，而非符号链接本身                              |
+|      | -h     | --no-dereference         | 影响符号链接，而非其指向的文件(仅当系统支持更改符号链接的所有权时，该选项才有用) |
+|      |        | --from=当前所有者:当前组 | 仅在文件的当前所有者和/或组和这里指定的一致时，才更改所有者和/或组               |
+|      |        |                          | 其中一个可以省略，表示不对被省略的属性作出要求                                   |
+|      |        | --no-preserve-root       | 不特殊对待/(默认)                                                                |
+|      |        | --preserve-root          | 不允许在/上递归操作                                                              |
+|      |        | --reference=参考文件     | 使用<参考文件>的所有者和组，而非指定<所有者>:<组>                                |
+|      |        |                          | 如果<参考文件>是符号链接，则总是解引用它                                         |
+| ■■   | -R     | --recursive              | 递归操作文件和目录                                                               |
+
+### 示例
+
+| 常用 | 命令            | 解释                        |
+| ---- | --------------- | --------------------------- |
+| ■■   | chown -R a:b c/ | 递归修改c文件夹的所有者和组 |
+
+## id 显示用户的用户和组信息
+
+- **格式1：`id [选项]... [用户]...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项    | 解释                                                    |
+| ---- | ------ | --------- | ------------------------------------------------------- |
+|      | -u     | --user    | 仅打印有效用户ID                                        |
+|      | -g     | --group   | 仅打印有效组ID                                          |
+|      | -G     | --groups  | 仅打印所有的组ID                                        |
+|      | -n     | --name    | 打印名称而非数字，与-ugG一起使用                        |
+|      | -r     | --real    | 打印真实ID而非有效ID，与-ugG一起使用                    |
+|      | -z     | --zero    | 使用NUL字符而非空格来分隔各个条目，在默认格式下不可使用 |
+|      | -Z     | --context | 仅打印当前进程的安全上下文                              |
+
+### 示例
+
+| 常用 | 命令   | 解释              |
+| ---- | ------ | ----------------- |
+| ■■   | id ali | 显示ali用户的信息 |
 
 ## cd 切换目录
 
@@ -1402,20 +1596,20 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 |      | list-timers [PATTERN...]            | 按下一次时间顺序列出当前内存中的计时器单位                         |
 |      | is-active PATTERN...                | 检查装置是否处于活动状态                                           |
 |      | is-failed [PATTERN...]              | 检查单元是否出现故障或系统是否处于降级状态                         |
-| ■■   | status [PATTERN...\|PID...]         | 显示一个或多个单元的运行时状态                                     |
 |      | show [PATTERN...\|JOB...]           | 显示一个或多个单位/作业或经理的属性                                |
-|      | cat PATTERN...                      | 显示指定单位的文件和插件                                           |
+| ■■   | status [PATTERN...\|PID...]         | 显示一个或多个单元的运行时状态                                     |
+| ■■   | cat PATTERN...                      | 显示指定单位的文件和插件                                           |
 |      | help PATTERN...\|PID...             | 显示一个或多个单元的手册                                           |
 |      | list-dependencies [UNIT...]         | 递归显示单位所需或想要的单位，或这些单位所需的单位                 |
 | ■■   | start UNIT...                       | 启动(激活)一个或多个装置                                           |
 | ■■   | stop UNIT...                        | 停止(停用)一个或多个装置                                           |
 | ■■   | reload UNIT...                      | 重新加载一个或多个单元                                             |
 | ■■   | restart UNIT...                     | 启动或重新启动一个或多个装置                                       |
+| ■■   | kill UNIT...                        | 向单元的进程发送信号                                               |
 |      | try-restart UNIT...                 | 如果处于活动状态，请重新启动一个或多个单元                         |
 |      | reload-or-restart UNIT...           | 如果可能，重新加载一个或多个单元，否则启动或重新启动               |
 |      | try-reload-or-restart UNIT...       | 如果处于活动状态，请重新加载一个或多个单元(如果支持)，否则重新启动 |
 |      | isolate UNIT                        | 启动一个单元并停止所有其他单元                                     |
-|      | kill UNIT...                        | 向单元的进程发送信号                                               |
 |      | clean UNIT...                       | 清理运行时、缓存、状态、日志或单元配置                             |
 |      | freeze PATTERN...                   | 冻结单元流程的执行                                                 |
 |      | thaw PATTERN...                     | 恢复冻结单元的执行                                                 |
@@ -1474,7 +1668,7 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 
 | 常用 | 命令                     | 解释                          |
 | ---- | ------------------------ | ----------------------------- |
-|      | daemon-reload            | 重新加载systemd管理器配置     |
+| ■■   | daemon-reload            | 重新加载systemd管理器配置     |
 |      | daemon-reexec            | 重新执行systemd管理器         |
 |      | log-level [LEVEL]        | 获取/设置管理器的日志记录阈值 |
 |      | log-target [TARGET]      | 获取/设置管理器的日志记录目标 |
@@ -1559,15 +1753,18 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 
 ### 示例
 
-| 常用 | 命令                    | 解释             |
-| ---- | ----------------------- | ---------------- |
-| ■■   | systemctl status nginx  | 检查服务状态     |
-| ■■   | systemctl start nginx   | 启动服务         |
-| ■■   | systemctl stop nginx    | 停止服务         |
-| ■■   | systemctl reload nginx  | 重新加载服务     |
-| ■■   | systemctl restart nginx | 重启服务         |
-| ■■   | systemctl enable nginx  | 设置服务开机自启 |
-| ■■   | systemctl disable nginx | 取消服务开机自启 |
+| 常用 | 命令                    | 解释                      |
+| ---- | ----------------------- | ------------------------- |
+| ■■   | systemctl daemon-reload | 重新加载systemd管理器配置 |
+| ■■   | systemctl cat nginx     | 打印服务配置文件          |
+| ■■   | systemctl status nginx  | 检查服务状态              |
+| ■■   | systemctl start nginx   | 启动服务                  |
+| ■■   | systemctl stop nginx    | 停止服务                  |
+| ■■   | systemctl kill nginx    | 强制停止服务              |
+| ■■   | systemctl reload nginx  | 重新加载服务              |
+| ■■   | systemctl restart nginx | 重启服务                  |
+| ■■   | systemctl enable nginx  | 设置服务开机自启          |
+| ■■   | systemctl disable nginx | 取消服务开机自启          |
 
 ## tar 打包和解包
 

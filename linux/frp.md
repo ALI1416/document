@@ -10,9 +10,15 @@
 ## Linux使用frp
 
 1. 下载`frp_xxx_linux_amd64.tar.gz`版本
-2. 解压到`/usr/local/bin/frp`
-3. 分配可执行权限`chmod 755 /usr/local/bin/frp/frps /usr/local/bin/frp/frpc`
-4. 在`/etc/systemd/system`目录下创建以下文件
+2. 压缩包复制到`/opt`
+3. 解压：`tar -xzf frp_xxx_linux_amd64.tar.gz`
+4. 简化目录名，将`frp_xxx`改为`frp`：`mv frp_xxx frp`
+5. 修改所有者和分组`chown -R root:root /opt/frp`
+6. 启动：`/opt/frp/frps -c /opt/frp/frps.toml`
+
+### 创建服务
+
+在`/etc/systemd/system`目录下创建以下文件
 
 服务端 `frps.service`
 
@@ -24,7 +30,7 @@ Wants = network.target
 
 [Service]
 Type = simple
-ExecStart = /usr/local/bin/frp/frps -c /usr/local/bin/frp/frps.toml
+ExecStart = /opt/frp/frps -c /opt/frp/frps.toml
 
 [Install]
 WantedBy = multi-user.target
@@ -40,19 +46,11 @@ Wants = network.target
 
 [Service]
 Type = simple
-ExecStart = /usr/local/bin/frp/frpc -c /usr/local/bin/frp/frpc.toml
+ExecStart = /opt/frp/frpc -c /opt/frp/frpc.toml
 
 [Install]
 WantedBy = multi-user.target
 ```
-
-- `systemctl status frps` 检查服务状态
-- `systemctl start frps` 启动服务
-- `systemctl stop frps` 停止服务
-- `systemctl reload frps` 重新加载服务
-- `systemctl restart frps` 重启服务
-- `systemctl enable frps` 设置服务开机自启
-- `systemctl disable frps` 取消服务开机自启
 
 ## 服务端
 
