@@ -1766,6 +1766,47 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 | ■■   | systemctl enable nginx  | 设置服务开机自启          |
 | ■■   | systemctl disable nginx | 取消服务开机自启          |
 
+### 状态
+
+```txt
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-03-06 08:34:35 CST; 5h 50min ago
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 1701 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 1715 (sshd)
+      Tasks: 1 (limit: 9382)
+     Memory: 3.2M (peak: 20.3M)
+        CPU: 72ms
+     CGroup: /system.slice/ssh.service
+             └─1715 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+```
+
+- `Unit`(第一行)：服务名和简介
+- `Loaded`：服务是否已被加载
+  - `loaded`：已被加载
+  - `/usr/lib/systemd/system/ssh.service`：服务路径
+  - `enabled`：开机自启
+  - `preset: enabled`：
+- `Active`：活动状态
+  - `Active (running)`：正在运行
+  - `Active (exited)`：已经运行过并已退出
+  - `Active (waiting)`：正在等待某些事件
+  - `Active (listening)`：正在运行并监听端口以接收连接
+  - `inactive`：未运行
+  - `activating`：正在启动
+  - `deactivating`：正在停止
+- `TriggeredBy`：
+- `Docs`：文档
+- `Process`：
+- `Main PID`：主进程的PID(Process ID)
+- `Tasks`：任务数
+- `Memory`：内存占用
+- `CPU`：CPU时间
+- `CGroup`：控制组信息
+
 ## tar 打包和解包
 
 - **格式：`tar [选项...] [FILE]...`**

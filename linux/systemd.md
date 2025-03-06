@@ -1,12 +1,16 @@
 # Systemd
 
+## Service服务配置文件
+
+在`/etc/systemd/system`目录下创建`.service`后缀的配置文件
+
 配置文件主要由3部分组成，分别是`[Unit]`、`[Service]`、`[Install]`
 
-- `[Unit]`区块：启动顺序与依赖关系
-- `[Service]`区块：启动行为
-- `[Install]`区块：定义如何安装这个配置文件，即怎样做到开机启动
+- `[Unit]`：启动顺序与依赖关系
+- `[Service]`：启动行为
+- `[Install]`：定义如何安装这个配置文件，即怎样做到开机启动
 
-Unit区块主要包括`Description`、`Documentation`、`After`、`Wants`等控制参数
+`[Unit]`区块主要包括`Description`、`After`、`Wants`等控制参数
 
 - `Description`：当前服务的简单描述信息
 - `Documentation`：指定服务相关说明文档存放路径
@@ -15,7 +19,7 @@ Unit区块主要包括`Description`、`Documentation`、`After`、`Wants`等控�
 - `Wants`：希望指定服务能够启动。如果指定服务启动失败或停止运行，当前服务仍可运行
 - `Requires`：指定服务必须启动。如果指定服务启动失败，当前服务停止启动
 
-Service区块定义了如何启动当前服务，常用的字段有`Type`、`EnvironmentFile`、`ExecStart`、`ExecStop`、`ExecReload`等
+`[Service]`区块定义了如何启动当前服务，常用的字段有`Type`、`Environment`、`EnvironmentFile`、`ExecStart`、`ExecStop`等
 
 - `Type`：服务启动类型
   - `simple`(默认)：服务启动时，进程为主进程。适用于不会自行后台运行的长时间运行的服务
@@ -50,8 +54,25 @@ Service区块定义了如何启动当前服务，常用的字段有`Type`、`Env
   - `always`：服务无论是正常或非正常退出的情况，Systemd总是保持重启的行为
 - `RestartSec`：Systemd重启服务之前，需要等待的时间，单位是`s`
 
-Install区块定义如何安装这个配置文件，即怎样做到开机启动
+`[Install]`区块定义如何安装这个配置文件，即怎样做到开机启动
 
 - `WantedBy`：表示该服务所在的target。target的含义是服务组，表示一组服务
   - `multi-user.target`：多用户命令状态
   - `graphical.target`：图形用户状态，它依赖于`multi-user.target`
+
+## Target配置文件
+
+target文件是一种特殊类型的单位(unit)，用于组织和管理系统中的其他服务和单位。target文件本身不包含要执行的进程，而是作为一种逻辑分组，用于控制和协调其他单位的启动顺序和方式
+
+作用和用途
+
+- 分组服务：将相关的服务和任务组织在一起，便于统一管理
+- 管理启动顺序：通过依赖关系(如Wants,Requires)，控制服务启动的顺序和条件
+- 同步点：在系统启动或其他操作中，提供一个同步点，确保在继续执行其他任务前，一组特定的服务已经启动或达到某种状态
+
+常见的target文件
+
+- `multi-user.target`：对应于传统的多用户运行级别，是标准的非图形用户界面多用户系统目标
+- `graphical.target`：用于启动图形用户界面，通常在`multi-user.target`的基础上添加了图形环境
+- `network.target`：网络服务启动后达到的目标，许多依赖网络的服务都会在此目标之后启动
+- `reboot.target`, `poweroff.target`, `halt.target`：这些目标用于管理系统的关机、重启和停机过程
