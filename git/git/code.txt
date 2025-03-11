@@ -1,12 +1,16 @@
+Ip2Region.Net
+Phone2Region.Net
 QRCodeEncoder.Net
 ScreenShare
 clock
 id
 id-spring-boot-autoconfigure
 ip2region
+ip2region-js
 ip2region-spring-boot-autoconfigure
 parent
 phone2region
+phone2region-js
 phone2region-spring-boot-autoconfigure
 qrcode-encoder
 qrcode-encoder-js
@@ -14,7 +18,7 @@ snk
 tiny-task-spring-boot-starter
 tiny-token-spring-boot-starter
 404z.cn
-cpp-console-demo
+c-sharp-demo
 document
 iot-demo
 project-demo
