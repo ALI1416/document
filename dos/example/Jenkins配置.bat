@@ -13,6 +13,9 @@
 @REM clean install -pl demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 @REM Post Steps -> Run regardless of build result -> Execute Windows batch command 填写如下
 
+@REM 提示Jenkins不要杀死此进程
+set BUILD_ID=dontKillMe
+
 @REM 切换UTF8编码
 chcp 65001
 @REM 关闭指定端口进程
@@ -33,9 +36,6 @@ if not "!pid!" == "" (
     taskkill /pid !pid! /t /f
 )
 setLocal disableDelayedExpansion
-
-@REM 提示Jenkins不要杀死此进程
-set BUILD_ID=dontKillMe
 
 @REM 项目名
 set projectName=demo-base
