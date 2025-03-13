@@ -13,7 +13,7 @@
 7. 安装Jenkins：`apt install jenkins`
 8. 访问`http://localhost:8080`
 9. 查看密码：`cat /var/lib/jenkins/secrets/initialAdminPassword`
-10. 修改权限：修改文件：`/lib/systemd/system/jenkins.service`，修改`User=jenkins`为`User=root`，修改`Group=jenkins`为`Group=root`
+10. 以root用户启动服务：修改文件`/lib/systemd/system/jenkins.service`，修改`User=jenkins`为`User=root`，修改`Group=jenkins`为`Group=root`
 11. 修改Jenkins相关文件夹用户权限：`chown -R root:root /var/lib/jenkins /var/cache/jenkins /var/log/jenkins`
 12. 修改文件：`/etc/default/jenkins`
     1. 修改端口号，修改`HTTP_PORT=8080`

@@ -1,6 +1,6 @@
 # mongodb
 
-文档地址 <https://docs.mongodb.com/manual/tutorial/getting-started/>
+文档地址 <https://www.mongodb.com/zh-cn/docs/manual/tutorial/getting-started/>
 
 ## 数据库命令
 
@@ -11,11 +11,13 @@
 | ■■   | use 数据库名 | 创建数据库(需要手动插入一条记录) |
 | ■■   | db           | 显示数据库名                     |
 
-**以下命令都以`db.`开头，通过`db.help()`获取**
+## `db.`开头命令
+
 | 常用 | 命令                                | 解释                                                       |
 | ---- | ----------------------------------- | ---------------------------------------------------------- |
-| ■    | help()                              | 帮助                                                       |
+|      | help()                              | 帮助                                                       |
 | ■■   | getName()                           | 显示数据库名                                               |
+| ■■   | auth(用户名,密码)                   | 验证数据库                                                 |
 |      | adminCommand(nameOrDocument)        | 切换到admin数据库，并运行命令[只调用db.runCommand(...)]    |
 |      | aggregate(pipeline,选项)            | 在此数据库上执行无集合聚合；返回一个游标                   |
 |      | cloneDatabase(主机名)               | 克隆数据库                                                 |
@@ -30,9 +32,9 @@
 |      | eval()                              | 过时                                                       |
 |      | fsyncLock()                         | 将数据刷新到磁盘并锁定服务器以进行备份                     |
 |      | fsyncUnlock()                       | 在db.fsyncLock()之后解锁服务器                             |
-|      | getCollection(集合名)               | 获取集合信息                                               |
+| ■■   | getCollectionNames()                | 所有集合名                                                 |
+| ■■   | getCollection(集合名)               | 获取集合信息                                               |
 |      | getCollectionInfos(过滤器)          | 集合信息                                                   |
-|      | getCollectionNames()                | 所有集合名                                                 |
 |      | getLastError()                      |                                                            |
 |      | getLastErrorObj()                   |                                                            |
 |      | getLogComponents()                  |                                                            |
@@ -88,10 +90,11 @@ db.createUser({user: "rw", pwd: "rw", roles: [{role: "readWrite", db:"rw"}]})
 
 ## 集合命令
 
-**以下命令都以`db.集合名.`开头，通过`db.集合名.help()`获取**
+### `db.集合名.`开头命令
+
 | 常用 | 命令                                            | 解释                             |
 | ---- | ----------------------------------------------- | -------------------------------- |
-| ■    | help()                                          | 帮助                             |
+|      | help()                                          | 帮助                             |
 |      | insert(对象)                                    | 插个                             |
 | ■■   | **insertOne(对象,选项)**                        | 插入一个                         |
 | ■■   | insertMany(对象数组,选项)                       | 插入多个                         |
@@ -138,10 +141,11 @@ db.createUser({user: "rw", pwd: "rw", roles: [{role: "readWrite", db:"rw"}]})
 |      | getShardDistribution()                          | 打印有关集群中数据分布的统计信息 |
 |      | latencyStats()                                  | 显示此集合的操作延迟直方图       |
 
-**以下命令都以`db.集合名.find().`开头，通过`db.集合名.find().help()`获取**
+### `db.集合名.find().`开头命令
+
 | 常用 | 命令                    | 解释       |
 | ---- | ----------------------- | ---------- |
-| ■    | help()                  | 帮助       |
+|      | help()                  | 帮助       |
 | ■■   | limit(n)                | 限制       |
 | ■■   | skip(n)                 | 跳过       |
 | ■■   | sort(...)               | 排序       |
@@ -159,65 +163,65 @@ db.createUser({user: "rw", pwd: "rw", roles: [{role: "readWrite", db:"rw"}]})
 
 ## 插入操作
 
-- `save()`：如果`_id`主键存在则更新数据，如果不存在就插入数据。该方法新版本中已废弃，可以使用db.collection.insertOne()或db.collection.replaceOne()来代替。
-- `insert()`：若插入的数据主键已经存在，则会抛org.springframework.dao.DuplicateKeyException异常，提示主键重复，不保存当前数据。
-- `insertOne()`：用于向集合插入一个新文档。
-- `insertMany()`：用于向集合插入一个多个文档。
+- `save()`：如果`_id`主键存在则更新数据，如果不存在就插入数据。该方法新版本中已废弃，可以使用`db.collection.insertOne()`或`db.collection.replaceOne()`来代替
+- `insert()`：若插入的数据主键已经存在，则会抛`org.springframework.dao.DuplicateKeyException`异常，提示主键重复，不保存当前数据
+- `insertOne()`：用于向集合插入一个新文档
+- `insertMany()`：用于向集合插入一个多个文档
 
 ### insertOne() 插入一个
 
 ```js
 db.a.insertOne({
-    _id: 1,
-    "字段名可以不带引号": "有中文或特殊符号需要用引号",
-    objectId: ObjectId(),
+  _id: 1,
+  "字段名可以不带引号": "有中文或特殊符号需要用引号",
+  objectId: ObjectId(),
+  string: "字符串类型",
+  boolean: true,
+  int: NumberInt("123"),
+  long: NumberLong("123"),
+  double: 123.45,
+  array: [1, 2, 3, 4, 5],
+  object: {
     string: "字符串类型",
     boolean: true,
     int: NumberInt("123"),
     long: NumberLong("123"),
-    double: 123.45,
-    array: [1, 2, 3, 4, 5],
-    object: {
-        string: "字符串类型",
-        boolean: true,
-        int: NumberInt("123"),
-        long: NumberLong("123"),
-        double: 123.45
-    },
-    null: null,
-    date: ISODate("2018-06-05T15:28:33.705+08:00")
+    double: 123.45
+  },
+  null: null,
+  date: ISODate("2018-06-05T15:28:33.705+08:00")
 })
 ```
 
-向集合a中插入一条数据，指定`_id`是`1`，不指定则自动生成`ObjectId()`。  
-插入成功返回{"acknowledged":true,"insertedId":_id}  
-如果_id重复，会报错。
+- 向集合a中插入一条数据，指定`_id`是`1`，不指定则自动生成`ObjectId()`
+- 插入成功返回`{"acknowledged":true,"insertedId":_id}`
+- 如果`_id`重复，会报错
 
 ### insertMany() 插入多个
 
 ```js
 db.a.insertMany([
-    {
-        string: "字符串类型",
-        boolean: true,
-        int: NumberInt("123"),
-        long: NumberLong("123"),
-        double: 123.45
-    },
-    {
-        string: "字符串类型",
-        boolean: true,
-        int: NumberInt("124"),
-        long: NumberLong("123"),
-        double: 123.45
-    },
-    {
-        string: "字符串类型",
-        boolean: true,
-        int: NumberInt("125"),
-        long: NumberLong("123"),
-        double: 123.45
-    }
+  {
+    string: "字符串类型",
+    boolean: true,
+    int: NumberInt("123"),
+    long: NumberLong("123"),
+    double: 123.45
+  },
+  {
+    string: "字符串类型",
+    boolean: true,
+    int: NumberInt("124"),
+    long: NumberLong("123"),
+    double: 123.45
+  },
+  {
+    string: "字符串类型",
+    boolean: true,
+    int: NumberInt("125"),
+    long: NumberLong("123"),
+    double: 123.45
+  }
 ])
 ```
 
@@ -227,17 +231,17 @@ db.a.insertMany([
 
 ```js
 db.a.updateOne(
-    {
-        "int": NumberInt("123")
+  {
+    "int": NumberInt("123")
+  },
+  {
+    $set: {
+      "double": 111.11
     },
-    {
-        $set: {
-            "double": 111.11
-        },
-        $currentDate: {
-            lastModified: true
-        }
+    $currentDate: {
+      lastModified: true
     }
+  }
 )
 ```
 
@@ -253,9 +257,9 @@ db.a.updateOne(
 
 ```js
 db.a.deleteOne(
-    {
-        "int": NumberInt("123")
-    }
+  {
+    "int": NumberInt("123")
+  }
 )
 ```
 
@@ -265,97 +269,97 @@ db.a.deleteOne(
 
 #### 普通查询
 
-查询int字段为124的所有记录，显示所有字段。
+查询int字段为124的所有记录，显示所有字段
 
 ```js
 db.a.find(
-    {
-        int: 124
-    }
+  {
+    int: 124
+  }
 )
 ```
 
 #### AND条件查询
 
-查询int为124，long为123的记录。
+查询int为124，long为123的记录
 
 ```js
 db.a.find(
-    {
-        int: 124,
-        long: 123
-    }
+  {
+    int: 124,
+    long: 123
+  }
 )
 ```
 
 #### OR条件查询
 
-查询boolean为true或(int为124，long为123)的记录。
+查询boolean为true或(int为124，long为123)的记录
 
 ```js
 db.a.find(
-    {
-        $or: [
-            {
-                int: 124,
-                long: 123
-            },
-            {
-                boolean: true
-            }
-        ]
-    }
+  {
+    $or: [
+      {
+        int: 124,
+        long: 123
+      },
+      {
+        boolean: true
+      }
+    ]
+  }
 )
 ```
 
-查询boolean为true或int为124或long为123的记录。
+查询boolean为true或int为124或long为123的记录
 
 ```js
 db.a.find(
-    {
-        $or: [
-            {
-                int: 124
-            },
-            {
-                long: 123
-            },
-            {
-                boolean: true
-            }
-        ]
-    }
+  {
+    $or: [
+      {
+        int: 124
+      },
+      {
+        long: 123
+      },
+      {
+        boolean: true
+      }
+    ]
+  }
 )
 ```
 
 #### 指定字段
 
-只显示字段int和long，去除字段_id(不去除会默认显示)。
+只显示字段int和long，去除字段_id(不去除会默认显示)
 
 ```js
 db.a.find(
-    {
-        int: 124
-    },
-    {
-        _id: 0,
-        int: 1,
-        long: 1
-    }
+  {
+    int: 124
+  },
+  {
+    _id: 0,
+    int: 1,
+    long: 1
+  }
 )
 ```
 
 #### 判断条件查询
 
-查询int小于124的记录。
+查询int小于124的记录
 
 ```js
 db.a.find(
-    {
-        int: {
-            $lt: 124
-        }
+  {
+    int: {
+      $lt: 124
     }
+  }
 )
 ```
 
@@ -372,7 +376,7 @@ db.a.find(
 
 #### limit()与skip() 限制与跳过
 
-跳过第一条，只显示2条。
+跳过第一条，只显示2条
 
 ```js
 db.a.find().limit(2).skip(1)
@@ -380,50 +384,50 @@ db.a.find().limit(2).skip(1)
 
 #### sort() 排序
 
-先long降序，在int升序显示。
+先long降序，在int升序显示
 
 ```js
 db.a.find().sort(
-    {
-        int: 1,
-        long:  - 1
-    }
+  {
+    int: 1,
+    long:  - 1
+  }
 )
 ```
 
 #### aggregate() 聚合
 
-以long字段分组，计算个数。
+以long字段分组，计算个数
 
 ```js
 db.a.aggregate(
-    [
-        {
-            $group: {
-                _id: "$long",
-                int: {
-                    $sum: 1
-                }
-            }
+  [
+    {
+      $group: {
+        _id: "$long",
+        int: {
+          $sum: 1
         }
-    ]
+      }
+    }
+  ]
 )
 ```
 
-以long字段分组，计算int字段总和。
+以long字段分组，计算int字段总和
 
 ```js
 db.a.aggregate(
-    [
-        {
-            $group: {
-                _id: "$long",
-                int: {
-                    $sum: "$int"
-                }
-            }
+  [
+    {
+      $group: {
+        _id: "$long",
+        int: {
+          $sum: "$int"
         }
-    ]
+      }
+    }
+  ]
 )
 ```
 
@@ -442,8 +446,8 @@ db.a.aggregate(
 
 ##### 聚合管道操作
 
-MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。  
-表达式：处理输入文档并输出。表达式是无状态的，只能用于计算当前聚合管道的文档，不能处理其它的文档。
+- MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的
+- 表达式：处理输入文档并输出。表达式是无状态的，只能用于计算当前聚合管道的文档，不能处理其它的文档
 
 | 常用 | 表达式   | 描述                                                                                   |
 | ---- | -------- | -------------------------------------------------------------------------------------- |
@@ -460,13 +464,13 @@ MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传
 
 ```js
 db.a.aggregate(
-    {
-        $project: {
-            _id: 0,
-            int: 1,
-            long: 1
-        }
+  {
+    $project: {
+      _id: 0,
+      int: 1,
+      long: 1
     }
+  }
 )
 ```
 
@@ -474,24 +478,24 @@ db.a.aggregate(
 
 ```js
 db.a.aggregate(
-    [
-        {
-            $match: {
-                int: {
-                    $gt: 122,
-                    $lt: 126
-                }
-            }
-        },
-        {
-            $group: {
-                _id: "$long",
-                int: {
-                    $sum: 1
-                }
-            }
+  [
+    {
+      $match: {
+        int: {
+          $gt: 122,
+          $lt: 126
         }
-    ]
+      }
+    },
+    {
+      $group: {
+        _id: "$long",
+        int: {
+          $sum: 1
+        }
+      }
+    }
+  ]
 )
 ```
 
@@ -499,9 +503,9 @@ db.a.aggregate(
 
 ```js
 db.a.aggregate(
-    {
-        $skip: 1
-    }
+  {
+    $skip: 1
+  }
 )
 ```
 
@@ -513,9 +517,9 @@ db.a.aggregate(
 
 ```js
 db.a.createIndex(
-    {
-        "int": 1
-    }
+  {
+    "int": 1
+  }
 )
 ```
 
@@ -523,9 +527,9 @@ db.a.createIndex(
 
 ```js
 db.a.createIndex(
-    {
-        "int": 1,
-        "long":  - 1
-    }
+  {
+    "int": 1,
+    "long":  - 1
+  }
 )
 ```
