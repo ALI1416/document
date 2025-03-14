@@ -1,6 +1,7 @@
 # Jenkins
 
 - 官网 <https://www.jenkins.io/>
+- 教程 <https://www.jenkins.io/doc/book/installing/linux/#debianubuntu>
 
 ## Linux使用Jenkins
 
@@ -8,7 +9,7 @@
 2. 安装`Git`：`apt install git`，安装到了`/usr/bin/git`
 3. 安装`Maven`：`apt install maven`，安装到了`/usr/share/maven/`
 4. 添加Jenkins仓库密钥：`wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key`
-5. 添加Jenkins软件源：`echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null`
+5. 添加Jenkins软件源：`echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list > /dev/null`
 6. 更新包索引：`apt update`
 7. 安装Jenkins：`apt install jenkins`
 8. 访问`http://localhost:8080`
