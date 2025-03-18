@@ -2,8 +2,6 @@
 
 - 下载地址 <https://help.sonatype.com/en/download.html>
 
-## Linux使用nexus
-
 1. 安装`Java 17`：`apt install openjdk-17-jdk`，安装到了`/usr/lib/jvm/java-17-openjdk-amd64/`
 2. 下载`Unix archive`版本：`nexus-unix-x86-64-xxx.tar.gz`
 3. 压缩包复制到`/opt`
@@ -18,7 +16,7 @@
 12. 查看密码：`cat /opt/sonatype-work/nexus3/admin.password`
 13. 停止：`sh /opt/nexus/bin/nexus stop`
 
-### 创建服务
+## 创建服务
 
 在`/etc/systemd/system`目录下创建文件`nexus.service`
 

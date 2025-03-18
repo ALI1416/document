@@ -3,8 +3,6 @@
 - 官网 <https://www.jenkins.io/>
 - 教程 <https://www.jenkins.io/doc/book/installing/linux/#debianubuntu>
 
-## Linux使用Jenkins
-
 1. 安装`Java 21`：`apt install openjdk-21-jdk`，安装到了`/usr/lib/jvm/java-21-openjdk-amd64/`
 2. 安装`Git`：`apt install git`，安装到了`/usr/bin/git`
 3. 安装`Maven`：`apt install maven`，安装到了`/usr/share/maven/`
@@ -27,14 +25,14 @@
 - 下载地址：`https://mirrors.aliyun.com/jenkins/debian-stable/`
 - 安装：`dpkg -i jenkins_xxx.deb`
 
-### 配置
+## 配置
 
-- `Manage Jenkins`->`Tools`
-- Maven配置路径填写：`/usr/share/maven/conf/settings.xml`
-- JDK路径填写：`/usr/lib/jvm/java-21-openjdk-amd64/`
-- Git路径填写：`/usr/bin/git`
-- Maven路径填写：`/usr/share/maven`
-- 安装Maven整合插件：`Manage Jenkins`->`Plugins`->`Available plugins`搜索`maven`，勾选`Maven Integration`，安装
+1. `Manage Jenkins`->`Tools`
+2. Maven配置路径填写：`/usr/share/maven/conf/settings.xml`
+3. JDK路径填写：`/usr/lib/jvm/java-21-openjdk-amd64/`
+4. Git路径填写：`/usr/bin/git`
+5. Maven路径填写：`/usr/share/maven`
+6. 安装Maven整合插件：`Manage Jenkins`->`Plugins`->`Available plugins`搜索`maven`，勾选`Maven Integration`，安装
 
 ## 创建SpringBoot项目
 

@@ -3,12 +3,6 @@
 - 文档地址 <https://gofrp.org/zh-cn/docs/>
 - 下载地址 <https://github.com/fatedier/frp/releases>
 
-## Windows使用frp
-
-1. 下载`frp_xxx_windows_amd64.zip`版本
-
-## Linux使用frp
-
 1. 下载`frp_xxx_linux_amd64.tar.gz`版本
 2. 压缩包复制到`/opt`
 3. 解压：`tar -xzf frp_xxx_linux_amd64.tar.gz`
@@ -16,7 +10,7 @@
 5. 修改所有者和分组`chown -R root:root /opt/frp`
 6. 启动：`/opt/frp/frps -c /opt/frp/frps.toml`
 
-### 创建服务
+## 创建服务
 
 在`/etc/systemd/system`目录下创建以下文件
 
