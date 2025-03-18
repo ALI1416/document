@@ -225,7 +225,6 @@
   - <https://github.com/strongswan/strongswan/releases>
 - `TinyProxy` 代理(Linux)
   - <https://github.com/tinyproxy/tinyproxy/releases>
-  - `squid`<https://github.com/squid-cache/squid/releases>
 - `frp` 内网穿透
   - <https://github.com/fatedier/frp/releases>
 - `coturn` NAT打洞STUN服务器(Linux)

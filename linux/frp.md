@@ -181,7 +181,7 @@ localPort = 22
 
 - `natHoleStunServer` : NAT打洞STUN服务器
 
-- 需要收到判断是否正常工作`frpc nathole discover --nat_hole_stun_server stun.easyvoip.com:3478`
+- 需要手动判断是否正常工作`frpc nathole discover --nat_hole_stun_server stun.easyvoip.com:3478`
 - 需要自己搭建NAT打洞STUN服务器`https://github.com/coturn/coturn`
 
 访问者
