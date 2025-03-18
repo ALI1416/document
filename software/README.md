@@ -366,6 +366,8 @@
 - `sentinel`
   - <https://github.com/alibaba/Sentinel/releases>
   - 启动`java -Dserver.port=8849 -Dcsp.sentinel.dashboard.server=127.0.0.1:8849 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.7.jar`
+- `Z-BlogPHP`
+  - <https://www.zblogcn.com/zblogphp/>
 - `typora` markdown文档编辑器
   - <https://typoraio.cn/>
 - `tika` 文件解析

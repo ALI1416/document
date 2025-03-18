@@ -16,7 +16,7 @@
 server {
   # PHP反向代理
   location ~ \.php$ {
-    root           /var/www/php;
+    root           /var/www/html;
     fastcgi_pass   unix:/run/php/php8.3-fpm.sock;
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
@@ -25,6 +25,15 @@ server {
 }
 ```
 
-- 创建文件`/var/www/php/1.php`，内容为`<?php phpinfo();?>`
+- 创建文件`/var/www/html/1.php`，内容为`<?php phpinfo();?>`
 - 重启nginx`systemctl restart nginx`
-- 访问`localhost/1.php`
+- 访问<http://localhost/1.php>
+
+## Z-BlogPHP
+
+- 安装`apt install php-mysql php-curl php-xml php-gd php-mbstring`
+- 重启`systemctl restart php8.3-fpm`
+- 下载源码<https://www.zblogcn.com/zblogphp/>
+- 解压到`/var/www/html/blog`目录
+- 修改权限`chmod -R 777 /var/www/html/blog`
+- 访问<http://localhost/blog/index.php>
