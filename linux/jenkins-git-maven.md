@@ -9,7 +9,7 @@
 4. 添加Jenkins仓库密钥：`wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key`
 5. 添加Jenkins软件源：`echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list > /dev/null`
 6. 更新包索引：`apt update`
-7. 安装Jenkins：`apt install jenkins`
+7. 安装`Jenkins`：`apt install jenkins`
 8. 访问`http://localhost:8080`
 9. 查看密码：`cat /var/lib/jenkins/secrets/initialAdminPassword`
 10. 以root用户启动服务：修改文件`/lib/systemd/system/jenkins.service`，修改`User=jenkins`为`User=root`，修改`Group=jenkins`为`Group=root`

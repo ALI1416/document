@@ -79,7 +79,7 @@ git filter-branch -f --env-filter "GIT_COMMITTER_EMAIL=1416978277@qq.com" -- --a
 
 #### 修改所有用户名和邮箱
 
-保存为文件`update.sh`，运行`bash update.sh`
+保存为文件`update.sh`，运行`sh update.sh`
 
 ```sh
 #!/bin/sh
@@ -95,7 +95,7 @@ export GIT_COMMITTER_EMAIL="$NEW_EMAIL"
 
 #### 替换指定用户名和邮箱
 
-保存为文件`update.sh`，运行`bash update.sh`
+保存为文件`update.sh`，运行`sh update.sh`
 
 ```sh
 #!/bin/sh

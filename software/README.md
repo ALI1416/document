@@ -220,7 +220,6 @@
   - <https://github.com/openvpn/openvpn/releases>
   - `官网(翻墙)`<https://openvpn.net/community-downloads/>
   - `下载`<https://www.npackd.org/p/openvpn64>
-  - `Linux服务端安装脚本`<https://github.com/Nyr/openvpn-install>
 - `StrongSwan` 支持IKEv2和IPSec的VPN(Linux)
   - <https://github.com/strongswan/strongswan/releases>
 - `TinyProxy` 代理(Linux)

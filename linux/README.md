@@ -133,7 +133,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■    | dd                  | 转换和复制文件                             |
 | ■■   | scp                 | 远程复制文件                               |
 | ■    | rsync               | 远程同步                                   |
-| ■■   | sh                  | 执行程序                                   |
+| ■■   | sh / bash / dash    | 执行程序                                   |
 | ■■   | ssh                 | SSH                                        |
 | ■    | ftp                 | FTP                                        |
 | ■    | sftp                | SFTP                                       |

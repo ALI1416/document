@@ -87,11 +87,13 @@ root,10.8.0.2,
 admin,10.8.0.3,
 ```
 
-- 用户名密码验证脚本，新增文件`author.bat`，用户名密码格式为`<用户名> <密码>`，例如
+- 用户名密码验证脚本，新增文件`author.bat`，例如
 
 ```bat
 findstr /be "%username%:%password%" user.txt && exit 0 || exit 1
 ```
+
+- 用户名密码格式为`<用户名>:<密码>`，新增文件`user.txt`，例如
 
 ```txt
 root:root

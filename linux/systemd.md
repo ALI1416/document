@@ -30,6 +30,7 @@
   - `idle`：类似`simple`，但是要等他其他任务都执行完，才会启动该服务。主要使用场景是为该服务的输出，不与其他服务的输出相混合。适用于在系统空闲时运行的低优先级任务，这可以减少系统启动时的负载，如`updatedb`服务
 - `User`：指定以哪个用户运行服务
 - `Group`：指定以哪个用户组运行服务
+- `WorkingDirectory`：工作目录
 - `Environment`：环境变量
 - `EnvironmentFile`：环境变量文件
 - `ExecStart`：启动服务命令
