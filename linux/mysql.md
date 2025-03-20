@@ -3,7 +3,7 @@
 - 安装：`apt install mysql-server-8.0`
 - 修改配置文件：
   - 删除原链接文件`rm /etc/mysql/my.cnf`
-  - 创建文件`/etc/mysql/my.cnf`，内容如下
+  - 创建文件`vi /etc/mysql/my.cnf`，内容如下
 
 ```ini
 [mysqld]
@@ -37,7 +37,7 @@ default-character-set = utf8mb4
 ```
 
 - 重启服务：`systemctl restart mysql`
-- 新增用户：进入mysql(账号root无密码)，依次执行以下语句
+- 新增用户：命令行进入`mysql`(账号root无密码)，依次执行以下语句
 
 ```sql
 DROP USER IF EXISTS 'ali'@'%';

@@ -206,5 +206,5 @@ bindPort = 6000
 ## coturn
 
 - 安装：`apt install coturn`
-- 配置文件：`/etc/turnserver.conf`
-- 判断是否正常工作`frpc nathole discover --nat_hole_stun_server xxx:3478`
+- 配置文件：`/etc/turnserver.conf`、`/etc/default/coturn/`
+- 判断是否正常工作：<https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/>

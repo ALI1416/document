@@ -19,30 +19,22 @@ security:
 - 启动：`systemctl start mongod`
 - 进入MongoDB命令行`mongosh`、`mongosh --host 127.0.0.1 -port 27017 -u 用户名 -p 密码`
 - 切换到admin数据库`use admin`
-- 创建管理员用户`root`
+- 创建超级管理员用户`root`
 
 ```js
-db.createUser({
-  user: "root",
-  pwd: "root",
-  roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
-})
+db.createUser({user: "root", pwd: "ChengKai1998!", roles: [{role: "root", db:"admin"}]})
 ```
 
+- 验证超级管理员`db.auth("root","root")`
 - 创建其他数据库用户
-- 切换到testdb数据库`use testdb`
-- 创建用户`test`
+- 创建用户`test`只能读写`testdb`数据库
+- 切换到`testdb`数据库`use testdb`
 
 ```js
-db.createUser({
-  user: "test",
-  pwd: "test",
-  roles: [{ role: "readWrite", db: "testdb" }]
-})
+db.createUser({user: "test", pwd: "test", roles: [{role: "readWrite", db:"testdb"}]})
 ```
 
 - 新增一条数据`db.a.insert({a:1})`
-- 验证数据库`db.auth("test","test")`
 
 - 数据目录：`/var/lib/mongodb/`
 - 日志目录：`/var/log/mongodb/`

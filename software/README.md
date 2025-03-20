@@ -215,7 +215,7 @@
   - `节点转换`<https://suburl.v1.mk/>
   - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
   - `教程2`<https://doc.miyun.app/v2rayn/>
-  - `搭建VPS教程`<https://v2xtls.org/搬瓦工vps购买教程/>
+  - `搭建VPS教程`<https://233boy.com/>
 - `OpenVPN`
   - <https://github.com/openvpn/openvpn/releases>
   - `官网(翻墙)`<https://openvpn.net/community-downloads/>

@@ -30,3 +30,5 @@
 3. 显示`Active: active (running)`表示正在运行
 4. 未运行需要启动`systemctl start ssh`
 5. 开机自启`systemctl enable ssh`
+
+- 修改端口号，修改文件`/etc/ssh/sshd_config`，修改`#Port 22`，然后重启系统
