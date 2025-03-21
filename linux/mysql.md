@@ -15,17 +15,20 @@ character-set-server = utf8mb4
 collation_server = utf8mb4_general_ci
 default-storage-engine = InnoDB
 
-#密码兼容格式
+# InnoDB的缓冲池大小
+innodb_buffer_pool_size = 1024M
+
+# 密码兼容格式
 #default_authentication_plugin = mysql_native_password
 
-#分词长度
+# 分词长度
 ft_min_word_len = 1
 innodb_ft_min_token_size = 1
 
-#跳过日志记录
+# 跳过日志记录
 skip-log-bin
 
-#跳过权限验证(忘记密码时使用)
+# 跳过权限验证(忘记密码时使用)
 #skip-grant-tables
 
 [mysql]

@@ -161,6 +161,10 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■■   | nano                | nano文档编辑器                             |
 | ■    | curl                | 获取网络资源                               |
 | ■    | wget                | 获取网络资源                               |
+| ■    | top                 | 查看CPU占用                                |
+| ■    | free                | 查看内存占用                               |
+| ■    | iftop               | 查看网络占用                               |
+| ■    | df                  | 查看磁盘占用                               |
 |      | w                   | 所有登录用户信息                           |
 |      | who                 | 所有登录用户信息                           |
 |      | whoami              | 登录用户                                   |
@@ -222,6 +226,12 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■    | alias           | 显示别名           |
 |      | alias -p        | 显示别名           |
 | ■    | alias a='ls -l' | 定义ls -l的别名为a |
+
+### 注意
+
+- 在重启后失效，如果要永久生效，需要修改`~/.bashrc`文件
+- 任意地方添加`alias pa='ps aux'`、`alias pg='pa | grep '`
+- 执行`source ~/.bashrc`立即生效
 
 ## unalias 删除别名
 
@@ -1541,17 +1551,17 @@ root        2803  0.0  0.0      0     0 ?        I    10:51   0:00 [kworker/u257
 ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 ```
 
-- `USER`用户
-- `PID`进程ID
-- `%CPU`CPU使用率
-- `%MEM`内存使用率
-- `VSZ`使用的虚拟内存KB
-- `RSS`占用的虚拟内存KB
-- `TTY`控制终端
-- `STAT`进程状态标志
-- `START`执行时间。24小时以内HH:MM(时:分)，否则Mmm:SS(三位数的月份:秒)
-- `TIME`累计CPU时间MMM:SS(分:秒)
-- `COMMAND`完整命令
+- `USER`：进程所有者的用户名
+- `PID`：进程ID
+- `%CPU`：CPU使用率
+- `%MEM`：内存使用率
+- `VSZ`：占用虚拟内存KB
+- `RSS`：占用物理内存KB
+- `TTY`：控制终端
+- `STAT`：进程状态标志
+- `START`：执行时间。24小时以内HH:MM(时:分)，否则Mmm:SS(三位数的月份:秒)
+- `TIME`：累计CPU时间MMM:SS(分:秒)
+- `COMMAND`：完整命令
 
 ### STAT 进程状态标志
 
@@ -2008,3 +2018,234 @@ TriggeredBy: ● ssh.socket
 | ■■   | zip -r folder.zip folder   | 压缩folder文件夹为folder.zip |
 | ■■   | unzip folder.zip           | 解压folder.zip到当前目录     |
 | ■■   | unzip folder.zip -d folder | 解压folder.zip到folder目录   |
+
+## top 查看CPU占用
+
+### 选项
+
+| 常用 | 短选项 | 长选项                     | 解释                                |
+| ---- | ------ | -------------------------- | ----------------------------------- |
+|      | -b     | --batch-mode               | 在非交互式批处理模式下运行          |
+|      | -c     | --cmdline-toggle           | 反转上次记忆的c状态                 |
+|      | -d     | --delay =SECS [.TENTHS]    | 迭代延迟                            |
+|      | -E     | --scale-summary-mem =SCALE | 将SCALE的内存设置为k、m、g、t、p、e |
+|      | -e     | --scale-task-mem =SCALE    | 使用k、m、g、t、p为SCALE设置内存    |
+|      | -H     | --threads-show             | 显示任务及其所有线程                |
+|      | -i     | --idle-toggle              | 反转上次记忆中的i状态               |
+|      | -n     | --iterations =NUMBER       | 退出最大迭代次数                    |
+|      | -O     | --list-fields              | 输出所有字段名，然后退出            |
+|      | -o     | --sort-override =FIELD     | 对这个名为FIELD的字段进行强制排序   |
+|      | -p     | --pid =PIDLIST             | 仅监视PIDLIST中的任务               |
+|      | -S     | --accum-time-toggle        | 反转上次记忆的S状态                 |
+|      | -s     | --secure-mode              | 在安全模式限制下运行                |
+|      | -U     | --filter-any-user =USER    | 仅显示用户拥有的进程                |
+|      | -u     | --filter-only-euser =USER  | 仅显示用户拥有的进程                |
+|      | -w     | --width [=COLUMNS]         | 更改打印宽度                        |
+|      | -1     | --single-cpu-toggle        | 反转上次记住的1状态                 |
+
+### `top`输出
+
+```txt
+top - 14:32:48 up  3:03,  1 user,  load average: 0.13, 0.09, 0.07
+Tasks: 143 total,   1 running, 142 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.3 us,  0.3 sy,  0.0 ni, 98.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   1677.1 total,    274.6 free,    845.7 used,    713.8 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.    831.4 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  14169 root      20   0   11952   6016   3840 R   0.3   0.4   0:00.03 top
+      1 root      20   0   22728  11664   7184 S   0.0   0.7   0:03.41 systemd
+```
+
+1. top - 14:32:48 up  3:03,  1 user,  load average: 0.13, 0.09, 0.07
+   - `14:32:48 up`：当前时间
+   - `3:03`：已经运行时间
+   - `1 user`：登录用户数量
+   - `load average: 0.13, 0.09, 0.07`：1、5、15分钟的负载情况
+2. Tasks: 143 total,   1 running, 142 sleeping,   0 stopped,   0 zombie
+   - `143 total`：总进程数
+   - `1 running`：正在运行
+   - `142 sleeping`：休眠
+   - `0 stopped`：停止
+   - `0 zombie`：僵尸
+3. %Cpu(s):  1.3 us,  0.3 sy,  0.0 ni, 98.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+   - `1.3 us`：用户空间占用CPU的百分比
+   - `0.3 sy`：内核空间占用CPU的百分比
+   - `0.0 ni`：改变过优先级的进程占用CPU的百分比
+   - `98.3 id`：空闲CPU百分比
+   - `0.0 wa`： IO等待占用CPU的百分比
+   - `0.0 hi`：硬中断占用CPU的百分比
+   - `0.0 si`：软中断占用CPU的百分比
+   - `0.0 st`：
+4. MiB Mem :   1677.1 total,    274.6 free,    845.7 used,    713.8 buff/cache
+   - `1677.1 total`：物理内存总量
+   - `274.6 free`：空闲内存总量
+   - `845.7 used`：使用中的内存总量
+   - `713.8 buff/cache`：缓存的内存量
+5. MiB Swap:      0.0 total,      0.0 free,      0.0 used.    831.4 avail Mem
+   - `0.0 total`：交换区总量
+   - `0.0 free`：使用的交换区总量
+   - `0.0 used`：空闲交换区总量
+   - `831.4 avail Mem`：缓冲的交换区总量(可用内存)
+6. PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+7. 1   root      20   0   22728  11664   7184 S   0.0   0.7   0:03.41 systemd
+   - `PID`：进程ID
+   - `USER`：进程所有者的用户名
+   - `PR`：优先级
+   - `NI`：nice值。负值表示高优先级，正值表示低优先级P最后使用的CPU，仅在多CPU环境下有意义
+   - `VIRT`：进程使用的虚拟内存总量KB
+   - `RES`：进程使用的、未被换出的物理内存大小KB
+   - `SHR`：
+   - `S`：[进程状态标志](#stat-进程状态标志)
+   - `%CPU`：CPU使用率
+   - `%MEM`：内存使用率
+   - `TIME+`：累计CPU时间
+   - `COMMAND`：完整命令
+
+## free 查看内存占用
+
+### 选项
+
+| 常用 | 短选项 | 长选项      | 解释                             |
+| ---- | ------ | ----------- | -------------------------------- |
+|      | -b     | --bytes     | 以B为单位显示输出                |
+|      |        | --kilo      | 以KB为单位显示输出               |
+|      |        | --mega      | 以MB为单位显示输出               |
+|      |        | --giga      | 以GB为单位显示输出               |
+|      |        | --tera      | 以TB为单位显示输出               |
+|      |        | --peta      | 以PB为单位显示输出               |
+|      | -k     | --kibi      | 以KiB为单位显示输出              |
+|      | -m     | --mebi      | 以MiB为单位显示输出              |
+|      | -g     | --gibi      | 以GiB为单位显示输出              |
+|      |        | --tebi      | 以TiB为单位显示输出              |
+|      |        | --pebi      | 以PiB为单位显示输出              |
+| ■■   | -h     | --human     | 显示人类可读的输出               |
+|      |        | --si        | 使用1000而不是1024的幂           |
+|      | -l     | --lohi      | 显示详细的低内存和高内存统计信息 |
+|      | -L     | --line      | 在单行上显示输出                 |
+|      | -t     | --total     | 显示RAM+交换的总计               |
+|      | -v     | --committed | 显示已提交的内存和提交限制       |
+|      | -s N   | --seconds N | 每N秒重复打印一次                |
+|      | -c N   | --count N   | 重复打印N次，然后退出            |
+| ■■   | -w     | --wide      | 宽输出                           |
+
+### `free -hw`输出
+
+```txt
+               total        used        free      shared     buffers       cache   available
+Mem:           1.6Gi       843Mi       273Mi       7.7Mi        87Mi       628Mi       833Mi
+Swap:             0B          0B          0B
+```
+
+- `Mem`：内存
+- `Swap`：交换
+- `total`：总计
+- `used`：已用
+- `free`：空闲
+- `shared`：共享
+- `buffers`：缓冲
+- `cache`：缓存
+- `available`：可用
+
+## iftop 查看网络占用
+
+- **格式：`iftop -h | [-npblNBP] [-i interface] [-f filter code] [-F net/mask] [-G net6/mask6]`**
+
+### 选项
+
+| 常用 | 选项           | 解释                                                         |
+| ---- | -------------- | ------------------------------------------------------------ |
+|      | -n             | 不进行主机名查找                                             |
+|      | -N             | 不要将端口号转换为服务                                       |
+|      | -p             | 以混杂模式运行                                               |
+|      | -b             | 不显示交通柱状图                                             |
+|      | -B             | 显示带宽，单位B                                              |
+|      | -i interface   | 监听命名接口                                                 |
+|      | -f filter code | 使用筛选器代码选择要计数的数据包(默认：无，但只计数IP数据包) |
+|      | -F net/mask    | 显示进出IPv4网络的流量                                       |
+|      | -G net6/mask6  | 显示进出IPv6网络的流量                                       |
+|      | -l             | 显示和计数链路本地IPv6流量(默认：关)                         |
+|      | -P             | 显示端口和主机                                               |
+|      | -m limit       | 设置带宽比例的上限                                           |
+|      | -c config file | 指定备选配置文件                                             |
+|      | -t             | 使用不带ncurses的文本界面                                    |
+|      | -o 2s          | 按第一列排序(2s流量平均值)                                   |
+|      | -o 10s         | 按第二列排序(10s流量平均值)(默认)                            |
+|      | -o 40s         | 按第三列排序(40s流量平均)                                    |
+|      | -o source      | 按源地址排序                                                 |
+|      | -o destination | 按目的地址排序                                               |
+|      | -s num         | 在数秒后打印一个文本输出，然后退出(与-t一起使用)             |
+|      | -L num         | 要打印的行数(与-t一起使用)                                   |
+
+### `iftop`输出
+
+```txt
+                     12.5Kb               25.0Kb               37.5Kb               50.0Kb          62.5Kb
+└────────────────────┴────────────────────┴────────────────────┴────────────────────┴─────────────────────
+iZzw8ow496sjz6Z                         => 116.30.122.204                          3.33Kb  4.26Kb  5.61Kb
+                                        <=                                          160b    685b    863b
+──────────────────────────────────────────────────────────────────────────────────────────────────────────
+TX:             cum:    274KB   peak:   55.7Kb                            rates:   3.95Kb  4.66Kb  11.4Kb
+RX:                    54.4KB           5.04Kb                                     1.06Kb  1.30Kb  1.83Kb
+TOTAL:                  328KB           59.6Kb                                     5.02Kb  5.97Kb  13.2Kb
+```
+
+- `头部`：流量刻度尺
+- `中部`：
+  - `iZzw8ow496sjz6Z`：服务器名称
+  - `=>`：发送数据
+  - `<=`：接收数据
+  - `116.30.122.204`：连接ip或域名
+  - `3.33Kb  4.26Kb  5.61Kb`：2、10、40秒平均流量
+  - `白色横条`：对应头部
+- `底部`：
+  - `TX`：发送数据
+  - `RX`：接收数据
+  - `TOTAL`：总数据
+  - `cum`：总流量
+  - `peak`：流量峰值
+  - `rates`：2、10、40秒平均流量
+
+## df 查看磁盘占用
+
+- **格式：`df [OPTION]... [FILE]...`**
+
+### 选项
+
+| 常用 | 短选项 | 长选项                | 解释                                           |
+| ---- | ------ | --------------------- | ---------------------------------------------- |
+|      | -a     | --all                 | 包括伪、重复、不可访问的文件系统               |
+|      | -B     | --block-size=SIZE     | 打印前按大小缩放尺寸                           |
+|      | -h     | --human-readable      | 打印尺寸为1024的幂次方                         |
+|      | -H     | --si                  | 打印尺寸为1000的幂次方                         |
+|      | -i     | --inodes              | 列出索引节点信息而不是块使用情况               |
+|      | -k     |                       | 等同于--block-size=1K                          |
+|      | -l     | --local               | 将列表限制为本地文件系统                       |
+|      |        | --no-sync             | 在获取使用信息之前不要调用sync(默认)           |
+|      |        | --output[=FIELD_LIST] | 使用FIELD_LIST定义的输出格式                   |
+|      | -P     | --portability         | 使用POSIX输出格式                              |
+|      |        | --sync                | 在获取使用信息之前调用sync                     |
+|      |        | --total               | 删除所有对可用空间不重要的条目，并生成一个总计 |
+|      | -t     | --type=TYPE           | 将列表限制为type类型的文件系统                 |
+|      | -T     | --print-type          | 打印文件系统类型                               |
+|      | -x     | --exclude-type=TYPE   | 将列表限制为非type类型的文件系统               |
+
+### `df -h`输出
+
+```txt
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           168M  1.1M  167M   1% /run
+efivarfs        256K  7.4K  244K   3% /sys/firmware/efi/efivars
+/dev/vda3        40G  5.8G   32G  16% /
+tmpfs           839M     0  839M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/vda2       197M  6.2M  191M   4% /boot/efi
+tmpfs           168M   16K  168M   1% /run/user/0
+```
+
+- `Filesystem`：文件系统名或设备名
+- `Size`：文件系统的总大小
+- `Used`：已使用的空间
+- `Avail`：可用空间
+- `Use%`：已用空间占总空间的比例
+- `Mounted on`：文件系统挂载点

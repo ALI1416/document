@@ -32,3 +32,19 @@
 5. 开机自启`systemctl enable ssh`
 
 - 修改端口号，修改文件`/etc/ssh/sshd_config`，修改`#Port 22`，然后重启系统
+
+## 创建交换分区(内存较大可以不用)
+
+1. 检查现有的交换空间：`swapon --show`，无内容说明没有
+2. 禁用现有的交换空间：`swapoff /swapfile`
+3. 删除旧交换分区：`rm /swapfile`
+4. 重新创建交换文件：`fallocate -l 16G /swapfile`
+5. 设置交换文件权限：`chmod 600 /swapfile`
+6. 将文件设置为交换空间：`mkswap /swapfile`
+7. 启用交换文件：`swapon /swapfile`
+8. 验证交换空间：`swapon --show`
+9. 永久生效：`echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab`
+10. 修改`/etc/sysctl.conf`文件
+    1. 新增`vm.swappiness = 60`，范围0-100，值越大交换分区使用越频繁
+    2. 新增`vm.min_free_kbytes = 128000`，单位KB，启用交换分区最小值
+11. 立即生效：`sysctl -p`

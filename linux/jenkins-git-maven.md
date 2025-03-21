@@ -12,13 +12,12 @@
 7. 安装`Jenkins`：`apt install jenkins`
 8. 访问`http://localhost:8080`
 9. 查看密码：`cat /var/lib/jenkins/secrets/initialAdminPassword`
-10. 以root用户启动服务：修改文件`/lib/systemd/system/jenkins.service`，修改`User=jenkins`为`User=root`，修改`Group=jenkins`为`Group=root`
+10. 修改文件`/lib/systemd/system/jenkins.service`
+    1. 以root用户启动服务：修改`User=jenkins`为`User=root`，修改`Group=jenkins`为`Group=root`
+    2. 限制最大1GB内存使用：修改`JAVA_OPTS=-Djava.awt.headless=true`，后面新增`-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m`
+    3. 修改端口号：修改`JENKINS_PORT=8080`
 11. 修改Jenkins相关文件夹用户权限：`chown -R root:root /var/lib/jenkins /var/cache/jenkins /var/log/jenkins`
-12. 修改文件：`/etc/default/jenkins`
-    1. 修改端口号，修改`HTTP_PORT=8080`
-    2. 限制最大1GB内存使用，修改`JAVA_ARGS`，新增`-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m`
-    3. 修改权限：修改`JENKINS_USER="$NAME"`为`JENKINS_USER=root`，修改`JENKINS_GROUP="$NAME"`为`JENKINS_GROUP=root`
-13. 更换插件源：`Manage Jenkins`->`Plugins`->`Advanced settings`，将URL`https://updates.jenkins.io/update-center.json`更换为`https://mirror.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
+12. 更换插件源：`Manage Jenkins`->`Plugins`->`Advanced settings`，将URL`https://updates.jenkins.io/update-center.json`更换为`https://mirror.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
 
 如果安装Jenkins太慢，可以下载并手动安装
 
@@ -68,12 +67,13 @@ cp ${projectName}/target/${jarName} ${deployPath}
 # 切换到部署路径
 cd ${deployPath}
 # 运行项目文件
-java -jar ${jarName} &
+nohup java -jar ${jarName} >/dev/null 2>&1 &
 # 将pid保存到文件
 echo $! > ${deployPath}pid
 ```
 
 - 编译结果保存在：`/var/lib/jenkins/workspace/`
+- Jenkins关闭后，执行的程序也会被关闭
 
 ## Git
 
