@@ -31,22 +31,37 @@
 3. JDK路径填写：`/usr/lib/jvm/java-21-openjdk-amd64/`
 4. Git路径填写：`/usr/bin/git`
 5. Maven路径填写：`/usr/share/maven`
-6. 安装Maven整合插件：`Manage Jenkins`->`Plugins`->`Available plugins`搜索`maven`，勾选`Maven Integration`，安装
+6. 安装插件：`Manage Jenkins`->`Plugins`->`Available plugins`
+   1. Maven整合插件：`Maven Integration`
+   2. SSH推送插件：`Publish Over SSH`
+
+SSH推送插件配置
+
+1. `Manage Jenkins`->`System`->`Publish over SSH`
+   1. `Passphrase`服务器密码
+2. `SSH Servers`新增
+   1. `Name`服务器名称，任意
+   2. `Hostname`服务器地址
+   3. `Username`服务器用户名
+   4. `Remote Directory`推送目录(默认值)
+   5. `高级`->`Port`服务器端口号
 
 ## 创建SpringBoot项目
 
-1. 新建Item
+1. 新建项目
 2. 任务名称：`test`，类型：`构建一个maven项目`
 3. `源码管理`->`Git`：URL：`https://gitee.com/ALI1416/springboot-demo`，指定分支：`*/v3`
 4. `构建环境`：勾选`Add timestamps to the Console Output`
 5. `Pre Steps`->`Build`->`Goals and options`填写：`clean install -pl packages/util,packages/util-spring-boot,demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V`
-6. `Post Steps`->`Run regardless of build result`填写：
+6. `Post Steps`->`Send files or execute commands over SSH`
+   1. `Name`选择配置的选项
+   2. `Source files`文件地址
+   3. `Remove prefix`移除前缀
+   4. `Remote directory`推送目录
+   5. `Exec command`执行脚本
 
 ```sh
 #!/bin/sh
-
-# 提示Jenkins不要杀死此进程
-export BUILD_ID=dontKillMe
 
 # 项目名
 projectName=demo-base
@@ -62,8 +77,6 @@ kill -9 ${pid}
 
 # 创建部署路径
 mkdir -p ${deployPath}
-# 复制构建后的项目文件到部署路径
-cp ${projectName}/target/${jarName} ${deployPath}
 # 切换到部署路径
 cd ${deployPath}
 # 运行项目文件
@@ -73,7 +86,6 @@ echo $! > ${deployPath}pid
 ```
 
 - 编译结果保存在：`/var/lib/jenkins/workspace/`
-- Jenkins关闭后，执行的程序也会被关闭
 
 ## Git
 
