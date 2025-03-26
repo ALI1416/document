@@ -1,0 +1,261 @@
+# java面试题
+
+<https://cloud.tencent.com/developer/article/2117403>
+
+## java基础
+
+- JDK和JRE有什么区别？
+  - JDK：Java开发工具包，提供了Java的开发环境和运行环境
+  - JRE：Java运行环境，为Java的运行提供了所需环境
+- ==和equals的区别是什么？
+  - ==
+    - 基本类型：比较的是值是否相同
+    - 引用类型：比较的是引用是否相同
+  - equals
+    - 是一个方法，不同对象比较内容不同，可以重写
+- 两个对象的hashCode()相同，则equals()也一定为true，对吗？
+  - 不对，不同对象的哈希值可能相同
+- final有什么作用？
+  - 修饰的类叫最终类，该类不能被继承
+  - 修饰的方法不能被重写
+  - 修饰的变量叫常量，常量必须初始化，初始化之后值就不能被修改
+- String属于基础的数据类型吗？
+  - 不属于，基础类型有8种：byte、boolean、char、short、int、float、long、double，而String属于对象
+- 操作字符串都有哪些类？它们之间有什么区别？
+  - String、StringBuffer、StringBuilder
+  - String不可变对象
+  - StringBuffer是线程安全的，StringBuilder不是线程安全的
+- String str="i"与String str=new String("i")一样吗？
+  - 不一样，因为内存的分配方式不一样
+  - String str="i"分配到常量池
+  - String str=new String("i")分配到堆内存
+- 如何将字符串反转？
+  - StringBuilder或StringBuffer的reverse()方法
+- 抽象类必须要有抽象方法吗？
+  - 不需要
+- 普通类和抽象类有哪些区别？
+  - 普通类不能包含抽象方法，抽象类可以包含抽象方法
+  - 抽象类不能直接实例化，普通类可以直接实例化
+- 抽象类能使用final修饰吗？
+  - 不能，定义抽象类就是让其他类继承的，如果定义为final该类就不能被继承
+- 接口和抽象类有什么区别？
+  - 实现：抽象类使用extends来继承，接口使用implements来实现
+  - 构造函数：抽象类可以有构造函数，接口不能有
+  - 实现数量：类可以实现很多个接口，但是只能继承一个抽象类
+  - 访问修饰符：接口中的方法默认使用public修饰，抽象类中的方法可以是任意访问修饰符
+- IO流分为几种？
+  - 功能：输入流、输出流
+  - 类型：字节流(8位)、字符流(16位)
+- BIO、NIO、AIO有什么区别？
+  - BIO：同步阻塞式IO，模式简单使用方便，并发处理能力低
+  - NIO：同步非阻塞IO，通过Channel(通道)通讯，实现了多路复用
+  - AIO：异步非堵塞IO，基于事件和回调机制
+- Java容器都有哪些？
+  - Collection
+    - List
+      - ArrayList
+      - LinkedList
+      - Vector
+      - Stack
+    - Set
+      - HashSet
+      - LinkedHashSet
+      - TreeSet
+  - Map
+    - HashMap
+      - LinkedHashMap
+    - TreeMap
+    - ConcurrentHashMap
+    - HashTable
+- Collection和Collections有什么区别？
+  - Collection是一个集合接口
+  - Collections是一个工具类
+- List、Set、Map之间的区别是什么？
+  - 有序：List、TreeSet、TreeMap
+  - 允许重复：List、Map(key唯一，value允许重复)
+- HashMap和HashTable有什么区别？
+  - 存储：HashMap允许key和value为null，HashTable不允许
+  - 线程安全：HashTable是线程安全的，而HashMap是非线程安全的
+  - 推荐使用：单线程环境下使用HashMap，如果需要多线程使用则用ConcurrentHashMap
+- 如何决定使用HashMap还是TreeMap？
+  - 需要对key进行有序遍历，使用TreeMap
+- 说一下HashMap的实现原理？
+  - 当传入key时，HashMap会根据key.hashCode()计算出hash值，根据hash值将value保存在bucket里
+  - 当hash冲突的个数比较少时，使用链表否则使用红黑树
+- 说一下HashSet的实现原理？
+  - HashSet是基于HashMap实现的，只是不允许value重复
+- ArrayList和LinkedList的区别是什么？
+  - 数据结构实现：ArrayList动态数组，LinkedList双向链表
+  - 随机访问效率：ArrayList更高
+  - 增加和删除效率：非首尾LinkedList更高
+  - 更推荐使用ArrayList
+- 如何实现数组和List之间的转换？
+  - 数组转List：Arrays.asList()
+  - List转数组：toArray()
+- ArrayList和Vector的区别是什么？
+  - Vector线程安全
+  - ArrayList性能更好
+- 数组和ArrayList有何区别？
+  - 数组可以存储基本数据类型和对象，ArrayList只能存储对象
+  - 数组是指定固定大小的，而ArrayList大小是自动扩展的
+- Queue中poll()和remove()有什么区别？
+  - 相同点：都是返回第一个元素，并在队列中删除返回的对象
+  - 不同点：如果没有元素poll()会返回null，而remove()会直接抛出异常
+- 哪些集合类是线程安全的？
+  - Vector、HashTable、Stack、ConcurrentHashMap
+- 迭代器Iterator是什么？
+  - Iterator接口提供遍历任何Collection的接口
+- Iterator和ListIterator有什么区别？
+  - Iterator可以遍历Set和List集合，而ListIterator只能遍历List
+  - Iterator只能单向遍历，而ListIterator可以双向遍历
+  - ListIterator从Iterator接口继承
+- 怎么确保一个集合不能被修改？
+  - 使用Collections.unmodifiableCollection(Collection c)方法来创建一个只读集合
+
+## 多线程
+
+- 并行和并发有什么区别？
+  - 并行：多个处理器或多核处理器同时处理多个任务
+  - 并发：多个任务在同一个CPU核上，按细分的时间片轮流(交替)执行，从逻辑上来看那些任务是同时执行
+- 线程和进程的区别？
+  - 一个程序下至少有一个进程，一个进程下至少有一个线程，一个进程下也可以有多个线程来增加程序的执行速度
+- 守护线程是什么？
+  - 守护线程是运行在后台的一种特殊进程
+  - 它独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件
+  - 在Java中垃圾回收线程就是特殊的守护线程
+- 创建线程有哪几种方式？
+  - 继承Thread重写run方法
+  - 实现Runnable接口
+  - 实现Callable接口
+- 说一下Runnable和Callable有什么区别？
+  - Runnable没有返回值，Callable可以有返回值
+- 线程有哪些状态？
+  - NEW尚未启动
+  - RUNNABLE正在执行中
+  - BLOCKED阻塞的(被同步锁或者IO锁阻塞)
+  - WAITING永久等待状态
+  - TIMED_WAITING等待指定的时间重新被唤醒的状态
+  - TERMINATED执行完成
+- sleep()和wait()有什么区别？
+  - 类的不同：sleep()来自Thread，wait()来自Object
+  - 释放锁：sleep()不释放锁；wait()释放锁
+  - 用法不同：sleep()时间到会自动恢复；wait()可以使用notify()或notifyAll()直接唤醒
+- notify()和notifyAll()有什么区别？
+  - notifyAll()会唤醒所有的线程，notify()只会唤醒一个线程
+  - notifyAll()将全部线程由等待池移到锁池，然后参与锁的竞争，竞争成功则继续执行，如果不成功则留在锁池等待锁被释放后再次参与竞争
+  - notify()只会唤醒一个线程，具体唤醒哪一个线程由虚拟机控制
+- 线程的run()和start()有什么区别？
+  - start()方法用于启动线程，run()方法用于执行线程的运行时代码
+  - run()可以重复调用，而start()只能调用一次
+- 创建线程池有哪几种方式？
+  - newSingleThreadExecutor()：工作线程数目被限制为1，操作一个无界的工作队列，所以它保证了所有任务的都是被顺序执行，最多会有一个任务处于活动状态
+  - newCachedThreadPool()：用来处理大量短时间工作任务的线程池。试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程。线程闲置的时间超过60秒，则被终止并移出缓存
+  - newFixedThreadPool(int nThreads)：同newSingleThreadExecutor()，指定工作线程数目
+  - newSingleThreadScheduledExecutor()：同newSingleThreadExecutor()，可以进行定时或周期性的工作调度
+  - newScheduledThreadPool(int corePoolSize)：同newSingleThreadScheduledExecutor()，指定工作线程数目
+  - newWorkStealingPool(int parallelism)：并行地处理任务，不保证处理顺序
+  - ThreadPoolExecutor()：是最原始的线程池创建
+- 线程池都有哪些状态？
+  - RUNNING：这是最正常的状态，接受新的任务，处理等待队列中的任务
+  - SHUTDOWN：不接受新的任务提交，但是会继续处理等待队列中的任务
+  - STOP：不接受新的任务提交，不再处理等待队列中的任务，中断正在执行任务的线程
+  - TIDYING：所有的任务都销毁了，workCount为0，线程池的状态在转换为TIDYING状态时，会执行钩子方法terminated()
+  - TERMINATED：terminated()方法结束后，线程池的状态就会变成这个
+- 线程池中submit()和execute()方法有什么区别？
+  - execute()：只能执行Runnable类型的任务
+  - submit()：可以执行Runnable和Callable类型的任务
+- 在Java程序中怎么保证多线程的运行安全？
+  - 安全类：java.util.concurrent下的类
+  - 自动锁：synchronized
+  - 手动锁：Lock
+- 多线程中synchronized锁升级的原理是什么？
+  - 锁对象的对象头里面有一个threadid字段，在第一次访问的时候threadid为空，jvm让其持有偏向锁，并将threadid设置为其线程id
+  - 再次进入的时候会先判断threadid是否与其线程id一致，如果一致则可以直接使用此对象
+  - 如果不一致，则升级偏向锁为轻量级锁，通过自旋循环一定次数来获取锁
+  - 执行一定次数之后，如果还没有正常获取到要使用的对象，此时就会把锁从轻量级升级为重量级锁
+- 什么是死锁？
+  - 线程A持有独占锁a，并尝试去获取独占锁b的同时
+  - 线程B持有独占锁b，并尝试获取独占锁a的情况下
+- 怎么防止死锁？
+  - 使用java.util.concurrent下的类代替自己手写锁
+  - 降低锁的使用粒度，不要几个功能用同一把锁
+  - 减少同步的代码块
+  - 使用tryLock(long timeout, TimeUnit unit)的方法(ReentrantLock、ReentrantReadWriteLock)，设置超时时间，超时可以退出防止死锁
+- ThreadLocal是什么？有哪些使用场景？
+  - 为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本
+  - 数据库连接和session管理
+- synchronized底层实现原理？
+  - synchronized是由一对monitorenter/monitorexit指令实现的，monitor对象是同步的基本实现单元
+  - 提供了三种不同的monitor实现，也就是常说的三种不同的锁：偏向锁、轻量级锁和重量级锁
+- synchronized和volatile的区别是什么？
+  - volatile是变量修饰符；synchronized是修饰类、方法、代码段
+  - volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性
+  - volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞
+- synchronized和Lock有什么区别？
+  - synchronized可以给类、方法、代码块加锁；而Lock只能给代码块加锁
+  - synchronized不需要手动获取锁和释放锁，使用简单，发生异常会自动释放锁，不会造成死锁；lock需要自己加锁和释放锁，如果使用不当没有unLock()去释放锁就会造成死锁
+  - Lock可以知道有没有成功获取锁，synchronized无法办到
+- atomic的原理？
+  - 利用CAS(Compare And Swap)和volatile和native方法来保证原子操作，从而避免synchronized的高开销，执行效率大为提升
+
+## 反射
+
+- 什么是反射？
+  - 运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法
+  - 对于任意一个对象，都能够调用它的任意一个方法和属性
+- 什么是Java序列化？什么情况下需要序列化？
+  - 为了保存各种对象在内存中的状态，并且可以把保存的对象状态再读出来
+  - 把的内存中的对象状态保存到一个文件中或者数据库中
+  - 在网络上传送对象
+- 动态代理是什么？有哪些应用？
+  - 运行时动态生成代理类
+  - Spring AOP、Hibernate、mock、rpc、Java注解对象获取
+- 怎么实现动态代理？  
+  - JDK原生动态代理、cglib动态代理
+
+## 对象拷贝
+
+- 如何实现对象克隆？
+  - 实现Cloneable接口并重写Object类中的clone()方法
+  - 实现Serializable接口
+- 深拷贝和浅拷贝区别是什么？
+  - 浅克隆：当对象被复制时只复制它本身和其中包含的值类型的成员变量，而引用类型的成员对象并没有复制
+  - 深克隆：除了对象本身被复制外，对象所包含的所有成员变量也将复制
+
+## 异常
+
+- throw和throws的区别？
+  - throw：是真实抛出一个异常，在方法内
+  - throws：是声明可能会抛出一个异常，在方法上
+- final、finally、finalize有什么区别？
+  - final：是修饰符
+  - finally：是try-catch-finally最后一部分，表示不论发生任何情况都会执行
+  - finalize：是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法
+- try-catch-finally中哪个部分可以省略？
+  - catch和finally都可以被省略，但是不能同时省略
+- try-catch-finally中，如果catch中return了，finally还会执行吗？
+  - catch中的return会等finally中的代码执行完之后，才会执行
+- 常见的异常类有哪些？
+  - NullPointerException空指针
+  - ClassNotFoundException类不存在
+  - IndexOutOfBoundsException下标越界
+  - FileNotFoundException文件未找到
+  - NoSuchMethodException方法不存在
+  - IOException IO异常
+
+## 网络
+
+- http响应码301和302代表的是什么？有什么区别？
+  - 301：永久重定向
+  - 302：暂时重定向
+  - 301会被浏览器缓存，302不会
+- forward和redirect的区别？
+  - forward转发、redirect重定向
+  - 地址栏url显示：foward不会发生改变，redirect会发生改变
+  - 数据共享：forward可以共享request里的数据，redirect不能共享
+  - 效率：forward比redirect效率高
+- 简述tcp和udp的区别？
+  - tcp面向连接，udp面向非连接即发送数据前不需要建立链接
+  - tcp提供可靠的数据传输，udp无法保证
+  - tcp面向字节流，udp面向报文
+  - tcp数据传输慢，udp数据传输快
