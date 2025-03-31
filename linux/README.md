@@ -230,8 +230,14 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 ### 注意
 
 - 在重启后失效，如果要永久生效，需要修改`~/.bashrc`文件
-- 任意地方添加`alias pa='ps aux'`、`alias pg='pa | grep '`
+- 任意地方添加
 - 执行`source ~/.bashrc`立即生效
+
+- 查看所有进程：`alias pa='ps aux'`，执行`pa`
+- 查看所有进程并查找：`alias pg='pa | grep '`，查找java执行`pg java`
+- 查看服务状态：`alias sa='systemctl status '`，查看nginx执行`sa nginx`
+- 启动服务状态：`alias st='systemctl start '`，启动nginx执行`st nginx`
+- 停止服务状态：`alias sp='systemctl stop '`，停止nginx执行`sp nginx`
 
 ## unalias 删除别名
 

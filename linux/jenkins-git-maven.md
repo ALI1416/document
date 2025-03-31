@@ -43,7 +43,7 @@ SSH推送插件配置
    1. `Name`服务器名称，任意
    2. `Hostname`服务器地址
    3. `Username`服务器用户名
-   4. `Remote Directory`推送目录(默认值)
+   4. `Remote Directory`推送目录前缀
    5. `高级`->`Port`服务器端口号
 
 ## 创建SpringBoot项目
@@ -58,6 +58,9 @@ SSH推送插件配置
    2. `Source files`文件地址
    3. `Remove prefix`移除前缀
    4. `Remote directory`推送目录
+      - 例如`推送目录前缀`填写`/opt/server/`
+      - `推送目录`填写`demo-base`
+      - 实际部署到`/opt/server/demo-base/`
    5. `Exec command`执行脚本
 
 ```sh
