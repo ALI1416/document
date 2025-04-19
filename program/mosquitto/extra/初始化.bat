@@ -31,6 +31,10 @@ copy ..\..\mosquitto_pub.exe
 copy ..\..\mosquitto_rr.exe
 copy ..\..\mosquitto_sub.exe
 copy ..\..\mosquittopp.dll
+copy ..\..\pthreadVC3.dll
+copy ..\..\uv.dll
+copy ..\..\websockets.dll
+copy ..\..\zlib1.dll
 echo 正在启用外网匿名访问，请稍后...
 
 echo allow_anonymous true>> mosquitto.conf

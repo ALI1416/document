@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-3.12.13.zip`，解压后文件夹名称应为`rabbitmq_server-3.12.13`
-2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.12.13/rabbitmq-server-windows-3.12.13.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
+1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-4.1.0.zip`，解压后文件夹名称应为`rabbitmq_server-4.1.0`
+2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.1.0/rabbitmq-server-windows-4.1.0.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
 
 ## 初始化
 
-1. 把本压缩包解压到`rabbitmq_server-3.12.13`文件夹内，如图所示：  
+1. 把本压缩包解压到`rabbitmq_server-4.1.0`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 

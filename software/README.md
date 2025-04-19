@@ -110,13 +110,13 @@
   - <https://pan.quark.cn/>
 - `迅雷`
   - `在线安装`<https://www.xunlei.com/>
-  - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.0.7.2366.exe>
+  - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.1.6.2780.exe>
 - `爱思助手`
   - <https://www.i4.cn/>
 - `飞鸽传书`
-  - <http://www.ipmsg.org.cn/home/index/download>
+  - <http://www.ipmsg.org.cn/index/download.html>
 - `ToDesk` 远程桌面
-  - `在线安装`<https://www.todesk.com/>
+  - <https://www.todesk.com/download.html>
 - `向日葵` 远程桌面
   - <https://sunlogin.oray.com/>
 - `唧唧Down` 下载bilibili视频
@@ -200,7 +200,7 @@
   - <http://www.winbaicai.com/>
 - `ventoy` U盘启动
   - <https://www.ventoy.net/cn/index.html>
-  - `下载`<https://gitee.com/longpanda/Ventoy/releases/>
+  - `下载`<https://mirrors.nju.edu.cn/github-release/ventoy/Ventoy/>
 - `格式工厂`
   - <http://www.pcgeshi.com/>
 - `genymotion` 安卓模拟器
@@ -266,12 +266,14 @@
 - `绘世启动器`
   - `NVIDIA 独显` <https://www.bilibili.com/video/BV1iM4y1y7oA>
   - `AMD Arc 独显`和`Intel Ultra Arc 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
+- `ByPass` 12306抢票
+  - <https://www.bypass.cn/>
 
 ## `Programmer` 程序员软件
 
 - `openjdk`
   - <https://openjdk.org/>
-  - `下载`<https://adoptium.net/zh-CN/temurin/releases/>
+  - `下载`<https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jdk>
 - `git`
   - <https://git-scm.com/download/win>
 - `tortoiseGit`
@@ -297,7 +299,7 @@
   - <https://www.erlang.org/downloads>
 - `vm` 虚拟机
   - <https://www.vmware.com/>
-  - `下载`<https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro>
+  - `下载`<https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true>
   - `解锁macOS`<https://github.com/BDisp/unlocker>
   - `macOS安装VMware Tools文件darwin.iso`<https://packages.vmware.com/tools/frozen/darwin/>
 - `mqttx` MQTT客户端

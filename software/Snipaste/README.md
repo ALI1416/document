@@ -1,3 +1,3 @@
 # Snipaste
 
-配置文件
+下载地址：<https://zh.snipaste.com/>

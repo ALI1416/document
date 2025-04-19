@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <http://nginx.org/en/download.html> `Stable version`选择`nginx/Windows-1.24.0`，名称应为`nginx-1.24.0.zip`，解压后文件夹名称应为`nginx-1.24.0`
-2. 快速下载地址 <http://nginx.org/download/nginx-1.24.0.zip> 版本号参考 <http://nginx.org/en/download.html>
+1. 下载地址 <http://nginx.org/en/download.html> `Stable version`选择`nginx/Windows-1.26.3`，名称应为`nginx-1.26.3.zip`，解压后文件夹名称应为`nginx-1.26.3`
+2. 快速下载地址 <http://nginx.org/download/nginx-1.26.3.zip> 版本号参考 <http://nginx.org/en/download.html>
 
 ## 初始化
 
-1. 把本压缩包解压到`nginx-1.24.0`文件夹内，如图所示：  
+1. 把本压缩包解压到`nginx-1.26.3`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
