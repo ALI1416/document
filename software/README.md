@@ -191,7 +191,7 @@
 - `Adobe`
   - <https://creativecloud.adobe.com/apps/download/creative-cloud>
   - `注册机`<https://github.com/cw2k/Adobe-GenP>
-  - `3.1`<https://github.com/cw2k/Adobe-GenP/releases/download/3.0/Adobe-GenP-3.1.zip>
+  - `3.4.13.4`<https://github.com/cw2k/Adobe-GenP/releases/download/3.4/Adobe-GenP-3.4.13.4.zip>
 - `syncthing` 网络文件同步
   - <https://syncthing.net/downloads/>
 - `DiskGenius` 磁盘管理
