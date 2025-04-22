@@ -3,7 +3,7 @@
 ## 下载
 
 1. 下载地址 <https://maven.apache.org/download.cgi> `Files`标题下`Binary zip archive`版本选择`apache-maven-3.9.9-bin.zip`，名称应为`apache-maven-3.9.9-bin.zip`，解压后文件夹名称应为`apache-maven-3.9.9`
-2. 快速下载地址 <https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip> 版本号参考 <https://maven.apache.org/docs/history.html>
+2. 快速下载地址 <https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip> 版本号参考 <https://maven.apache.org/docs/history.html>
 
 ## 初始化
 
