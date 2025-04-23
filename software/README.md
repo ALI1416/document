@@ -115,10 +115,14 @@
   - <https://www.i4.cn/>
 - `飞鸽传书`
   - <http://www.ipmsg.org.cn/index/download.html>
-- `ToDesk` 远程桌面
-  - <https://www.todesk.com/download.html>
+- `VNC` 远程桌面
+  - `8.0在线安装`<https://www.realvnc.com/en/connect/download/>
+  - `7.13.1`<https://www.realvnc.com/en/connect/download/vnc/>
+  - `7.13.1破解版`<https://apphot.cc/76019.html>
 - `向日葵` 远程桌面
   - <https://sunlogin.oray.com/>
+- `RustDesk` 远程桌面
+  - <https://rustdesk.com/zh-cn/>
 - `唧唧Down` 下载bilibili视频
   - <https://client.jijidown.com/>
 - `洛雪音乐助手`
