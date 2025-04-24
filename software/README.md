@@ -163,7 +163,7 @@
   - `破解版`<https://www.ghxi.com/3dsmax2021lite.html>
 - `XMind` 思维导图
   - <https://www.xmind.cn/>
-  - `破解版`<https://www.jb51.net/softs/851357.html>
+  - `破解版`<https://mp.weixin.qq.com/s/3jlRaDVVvlsNqONghC_J2w>
 - `Camtasia` 屏幕录制
   - <https://www.techsmith.com/video-editor.html>
   - `破解版`<https://www.ghxi.com/camtasia2023.html>
