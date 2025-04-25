@@ -239,6 +239,14 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 - 启动服务状态：`alias st='systemctl start '`，启动nginx执行`st nginx`
 - 停止服务状态：`alias sp='systemctl stop '`，停止nginx执行`sp nginx`
 
+```sh
+alias pa='ps aux'
+alias pg='pa | grep '
+alias sa='systemctl status '
+alias st='systemctl start '
+alias sp='systemctl stop '
+```
+
 ## unalias 删除别名
 
 - **格式：`unalias [-a] 名称 [名称 ...]`**
