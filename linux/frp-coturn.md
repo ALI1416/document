@@ -25,6 +25,8 @@ Wants = network.target
 [Service]
 Type = simple
 ExecStart = /opt/frp/frps -c /opt/frp/frps.toml
+Restart = on-failure
+RestartSec = 5s
 
 [Install]
 WantedBy = multi-user.target
@@ -41,6 +43,8 @@ Wants = network.target
 [Service]
 Type = simple
 ExecStart = /opt/frp/frpc -c /opt/frp/frpc.toml
+Restart = on-failure
+RestartSec = 5s
 
 [Install]
 WantedBy = multi-user.target
@@ -60,6 +64,8 @@ webServer.addr = "0.0.0.0"
 webServer.port = 7001
 webServer.user = "xxx"
 webServer.password = "xxx"
+vhostHTTPPort = 8080
+vhostHTTPSPort = 8443
 ```
 
 - `bindPort` : 绑定端口 `7000`
@@ -74,6 +80,8 @@ webServer.password = "xxx"
   - `port` : 端口 `7001`
   - `user` : 用户名 `xxx`
   - `password` : 密码 `xxx`
+- `vhostHTTPPort` ： 代理HTTP请求端口号 `8080`
+- `vhostHTTPSPort` ： 代理HTTPS请求端口号 `8443`
 
 ## 客户端
 
@@ -98,7 +106,8 @@ auth.token = "xxx"
 
 ## TCP代理(也可以代理HTTP)
 
-命令行访问 `ssh -o Port=6000 ali@192.168.1.1`
+- 命令行访问 `ssh -o Port=6000 ali@192.168.1.1`
+- 浏览器访问 `http://192.168.1.1:6000/`
 
 ```ini
 serverAddr = "192.168.1.1"
@@ -202,6 +211,56 @@ secretKey = "xxx"
 bindAddr = "127.0.0.1"
 bindPort = 6000
 ```
+
+## HTTP代理
+
+浏览器访问 `http://192.168.1.1:8080/`
+
+```ini
+serverAddr = "192.168.1.1"
+serverPort = 7000
+auth.token = "xxx"
+
+[[proxies]]
+name = "http"
+type = "http"
+localIP = "127.0.0.1"
+localPort = 6000
+customDomains = ["192.168.1.1"]
+```
+
+- `customDomains` : 自定义域名 `192.168.1.1`
+
+## HTTPS代理
+
+浏览器访问 `https://192.168.1.1:8443/`
+
+```ini
+serverAddr = "192.168.1.1"
+serverPort = 7000
+auth.token = "xxx"
+
+[[proxies]]
+name = "https"
+type = "https"
+localIP = "127.0.0.1"
+localPort = 6000
+customDomains = ["192.168.1.1"]
+```
+
+- `customDomains` : 自定义域名 `192.168.1.1`
+
+## HTTPS代理为HTTP
+
+浏览器访问 `http://192.168.1.1:8080/`
+
+[[proxies]]
+name = "plugin_http2https"
+type = "http"
+customDomains = ["192.168.1.1"]
+[proxies.plugin]
+type = "http2https"
+localAddr = "127.0.0.1:443"
 
 ## coturn
 
