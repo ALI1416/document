@@ -234,10 +234,13 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 - 执行`source ~/.bashrc`立即生效
 
 - 查看所有进程：`alias pa='ps aux'`，执行`pa`
-- 查看所有进程并查找：`alias pg='pa | grep '`，查找java执行`pg java`
-- 查看服务状态：`alias sa='systemctl status '`，查看nginx执行`sa nginx`
-- 启动服务状态：`alias st='systemctl start '`，启动nginx执行`st nginx`
-- 停止服务状态：`alias sp='systemctl stop '`，停止nginx执行`sp nginx`
+- 查看所有进程并查找：`alias pg='pa | grep '`，查找java`pg java`
+- 查看服务状态：`alias sa='systemctl status '`，查看nginx状态`sa nginx`
+- 启动服务：`alias st='systemctl start '`，启动nginx`st nginx`
+- 停止服务：`alias sp='systemctl stop '`，停止nginx`sp nginx`
+- 重启服务：`alias sr='systemctl restart '`，重启nginx`sr nginx`
+- 重新加载服务：`alias sl='systemctl reload '`，重新加载nginx`sl nginx`
+- 更新Systemd的配置：`alias sd='systemctl daemon-reload'`，执行`sd`
 
 ```sh
 alias pa='ps aux'
@@ -245,6 +248,9 @@ alias pg='pa | grep '
 alias sa='systemctl status '
 alias st='systemctl start '
 alias sp='systemctl stop '
+alias sr='systemctl restart '
+alias sl='systemctl reload '
+alias sd='systemctl daemon-reload'
 ```
 
 ## unalias 删除别名

@@ -26,7 +26,7 @@ Wants = network.target
 Type = simple
 ExecStart = /opt/frp/frps -c /opt/frp/frps.toml
 Restart = on-failure
-RestartSec = 5s
+RestartSec = 10s
 
 [Install]
 WantedBy = multi-user.target
@@ -44,7 +44,7 @@ Wants = network.target
 Type = simple
 ExecStart = /opt/frp/frpc -c /opt/frp/frpc.toml
 Restart = on-failure
-RestartSec = 5s
+RestartSec = 10s
 
 [Install]
 WantedBy = multi-user.target
@@ -57,7 +57,7 @@ WantedBy = multi-user.target
 ```ini
 bindPort = 7000
 auth.token = "xxx"
-log.to = "./frps.log"
+log.to = "/opt/frp/frps.log"
 log.level = "info"
 log.maxDays = 7
 webServer.addr = "0.0.0.0"
@@ -91,6 +91,9 @@ vhostHTTPSPort = 8443
 serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
+log.to = "/opt/frp/frps.log"
+log.level = "info"
+log.maxDays = 7
 
 [[proxies]]
 
