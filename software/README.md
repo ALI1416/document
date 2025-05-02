@@ -286,7 +286,6 @@
   - `下载`<https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jdk>
 - `python`
   - <https://www.python.org/downloads/windows/>
-  - `破解`<https://github.com/flygon2018/MobaXterm-keygen>
 - `git`
   - <https://git-scm.com/download/win>
 - `tortoiseGit`
@@ -335,6 +334,7 @@
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
 - `MobaXterm` ssh客户端
   - <https://mobaxterm.mobatek.net/download-home-edition.html>
+  - `破解`<https://github.com/flygon2018/MobaXterm-keygen>
 - `mosquitto` MQTT服务器
   - <https://mosquitto.org/download/>
 - `elasticsearch`
