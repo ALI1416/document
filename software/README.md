@@ -79,6 +79,9 @@
   - <https://weishi.360.cn/>
 - `360驱动大师`
   - <https://dm.weishi.360.cn/home.html>
+- `联想驱动`
+  - <https://newthink.lenovo.com.cn/driverdownload.html>
+  - `ThinkBook 14 G6+ IMH`<https://newthink.lenovo.com.cn/driveList.html?selname=ThinkBook%2014%20G6+%20IMH>
 - `SteamTools` 加速器
   - <https://gitee.com/rmbgame/SteamTools/releases>
   - `2.8.6`<https://gitee.com/rmbgame/SteamTools/releases/download/2.8.6/Steam%20%20_win_x64_v2.8.6.exe>
@@ -281,6 +284,9 @@
 - `openjdk`
   - <https://openjdk.org/>
   - `下载`<https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jdk>
+- `python`
+  - <https://www.python.org/downloads/windows/>
+  - `破解`<https://github.com/flygon2018/MobaXterm-keygen>
 - `git`
   - <https://git-scm.com/download/win>
 - `tortoiseGit`
@@ -327,8 +333,8 @@
   - <https://www.wireshark.org/download.html>
 - `putty` ssh客户端
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
-- `WindTerm` ssh和sftp客户端
-  - <https://github.com/kingToolbox/WindTerm>
+- `MobaXterm` ssh客户端
+  - <https://mobaxterm.mobatek.net/download-home-edition.html>
 - `mosquitto` MQTT服务器
   - <https://mosquitto.org/download/>
 - `elasticsearch`

@@ -91,7 +91,7 @@ vhostHTTPSPort = 8443
 serverAddr = "192.168.1.1"
 serverPort = 7000
 auth.token = "xxx"
-log.to = "/opt/frp/frps.log"
+log.to = "/opt/frp/frpc.log"
 log.level = "info"
 log.maxDays = 7
 
