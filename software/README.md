@@ -182,6 +182,8 @@
 
 - `cpuz` 查询电脑信息
   - <https://www.cpuid.com/softwares/cpu-z.html>
+- `TaskExplorer` 高级任务管理器
+  - <https://github.com/DavidXanatos/TaskExplorer>
 - `map3tag`
   - <https://www.mp3tag.de/dodownload64.html>
 - `Keyboard Test Utility` 键盘测试
