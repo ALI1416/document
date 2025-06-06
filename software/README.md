@@ -280,6 +280,9 @@
   - `AMD Arc 独显`和`Intel Ultra Arc 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
 - `ByPass` 12306抢票
   - <https://www.bypass.cn/>
+- `Apowersoft Video Download Capture` 视频下载王
+  - `官网`<https://www.apowersoft.cn/video-download-capture/>
+  - `破解版`<https://mp.weixin.qq.com/s/NMcY2Yqd_Zk9Pl0Te5Ci0Q>
 
 ## `Programmer` 程序员软件
 
