@@ -121,7 +121,9 @@
 - `VNC` 远程桌面
   - `8.0在线安装`<https://www.realvnc.com/en/connect/download/>
   - `7.13.1`<https://www.realvnc.com/en/connect/download/vnc/>
-  - `7.13.1破解版`<https://apphot.cc/76019.html>
+  - `7.13.1 VNC-Viewer`<https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-7.13.1-Windows.exe>
+  - `7.13.1 VNC-Server`<https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.13.1-Windows.exe>
+  - `7.13.1 VNC-Server破解版`<https://apphot.cc/76019.html>
 - `向日葵` 远程桌面
   - <https://sunlogin.oray.com/>
 - `RustDesk` 远程桌面
