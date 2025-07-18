@@ -17,7 +17,7 @@
     2. 限制最大1GB内存使用：修改`JAVA_OPTS=-Djava.awt.headless=true`，后面新增`-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m`
     3. 修改端口号：修改`JENKINS_PORT=8080`
 11. 修改Jenkins相关文件夹用户权限：`chown -R root:root /var/lib/jenkins /var/cache/jenkins /var/log/jenkins`
-12. 更换插件源：`Manage Jenkins`->`Plugins`->`Advanced settings`，将URL`https://updates.jenkins.io/update-center.json`更换为`https://mirror.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
+12. 更换插件源：`Manage Jenkins`->`Plugins`->`Advanced settings`，将URL`https://updates.jenkins.io/update-center.json`更换为`https://mirrors.huaweicloud.com/jenkins/updates/update-center.json`
 
 如果安装Jenkins太慢，可以下载并手动安装
 
@@ -35,15 +35,15 @@
    1. Maven整合插件：`Maven Integration`
    2. SSH推送插件：`Publish Over SSH`
 
-SSH推送插件配置
+### SSH推送插件配置
 
 1. `Manage Jenkins`->`System`->`Publish over SSH`
-   1. `Passphrase`服务器密码
+   1. `Passphrase`服务器密码，例如`root`
 2. `SSH Servers`新增
-   1. `Name`服务器名称，任意
-   2. `Hostname`服务器地址
-   3. `Username`服务器用户名
-   4. `Remote Directory`推送目录前缀
+   1. `Name`服务器名称，例如`本机`
+   2. `Hostname`服务器地址，例如`127.0.0.1`
+   3. `Username`服务器用户名，例如`root`
+   4. `Remote Directory`推送目录前缀，例如`/opt/server/`
    5. `高级`->`Port`服务器端口号
 
 ## 创建SpringBoot项目
@@ -52,16 +52,18 @@ SSH推送插件配置
 2. 任务名称：`test`，类型：`构建一个maven项目`
 3. `源码管理`->`Git`：URL：`https://gitee.com/ALI1416/springboot-demo`，指定分支：`*/v3`
 4. `构建环境`：勾选`Add timestamps to the Console Output`
-5. `Pre Steps`->`Build`->`Goals and options`填写：`clean install -pl packages/util,packages/util-spring-boot,demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V`
+5. `Pre Steps`->`Build`->`Goals and options`
+   1. 填写：`clean install -pl packages/util,packages/util-spring-boot,demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V`
+   2. 如果要指定jdk版本号，再添加`-Dmaven.compiler.source=21 -Dmaven.compiler.target=21`
 6. `Post Steps`->`Send files or execute commands over SSH`
    1. `Name`选择配置的选项
-   2. `Source files`文件地址
-   3. `Remove prefix`移除前缀
+   2. `Source files`文件地址，例如`demo-web/target/demo-web-1.0.0.jar`
+   3. `Remove prefix`移除前缀，例如`demo-web/target/`
    4. `Remote directory`推送目录
       - 例如`推送目录前缀`填写`/opt/server/`
-      - `推送目录`填写`demo-base`
-      - 实际部署到`/opt/server/demo-base/`
-   5. `Exec command`执行脚本
+      - `推送目录`填写`demo-base`(需要提前创建好)
+      - 实际推送到`/opt/server/demo-base/`
+   5. `Exec command`执行脚本，例如
 
 ```sh
 #!/bin/sh
