@@ -26,7 +26,7 @@
   - cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso
   - `ed2k://|file|cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso|2144010240|3BB6E1FB513204D8D2C6991B14B35D9B|/`
 - `esxi`
-  - <https://support.broadcom.com/group/ecx/productfiles?displayGroup=VMware%20vSphere%20-%20Standard&release=8.0&os=&servicePk=202631&language=EN&groupId=204419>
+  - <https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20vSphere%20Hypervisor&freeDownloads=true>
 - `ikuai`
   - <https://www.ikuai8.com/component/download>
 - `ubuntu`
