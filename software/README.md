@@ -225,6 +225,7 @@
   - <http://www.raidrive.com/download>
 - `V2RayN` 翻墙
   - <https://github.com/2dust/v2rayN/releases>
+  - `免费节点`<https://www.mibei77.com/>
   - `免费节点`<https://v2rayshare.net/>
   - `节点转换`<https://suburl.v1.mk/>
   - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
