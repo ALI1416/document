@@ -1,6 +1,6 @@
 # 防撤回
 
-当前版本号：`2.0`
+当前版本号：`2.1`
 
 下载地址：<https://github.com/huiyadanli/RevokeMsgPatcher>
 
