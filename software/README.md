@@ -113,11 +113,9 @@
   - <https://pan.quark.cn/>
 - `迅雷`
   - `在线安装`<https://www.xunlei.com/>
-  - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.1.6.2780.exe>
+  - `离线安装`<https://down.sandai.net/thunder11/XunLeiSetup12.4.4.3740.exe>
 - `爱思助手`
   - <https://www.i4.cn/>
-- `飞鸽传书`
-  - <http://www.ipmsg.org.cn/index/download.html>
 - `VNC` 远程桌面
   - `8.0在线安装`<https://www.realvnc.com/en/connect/download/>
   - `7.13.1`<https://www.realvnc.com/en/connect/download/vnc/>
