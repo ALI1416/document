@@ -124,8 +124,6 @@
   - `7.13.1 VNC-Server破解版`<https://apphot.cc/76019.html>
 - `向日葵` 远程桌面
   - <https://sunlogin.oray.com/>
-- `RustDesk` 远程桌面
-  - <https://rustdesk.com/zh-cn/>
 - `唧唧Down` 下载bilibili视频
   - <https://client.jijidown.com/>
 - `洛雪音乐助手`
@@ -134,6 +132,15 @@
   - `六音音源`<https://www.sixyin.com/>
   - `Flower音源`<https://github.com/OneCodeMonkey/music-sources>
   - `音源合集`<https://github.com/pdone/lx-music-source>
+- `V2RayN` 翻墙
+  - <https://github.com/2dust/v2rayN/releases>
+  - `免费节点`<https://www.mibei77.com/>
+  - `免费节点`<https://v2rayshare.net/>
+  - `免费节点`<https://v2rayshare.org/>
+  - `节点转换`<https://suburl.v1.mk/>
+  - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
+  - `教程2`<https://doc.miyun.app/v2rayn/>
+  - `搭建VPS教程`<https://233boy.com/>
 
 ## `Seldom` 不常用软件
 
@@ -221,15 +228,6 @@
   - <https://www.gns3.com/software/download>
 - `RaiDrive` 网盘映射
   - <http://www.raidrive.com/download>
-- `V2RayN` 翻墙
-  - <https://github.com/2dust/v2rayN/releases>
-  - `免费节点`<https://www.mibei77.com/>
-  - `免费节点`<https://v2rayshare.net/>
-  - `免费节点`<https://v2rayshare.org/>
-  - `节点转换`<https://suburl.v1.mk/>
-  - `教程1`<https://docs.mebi.me/docs/v2rayn-for-windows>
-  - `教程2`<https://doc.miyun.app/v2rayn/>
-  - `搭建VPS教程`<https://233boy.com/>
 - `OpenVPN`
   - <https://github.com/openvpn/openvpn/releases>
   - `官网(翻墙)`<https://openvpn.net/community-downloads/>
@@ -282,9 +280,6 @@
   - `AMD Arc 独显`和`Intel Ultra Arc 核显` <https://www.bilibili.com/video/BV12C4y1q78k>
 - `ByPass` 12306抢票
   - <https://www.bypass.cn/>
-- `Apowersoft Video Download Capture` 视频下载王
-  - `官网`<https://www.apowersoft.cn/video-download-capture/>
-  - `破解版`<https://mp.weixin.qq.com/s/NMcY2Yqd_Zk9Pl0Te5Ci0Q>
 
 ## `Programmer` 程序员软件
 
