@@ -412,6 +412,11 @@
 - `IDA` 反编译
   - `官网`<https://hex-rays.com/>
   - `破解`<https://www.jb51.net/softs/580025.html>
+- `ScreenWings` 反截图
+  - `官网` <https://schiffer.tech/screenwings.html>
+  - `下载` <https://www.softpedia.com/get/Security/Security-Related/ScreenWings.shtml>
+- `反反截屏`
+  - <http://bbs.wuyou.net/forum.php?mod=viewthread&tid=428580>
 
 ## `Patch` 补丁
 

@@ -112,7 +112,7 @@ under the License.
    |-->
   <servers>
     <server>
-      <id>ossrh</id>
+      <id>central</id>
       <username>username</username>
       <password>password</password>
     </server>
