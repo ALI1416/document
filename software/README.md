@@ -71,8 +71,8 @@
 - `ContextMenuManager` 右键管理
   - <https://gitee.com/BluePointLilac/ContextMenuManager>
 
-- `Snipaste` 截图工具
-  - <https://zh.snipaste.com/>
+- `PixPin` 截图工具
+  - <https://pixpin.cn/>
 - `FreeFileSync` 文件同步
   - <https://freefilesync.org/download.php>
 - `360`
