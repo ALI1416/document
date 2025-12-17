@@ -421,7 +421,7 @@
 ## `Patch` 补丁
 
 - `DirectX` DirectX修复工具增强版
-  - <https://blog.csdn.net/vbcom/article/details/7245186>
+  - <https://www.zysoftware.top/post/10.html>
 - `MSVBCRT.AIO` 微软常用运行库合集
   - <https://www.ghxi.com/yxkhj.html>
 
