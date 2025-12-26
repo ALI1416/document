@@ -3,6 +3,7 @@ Phone2Region.Net
 QRCodeEncoder.Net
 ScreenShare
 clock
+dynamic-route-demo
 id
 id-spring-boot-autoconfigure
 ip2region
