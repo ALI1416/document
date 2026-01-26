@@ -11,29 +11,11 @@
 
 ## head
 
-文档头部，可以包含`<base>`,`<link>`,`<meta>`,`<script>`,`<style>`,`<title>`标签
+文档头部，可以包含`<base>`、`<link>`、`<meta>`、`<script>`、`<style>`、`<title>`等标签
 
-## body
+### base
 
-文档内容  
-默认css：
-
-```css
-body {
-    display: block;
-    margin: 8px;
-}
-```
-
-其中字体大小和样式，与浏览器设置有关
-
-## title
-
-标签页标题
-
-## base
-
-页面中所有链接的默认地址或默认目标，包括`<a>`,`<img>`,`<link>`,`<form>`标签  
+页面中所有链接的默认地址或默认目标，包括`<a>`、`<img>`、`<link>`、`<form>`等标签  
 属性`href="https://www.baidu.com"`定义页面中所有相对链接的基准URL  
 属性`target="_blank"`定义在何处打开页面中所有的链接  
 `target`的值有：
@@ -44,67 +26,57 @@ body {
 - `_top` : 当前窗口
 - `框架名` : 指定框架内
 
-## link
+### link
 
-文档与外部资源的关系  
+定义了文档与外部资源之间的关系
 
-## h1-h6
+- `<link rel="icon" href="favicon.ico">`：指定网页图标(默认)
+- `<link rel="stylesheet" type="text/css" href="xxx.css">`：引入样式表
 
-文档标题  
-默认css：
+### meta
+
+描述了一些基本的元数据
+
+- `<meta charset="UTF-8">`：页面内容编码为`UTF-8`
+- `<meta http-equiv="X-UA-Compatible" content="IE=edge">`：告诉IE浏览器以最高级模式渲染文档
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">`：适配移动端
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">`：适配移动端，禁止缩放
+- `<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">`：定义文档关键词，用于搜索引擎
+- `<meta name="description" content="Free Web tutorials on HTML and CSS">`：定义web页面描述
+- `<meta name="author" content="Hege Refsnes">`：定义页面作者
+- `<meta http-equiv="refresh" content="30">`：每30秒刷新页面
+
+### script
+
+用于加载脚本文件
+
+- 引入脚本：`<script type="text/javascript" src="xxx.js"></script>`
+- 执行本地脚本：
+
+  ```js
+  <script>
+    console.log("Hello")
+  </script>
+  ```
+
+### style
+
+定义文档样式信息
+
+清除文档默认格式：
 
 ```css
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  outline: none;
+  box-sizing: border-box;
 }
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-h3 {
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-h4 {
-    display: block;
-    margin-block-start: 1.33em;
-    margin-block-end: 1.33em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-h5 {
-    display: block;
-    font-size: 0.83em;
-    margin-block-start: 1.67em;
-    margin-block-end: 1.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-h6 {
-    display: block;
-    font-size: 0.67em;
-    margin-block-start: 2.33em;
-    margin-block-end: 2.33em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
+</script>
 ```
+
+### title
+
+网页标题
