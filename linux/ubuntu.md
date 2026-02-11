@@ -48,3 +48,41 @@
     1. 新增`vm.swappiness = 60`，范围0-100，值越大交换分区使用越频繁
     2. 新增`vm.min_free_kbytes = 128000`，单位KB，启用交换分区最小值
 11. 立即生效：`sysctl -p`
+
+## 更改镜像源
+
+1. 打开文件`/etc/apt/sources.list.d/ubuntu.sources`
+2. 内容默认为：
+
+```txt
+Types: deb
+URIs: http://cn.archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: http://security.ubuntu.com/ubuntu/
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+```
+
+3. 修改为阿里云镜像
+
+```txt
+Types: deb
+URIs: https://mirrors.aliyun.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: https://mirrors.aliyun.com/ubuntu/
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+```
+
+4. 重新加载软件列表`apt update`
+5. 更新软件`apt upgrade`
