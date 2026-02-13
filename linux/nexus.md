@@ -44,12 +44,12 @@ WantedBy = multi-user.target
 - Repositories
 - Create repository
 - maven2 (proxy)
-- 新增`华为云`代理
-  - Name: `maven-huawei`
-  - Remote storage: `https://mirrors.huaweicloud.com/repository/maven/`
 - 新增`阿里云`代理
   - Name: `maven-aliyun`
   - Remote storage: `https://maven.aliyun.com/repository/public`
+- 新增`华为云`代理
+  - Name: `maven-huawei`
+  - Remote storage: `https://mirrors.huaweicloud.com/repository/maven/`
 
 ## 设置仓库顺序
 

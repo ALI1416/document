@@ -116,16 +116,16 @@ echo $! > ${deployPath}pid
 
 ```xml
 <mirror>
-  <id>huaweicloudMaven</id>
-  <mirrorOf>*</mirrorOf>
-  <name>huaweicloudMaven</name>
-  <url>https://mirrors.huaweicloud.com/repository/maven/</url>
-</mirror>
-<mirror>
   <id>aliyunMaven</id>
   <mirrorOf>*</mirrorOf>
   <name>aliyunMaven</name>
   <url>https://maven.aliyun.com/repository/public</url>
+</mirror>
+<mirror>
+  <id>huaweicloudMaven</id>
+  <mirrorOf>*</mirrorOf>
+  <name>huaweicloudMaven</name>
+  <url>https://mirrors.huaweicloud.com/repository/maven/</url>
 </mirror>
 ```
 

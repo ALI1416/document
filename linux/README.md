@@ -106,7 +106,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 ## 命令
 
-| 常用 | 命令                | 作用                                       |
+| 常用 | 命令                | 解释                                       |
 | ---- | ------------------- | ------------------------------------------ |
 | ■    | alias               | 别名                                       |
 | ■    | unalias             | 删除别名                                   |
@@ -1432,8 +1432,8 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 | ■■   | install         | 安装软件包                       |
 | ■    | reinstall       | 重新安装软件包                   |
 | ■■   | remove          | 移除软件包                       |
-| ■    | autoremove      | 自动卸载所有不再使用的软件包     |
-| ■    | purge           | 卸载并清除软件包的配置           |
+| ■■   | autoremove      | 自动卸载所有不再使用的软件包     |
+| ■■   | purge           | 卸载并清除软件包的配置           |
 |      | dist-upgrade    | 发行版升级                       |
 |      | dselect-upgrade | 根据dselect的选择来进行升级      |
 |      | build-dep       | 为源码包配置所需的编译依赖关系   |
@@ -1449,16 +1449,17 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 ### 示例
 
-| 常用 | 命令                | 解释               |
-| ---- | ------------------- | ------------------ |
-| ■■   | apt list zip        | 查看软件包zip      |
-| ■■   | apt search 7zip-rar | 搜索软件包7zip-rar |
-| ■    | apt show zip        | 查看软件包zip细节  |
-| ■■   | apt install zip     | 安装软件包zip      |
-| ■    | apt reinstall zip   | 重新安装软件包zip  |
-| ■■   | apt remove zip      | 移除软件包zip      |
-| ■■   | apt update          | 更新可用软件包列表 |
-| ■■   | apt upgrade         | 更新软件包         |
+| 常用 | 命令                | 解释                    |
+| ---- | ------------------- | ----------------------- |
+| ■■   | apt list zip        | 查看软件包zip           |
+| ■■   | apt search 7zip-rar | 搜索软件包7zip-rar      |
+| ■    | apt show zip        | 查看软件包zip细节       |
+| ■■   | apt install zip     | 安装软件包zip           |
+| ■    | apt reinstall zip   | 重新安装软件包zip       |
+| ■■   | apt remove zip      | 移除软件包zip           |
+| ■■   | apt purge zip       | 移除软件包zip并清除配置 |
+| ■■   | apt update          | 更新可用软件包列表      |
+| ■■   | apt upgrade         | 更新软件包              |
 
 ## ps 进程列表
 
