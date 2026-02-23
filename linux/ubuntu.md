@@ -52,37 +52,42 @@
 ## 更改镜像源
 
 1. 打开文件`/etc/apt/sources.list.d/ubuntu.sources`
-2. 内容默认为：
+2. 修改为阿里云镜像
 
 ```txt
 Types: deb
-URIs: http://cn.archive.ubuntu.com/ubuntu/
+URIs: http://mirrors.aliyun.com/ubuntu/
 Suites: noble noble-updates noble-backports
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
 Types: deb
-URIs: http://security.ubuntu.com/ubuntu/
+URIs: http://mirrors.aliyun.com/ubuntu/
 Suites: noble-security
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
-3. 修改为阿里云镜像
+3. 重新加载软件列表`apt update`
+4. 更新软件`apt upgrade`
+
+## 更改镜像源(旧版)
+
+1. 打开文件`/etc/apt/sources.list`
+2. 修改为阿里云镜像
 
 ```txt
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu/
-Suites: noble noble-updates noble-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu/
-Suites: noble-security
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble main restricted
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-updates main restricted
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble universe
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-updates universe
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble multiverse
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-updates multiverse
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-backports main restricted universe multiverse
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-security main restricted
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-security universe
+deb http://mirrors.cloud.aliyuncs.com/ubuntu noble-security multiverse
 ```
 
-4. 重新加载软件列表`apt update`
-5. 更新软件`apt upgrade`
+3. 重新加载软件列表`apt update`
+4. 更新软件`apt upgrade`
