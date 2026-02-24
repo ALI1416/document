@@ -40,7 +40,7 @@ default-character-set = utf8mb4
 ```
 
 - 重启服务：`systemctl restart mysql`
-- 新增用户：命令行进入`mysql`(账号root无密码)，依次执行以下语句
+- 创建用户并赋予全部权限：命令行进入`mysql`(账号root无密码)，依次执行以下语句
 
 ```sql
 DROP USER IF EXISTS 'ali'@'%';

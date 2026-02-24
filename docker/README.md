@@ -37,7 +37,7 @@ EOF
 - 付费可以使用轩辕镜像<https://xuanyuan.cloud/recharge>
 - 购买的阿里云服务器可以使用阿里云镜像<https://cr.console.aliyun.com/cn-qingdao/instances/mirrors>
 
-8. 重启`systemctl daemon-reload`、`systemctl restart docker`
+8. 重启`systemctl daemon-reload && systemctl restart docker`
 9. 尝试拉取镜像`docker pull nginx`
 
 ## 命令
