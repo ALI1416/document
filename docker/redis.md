@@ -1,6 +1,6 @@
 # redis
 
-1. 拉取redis镜像`docker pull redis`
+1. 拉取镜像`docker pull redis`
 2. 启动临时容器`docker run --name redis -d redis`
 3. 进入容器内部`docker exec -it redis bash`查看要映射哪些内容
    1. 配置文件`/etc/redis/redis.conf`映射到`/docker/redis/conf/redis.conf`，创建文件夹`mkdir -p /docker/redis/conf`(不存在)

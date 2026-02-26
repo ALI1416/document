@@ -1,6 +1,6 @@
 # nginx
 
-1. 拉取nginx镜像`docker pull nginx`
+1. 拉取镜像`docker pull nginx`
 2. 启动临时容器`docker run --name nginx -d nginx`
    1. `run`启动容器
    2. `--name nginx`命名为`nginx`
