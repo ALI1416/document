@@ -10,3 +10,7 @@
 8. 点击Admin
 9. 点击用户admin
 10. `Permissions`选项设置访问权限
+
+- 配置文件夹`/etc/rabbitmq`
+- 数据文件夹`/var/lib/rabbitmq`
+- 日志文件夹`/var/log/rabbitmq`
