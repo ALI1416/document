@@ -5,22 +5,18 @@
 3. 进入容器内部`docker exec -it rabbitmq bash`查看要映射哪些内容
    1. 配置文件夹`/etc/rabbitmq`映射到`/docker/rabbitmq/conf`，复制文件`docker cp rabbitmq:/etc/rabbitmq /docker/rabbitmq/conf`，修改文件夹路径`mv /docker/rabbitmq/rabbitmq /docker/rabbitmq/conf`
    2. 数据文件夹`/var/lib/rabbitmq`映射到`/docker/rabbitmq/data`，创建文件夹`mkdir -p /docker/rabbitmq/data`
-   3. 日志文件夹`/var/log/rabbitmq`映射到`/docker/rabbitmq/log`，创建文件夹`mkdir -p /docker/rabbitmq/log`
+   3. 日志文件夹`/var/log/rabbitmq`映射到`/docker/rabbitmq/log`，创建文件夹`mkdir -p /docker/rabbitmq/log`，修改文件夹权限`chown -R 999:999 /docker/rabbitmq/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
 mkdir -p /docker/rabbitmq/{data,log}
 docker cp rabbitmq:/etc/rabbitmq /docker/rabbitmq/conf
 mv /docker/rabbitmq/rabbitmq /docker/rabbitmq/conf
+chown -R 999:999 /docker/rabbitmq/log
 ```
 
-5. 新增配置文件`/docker/rabbitmq/conf/rabbitmq.cnf`
-
-```ini
-```
-
-6. 停止并删除临时容器`docker stop rabbitmq && docker rm rabbitmq`
-7. 配置并启动容器
+5. 停止并删除临时容器`docker stop rabbitmq && docker rm rabbitmq`
+6. 配置并启动容器
 
 ```sh
 docker run -d --name rabbitmq \
@@ -48,3 +44,5 @@ docker run -d --name rabbitmq \
   - `25672`集群节点通信端口
 - `-e RABBITMQ_DEFAULT_USER=admin`设置超级管理员账号为`admin`
 - `-e RABBITMQ_DEFAULT_PASS=admin`设置超级管理员密码为`admin`
+
+7. 访问地址`http://127.0.0.1:15672/`有内容显示，即启动成功

@@ -9,14 +9,13 @@
 3. 进入容器内部`docker exec -it nginx bash`查看要映射哪些内容
    1. 配置文件`/etc/nginx/nginx.conf`映射到`/docker/nginx/conf/nginx.conf`，创建文件夹`mkdir -p /docker/nginx/conf`，复制文件`docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf`
    2. HTML文件夹`/usr/share/nginx/html`映射到`/docker/nginx/html`，创建文件夹`mkdir -p /docker/nginx/html`，复制文件夹`docker cp nginx:/usr/share/nginx/html /docker/nginx`
-   3. 日志文件夹`/var/log/nginx`映射到`/docker/nginx/log`，创建文件夹`mkdir -p /docker/nginx/log`，文件夹内`access.log`和`error.log`为链接，需手动创建空文件`touch /docker/nginx/log/{access.log,error.log}`
+   3. 日志文件夹`/var/log/nginx`映射到`/docker/nginx/log`，创建文件夹`mkdir -p /docker/nginx/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
 mkdir -p /docker/nginx/{conf,html,log}
 docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf
 docker cp nginx:/usr/share/nginx/html /docker/nginx
-touch /docker/nginx/log/{access.log,error.log}
 ```
 
 5. 修改配置文件`/docker/nginx/conf/nginx.conf`
