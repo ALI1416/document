@@ -45,13 +45,13 @@ http {
   #启用tcp_nopush适用于大文件传输
   tcp_nopush  on;
   #启用tcp_nodelay适用于快速响应的小型数据包(不可与tcp_nopush同时使用)
-  # tcp_nodelay on;
+  #tcp_nodelay on;
   #保活超时时间
   keepalive_timeout 65;
   #不显示nginx版本号
   server_tokens     off;
   #启用gzip压缩
-  # gzip              on;
+  #gzip              on;
 
   #访问日志格式
   log_format main "$time_iso8601 [$remote_addr:$remote_port] [$status] $request_method $scheme://$host$request_uri";
@@ -64,22 +64,17 @@ http {
     listen      80;
     #服务名称
     server_name localhost;
+    #根路径
+    root /usr/share/nginx/html;
 
     #404跳转
     error_page 404 /404.html;
-    location = /404.html {
-       root /usr/share/nginx/html;
-    }
 
     #50x跳转
     error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-      root /usr/share/nginx/html;
-    }
 
     #首页跳转
     location / {
-      root  /usr/share/nginx/html;
       index index.html;
     }
 
@@ -88,8 +83,22 @@ http {
 }
 ```
 
-6. 停止并删除临时容器`docker stop nginx && docker rm nginx`
-7. 配置并启动容器
+6. 创建`/docker/nginx/html/404.html`文件
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>404 Not Found</title>
+</head>
+<body>
+<h1>404 Not Found</h1>
+</body>
+</html>
+```
+
+7. 停止并删除临时容器`docker stop nginx && docker rm nginx`
+8. 配置并启动容器
 
 ```sh
 docker run -d --name nginx \
@@ -107,4 +116,4 @@ docker run -d --name nginx \
 - `-v /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf`映射宿主机`/docker/nginx/conf/nginx.conf`文件到容器`/etc/nginx/nginx.conf`文件
 - `--restart=always`容器意外退出时自动重启
 
-8. 访问地址`http://127.0.0.1:90/`有内容显示，即启动成功
+9. 访问地址`http://127.0.0.1:90/`有内容显示，即启动成功

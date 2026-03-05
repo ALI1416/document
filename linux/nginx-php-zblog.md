@@ -10,24 +10,16 @@
 
 - 安装：`apt install php-fpm`
 - 配置文件夹：`/etc/php/8.3/`
-- 新增nginx在http层配置
+- 新增nginx配置在server层
 
 ```ini
-server {
-  #首页跳转
-  location / {
-    root  /var/www/html;
-    index index.php;
-  }
-
-  #PHP反向代理
-  location ~ \.php$ {
-    root          /var/www/html;
-    fastcgi_pass  unix:/run/php/php8.3-fpm.sock;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include       fastcgi_params;
-  }
+#PHP反向代理
+location ~ \.php$ {
+  root          /var/www/html;
+  fastcgi_pass  unix:/run/php/php8.3-fpm.sock;
+  fastcgi_index index.php;
+  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  include       fastcgi_params;
 }
 ```
 

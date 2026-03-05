@@ -45,4 +45,4 @@ docker run -d --name rabbitmq \
 - `-e RABBITMQ_DEFAULT_USER=admin`设置超级管理员账号为`admin`
 - `-e RABBITMQ_DEFAULT_PASS=admin`设置超级管理员密码为`admin`
 
-7. 访问地址`http://127.0.0.1:15672/`有内容显示，即启动成功
+7. 访问地址<http://127.0.0.1:15672>
