@@ -1,6 +1,6 @@
 # MySQL
 
-1. 拉取mysql镜像`docker pull mysql`
+1. 拉取镜像`docker pull mysql`
 2. 启动临时容器`docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql`
    1. `-e MYSQL_ROOT_PASSWORD=root`设置账号为`root`的密码为`root`
 3. 进入容器内部`docker exec -it mysql bash`查看要映射哪些内容

@@ -33,6 +33,7 @@ EOF
 ```
 
 - 国内免费镜像不稳定，请翻墙使用官方镜像或使用国内付费镜像
+- 免费道客镜像地址`https://docker.m.daocloud.io`
 - 免费轩辕镜像地址`https://docker.xuanyuan.me`
 - 付费可以使用轩辕镜像<https://xuanyuan.cloud/recharge>
 - 购买的阿里云服务器可以使用阿里云镜像<https://cr.console.aliyun.com/cn-qingdao/instances/mirrors>
@@ -97,21 +98,21 @@ EOF
 |      | import  | 从tarball中导入内容以创建文件系统镜像            |
 |      | inspect | 获取容器或镜像的详细信息                         |
 | ■■   | kill    | 杀死镜像正在运行的容器                           |
-|      | load    | 从tar或STDIN加载镜像                             |
 | ■■   | logs    | 查看容器的日志                                   |
 | ■■   | pause   | 暂停镜像容器中的所有进程                         |
+| ■■   | unpause | 取消暂停镜像容器中的所有进程                     |
 | ■■   | port    | 列出容器的端口映射或特定映射                     |
 | ■■   | rename  | 重命名容器                                       |
 | ■■   | restart | 重新启动镜像容器                                 |
 | ■■   | rm      | 移除镜像容器                                     |
 | ■■   | rmi     | 删除镜像镜像                                     |
-|      | save    | 将镜像镜像保存为tar(默认流输出到STDIN)           |
+| ■    | save    | 将镜像镜像保存为tar(默认流输出到STDIN)           |
+| ■    | load    | 从tar或STDIN加载镜像                             |
 | ■■   | start   | 启动镜像已停止的容器                             |
-| ■■   | stats   | 显示容器的实时资源使用情况                       |
 | ■■   | stop    | 停止镜像正在运行的容器                           |
+| ■■   | stats   | 显示容器的实时资源使用情况                       |
 |      | tag     | 创建名为TARGET_IMAGE的标签，引用SOURCE_IMAGE     |
 | ■■   | top     | 显示容器的运行进程                               |
-| ■■   | unpause | 取消暂停镜像容器中的所有进程                     |
 | ■■   | update  | 更新镜像容器的配置                               |
 |      | wait    | 阻塞直到镜像容器停止运行，然后打印它们的退出码   |
 
