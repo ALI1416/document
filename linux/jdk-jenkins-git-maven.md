@@ -35,7 +35,7 @@
    1. Maven整合插件：`Maven Integration`
    2. SSH推送插件：`Publish Over SSH`
 
-### SSH推送插件配置
+## SSH推送插件配置
 
 1. `Manage Jenkins`->`System`->`Publish over SSH`
    1. `Passphrase`服务器密码，例如`root`
