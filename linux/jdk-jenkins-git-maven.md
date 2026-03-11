@@ -57,8 +57,8 @@
    2. 如果要指定jdk版本号，再添加`-Dmaven.compiler.source=21 -Dmaven.compiler.target=21`
 6. `Post Steps`->`Send files or execute commands over SSH`
    1. `Name`选择配置的选项
-   2. `Source files`文件地址，例如`demo-web/target/demo-web-1.0.0.jar`
-   3. `Remove prefix`移除前缀，例如`demo-web/target/`
+   2. `Source files`文件地址，例如`demo-base/target/demo-base-1.0.0.jar`
+   3. `Remove prefix`移除前缀，例如`demo-base/target/`
    4. `Remote directory`推送目录
       - 例如`推送目录前缀`填写`/opt/server/`
       - `推送目录`填写`demo-base`(需要提前创建好)
@@ -80,8 +80,6 @@ pid=$(cat ${deployPath}pid)
 # 杀掉进程
 kill -9 ${pid}
 
-# 创建部署路径
-mkdir -p ${deployPath}
 # 切换到部署路径
 cd ${deployPath}
 # 运行项目文件

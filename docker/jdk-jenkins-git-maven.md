@@ -60,13 +60,12 @@ docker run -d --name jenkins \
    1. `Name`服务器名称，例如`本机`
    2. `Hostname`服务器地址，例如`127.0.0.1`
    3. `Username`服务器用户名，例如`root`
-   4. `Remote Directory`推送目录前缀，例如`/var/jenkins_home/app/`
+   4. `Remote Directory`推送目录前缀，例如`/opt/server/`
    5. `高级`->`Port`服务器端口号
-3. 创建推送目录并修改权限`mkdir -p /docker/jenkins/app && chown -R 1000:1000 /docker/jenkins/app`
 
 ## 创建SpringBoot项目
 
-1. 新建任务
+1. 新建项目
 2. 任务名称：`test`，类型：`构建一个maven项目`
 3. `源码管理`->`Git`：URL：`https://gitee.com/ALI1416/springboot-demo`，指定分支：`*/v3`
 4. `构建环境`：勾选`Add timestamps to the Console Output`
@@ -75,12 +74,12 @@ docker run -d --name jenkins \
    2. 如果要指定jdk版本号，再添加`-Dmaven.compiler.source=21 -Dmaven.compiler.target=21`
 6. `Post Steps`->`Send files or execute commands over SSH`
    1. `Name`选择配置的选项
-   2. `Source files`文件地址，例如`demo-web/target/demo-web-1.0.0.jar`
-   3. `Remove prefix`移除前缀，例如`demo-web/target/`
+   2. `Source files`文件地址，例如`demo-base/target/demo-base-1.0.0.jar`
+   3. `Remove prefix`移除前缀，例如`demo-base/target/`
    4. `Remote directory`推送目录
-      - 例如`推送目录前缀`填写`/var/jenkins_home/app/`(对应物理机`/docker/jenkins/app/`)
-      - `推送目录`填写`demo-base`(需要提前创建好`mkdir -p /docker/jenkins/app/demo-base && chown -R 1000:1000 /docker/jenkins/app/demo-base`)
-      - 实际推送到`/var/jenkins_home/app/demo-base/`(对应物理机`/docker/jenkins/app/demo-base/`)
+      - 例如`推送目录前缀`填写`/opt/server/`
+      - `推送目录`填写`demo-base`(需要提前创建好)
+      - 实际推送到`/opt/server/demo-base/`
    5. `Exec command`执行脚本，例如
 
 ```sh
@@ -90,16 +89,14 @@ docker run -d --name jenkins \
 projectName=demo-base
 # jar名
 jarName=demo-base-1.0.0.jar
-# 部署路径(/docker/jenkins/app/demo-base/)
-deployPath=/var/jenkins_home/app/demo-base/
+# 部署路径
+deployPath=/opt/server/demo-base/
 
 # 获取保存的pid
 pid=$(cat ${deployPath}pid)
 # 杀掉进程
 kill -9 ${pid}
 
-# 创建部署路径
-mkdir -p ${deployPath}
 # 切换到部署路径
 cd ${deployPath}
 # 运行项目文件
@@ -109,3 +106,4 @@ echo $! > ${deployPath}pid
 ```
 
 - 编译结果保存在：`/var/lib/jenkins/workspace/`(对应物理机`/docker/jenkins/workspace/`)
+- 物理机需要安装`Java 21`：`apt install openjdk-21-jdk`，安装到了`/usr/lib/jvm/java-21-openjdk-amd64/`
