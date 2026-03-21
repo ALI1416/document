@@ -85,7 +85,7 @@
 - `SteamTools` 加速器
   - <https://gitee.com/rmbgame/SteamTools/releases>
   - `2.8.6`<https://gitee.com/rmbgame/SteamTools/releases/download/2.8.6/Steam%20%20_win_x64_v2.8.6.exe>
-- `Motrix` 下载器
+- `Gopeed` 下载器
   - <https://motrix.app/zh-CN/download>
 - `QuickTextPaste` 快速粘贴
   - <http://www.softwareok.com/?seite=Microsoft/QuickTextPaste>
@@ -210,7 +210,7 @@
   - `3.4.13.4`<https://github.com/cw2k/Adobe-GenP/releases/download/3.4/Adobe-GenP-3.4.13.4.zip>
   - `破解版`<https://www.ghxi.com/adobe2025.html>
   - `破解版`<https://www.mpyit.com/tag/m0nkrus>
-  - `PDF破解版`<https://www.mpyit.com/?s=acrobat>
+  - `PDF破解版(下载m0nkrus版、OCR识别插件在便携版)`<https://www.mpyit.com/?s=acrobat>
 - `syncthing` 网络文件同步
   - <https://syncthing.net/downloads/>
 - `DiskGenius` 磁盘管理
