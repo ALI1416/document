@@ -69,7 +69,7 @@
   - `Windows版补丁`<https://github.com/LiteLoaderQQNT/QQNTFileVerifyPatch>
   - `防撤回插件`<https://github.com/xh321/LiteLoaderQQNT-Anti-Recall>
 - `ContextMenuManager` 右键管理
-  - <https://gitee.com/BluePointLilac/ContextMenuManager>
+  - <https://gitee.com/Jack251970/ContextMenuManager>
 
 - `PixPin` 截图工具
   - <https://pixpin.cn/>
@@ -84,7 +84,6 @@
   - `ThinkBook 14 G6+ IMH`<https://newthink.lenovo.com.cn/driveList.html?selname=ThinkBook%2014%20G6+%20IMH>
 - `SteamTools` 加速器
   - <https://gitee.com/rmbgame/SteamTools/releases>
-  - `2.8.6`<https://gitee.com/rmbgame/SteamTools/releases/download/2.8.6/Steam%20%20_win_x64_v2.8.6.exe>
 - `Gopeed` 下载器
   - <https://motrix.app/zh-CN/download>
 - `QuickTextPaste` 快速粘贴
@@ -151,9 +150,6 @@
   - <http://www.wsgsoft.net/ash/>
   - 免安装
 
-- `UltraISO` 软碟通
-  - <https://www.ultraiso.com/>
-  - `破解版`<https://www.ghxi.com/ultraiso.html>
 - `PCtoLCD2002` 取模
   - <https://www.cr173.com/soft/37775.html>
 - `VeryPDF Password Remover` PDF密码移除
@@ -215,11 +211,16 @@
   - <https://syncthing.net/downloads/>
 - `DiskGenius` 磁盘管理
   - <https://www.diskgenius.cn/download.php>
+- `UltraISO` 软碟通
+  - <https://www.ultraiso.com/>
+  - `破解版`<https://www.ghxi.com/ultraiso.html>
 - `大白菜` PE盘
   - <http://www.winbaicai.com/>
 - `ventoy` U盘启动
   - <https://www.ventoy.net/cn/index.html>
   - `下载`<https://mirrors.nju.edu.cn/github-release/ventoy/Ventoy/>
+- `Rufus` U盘启动
+  - <https://rufus.ie/zh/>
 - `格式工厂`
   - <http://www.pcgeshi.com/>
 - `genymotion` 安卓模拟器
@@ -336,7 +337,7 @@
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
 - `MobaXterm` ssh客户端
   - <https://mobaxterm.mobatek.net/download-home-edition.html>
-  - `破解`<https://github.com/flygon2018/MobaXterm-keygen>
+  - `破解`<https://gitee.com/ALI1416/MobaXtermKeygen>
 - `mosquitto` MQTT服务器
   - <https://mosquitto.org/download/>
 - `elasticsearch`
