@@ -1,6 +1,6 @@
 # Jenkins
 
-1. 拉取镜像`docker pull jenkins/jenkins:latest-jdk21`(默认拉取jdk8版，此处指定jdk21版)
+1. 拉取镜像`docker pull jenkins/jenkins:latest-jdk21`(默认拉取jdk8版，此处指定jdk21版，但是阿里云镜像只能拉取jdk8版，要拉取其它版本请使用第三方镜像源)
 2. 启动临时容器`docker run --name jenkins -d jenkins/jenkins:latest-jdk21`(默认含有git)
 3. 进入容器内部`docker exec -it jenkins bash`查看要映射哪些内容
    1. jenkins文件夹`/var/jenkins_home`映射到`/docker/jenkins`，创建文件夹`mkdir -p /docker/jenkins`，修改文件夹权限`chown -R 1000:1000 /docker/jenkins`
@@ -58,7 +58,7 @@ docker run -d --name jenkins \
    1. `Passphrase`服务器密码，例如`root`
 2. `SSH Servers`新增
    1. `Name`服务器名称，例如`本机`
-   2. `Hostname`服务器地址，例如`127.0.0.1`
+   2. `Hostname`服务器地址，例如`172.29.184.232`(不能使用`127.0.0.1`)
    3. `Username`服务器用户名，例如`root`
    4. `Remote Directory`推送目录前缀，例如`/opt/server/`
    5. `高级`->`Port`服务器端口号

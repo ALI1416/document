@@ -41,6 +41,15 @@ EOF
 8. 重启`systemctl daemon-reload && systemctl restart docker`
 9. 尝试拉取镜像`docker pull nginx`
 
+## 离线镜像打包和加载
+
+1. 打包镜像`docker save -o nginx_latest.tar nginx:latest`
+   - `nginx_latest.tar`打包后的文件名
+   - `nginx:latest`镜像名
+2. 加载镜像`docker load -i nginx_latest.tar`
+   - `nginx_latest.tar`文件名
+3. 验证镜像`docker images`
+
 ## 命令
 
 ### 通用命令

@@ -72,7 +72,7 @@ vhostHTTPSPort = 8443
 - `auth` : 认证
   - `token` : token `xxx`
 - `log` : 日志
-  - `to` : 文件 `./frps.log`
+  - `to` : 文件路径 `/opt/frp/frps.log`
   - `level` : 级别 `info`
   - `maxDays` : 最大保留天数 `7`
 - `webServer` : 仪表盘

@@ -11,7 +11,7 @@ listener 1883 0.0.0.0
 protocol mqtt
 socket_domain ipv4
 # websocket协议
-listener 15675 0.0.0.0
+listener 9001 0.0.0.0
 protocol websockets
 socket_domain ipv4
 # 密码文件
