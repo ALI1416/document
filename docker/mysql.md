@@ -96,4 +96,4 @@ docker run -d --name mysql \
  mysql
 ```
 
-- `-e MYSQL_ROOT_PASSWORD=root`设置账号为`root`的密码为`root`
+- `-e MYSQL_ROOT_PASSWORD=root`设置账号为`root`的密码为`root`(仅首次运行时设置)

@@ -56,19 +56,31 @@ EOF
 
 | 常用 | 命令    | 解释                                 |
 | ---- | ------- | ------------------------------------ |
+| ■    | search  | 从docker仓库搜索镜像                 |
+| ■■   | pull    | 从docker仓库拉取镜像                 |
+| ■■   | images  | 列出本地存储的所有镜                 |
 | ■■   | run     | 启动新的容器并运行命令               |
 | ■■   | exec    | 在运行的容器中执行命令               |
 | ■■   | ps      | 列出当前正在运行的容器               |
 |      | build   | 使用dockerfile构建镜像               |
 |      | bake    | 从文件构建                           |
-| ■■   | pull    | 从docker仓库拉取镜像                 |
 |      | push    | 将镜像推送到docker仓库               |
-| ■■   | images  | 列出本地存储的所有镜                 |
 |      | login   | 登录docker仓库                       |
 |      | logout  | 退出docker仓库                       |
-| ■■   | search  | 从docker仓库搜索镜像                 |
 |      | version | 显示docker客户端和守护进程的版本信息 |
 |      | info    | 显示docker系统的详细信息             |
+
+#### 常用命令
+
+| 常用 | 命令                      | 解释                                 |
+| ---- | ------------------------- | ------------------------------------ |
+| ■    | search nginx              | 搜索nginx镜像                        |
+| ■■   | pull nginx                | 拉取nginx镜像                        |
+| ■■   | images                    | 查看所有镜像                         |
+| ■■   | run --name nginx -d nginx | 创建nginx镜像命名为nginx并在后台启动 |
+| ■■   | exec -it nginx bash       | 进入已启动的容器内部并通过bash交互   |
+| ■■   | ps                        | 查看正在运行的容器                   |
+| ■■   | ps -a                     | 查看所有容器                         |
 
 ### 管理命令
 
@@ -102,28 +114,50 @@ EOF
 |      | create  | 创建新容器                                       |
 |      | diff    | 检查容器文件系统上文件或目录的更改情况           |
 |      | events  | 从服务器获取实时事件                             |
-|      | export  | 将容器的文件系统导出为tar                        |
-| ■    | history | 显示镜像的历史记录                               |
+|      | history | 显示镜像的历史记录                               |
 |      | import  | 从tarball中导入内容以创建文件系统镜像            |
-|      | inspect | 获取容器或镜像的详细信息                         |
-| ■■   | kill    | 杀死镜像正在运行的容器                           |
-| ■■   | logs    | 查看容器的日志                                   |
-| ■■   | pause   | 暂停镜像容器中的所有进程                         |
-| ■■   | unpause | 取消暂停镜像容器中的所有进程                     |
-| ■■   | port    | 列出容器的端口映射或特定映射                     |
-| ■■   | rename  | 重命名容器                                       |
-| ■■   | restart | 重新启动镜像容器                                 |
-| ■■   | rm      | 移除镜像容器                                     |
-| ■■   | rmi     | 删除镜像镜像                                     |
-| ■    | save    | 将镜像镜像保存为tar(默认流输出到STDIN)           |
-| ■    | load    | 从tar或STDIN加载镜像                             |
+|      | export  | 将容器的文件系统导出为tar                        |
+| ■    | inspect | 获取容器或镜像的详细信息                         |
+| ■    | update  | 更新镜像容器的配置                               |
 | ■■   | start   | 启动镜像已停止的容器                             |
 | ■■   | stop    | 停止镜像正在运行的容器                           |
+| ■■   | restart | 重新启动镜像容器                                 |
+| ■    | kill    | 杀死镜像正在运行的容器                           |
+| ■■   | logs    | 查看容器的日志                                   |
+| ■    | pause   | 暂停镜像容器中的所有进程                         |
+| ■    | unpause | 取消暂停镜像容器中的所有进程                     |
+| ■    | port    | 列出容器的端口映射或特定映射                     |
+| ■■   | rename  | 重命名容器                                       |
+| ■■   | rm      | 删除容器                                         |
+| ■■   | rmi     | 删除镜像                                         |
 | ■■   | stats   | 显示容器的实时资源使用情况                       |
-|      | tag     | 创建名为TARGET_IMAGE的标签，引用SOURCE_IMAGE     |
 | ■■   | top     | 显示容器的运行进程                               |
-| ■■   | update  | 更新镜像容器的配置                               |
+| ■    | save    | 将镜像镜像保存为tar(默认流输出到STDIN)           |
+| ■    | load    | 从tar或STDIN加载镜像                             |
+|      | tag     | 创建名为TARGET_IMAGE的标签，引用SOURCE_IMAGE     |
 |      | wait    | 阻塞直到镜像容器停止运行，然后打印它们的退出码   |
+
+#### 常用命令
+
+| 常用 | 命令                                              | 解释                          |
+| ---- | ------------------------------------------------- | ----------------------------- |
+| ■■   | pull nginx                                        | 拉取nginx镜像                 |
+| ■■   | cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf | 复制nginx容器中的文件到宿主机 |
+| ■■   | start nginx                                       | 启用nginx容器                 |
+| ■■   | stop nginx                                        | 停止nginx容器                 |
+| ■■   | restart nginx                                     | 重新启动nginx容器             |
+| ■■   | kill nginx                                        | 杀死nginx容器                 |
+| ■■   | logs nginx                                        | 查看nginx容器日志             |
+| ■■   | rename mosquitto mqtt                             | 重命名容器mosquitto为mqtt     |
+| ■■   | rm nginx                                          | 删除容器nginx                 |
+| ■■   | rmi nginx                                         | 删除镜像nginx                 |
+| ■■   | stats                                             | 显示容器的实时资源使用情况    |
+| ■■   | top nginx                                         | 显示nginx容器的运行进程       |
+| ■    | save -o nginx_latest.tar nginx:latest             | 打包镜像                      |
+| ■    | load -i nginx_latest.tar                          | 加载镜像                      |
+| ■    | inspect nginx                                     | 查看镜像详情                  |
+|      | Config.Env.NGINX_VERSION                          | 镜像版本号                    |
+| ■    | inspect nginx -f '{{.Config.Env}}'                | 查看镜像版本号                |
 
 ### 选项
 
