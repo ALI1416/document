@@ -69,6 +69,7 @@
   - `Windows版补丁`<https://github.com/LiteLoaderQQNT/QQNTFileVerifyPatch>
   - `防撤回插件`<https://github.com/xh321/LiteLoaderQQNT-Anti-Recall>
 - `ContextMenuManager` 右键管理
+  - <https://gitee.com/BluePointLilac/ContextMenuManager>
   - <https://gitee.com/Jack251970/ContextMenuManager>
 
 - `PixPin` 截图工具
@@ -94,14 +95,21 @@
   - <https://pc.weixin.qq.com/>
 - `QQ音乐`
   - <https://y.qq.com/download/>
-- `QQ影音`
-  - <https://player.qq.com/>
-- `搜狗输入法`
-  - <https://pinyin.sogou.com/>
-- `好压`
-  - <https://haozip.2345.cc/>
-- `看图王`
-  - <https://pic.2345.cc/>
+- `VLC`
+  - <https://www.videolan.org/>
+  - `单击暂停插件`<https://github.com/nurupo/vlc-pause-click-plugin>
+- `微信输入法`
+  - <https://z.weixin.qq.com/>
+- `Bandizip`
+  - <https://www.bandisoft.com/bandizip/>
+  - `破解版`<https://www.mefcl.com/bandizip.html>
+  - `破解版`<https://www.423down.com/9735.html>
+- `IrfanView`
+  - <https://www.irfanview.com/>
+  - `下载`<https://www.ghxi.com/irfanview.html>
+- `AutoHotkey`
+  - <https://www.autohotkey.com/>
+  - `下载`<https://github.com/AutoHotkey/AutoHotkey/releases>
 - `阿里云盘`
   - <https://www.aliyundrive.com/>
 - `百度网盘`
@@ -150,6 +158,8 @@
   - <http://www.wsgsoft.net/ash/>
   - 免安装
 
+- `打印机修复工具`
+  - <https://www.52pojie.cn/thread-2028790-1-1.html>
 - `PCtoLCD2002` 取模
   - <https://www.cr173.com/soft/37775.html>
 - `VeryPDF Password Remover` PDF密码移除
