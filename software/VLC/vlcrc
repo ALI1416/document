@@ -1665,7 +1665,7 @@ effect-fft-window=none
 #qt-fs-opacity=0.800000
 
 # Resize interface to the native video size (布尔)
-#qt-video-autoresize=1
+qt-video-autoresize=0
 
 # Show playing item name in window title (布尔)
 #qt-name-in-title=1
@@ -1680,7 +1680,7 @@ effect-fft-window=none
 #qt-recentplay-filter=
 
 # Continue playback? (整数)
-#qt-continue=1
+qt-continue=2
 
 # Enable Dark Mode (布尔)
 #qt-dark-palette=0
@@ -4120,7 +4120,7 @@ aout=any
 #audio-filter=
 
 # Audio visualizations (字符串)
-audio-visual=visual
+audio-visual=any
 
 # Audio resampler (字符串)
 audio-resampler=any

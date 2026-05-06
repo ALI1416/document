@@ -16,6 +16,10 @@
 - `Windows 10 (Multiple Editions), Version 1607 (Updated Jul 2016) (x64) - DVD (Chinese-Simplified)`
   - cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso
   - `ed2k://|file|cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso|4347183104|35EA5DB0F3BB714F5CE0740FB89D82D1|/`
+- `Windows 10 (consumer editions), version 22H2 (updated Oct 2025) (x64) - DVD (Chinese-Simplified)`
+  - zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso
+  - `ed2k://|file|zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso|7168839680|C16CA4505649F9128F6F42A1DE2D7526|/`
+  - `magnet:?xt=urn:btih:d5146f69f1bb6b9d95c8270769ebca7f82c2936a&dn=zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso&xl=7168839680`
 - `Windows 10 Enterprise LTSC 2021 (x64) - DVD (Chinese-Simplified)`
   - SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO
   - `ed2k://|file|SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO|5044211712|1555B7DCA052B5958EE68DB58A42408D|/`
