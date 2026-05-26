@@ -7,18 +7,18 @@
    3. `-d`后台运行
    4. `nginx`镜像名称`nginx`
 3. 进入容器内部`docker exec -it nginx bash`查看要映射哪些内容
-   1. 配置文件`/etc/nginx/nginx.conf`映射到`/docker/nginx/conf/nginx.conf`，创建文件夹`mkdir -p /docker/nginx/conf`，复制文件`docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf`
-   2. HTML文件夹`/usr/share/nginx/html`映射到`/docker/nginx/html`，创建文件夹`mkdir -p /docker/nginx/html`，复制文件夹`docker cp nginx:/usr/share/nginx/html /docker/nginx`
+   1. 配置文件夹`/etc/nginx`映射到`/docker/nginx/conf`，复制文件夹`docker cp nginx:/etc/nginx /docker/nginx/conf`
+   2. HTML文件夹`/usr/share/nginx/html`映射到`/docker/nginx/html`，复制文件夹`docker cp nginx:/usr/share/nginx/html /docker/nginx`
    3. 日志文件夹`/var/log/nginx`映射到`/docker/nginx/log`，创建文件夹`mkdir -p /docker/nginx/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
-mkdir -p /docker/nginx/{conf,html,log}
-docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf
+mkdir -p /docker/nginx/log
+docker cp nginx:/etc/nginx /docker/nginx/conf
 docker cp nginx:/usr/share/nginx/html /docker/nginx
 ```
 
-5. 修改配置文件`/docker/nginx/conf/nginx.conf`
+5. 修改配置文件`vi /docker/nginx/conf/nginx.conf`
 
 ```ini
 #用户
@@ -83,7 +83,7 @@ http {
 }
 ```
 
-6. 创建`/docker/nginx/html/404.html`文件
+6. 创建文件`vi /docker/nginx/html/404.html`
 
 ```html
 <!DOCTYPE html>
@@ -103,7 +103,7 @@ http {
 ```sh
 docker run -d --name nginx \
  -p 90:80 \
- -v /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+ -v /docker/nginx/conf:/etc/nginx \
  -v /docker/nginx/html:/usr/share/nginx/html \
  -v /docker/nginx/log:/var/log/nginx \
  --restart=always \
@@ -113,7 +113,7 @@ docker run -d --name nginx \
 - `-d`后台运行容器(detached模式)
 - `--name nginx`指定容器名称为`nginx`
 - `-p 90:80`映射宿主机`90`端口到容器`80`端口
-- `-v /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf`映射宿主机`/docker/nginx/conf/nginx.conf`文件到容器`/etc/nginx/nginx.conf`文件
+- `-v /docker/nginx/conf:/etc/nginx`映射宿主机夹`/docker/nginx/conf`文件到容器`/etc/nginx`文件夹
 - `--restart=always`容器意外退出时自动重启
 
 9. 访问地址`http://127.0.0.1:90/`有内容显示，即启动成功

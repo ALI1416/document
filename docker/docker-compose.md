@@ -45,6 +45,8 @@
 
 ## 示例
 
+1. 创建文件`vi /docker/docker-compose.yml`
+
 ```yml
 name: myapp
 services:
@@ -62,7 +64,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /docker/nginx/conf:/etc/nginx
       - /docker/app:/app
       - /docker/nginx/log:/var/log/nginx
     restart: always
@@ -98,3 +100,7 @@ services:
       - /docker/jenkins:/var/jenkins_home
     restart: always
 ```
+
+2. 进入文件夹`cd /docker`
+3. 启动`docker compose up`
+4. 停止`docker compose down`

@@ -891,11 +891,12 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 ### 示例
 
-| 常用 | 命令                 | 解释                              |
-| ---- | -------------------- | --------------------------------- |
-| ■■   | cp file file1        | 复制file文件为file1文件           |
-| ■■   | cp file file1 folder | 复制file和file1文件到folder文件夹 |
-| ■■   | cp -r folder folder1 | 复制folder文件夹为folder1文件夹   |
+| 常用 | 命令                               | 解释                              |
+| ---- | ---------------------------------- | --------------------------------- |
+| ■■   | cp file file1                      | 复制file文件为file1文件           |
+| ■■   | cp file file1 folder               | 复制file和file1文件到folder文件夹 |
+| ■■   | cp -r folder folder1               | 复制folder文件夹为folder1文件夹   |
+|      | 如果存在目的文件夹，则创建源文件夹 | 不存在，则平铺文件夹里内容        |
 
 ## dd 转换和复制文件
 

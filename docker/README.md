@@ -113,7 +113,7 @@ EOF
 | ■■   | cp      | 在容器和本地文件系统之间复制文件/文件夹          |
 |      | create  | 创建新容器                                       |
 |      | diff    | 检查容器文件系统上文件或目录的更改情况           |
-|      | events  | 从容器接收实时事件                             |
+|      | events  | 从容器接收实时事件                               |
 |      | history | 显示镜像的历史记录                               |
 |      | import  | 从tarball中导入内容以创建文件系统镜像            |
 |      | export  | 将容器的文件系统导出为tar                        |
@@ -139,25 +139,26 @@ EOF
 
 #### 常用命令
 
-| 常用 | 命令                                              | 解释                          |
-| ---- | ------------------------------------------------- | ----------------------------- |
-| ■■   | pull nginx                                        | 拉取nginx镜像                 |
-| ■■   | cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf | 复制nginx容器中的文件到宿主机 |
-| ■■   | start nginx                                       | 启用nginx容器                 |
-| ■■   | stop nginx                                        | 停止nginx容器                 |
-| ■■   | restart nginx                                     | 重新启动nginx容器             |
-| ■■   | kill nginx                                        | 杀死nginx容器                 |
-| ■■   | logs nginx                                        | 查看nginx容器日志             |
-| ■■   | rename mosquitto mqtt                             | 重命名容器mosquitto为mqtt     |
-| ■■   | rm nginx                                          | 删除容器nginx                 |
-| ■■   | rmi nginx                                         | 删除镜像nginx                 |
-| ■■   | stats                                             | 显示容器的实时资源使用情况    |
-| ■■   | top nginx                                         | 显示nginx容器的运行进程       |
-| ■    | save -o nginx_latest.tar nginx:latest             | 打包镜像                      |
-| ■    | load -i nginx_latest.tar                          | 加载镜像                      |
-| ■    | inspect nginx                                     | 查看镜像详情                  |
-|      | Config.Env.NGINX_VERSION                          | 镜像版本号                    |
-| ■    | inspect nginx -f '{{.Config.Env}}'                | 查看镜像版本号                |
+| 常用 | 命令                                   | 解释                          |
+| ---- | -------------------------------------- | ----------------------------- |
+| ■■   | pull nginx                             | 拉取nginx镜像                 |
+| ■■   | cp nginx:/etc/nginx /docker/nginx/conf | 复制nginx容器中的文件到宿主机 |
+|      | 如果存在目的文件夹，则创建源文件夹     | 不存在，则平铺文件夹里内容    |
+| ■■   | start nginx                            | 启用nginx容器                 |
+| ■■   | stop nginx                             | 停止nginx容器                 |
+| ■■   | restart nginx                          | 重新启动nginx容器             |
+| ■■   | kill nginx                             | 杀死nginx容器                 |
+| ■■   | logs nginx                             | 查看nginx容器日志             |
+| ■■   | rename mosquitto mqtt                  | 重命名容器mosquitto为mqtt     |
+| ■■   | rm nginx                               | 删除容器nginx                 |
+| ■■   | rmi nginx                              | 删除镜像nginx                 |
+| ■■   | stats                                  | 显示容器的实时资源使用情况    |
+| ■■   | top nginx                              | 显示nginx容器的运行进程       |
+| ■    | save -o nginx_latest.tar nginx:latest  | 打包镜像                      |
+| ■    | load -i nginx_latest.tar               | 加载镜像                      |
+| ■    | inspect nginx                          | 查看镜像详情                  |
+|      | Config.Env.NGINX_VERSION               | 镜像版本号                    |
+| ■    | inspect nginx -f '{{.Config.Env}}'     | 查看镜像版本号                |
 
 ### 选项
 

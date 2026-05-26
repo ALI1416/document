@@ -38,7 +38,7 @@
 1. 检查现有的交换空间：`swapon --show`，无内容说明没有
 2. 禁用现有的交换空间：`swapoff /swapfile`
 3. 删除旧交换分区：`rm /swapfile`
-4. 重新创建交换文件：`fallocate -l 16G /swapfile`
+4. 重新创建交换文件：`fallocate -l 4G /swapfile`
 5. 设置交换文件权限：`chmod 600 /swapfile`
 6. 将文件设置为交换空间：`mkswap /swapfile`
 7. 启用交换文件：`swapon /swapfile`
@@ -48,6 +48,20 @@
     1. 新增`vm.swappiness = 60`，范围0-100，值越大交换分区使用越频繁
     2. 新增`vm.min_free_kbytes = 128000`，单位KB，启用交换分区最小值
 11. 立即生效：`sysctl -p`
+
+1-9全部执行
+
+```sh
+swapon --show
+swapoff /swapfile
+rm /swapfile
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+```
 
 ## 更改镜像源
 

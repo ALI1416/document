@@ -52,6 +52,6 @@ docker run -d --name mongo \
  mongo --config /etc/mongod.conf
 ```
 
-- `-e MONGO_INITDB_ROOT_USERNAME=admin`设置超级管理员账号为`admin`
-- `-e MONGO_INITDB_ROOT_PASSWORD=admin`设置超级管理员密码为`admin`
+- `-e MONGO_INITDB_ROOT_USERNAME=admin`设置超级管理员账号为`admin`(仅首次运行时设置)
+- `-e MONGO_INITDB_ROOT_PASSWORD=admin`设置超级管理员密码为`admin`(仅首次运行时设置)
 - `--config /etc/mongod.conf`指定配置文件

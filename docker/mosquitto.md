@@ -3,15 +3,18 @@
 1. 拉取镜像`docker pull eclipse-mosquitto`
 2. 启动临时容器`docker run --name mosquitto -d eclipse-mosquitto`
 3. 进入容器内部`docker exec -it mosquitto sh`(使用了精简版linux，不能使用bash)查看要映射哪些内容
-   1. 配置文件`/mosquitto/config/mosquitto.conf`映射到`/docker/mosquitto/conf/mosquitto.conf`，创建文件夹`mkdir -p /docker/mosquitto/conf`，复制文件`docker cp mosquitto:/mosquitto/config/mosquitto.conf /docker/mosquitto/conf`，创建密码文件`touch /docker/mosquitto/conf/pwfile.txt`
+   1. 配置文件夹`/mosquitto/config`映射到`/docker/mosquitto/conf`，复制文件夹`docker cp mosquitto:/mosquitto/config /docker/mosquitto/conf`，创建密码文件`touch /docker/mosquitto/conf/pwfile.txt`，修改文件权限`chown 1883:1883 /docker/mosquitto/conf/pwfile.txt`、`chmod 700 /docker/mosquitto/conf/pwfile.txt`
    2. 数据文件夹`/mosquitto/data`映射到`/docker/mosquitto/data`，创建文件夹`mkdir -p /docker/mosquitto/data`
-   3. 日志文件夹`/mosquitto/log`映射到`/docker/mosquitto/log`，创建文件夹`mkdir -p /docker/mosquitto/log`，修改文件夹权限`chown -R 999:999 /docker/mosquitto/log`
+   3. 日志文件夹`/mosquitto/log`映射到`/docker/mosquitto/log`，创建文件夹`mkdir -p /docker/mosquitto/log`，修改文件夹权限`chown -R 1883:1883 /docker/mosquitto/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
-mkdir -p /docker/mosquitto/{conf,data,log}
-docker cp mosquitto:/mosquitto/config/mosquitto.conf /docker/mosquitto/conf
+mkdir -p /docker/mosquitto/{data,log}
+docker cp mosquitto:/mosquitto/config /docker/mosquitto/conf
 touch /docker/mosquitto/conf/pwfile.txt
+chown 1883:1883 /docker/mosquitto/conf/pwfile.txt
+chmod 700 /docker/mosquitto/conf/pwfile.txt
+chown -R 1883:1883 /docker/mosquitto/log
 ```
 
 5. 修改配置文件`/docker/mosquitto/conf/mosquitto.conf`
@@ -52,5 +55,5 @@ docker run -d --name mosquitto \
 ```
 
 8. 进入容器内部`docker exec -it mosquitto sh`
-9. 配置密码`mosquitto_passwd /mosquitto/config/pwfile.txt 用户名`
+9. 配置密码`mosquitto_passwd /mosquitto/config/pwfile.txt 用户名`(忽略警告)
 10. 退出容器`exit`，重启容器`docker restart mosquitto`

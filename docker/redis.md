@@ -56,7 +56,7 @@ auto-aof-rewrite-min-size 64mb
 ```sh
 docker run -d --name redis \
  -p 6379:6379 \
- -v /docker/redis/conf/redis.conf:/etc/redis/redis.conf \
+ -v /docker/redis/conf:/etc/redis \
  -v /docker/redis/data:/data \
  -v /docker/redis/log:/var/log/redis \
  --restart=always \

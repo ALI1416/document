@@ -9,53 +9,35 @@
 1. 拉取镜像`docker pull bitnami/php-fpm`
 2. 启动临时容器`docker run --name php -d bitnami/php-fpm`
 3. 进入容器内部`docker exec -it php bash`查看要映射哪些内容
-   1. 配置文件夹`/opt/bitnami/php/etc`映射到`/docker/php/conf`，复制文件`docker cp php:/opt/bitnami/php/etc /docker/php`，修改文件夹路径`mv /docker/php/etc /docker/php/conf`
-   2. 数据文件夹`/app`映射到`/docker/app`
+   1. 配置文件夹`/opt/bitnami/php/etc`映射到`/docker/php/conf`，复制文件夹`docker cp php:/opt/bitnami/php/etc /docker/php/conf`
+   2. 数据文件夹`/app`映射到`/docker/app`(不创建)
    3. 日志文件夹`/opt/bitnami/php/logs`映射到`/docker/php/log`，创建文件夹`mkdir -p /docker/php/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
 mkdir -p /docker/php/log
-docker cp php:/opt/bitnami/php/etc /docker/php
-mv /docker/php/etc /docker/php/conf
+docker cp php:/opt/bitnami/php/etc /docker/php/conf
 ```
 
 5. 停止并删除临时容器`docker stop php && docker rm php`
-6. 配置并启动容器
-
-```sh
-docker run -d --name php \
- --network nginx-php \
- -p 9000:9000 \
- -v /docker/php/conf:/opt/bitnami/php/etc \
- -v /docker/app:/app \
- -v /docker/php/log:/opt/bitnami/php/logs \
- --restart=always \
- bitnami/php-fpm
-```
-
-- `--network nginx-php`添加桥接网络
-
-7. 创建文件`/docker/app/1.php`，内容为`<?php phpinfo();?>`
 
 ## nginx
 
 1. 拉取镜像`docker pull nginx`
 2. 启动临时容器`docker run --name nginx -d nginx`
 3. 进入容器内部`docker exec -it nginx bash`查看要映射哪些内容
-   1. 配置文件`/etc/nginx/nginx.conf`映射到`/docker/nginx/conf/nginx.conf`，复制文件`docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf/nginx.conf`
-   2. HTML文件夹`/app`映射到`/docker/app`，复制文件夹`docker cp nginx:/usr/share/nginx/html /docker`，修改文件夹路径`mv /docker/html /docker/app`(内部外部都要与php数据目录相同)
+   1. 配置文件夹`/etc/nginx`映射到`/docker/nginx/conf`，复制文件夹`docker cp nginx:/etc/nginx /docker/nginx/conf`
+   2. HTML文件夹`/app`映射到`/docker/app`，复制文件夹`docker cp nginx:/usr/share/nginx/html /docker`，重命名文件夹`mv /docker/html /docker/app`(内部外部都要与php数据目录相同)
    3. 日志文件夹`/var/log/nginx`映射到`/docker/nginx/log`，创建文件夹`mkdir -p /docker/nginx/log`
 4. 退出容器`exit`，并执行命令
 
 ```sh
-mkdir -p /docker/nginx/{conf,log}
-docker cp nginx:/etc/nginx/nginx.conf /docker/nginx/conf/nginx.conf
-docker cp nginx:/usr/share/nginx/html /docker
-mv /docker/html /docker/app
+mkdir -p /docker/nginx/log
+docker cp nginx:/etc/nginx /docker/nginx/conf
+docker cp nginx:/usr/share/nginx/html /docker/app
 ```
 
-5. 修改配置文件`/docker/nginx/conf/nginx.conf`
+5. 修改配置文件`vi /docker/nginx/conf/nginx.conf`
 
 ```ini
 #用户
@@ -128,7 +110,7 @@ http {
 }
 ```
 
-6. 创建`/docker/app/404.html`文件
+6. 创建`vi /docker/app/404.html`文件
 
 ```html
 <!DOCTYPE html>
@@ -142,22 +124,40 @@ http {
 </html>
 ```
 
-7. 停止并删除临时容器`docker stop nginx && docker rm nginx`
-8. 配置并启动容器
+7. 创建文件`vi /docker/app/1.php`，内容为`<?php phpinfo();?>`
+
+8. 停止并删除临时容器`docker stop nginx && docker rm nginx`
+
+9. 配置并启动php容器
+
+```sh
+docker run -d --name php \
+ --network nginx-php \
+ -p 9000:9000 \
+ -v /docker/php/conf:/opt/bitnami/php/etc \
+ -v /docker/app:/app \
+ -v /docker/php/log:/opt/bitnami/php/logs \
+ --restart=always \
+ bitnami/php-fpm
+```
+
+- `--network nginx-php`添加桥接网络
+
+10. 配置并启动nginx容器
 
 ```sh
 docker run -d --name nginx \
  --network nginx-php \
  -p 80:80 \
- -v /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+ -v /docker/nginx/conf:/etc/nginx \
  -v /docker/app:/app \
  -v /docker/nginx/log:/var/log/nginx \
  --restart=always \
  nginx
 ```
 
-9. 访问地址<http://127.0.0.1/>
-10. 访问地址<http://127.0.0.1/1.php>
+10. 访问地址<http://127.0.0.1/>
+11. 访问php地址<http://127.0.0.1/1.php>
 
 ## Z-BlogPHP
 
@@ -183,4 +183,4 @@ location ~ \.php$ {
 ```
 
 4. 重启nginx`docker restart nginx`
-5. 访问<http://localhost/blog/index.php>
+5. 访问<http://127.0.0.1/blog/index.php>
