@@ -163,13 +163,14 @@ docker run -d --name nginx \
 
 1. 下载源码<https://www.zblogcn.com/zblogphp/>，并复制到`/docker/app`目录
 2. 解压到`/docker/app/blog`目录`unzip Z-BlogPHP.zip -d blog`，并删除zip文件
-3. 配置nginx
+3. 给目录授权`chmod -R 777 /docker/app/blog`
+4. 配置nginx
 
 ```ini
 #首页跳转
 location / {
   root  /app/blog;
-  index index.html;
+  index index.php;
 }
 
 #PHP反向代理
@@ -182,5 +183,5 @@ location ~ \.php$ {
 }
 ```
 
-4. 重启nginx`docker restart nginx`
-5. 访问<http://127.0.0.1/blog/index.php>
+5. 重启nginx`docker restart nginx`
+6. 访问<http://127.0.0.1/blog/index.php>

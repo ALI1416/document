@@ -68,8 +68,12 @@
 ### 创建用户
 
 ```js
+// 进入MongoDB命令行
+mongosh
 // 切换到admin数据库
 use admin
+// 验证权限
+db.auth("admin","admin")
 // 创建超级管理员账号root密码root
 db.createUser({user: "root", pwd: "root", roles: [{role: "root", db:"admin"}]})
 // 显示账号

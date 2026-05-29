@@ -55,3 +55,17 @@ docker run -d --name mongo \
 - `-e MONGO_INITDB_ROOT_USERNAME=admin`设置超级管理员账号为`admin`(仅首次运行时设置)
 - `-e MONGO_INITDB_ROOT_PASSWORD=admin`设置超级管理员密码为`admin`(仅首次运行时设置)
 - `--config /etc/mongod.conf`指定配置文件
+
+8. 创建数据库
+   1. 进入容器内部`docker exec -it mongo bash`
+   2. 进入MongoDB命令行`mongosh`
+   3. 切换到admin数据库`use admin`
+   4. 验证超级管理员`db.auth("admin","admin")`
+   5. 切换到testdb数据库`use testdb`
+   6. 创建用户`test`只能读写`testdb`数据库
+
+```js
+db.createUser({user: "test", pwd: "test", roles: [{role: "readWrite", db:"testdb"}]})
+```
+
+   7. 新增一条数据`db.a.insert({a:1})`

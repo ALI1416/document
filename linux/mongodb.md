@@ -22,7 +22,7 @@ security:
 - 创建超级管理员用户`root`
 
 ```js
-db.createUser({user: "root", pwd: "ChengKai1998!", roles: [{role: "root", db:"admin"}]})
+db.createUser({user: "root", pwd: "root", roles: [{role: "root", db:"admin"}]})
 ```
 
 - 验证超级管理员`db.auth("root","root")`
