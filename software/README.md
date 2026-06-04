@@ -90,7 +90,7 @@
 - `SteamTools` 加速器
   - <https://gitee.com/rmbgame/SteamTools/releases>
 - `Gopeed` 下载器
-  - <https://motrix.app/zh-CN/download>
+  - <https://gopeed.com/zh>
 - `QuickTextPaste` 快速粘贴
   - <http://www.softwareok.com/?seite=Microsoft/QuickTextPaste>
 - `QQ`
@@ -301,6 +301,8 @@
 - `openjdk`
   - <https://openjdk.org/>
   - `下载`<https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jdk>
+- `SQL Server 2008 R2`
+  - `下载`<https://www.downkuai.com/soft/110509.html>
 - `python`
   - <https://www.python.org/downloads/windows/>
 - `git`
