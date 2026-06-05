@@ -7,6 +7,8 @@
 
 ## `SystemImage` 系统镜像
 
+- `ED2生成器`
+  - <https://ed2k.js.org/>
 - `下载地址`
   - <https://msdn.itellyou.cn/>
   - <https://next.itellyou.cn/Original/Index>
@@ -302,7 +304,8 @@
   - <https://openjdk.org/>
   - `下载`<https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jdk>
 - `SQL Server 2008 R2`
-  - `下载`<https://www.downkuai.com/soft/110509.html>
+  - `迅雷下载`<http://care.dlservice.microsoft.com/dl/download/1/E/6/1E626796-588A-495C-917B-321093FB98EB/2052/SQLFULL_x64_CHS.exe>
+  - `ed2k://|file|SQLFULL_x64_CHS.exe|1771522424|6A6AE8CE031FAFC655B5508E9595039C|/`
 - `python`
   - <https://www.python.org/downloads/windows/>
 - `git`
