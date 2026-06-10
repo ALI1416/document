@@ -69,7 +69,6 @@ http {
 
     #404跳转
     error_page 404 /404.html;
-
     #50x跳转
     error_page 500 502 503 504 /50x.html;
 
@@ -106,6 +105,7 @@ docker run -d --name nginx \
  -v /docker/nginx/conf:/etc/nginx \
  -v /docker/nginx/html:/usr/share/nginx/html \
  -v /docker/nginx/log:/var/log/nginx \
+ --add-host host.docker.internal:host-gateway
  --restart=always \
  nginx
 ```
@@ -114,6 +114,7 @@ docker run -d --name nginx \
 - `--name nginx`指定容器名称为`nginx`
 - `-p 90:80`映射宿主机`90`端口到容器`80`端口
 - `-v /docker/nginx/conf:/etc/nginx`映射宿主机夹`/docker/nginx/conf`文件到容器`/etc/nginx`文件夹
+- `--add-host host.docker.internal:host-gateway`代理宿主机IP，使用`host.docker.internal`访问
 - `--restart=always`容器意外退出时自动重启
 
 9. 访问地址`http://127.0.0.1:90/`有内容显示，即启动成功

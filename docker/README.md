@@ -72,15 +72,16 @@ EOF
 
 #### 常用命令
 
-| 常用 | 命令                      | 解释                                 |
-| ---- | ------------------------- | ------------------------------------ |
-| ■    | search nginx              | 搜索nginx镜像                        |
-| ■■   | pull nginx                | 拉取nginx镜像                        |
-| ■■   | images                    | 查看所有镜像                         |
-| ■■   | run --name nginx -d nginx | 创建nginx镜像命名为nginx并在后台启动 |
-| ■■   | exec -it nginx bash       | 进入已启动的容器内部并通过bash交互   |
-| ■■   | ps                        | 查看正在运行的容器                   |
-| ■■   | ps -a                     | 查看所有容器                         |
+| 常用 | 命令                           | 解释                                 |
+| ---- | ------------------------------ | ------------------------------------ |
+| ■    | search nginx                   | 搜索nginx镜像                        |
+| ■■   | pull nginx                     | 拉取nginx镜像                        |
+| ■■   | images                         | 查看所有镜像                         |
+| ■■   | run --name nginx -d nginx      | 创建nginx镜像命名为nginx并在后台启动 |
+| ■■   | exec -it nginx bash            | 进入已启动的容器内部并通过bash交互   |
+| ■■   | exec -it nginx nginx -s reload | 重新加载nginx配置                    |
+| ■■   | ps                             | 查看正在运行的容器                   |
+| ■■   | ps -a                          | 查看所有容器                         |
 
 ### 管理命令
 

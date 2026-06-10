@@ -1399,6 +1399,14 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | \uHHHH     | 十六进制Unicode字符 |
 |      | \UHHHHHHHH | 十六进制Unicode字符 |
 
+### 示例
+
+| 常用 | 命令             | 解释       |
+| ---- | ---------------- | ---------- |
+| ■    | echo "\"hello\"" | 输出双引号 |
+| ■    | echo '"hello"'   | 输出双引号 |
+| ■    | echo "'hello'"   | 输出单引号 |
+
 ## history 命令历史列表
 
 - **格式：`history [-c] [-d 偏移量] [n]`**

@@ -33,6 +33,7 @@ echo "Hello, World!"
 - 使用`=`赋值
 - `=`两侧不能加`空格`
 - 变量名只能包含字母、数字和下划线，不能以数字开头
+- 如果变量名两侧有字母、数字或下划线，需要用`{}`包围
 
 使用`$`引用变量
 
@@ -49,6 +50,8 @@ echo "Hello, $name"
 number=42
 # 数字变量
 echo "The number is $number"
+# 两侧有字母、数字或下划线
+echo "12${number}34"
 ```
 
 修饰符`readonly`只读变量(常量)
@@ -187,6 +190,38 @@ elif [ $number -lt 0 ]; then
 else
   echo "The number is zero."
 fi
+```
+
+简写
+
+```sh
+if [ 判断 ]; then
+  成功语句;
+else
+  失败语句;
+fi
+```
+
+简写后：
+
+```sh
+命令 && { 成功语句; } || { 失败语句; }
+```
+
+示例：
+
+```sh
+if kill -9 "${PID}" 2>/dev/null; then
+  echo "成功"
+else
+  echo "失败"
+fi
+```
+
+简写后：
+
+```sh
+kill -9 "${PID}" 2>/dev/null && {echo "成功"} || { echo "失败"; }
 ```
 
 使用`case`语句

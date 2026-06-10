@@ -63,6 +63,7 @@ services:
     container_name: nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - /docker/nginx/conf:/etc/nginx
       - /docker/app:/app
@@ -70,6 +71,8 @@ services:
     restart: always
     depends_on:
       - php
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   mysql:
     image: mysql
     container_name: mysql
@@ -95,12 +98,16 @@ services:
     image: jenkins/jenkins:latest-jdk21
     container_name: jenkins
     ports:
-      - "8080:8080"
+      - "8081:8080"
     volumes:
       - /docker/jenkins:/var/jenkins_home
+    environment:
+      - TZ=Asia/Shanghai
+      - JENKINS_OPTS=--prefix=/jenkins
     restart: always
 ```
 
 2. 进入文件夹`cd /docker`
 3. 启动`docker compose up`
 4. 停止`docker compose down`
+5. 重新加载配置`docker compose up -d`

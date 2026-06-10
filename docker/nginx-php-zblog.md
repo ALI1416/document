@@ -88,21 +88,12 @@ http {
 
     #404跳转
     error_page 404 /404.html;
-
     #50x跳转
     error_page 500 502 503 504 /50x.html;
 
     #首页跳转
     location / {
       index index.html;
-    }
-
-    #PHP反向代理
-    location ~ \.php$ {
-      fastcgi_pass  php:9000;
-      fastcgi_index index.php;
-      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-      include       fastcgi_params;
     }
 
   }
@@ -152,6 +143,7 @@ docker run -d --name nginx \
  -v /docker/nginx/conf:/etc/nginx \
  -v /docker/app:/app \
  -v /docker/nginx/log:/var/log/nginx \
+ --add-host host.docker.internal:host-gateway
  --restart=always \
  nginx
 ```

@@ -19,19 +19,24 @@ docker run -d --name jenkins \
  -p 8080:8080 \
  -p 50000:50000 \
  -v /docker/jenkins:/var/jenkins_home \
+ -e TZ=Asia/Shanghai \
+ -e JENKINS_OPTS="--prefix=/jenkins" \
  --restart=always \
  jenkins/jenkins:latest-jdk21
 ```
 
 - `-p 8080:8080`Web页面
 - `-p 50000:50000`代理通信页面
+- `-e TZ=Asia/Shanghai`设置时区为中国
+- `-e JENKINS_OPTS="--prefix=/jenkins"`访问路径添加`jenkins`前缀
 
-7. 访问地址<http://127.0.0.1:8080>
+7. 访问地址<http://127.0.0.1:8080/jenkins>
 8. 查看秘钥`cat /docker/jenkins/secrets/initialAdminPassword`
 9. 更换插件源：`系统管理`->`插件管理`->`Advanced settings`，将URL`https://updates.jenkins.io/update-center.json`更换为`https://mirrors.huaweicloud.com/jenkins/updates/update-center.json`
 10. 安装插件：`系统管理`->`插件管理`->`Available plugins`
    1. Maven整合插件：`Maven Integration`
    2. SSH推送插件：`Publish Over SSH`
+   3. SSH远程插件：`SSH`
 11. 安装Maven：`系统管理`->`全局工具配置`->`Maven 安装`->`新增Maven`
 12. 修改Maven配置文件(项目首次使用maven时才会下载该插件)`/docker/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven/conf/settings.xml`
     1. 下载的依赖默认保存到`/docker/jenkins/.m2/repository/`
@@ -63,6 +68,13 @@ docker run -d --name jenkins \
    4. `Remote Directory`推送目录前缀，例如`/opt/server/`
    5. `高级`->`Port`服务器端口号
 
+## SSH远程插件
+
+1. `系统管理`->`系统配置`->`SSH remote hosts`
+2. `SSH sites`新增
+   1. `Hostname`服务器地址
+   2. `Credentials`->新增->`全局凭据`->`Username with password`
+
 ## 创建SpringBoot项目
 
 1. 新建项目
@@ -73,7 +85,7 @@ docker run -d --name jenkins \
    1. 填写：`clean install -pl packages/util,packages/util-spring-boot,demo-base -DskipTests=true -Dmaven.javadoc.skip=true -B -V`
    2. 如果要指定jdk版本号，再添加`-Dmaven.compiler.source=21 -Dmaven.compiler.target=21`
 6. `构建后操作`->`Send build artifacts over SSH`
-   1. `Name`选择配置的选项
+   1. `Name`选择配置的选项，`高级`->`Verbose output in console`勾选，显示命令执行详情
    2. `Source files`文件地址，例如`demo-base/target/demo-base-1.0.0.jar`
    3. `Remove prefix`移除前缀，例如`demo-base/target/`
    4. `Remote directory`推送目录
@@ -83,27 +95,71 @@ docker run -d --name jenkins \
    5. `Exec command`执行脚本，例如
 
 ```sh
-#!/bin/sh
+#!/bin/bash
 
+# 脚本路径
+SHELL_PATH=/opt/server
 # 项目名
-projectName=demo-base
+PROJECT_NAME=demo-base
 # jar名
-jarName=demo-base-1.0.0.jar
+JAR_NAME=demo-base-1.0.0.jar
 # 部署路径
-deployPath=/opt/server/demo-base/
+DEPLOY_PATH=$SHELL_PATH/$PROJECT_NAME
 
-# 获取保存的pid
-pid=$(cat ${deployPath}pid)
-# 杀掉进程
-kill -9 ${pid}
+# 停止进程
+sh $SHELL_PATH/stop.sh $DEPLOY_PATH/pid
 
-# 切换到部署路径
-cd ${deployPath}
-# 运行项目文件
-nohup java -jar ${jarName} >/dev/null 2>&1 &
-# 将pid保存到文件
-echo $! > ${deployPath}pid
+# 进入部署目录，以便加载配置文件
+cd $DEPLOY_PATH
+
+# 启动进程
+sh $SHELL_PATH/start.sh "java -jar $DEPLOY_PATH/$JAR_NAME" $DEPLOY_PATH/pid
 ```
 
 - 编译结果保存在：`/var/lib/jenkins/workspace/`(对应物理机`/docker/jenkins/workspace/`)
 - 物理机需要安装`Java 21`：`apt install openjdk-21-jdk`，安装到了`/usr/lib/jvm/java-21-openjdk-amd64/`
+
+## 创建启动、停止项目
+
+1. 新建项目->类型：`构建一个自由风格的软件项目`
+2. `构建后操作`->`Execute shell script on remote host using ssh`
+   1. `SSH site`选择配置的选项
+   2. `Hide command from console output`勾选，不显示要执行的命令
+   3. `Command`执行脚本，例如
+
+3. 启动脚本
+
+```sh
+#!/bin/bash
+
+# 脚本路径
+SHELL_PATH=/opt/server
+# 项目名
+PROJECT_NAME=demo-base
+# jar名
+JAR_NAME=demo-base-1.0.0.jar
+# 部署路径
+DEPLOY_PATH=$SHELL_PATH/$PROJECT_NAME
+
+# 进入部署目录，以便加载配置文件
+cd $DEPLOY_PATH
+
+# 启动进程
+sh $SHELL_PATH/start.sh "java -jar $DEPLOY_PATH/$JAR_NAME" $DEPLOY_PATH/pid
+```
+
+4. 停止脚本
+
+```sh
+#!/bin/bash
+
+# 脚本路径
+SHELL_PATH=/opt/server
+# 项目名
+PROJECT_NAME=demo-base
+# 部署路径
+DEPLOY_PATH=$SHELL_PATH/$PROJECT_NAME
+
+# 停止进程
+sh $SHELL_PATH/stop.sh $DEPLOY_PATH/pid
+```
