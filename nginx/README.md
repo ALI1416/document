@@ -220,7 +220,7 @@
 |      | reset_timedout_connection     | 重置超时连接和使用非标准代码444关闭的连接             |
 |      | resolver                      | 将上游服务器的名称解析为地址的名称服务器              |
 |      | resolver_timeout              | 名称解析超时时间                                      |
-|      | root                          | 实际访问文件路径会拼接URL中的路径                     |
+|   ■■   | **root**                          | 实际访问文件路径会拼接URL中的路径                     |
 |      | satisfy                       | 至少1个指定模块允许访问，则允许访问                   |
 |      | send_lowat                    | 最小化客户端套接字上的发送操作数                      |
 |      | send_timeout                  | 传输响应给客户端的超时时间                            |
@@ -596,6 +596,25 @@
         root /usr/local/nginx/html/;
     }
     ```
+
+### root 实际访问文件路径会拼接URL中的路径
+
+- 语法：`root path;`
+- 语境：`http, server, location, if in location`
+
+---
+
+设置请求的根目录
+
+例如：
+
+```ini
+location /i/ {
+    root /data/w3;
+}
+```
+
+发送请求`/i/top.gif`映射到`/data/w3/i/top.gif`
 
 ### allow和deny 允许和拒绝
 
