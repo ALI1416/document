@@ -13,7 +13,7 @@
 | +    | `Alt`键                          |
 | !    | `Shift`键                        |
 | #    | `Win`键                          |
-| &    | 组合热键连接符                   |
+| &    | 组合热键连接符(仅支持2组热键)    |
 | <    | 成对按键左侧按键                 |
 | >    | 成对按键由侧按键                 |
 | <^>! | `AltGr`键(美式标准键盘没有)      |
@@ -134,12 +134,14 @@
 
 ### 示例
 
+语法：`热键::{代码}`或`热键::代码`
+
 当按下`Ctrl+J`时，发送字符串`My First Script`
 
 ```js
 ^j::
 {
-    Send "My First Script"
+  Send "My First Script"
 }
 ```
 
@@ -155,8 +157,63 @@
 ^j::MsgBox ThisHotkey
 ```
 
-## 热字符串
+要在热键中使用多个修饰键，那么需要把它们连续地列出来(顺序无关紧要)。下面的例子中使用`^!s`来表示`Ctrl+Alt+S`
 
 ```js
-::ftw::Free the whales
+^!s::
+{
+  Send "Sincerely, John Smith"
+}
 ```
+
+组合热键，第一个按键会失去原有功能，需要加上`~`，例如
+
+```js
+~1 & 2::Send "Press 1 & 2"
+```
+
+多个热键可以垂直地叠放来让它们执行相同的动作，例如
+
+```js
+^1::
+^2::
+{
+  MsgBox "Pressing either Control+1 or Control+2 will display this message."
+}
+```
+
+通过不为按键或按键组合的热键指定任何操作可以在整个系统中完全禁用它们，下面的例子中禁用了`Ctrl+V`键
+
+```js
+^v::return
+```
+
+鼠标热键，例如
+
+```js
+MButton & WheelDown::MsgBox "You turned the mouse wheel down while holding down the middle button."
+^!WheelUp::MsgBox "You rotated the wheel up while holding down Control+Alt."
+```
+
+## 热字符串
+
+语法：`::热字符串::{代码}`或`::热字符串::代码`
+
+输入`btw`后再输入一个终止符(`空格`、`制表符`、`回车`、`.`等)，他会自动删除输入的字符串并替换为新的字符串(有bug，删除有问题，不推荐使用)
+
+```js
+::btw::by the way
+```
+
+## 重映射按键
+
+语法：`原热键::新热键`
+
+`a`和`b`按键互换
+
+```js
+a::b
+b::a
+```
+
+## 变量
