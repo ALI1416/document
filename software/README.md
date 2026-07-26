@@ -265,6 +265,8 @@
   - <https://xtremedownloadmanager.com/>
 - `Advanced Port Scanner` IP端口扫描
   - <https://www.advanced-port-scanner.com/cn/>
+- `nmap` IP端口扫描调试
+  - <https://nmap.org/download.html>
 - `HackBGRT` 修改BIOS启动图片
   - <https://github.com/Metabolix/HackBGRT>
 - `Dism++` 挂载系统镜像

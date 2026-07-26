@@ -90,7 +90,19 @@ admin,10.8.0.3,
 - 用户名密码验证脚本，新增文件`author.bat`，例如
 
 ```bat
-findstr /be "%username%:%password%" user.txt && exit 0 || exit 1
+setlocal enabledelayedexpansion
+
+set "u=%username%"
+set "p=%password%"
+
+findstr /be /c:"!u!:!p!" user.txt >nul 2>&1
+if !errorlevel! equ 0 (
+  endlocal
+  exit 0
+) else (
+  endlocal
+  exit 1
+)
 ```
 
 - 用户名密码格式为`<用户名>:<密码>`，新增文件`user.txt`，例如

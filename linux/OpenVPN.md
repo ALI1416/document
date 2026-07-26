@@ -74,7 +74,13 @@ admin,10.8.0.3,
 
 ```sh
 #!/bin/sh
-[ -n "$(grep -x $username:$password user.txt)" ] && exit 0 || exit 1
+u="$username"
+p="$password"
+if grep -xF -- "${u}:${p}" "/etc/openvpn/server/user.txt" > /dev/null 2>&1; then
+  exit 0
+else
+  exit 1
+fi
 ```
 
 - 用户名密码格式为`<用户名>:<密码>`，新增文件`user.txt`(换行符必须为`LF`)，例如
