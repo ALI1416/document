@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://maven.apache.org/download.cgi> `Files`标题下`Binary zip archive`版本选择`apache-maven-3.9.9-bin.zip`，名称应为`apache-maven-3.9.9-bin.zip`，解压后文件夹名称应为`apache-maven-3.9.9`
-2. 快速下载地址 <https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip> 版本号参考 <https://maven.apache.org/docs/history.html>
+1. 下载地址 <https://maven.apache.org/download.cgi> `Files`标题下`Binary zip archive`版本选择`apache-maven-3.9.16-bin.zip`，名称应为`apache-maven-3.9.16-bin.zip`，解压后文件夹名称应为`apache-maven-3.9.16`
+2. 快速下载地址 <https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.zip> 版本号参考 <https://maven.apache.org/docs/history.html>
 
 ## 初始化
 
-1. 把本压缩包解压到`apache-maven-3.9.9`文件夹内，如图所示：  
+1. 把本压缩包解压到`apache-maven-3.9.16`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -27,7 +27,7 @@
 
 ## 打包下载
 
-1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
+1. 蓝奏云优享版 <https://www.ilanzou.com/s/REtLcKxI>
 
 ## 网站
 
