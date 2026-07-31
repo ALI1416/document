@@ -7,7 +7,7 @@
 
 ## `SystemImage` 系统镜像
 
-- `ED2生成器`
+- `ED2K生成器`
   - <https://ed2k.js.org/>
 - `下载地址`
   - <https://msdn.itellyou.cn/>

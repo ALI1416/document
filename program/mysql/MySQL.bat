@@ -22,21 +22,17 @@ echo   --------------------
 
 echo   [4] 修改root用户密码为root【会关闭MySQL服务】
 
-echo   [5] 修改root用户密码为root【会关闭MySQL服务，密码兼容模式】
-
-echo   [6] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
-
-echo   [7] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
+echo   [5] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
 
 echo   --------------------
 
-echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
+echo   [6] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 
-echo   [9] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
+echo   [7] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
 
-echo   [A] 开启MySQL服务开机自启
+echo   [8] 开启MySQL服务开机自启
 
-echo   [B] 关闭MySQL服务开机自启
+echo   [9] 关闭MySQL服务开机自启
 
 echo   --------------------
 
@@ -49,12 +45,10 @@ echo   [0] 退出
 echo   ----------请选择操作----------
 echo.
 
-choice /c 123456789ABYZ0
-if errorlevel 14 goto e0
-if errorlevel 13 goto ez
-if errorlevel 12 goto ey
-if errorlevel 11 goto eb
-if errorlevel 10 goto ea
+choice /c 123456789YZ0
+if errorlevel 12 goto e0
+if errorlevel 11 goto ez
+if errorlevel 10 goto ey
 if errorlevel 9 goto e9
 if errorlevel 8 goto e8
 if errorlevel 7 goto e7
@@ -99,55 +93,37 @@ goto begin
 
 :e5
 echo.
-echo   [5] 修改root用户密码为root【会关闭MySQL服务，密码兼容模式】
-echo.
-call:kill
-echo.
-call:initFile alterUserRootOld.txt
-goto begin
-
-:e6
-echo.
-echo   [6] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
+echo   [5] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务】
 echo.
 call:kill
 echo.
 call:initFile createUserAli.txt
 goto begin
 
-:e7
+:e6
 echo.
-echo   [7] 新增/修改ali用户密码为Alibaba2021!，并赋予所有权限【会关闭MySQL服务，密码兼容模式】
-echo.
-call:kill
-echo.
-call:initFile createUserAliOld.txt
-goto begin
-
-:e8
-echo.
-echo   [8] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
+echo   [6] 将MySQL的bin目录添加进环境变量【需要以管理员身份运行】
 echo.
 call extra\environment add path "%~dp0bin\bin"
 goto begin
 
-:e9
+:e7
 echo.
-echo   [9] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
+echo   [7] 将MySQL的bin目录从环境变量移除【需要以管理员身份运行】
 echo.
 call extra\environment delete path "%~dp0bin\bin"
 goto begin
 
-:ea
+:e8
 echo.
-echo   [A] 开启MySQL服务开机自启
+echo   [8] 开启MySQL服务开机自启
 echo.
 call extra\startUp add current mysqld "%~dp0extra\hideWindow" """%~dp0bin\bin\mysqld"""
 goto begin
 
-:eb
+:e9
 echo.
-echo   [B] 关闭MySQL服务开机自启
+echo   [9] 关闭MySQL服务开机自启
 echo.
 call extra\startUp delete current mysqld
 goto begin

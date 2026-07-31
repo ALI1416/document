@@ -23,6 +23,7 @@ md conf
 md contrib
 md html
 copy ..\extra\nginx.ico html\favicon.ico
+copy ..\extra\404.html html\404.html
 copy ..\..\nginx.exe
 xcopy ..\..\conf conf /s /i /y
 xcopy ..\..\contrib contrib /s /i /y

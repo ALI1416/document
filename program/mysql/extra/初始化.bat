@@ -24,6 +24,7 @@ md lib\plugin
 md share
 copy ..\extra\my.ini
 copy ..\..\bin\abseil_dll.dll bin
+copy ..\..\bin\jemalloc.dll bin
 copy ..\..\bin\libcrypto-3-x64.dll bin
 copy ..\..\bin\libprotobuf-lite.dll bin
 copy ..\..\bin\libssl-3-x64.dll bin

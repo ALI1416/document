@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.0.21a-install-windows-x64.exe`，把后缀`exe`改成`zip`新建`mosquitto-2.0.21a-install-windows-x64`文件夹并把文件解压进去
-2. 快速下载地址 <https://mosquitto.org/files/binary/win64/mosquitto-2.0.21a-install-windows-x64.exe> 版本号参考 <https://mosquitto.org/files/binary/win64/>
+1. 下载地址 <https://mosquitto.org/download/> 选择`Windows 64位`，名称应为`mosquitto-2.1.2-install-windows-x64.exe`，把后缀`exe`改成`zip`新建`mosquitto-2.1.2-install-windows-x64`文件夹并把文件解压进去
+2. 快速下载地址 <https://mosquitto.org/files/binary/win64/mosquitto-2.1.2-install-windows-x64.exe> 版本号参考 <https://mosquitto.org/files/binary/win64/>
 
 ## 初始化
 
-1. 把本压缩包解压到`mosquitto-2.0.21a-install-windows-x64`文件夹内，如图所示：  
+1. 把本压缩包解压到`mosquitto-2.1.2-install-windows-x64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.png)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -67,7 +67,7 @@ keyfile D:\Program Files\mosquitto\cert\server.key
 
 ## 打包下载
 
-1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
+1. 蓝奏云优享版 <https://www.ilanzou.com/s/REtLcKxI>
 
 ### 修改功能
 

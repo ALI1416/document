@@ -131,7 +131,7 @@ goto begin
 echo.
 echo   [A] 将ERLANG_HOME添加进环境变量【需要以管理员身份运行】
 echo.
-set /p p=请输入erlang的安装路径，例如【 D:\Program Files\erl-23.2 】 
+set /p p=请输入erlang的安装路径，例如【 D:\Program Files\Erlang OTP 】 
 call extra\environment add all "ERLANG_HOME" "%p%"
 goto begin
 
@@ -163,13 +163,16 @@ goto end
 
 @REM 内部函数
 :checkFile
-if exist "%APPDATA%\RabbitMQ\rabbitmq.config" goto end
-echo   rabbitmq.config文件缺失！
+if exist "%APPDATA%\RabbitMQ\rabbitmq.conf" goto end
+echo   rabbitmq.conf文件缺失！
 echo.
-echo   正在创建rabbitmq.config文件...
+echo   正在创建rabbitmq.conf文件...
 echo.
 mkdir "%APPDATA%\RabbitMQ"
-echo [{rabbit, [{loopback_users, []}]}].> "%APPDATA%\RabbitMQ\rabbitmq.config"
+echo listeners.tcp.default = 0.0.0.0:5672> "%APPDATA%\RabbitMQ\rabbitmq.conf"
+echo management.tcp.ip = 0.0.0.0>> "%APPDATA%\RabbitMQ\rabbitmq.conf"
+echo management.tcp.port = 15672>> "%APPDATA%\RabbitMQ\rabbitmq.conf"
+echo loopback_users.guest = false>> "%APPDATA%\RabbitMQ\rabbitmq.conf"
 echo   创建成功！
 goto end
 

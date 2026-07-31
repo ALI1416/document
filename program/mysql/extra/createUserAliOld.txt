@@ -1,3 +1,0 @@
-DROP USER IF EXISTS 'ali'@'%';
-CREATE USER 'ali'@'%' IDENTIFIED WITH mysql_native_password BY 'Alibaba2021!';
-GRANT ALL PRIVILEGES ON *.* TO 'ali'@'%' WITH GRANT OPTION;

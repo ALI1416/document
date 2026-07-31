@@ -19,12 +19,20 @@ if errorlevel 0 goto end
 :e1
 md bin
 pushd bin
-copy ..\..\redis.conf
+copy ..\..\msys-2.0.dll
+copy ..\..\msys-crypto-3.dll
+copy ..\..\msys-gcc_s-seh-1.dll
+copy ..\..\msys-ssl-3.dll
+copy ..\..\msys-stdc++-6.dll
 copy ..\..\redis-benchmark.exe
 copy ..\..\redis-check-aof.exe
 copy ..\..\redis-check-rdb.exe
 copy ..\..\redis-cli.exe
+copy ..\..\redis-full.conf
+copy ..\..\redis-sentinel.exe
 copy ..\..\redis-server.exe
+copy ..\..\redis.conf
+copy ..\..\sentinel.conf
 popd
 pushd extra
 call:downloadFile unix2dos.exe https://gitee.com/ALI1416/document/raw/master/software/dos2unix/unix2dos.exe
@@ -37,8 +45,8 @@ call unix2dos.exe startUp.bat
 call unix2dos.exe environment.bat
 popd
 pushd bin
-echo 正在启用跨域，请稍后...
-..\extra\replaceFileString redis.conf redis.conf "bind 127.0.0.1" "bind 0.0.0.0"
+echo 正在启用外网匿名访问，请稍后...
+..\extra\replaceFileString redis.conf redis.conf "bind 127.0.0.1 -::1" "bind 0.0.0.0"
 ..\extra\replaceFileString redis.conf redis.conf "protected-mode yes" "protected-mode no"
 popd
 popd

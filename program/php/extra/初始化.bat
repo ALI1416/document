@@ -20,14 +20,18 @@ if errorlevel 0 goto end
 md bin
 pushd bin
 md ext
+md extras
 md lib
+copy ..\..\brotlicommon.dll
+copy ..\..\brotlidec.dll
 copy ..\..\deplister.exe
 copy ..\..\glib-2.dll
 copy ..\..\gmodule-2.dll
-copy ..\..\icudt72.dll
-copy ..\..\icuin72.dll
-copy ..\..\icuio72.dll
-copy ..\..\icuuc72.dll
+copy ..\..\gobject-2.dll
+copy ..\..\icudt77.dll
+copy ..\..\icuin77.dll
+copy ..\..\icuio77.dll
+copy ..\..\icuuc77.dll
 copy ..\..\libcrypto-3-x64.dll
 copy ..\..\libenchant2.dll
 copy ..\..\libpq.dll
@@ -39,14 +43,14 @@ copy ..\..\libssl-3-x64.dll
 copy ..\..\nghttp2.dll
 copy ..\..\phar.phar.bat
 copy ..\..\pharcommand.phar
+copy ..\..\php-cgi.exe
+copy ..\..\php-win.exe
 copy ..\..\php.exe
 copy ..\..\php.ini-development
 copy ..\..\php.ini-production
 copy ..\..\php8.dll
 copy ..\..\php8phpdbg.dll
-copy ..\..\php-cgi.exe
 copy ..\..\phpdbg.exe
-copy ..\..\php-win.exe
 copy ..\..\php.ini-development php.ini
 xcopy ..\..\ext ext /s /i /y
 xcopy ..\..\extras extras /s /i /y

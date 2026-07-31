@@ -15,26 +15,33 @@ choice /c yn /m "确定初始化吗？"
 if errorlevel 2 goto e2
 if errorlevel 1 goto e1
 if errorlevel 0 goto end
- 
+
 :e1
 md bin
 pushd bin
+copy ..\..\cjson.dll
 copy ..\..\libcrypto-3-x64.dll
+copy ..\..\libmicrohttpd-dll.dll
 copy ..\..\libssl-3-x64.dll
 copy ..\..\mosquitto.conf
 copy ..\..\mosquitto.dll
 copy ..\..\mosquitto.exe
+copy ..\..\mosquittopp.dll
+copy ..\..\mosquitto_acl_file.dll
+copy ..\..\mosquitto_common.dll
 copy ..\..\mosquitto_ctrl.exe
+copy ..\..\mosquitto_db_dump.exe
 copy ..\..\mosquitto_dynamic_security.dll
 copy ..\..\mosquitto_passwd.exe
+copy ..\..\mosquitto_password_file.dll
+copy ..\..\mosquitto_persist_sqlite.dll
 copy ..\..\mosquitto_pub.exe
 copy ..\..\mosquitto_rr.exe
+copy ..\..\mosquitto_signal.exe
+copy ..\..\mosquitto_sparkplug_aware.dll
 copy ..\..\mosquitto_sub.exe
-copy ..\..\mosquittopp.dll
 copy ..\..\pthreadVC3.dll
-copy ..\..\uv.dll
-copy ..\..\websockets.dll
-copy ..\..\zlib1.dll
+copy ..\..\sqlite3.dll
 echo 正在启用外网匿名访问，请稍后...
 
 echo allow_anonymous true>> mosquitto.conf

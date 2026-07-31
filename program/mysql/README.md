@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://dev.mysql.com/downloads/mysql/> 版本选择`Windows (x86, 64-bit), ZIP Archive`，名称应为`mysql-9.3.0-winx64.zip`，解压后文件夹名称应为`mysql-9.3.0-winx64`
-2. 快速下载地址 <https://cdn.mysql.com//Downloads/MySQL-9.3/mysql-9.3.0-winx64.zip> 版本号参考 <https://downloads.mysql.com/archives/community/>
+1. 下载地址 <https://dev.mysql.com/downloads/mysql/> 版本选择`Windows (x86, 64-bit), ZIP Archive`，名称应为`mysql-9.7.1-winx64.zip`，解压后文件夹名称应为`mysql-9.7.1-winx64`
+2. 快速下载地址 <https://dev.mysql.com/get/Downloads/MySQL-9.7/mysql-9.7.1-winx64.zip> 版本号参考 <https://downloads.mysql.com/archives/community/>
 
 ## 初始化
 
-1. 把本压缩包解压到`mysql-9.3.0-winx64`文件夹内，如图所示：  
+1. 把本压缩包解压到`mysql-9.7.1-winx64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -29,7 +29,7 @@
 
 ## 打包下载
 
-1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
+1. 蓝奏云优享版 <https://www.ilanzou.com/s/REtLcKxI>
 
 ### 修改功能
 

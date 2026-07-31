@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-4.1.0.zip`，解压后文件夹名称应为`rabbitmq_server-4.1.0`
-2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.1.0/rabbitmq-server-windows-4.1.0.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
+1. 下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases> 选择最新版，名称应为`rabbitmq-server-windows-4.3.4.zip`，解压后文件夹名称应为`rabbitmq_server-4.3.4`
+2. 快速下载地址 <https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.3.4/rabbitmq-server-windows-4.3.4.zip> 版本号参考 <https://www.rabbitmq.com/changelog.html>
 
 ## 初始化
 
-1. 把本压缩包解压到`rabbitmq_server-4.1.0`文件夹内，如图所示：  
+1. 把本压缩包解压到`rabbitmq_server-4.3.4`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -20,6 +20,7 @@
 ## 注意
 
 1. 运行RabbitMQ服务需要安装`erlang`，如果未安装，请到 <https://www.erlang.org/downloads> 下载并安装
+2. `erlang`安装请注意版本号 <https://www.rabbitmq.com/docs/which-erlang>
 
 ## 提示
 
@@ -27,10 +28,13 @@
    1. 官方文件1：[extra/rabbitmq.ini](extra/rabbitmq.ini)
    2. 官方文件2：[extra/advanced.config](extra/advanced.config)
 2. 启用外网访问  
-新建或编辑`%AppData%\RabbitMQ\rabbitmq.config`文件，插入以下内容
+新建或编辑`%AppData%\RabbitMQ\rabbitmq.conf`文件，插入以下内容
 
-```conf
-[{rabbit, [{loopback_users, []}]}].
+```ini
+listeners.tcp.default = 0.0.0.0:5672
+management.tcp.ip = 0.0.0.0
+management.tcp.port = 15672
+loopback_users.guest = false
 ```
 
 3. 用户、角色、权限和密码  
@@ -38,7 +42,7 @@
 
 ## 打包下载
 
-1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
+1. 蓝奏云优享版 <https://www.ilanzou.com/s/REtLcKxI>
 
 ### 修改功能
 

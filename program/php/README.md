@@ -2,12 +2,12 @@
 
 ## 下载
 
-1. 下载地址 <https://windows.php.net/download/> `VS16 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.3.3-nts-Win32-vs16-x64.zip`，新建`php-8.3.3-nts-Win32-vs16-x64`文件夹并把文件解压进去
-2. 快速下载地址 <https://windows.php.net/downloads/releases/php-8.3.3-nts-Win32-vs16-x64.zip> 版本号参考 <https://windows.php.net/downloads/releases/archives/>
+1. 下载地址 <https://windows.php.net/download/> `VS17 x64 Non Thread Safe`选择`Zip`，名称应为`php-8.5.8-nts-Win32-vs16-x64.zip`，新建`php-8.5.8-nts-Win32-vs16-x64`文件夹并把文件解压进去
+2. 快速下载地址 <https://downloads.php.net/~windows/releases/archives/php-8.5.8-nts-Win32-vs17-x64.zip> 版本号参考 <https://windows.php.net/downloads/releases/archives/>
 
 ## 初始化
 
-1. 把本压缩包解压到`php-8.3.3-nts-Win32-vs16-x64`文件夹内，如图所示：  
+1. 把本压缩包解压到`php-8.5.8-nts-Win32-vs16-x64`文件夹内，如图所示：  
 ![初始化示例](img/初始化示例.jpg)
 2. 双击`extra`文件夹里的`初始化.bat`文件
 
@@ -19,13 +19,13 @@
 
 ## 提示
 
-1. 直接启动php-cgi运行一段时间后可能会自动退出，需要使用xxfpm来维持php-cgi进程的数量，启动方式如下：
+1. 直接启动`php-cgi`运行一段时间后可能会自动退出，需要使用`xxfpm`来维持`php-cgi`进程的数量，启动方式如下：
 
-```dos
+```sh
 xxfpm php-cgi -n 3 -p 9000
 ```
 
-- `-n 3`：启动3个php-cgi进程
+- `-n 3`：启动3个`php-cgi`进程
 - `-p 9000`：启动端口号为9000
 
 2. 整合nginx
@@ -33,12 +33,12 @@ xxfpm php-cgi -n 3 -p 9000
 
 ```ini
 location ~ \.php$ {
-      root           html;
-      fastcgi_pass   127.0.0.1:9000;
-      fastcgi_index  index.php;
-      fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-      include        fastcgi_params;
-   }
+  root          html;
+  fastcgi_pass  127.0.0.1:9000;
+  fastcgi_index index.php;
+  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  include       fastcgi_params;
+}
 ```
 
 3. 启用插件
@@ -58,13 +58,13 @@ location ~ \.php$ {
 
 ## 打包下载
 
-1. 天翼云盘 <https://cloud.189.cn/web/share?code=ZnYFvuqINV3q>
+1. 蓝奏云优享版 <https://www.ilanzou.com/s/REtLcKxI>
 
 ### 修改功能
 
-1. 使用xxfpm来维持php-cgi进程的数量
-2. 启用mysqli插件
-3. 启用openssl插件
+1. 使用`xxfpm`来维持`php-cgi`进程的数量
+2. 启用`mysqli`插件
+3. 启用`openssl`插件
 
 ## 网站
 
