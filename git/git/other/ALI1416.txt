@@ -8,6 +8,8 @@ clock
 cpp-code
 cpp-demo
 document
+dynamic-route-demo
+golang-demo
 himalaya-android
 id
 id-spring-boot-autoconfigure
@@ -20,6 +22,7 @@ java-code
 Library-Management-System
 Library-Management-System-HTML
 MagicIndicator
+MobaXtermKeygen
 Network-Voting-System
 NetworkDisk
 News-Release-System

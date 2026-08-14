@@ -1,1 +1,1 @@
-github-readme-stats
+github-stats-extended
