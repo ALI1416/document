@@ -15,22 +15,16 @@
   - <https://www.xitongku.com/>
   - <https://hellowindows.cn/>
   - <https://sysin.cn/>
-- `Windows 10 (Multiple Editions), Version 1607 (Updated Jul 2016) (x64) - DVD (Chinese-Simplified)`
-  - cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso
-  - `ed2k://|file|cn_windows_10_multiple_editions_version_1607_updated_jul_2016_x64_dvd_9056935.iso|4347183104|35EA5DB0F3BB714F5CE0740FB89D82D1|/`
+- `最新 Windows 10`
 - `Windows 10 (consumer editions), version 22H2 (updated Oct 2025) (x64) - DVD (Chinese-Simplified)`
   - zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso
   - `ed2k://|file|zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso|7168839680|C16CA4505649F9128F6F42A1DE2D7526|/`
   - `magnet:?xt=urn:btih:d5146f69f1bb6b9d95c8270769ebca7f82c2936a&dn=zh-cn_windows_10_consumer_editions_version_22h2_updated_oct_2025_x64_dvd_38efd00d.iso&xl=7168839680`
+- `最新 Windows 10 LTS`
 - `Windows 10 Enterprise LTSC 2021 (x64) - DVD (Chinese-Simplified)`
   - SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO
   - `ed2k://|file|SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO|5044211712|1555B7DCA052B5958EE68DB58A42408D|/`
-- `Windows Server 2012 R2 (x64) - DVD (Chinese-Simplified)`
-  - cn_windows_server_2012_r2_x64_dvd_2707961.iso
-  - `ed2k://|file|cn_windows_server_2012_r2_x64_dvd_2707961.iso|4413020160|010CD94AD1F2951567646C99580DD595|/`
-- `Microsoft Hyper-V Server 2012 R2 (x64) - DVD (Chinese-Simplified)`
-  - cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso
-  - `ed2k://|file|cn_microsoft_hyper-v_server_2012_r2_x64_dvd_2708277.iso|2144010240|3BB6E1FB513204D8D2C6991B14B35D9B|/`
+  - `magnet:?xt=urn:btih:366ADAA52FB3639B17D73718DD5F9E3EE9477B40&dn=SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO&xl=5044211712`
 - `esxi`
   - <https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20vSphere%20Hypervisor&freeDownloads=true>
 - `ikuai`
@@ -352,8 +346,6 @@
   - <https://www.python.org/getit/>
 - `wget` 下载
   - <https://eternallybored.org/misc/wget/>
-- `wireshark` 抓包
-  - <https://www.wireshark.org/download.html>
 - `putty` ssh客户端
   - <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>
 - `MobaXterm` ssh客户端
@@ -424,6 +416,13 @@
   - 支持包`STM32F1xx_DFP`<https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/>
 - `WinSW` Windows服务包装
   - <https://github.com/winsw/winsw>
+- `Wireshark` 抓包
+  - <https://www.wireshark.org/download.html>
+- `Fiddler` 抓包
+  - <https://www.telerik.com/download/fiddler>
+  - `命令行下载` `winget download Telerik.Fiddler.Classic`
+- `Charles` 抓包
+  - <https://www.charlesproxy.com/download/>
 - `微信小程序解密和反编译`
   - <https://github.com/Angels-Ray/UnpackMiniApp>
   - <https://github.com/system-cpu/wxappUnpacker>
