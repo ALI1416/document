@@ -72,7 +72,7 @@ git clone git@gitee.com:ALI1416/java-code.git
 git clone git@gitee.com:ALI1416/python-code.git
 ```
 
-## 其他
+## 其它
 
 ```sh
 git clone git@github.com:cn404z/.github.git

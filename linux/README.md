@@ -73,7 +73,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 <span style="background:#181818;color:#11A8CD;">桃红色：音频文件</span>
 
-<span style="background:#181818;color:#9E9E9B;">灰色：其他文件</span>
+<span style="background:#181818;color:#9E9E9B;">灰色：其它文件</span>
 
 <span style="background:#E5E510;color:#181818;">黑色+黄色背景：设置组ID文件</span>
 
@@ -81,15 +81,15 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 
 <span style="background:#12488B;color:#CCCCCC;">白色+蓝色背景：粘滞位目录</span>
 
-<span style="background:#0DBC79;color:#3B8EEA;">蓝色+绿色背景：其他可写目录</span>
+<span style="background:#0DBC79;color:#3B8EEA;">蓝色+绿色背景：其它可写目录</span>
 
-<span style="background:#0DBC79;color:#181818;">黑色+绿色背景：粘滞位+其他可写目录</span>
+<span style="background:#0DBC79;color:#181818;">黑色+绿色背景：粘滞位+其它可写目录</span>
 
 后面9字符分为3组，每组3个，代表文件权限
 
 - 第1组，为文件所有者(owner)权限
 - 第2组，为文件所属用户群组(group)权限
-- 第3组，为其他用户(others)权限
+- 第3组，为其它用户(others)权限
 
 权限分别为r读、w写、x执行
 
@@ -208,7 +208,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | suspend             | 挂起                                       |
 |      | time                | 报告流水线执行消耗的时间                   |
 |      | times               | 显示进程时间                               |
-|      | trap                | 为信号和其他事件设置陷阱                   |
+|      | trap                | 为信号和其它事件设置陷阱                   |
 |      | ulimit              | 修改shell资源限制                          |
 |      | umask               | 显示或设定文件模式掩码                     |
 |      | variables           | 常用shell变量名称和用法                    |
@@ -422,7 +422,7 @@ alias sd='systemctl daemon-reload'
 | 常用 | 短选项 | 长选项                   | 解释                                                         |
 | ---- | ------ | ------------------------ | ------------------------------------------------------------ |
 |      | -a     | --append GROUP           | 将用户追加至上边-G中提到的附加组中，并不从其它组中删除此用户 |
-|      | -r     | --remove                 | 仅从-G选项提到的补充组中删除用户，而不从其他组中删除该用户   |
+|      | -r     | --remove                 | 仅从-G选项提到的补充组中删除用户，而不从其它组中删除该用户   |
 |      | -q     | --badname                | 允许不符合标准的名称                                         |
 | ■    | -c     | --comment COMMENT        | 新的备注                                                     |
 | ■■   | -d     | --home HOME_DIR          | 用户的新主目录                                               |
@@ -509,7 +509,7 @@ alias sd='systemctl daemon-reload'
 | ---- | -------- | ---------------- |
 | u    | user     | 文件所有者       |
 | g    | group    | 文件所有者所在组 |
-| o    | others   | 所有其他用户     |
+| o    | others   | 所有其它用户     |
 | a    | all      | 所有用户         |
 
 #### 操作符 operator
@@ -527,7 +527,7 @@ alias sd='systemctl daemon-reload'
 | r    | 读              | 可读权限                                                                       |
 | w    | 写              | 可写权限                                                                       |
 | x    | 执行            | 可执行权限                                                                     |
-| X    | 特殊执行        | 只有当文件为目录文件，或者其他类型的用户有可执行权限时，才将文件权限设置可执行 |
+| X    | 特殊执行        | 只有当文件为目录文件，或者其它类型的用户有可执行权限时，才将文件权限设置可执行 |
 | s    | setuid / setgid | 当文件被执行时，根据who参数指定的用户类型设置文件的setuid或者setgid权限        |
 | t    | 粘贴位          | 设置粘贴位，只有超级用户可以设置该位，只有文件所有者u可以使用该位              |
 
@@ -1556,7 +1556,7 @@ drwxrwxr-x 2 ali ali 4096  1月  7 15:07 folder
 |      | -L     | 显示线程，可能带有LWP和NLWP列 |
 |      | -T     | 显示线程，可能带有SPID列      |
 
-### 其他选项
+### 其它选项
 
 | 常用 | 选项   | 解释               |
 | ---- | ------ | ------------------ |
@@ -1707,7 +1707,7 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 |      | try-restart UNIT...                 | 如果处于活动状态，请重新启动一个或多个单元                         |
 |      | reload-or-restart UNIT...           | 如果可能，重新加载一个或多个单元，否则启动或重新启动               |
 |      | try-reload-or-restart UNIT...       | 如果处于活动状态，请重新加载一个或多个单元(如果支持)，否则重新启动 |
-|      | isolate UNIT                        | 启动一个单元并停止所有其他单元                                     |
+|      | isolate UNIT                        | 启动一个单元并停止所有其它单元                                     |
 |      | clean UNIT...                       | 清理运行时、缓存、状态、日志或单元配置                             |
 |      | freeze PATTERN...                   | 冻结单元流程的执行                                                 |
 |      | thaw PATTERN...                     | 恢复冻结单元的执行                                                 |
@@ -1786,7 +1786,7 @@ ali         2827  0.0  0.0  22324  4608 pts/0    R+   10:59   0:00 ps aux
 |      | kexec                     | 使用kexec关闭并重新启动系统    |
 |      | soft-reboot               | 关闭并重新启动用户空间         |
 |      | exit [EXIT_CODE]          | 请求用户实例或容器退出         |
-|      | switch-root [ROOT [INIT]] | 更改为其他根文件系统           |
+|      | switch-root [ROOT [INIT]] | 更改为其它根文件系统           |
 |      | suspend                   | 暂停系统                       |
 |      | hibernate                 | 使系统休眠                     |
 |      | hybrid-sleep              | 休眠并挂起系统                 |
@@ -2041,7 +2041,7 @@ TriggeredBy: ● ssh.socket
 |      | -K   | 保留setuid/setgid/tacky权限          |
 |      | -M   | 管道通过more页                       |
 |      | -O   | 为DOS、Windows和OS/2存档指定字符编码 |
-|      | -I   | 为UNIX和其他存档指定字符编码         |
+|      | -I   | 为UNIX和其它存档指定字符编码         |
 
 ### 示例
 

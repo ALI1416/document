@@ -27,7 +27,7 @@
 | ■    | type                 | 类型                     | type 键               | none(键不存在)/string/list        |
 |      |                      |                          |                       | /set/zset/hash/stream             |
 |      | randomkey            | 随机键                   | randomkey             | 存在:随机键;不存在:null           |
-|      | move                 | 移动键到其他库           | move 键 库            | 成功:1;失败:0                     |
+|      | move                 | 移动键到其它库           | move 键 库            | 成功:1;失败:0                     |
 |      | copy (6.2.0+)        | 复制键                   | copy 原键 目的键      | 成功:1;失败:0                     |
 |      | dump                 | 导出序列化的值           | dump 键               | 存在:序列化的值;不存在:null       |
 |      | restore              | 恢复序列化的值           |                       |                                   |

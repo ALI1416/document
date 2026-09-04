@@ -220,7 +220,7 @@ EOF
 |      |        | --env-file list                  | 读取环境变量文件                                                       |
 |      |        | --expose list                    | 暴露一个端口或一组端口                                                 |
 |      |        | --gpus gpu-request               | 要添加到容器中的GPU设备(输入all表示通过所有GPU)                        |
-|      |        | --group-add list                 | 添加要加入的其他群组                                                   |
+|      |        | --group-add list                 | 添加要加入的其它群组                                                   |
 |      |        | --health-cmd string              | 运行命令以检查健康状况                                                 |
 |      |        | --health-interval duration       | 运行检查的时间间隔(ms/s/m/h)(默认0s)                                   |
 |      |        | --health-retries int             | 连续失败需报告异常                                                     |

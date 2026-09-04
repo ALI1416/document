@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+; Author:ALI
+; GitHub:https://github.com/ALI1416
+; Version:1.0
+
+; 开启系统内核IP转发
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"IPEnableRouter"=dword:00000001

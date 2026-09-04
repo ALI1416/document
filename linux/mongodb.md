@@ -26,7 +26,7 @@ db.createUser({user: "root", pwd: "root", roles: [{role: "root", db:"admin"}]})
 ```
 
 - 验证超级管理员`db.auth("root","root")`
-- 创建其他数据库用户
+- 创建其它数据库用户
 - 创建用户`test`只能读写`testdb`数据库
 - 切换到`testdb`数据库`use testdb`
 

@@ -3,7 +3,8 @@
 ## 下载和安装
 
 - `Windows客户端和服务端`(翻墙)<https://openvpn.net/community-downloads/>
-- `Windows下载2.6.13版本`<https://swupdate.openvpn.org/community/releases/OpenVPN-2.6.13-I001-amd64.msi>
+- `Windows下载2.7.7版本`<https://swupdate.openvpn.org/community/releases/OpenVPN-2.7.7-I001-amd64.msi>
+- `下载`<https://www.npackd.org/p/openvpn64>
 - 服务端需要额外安装`OpenSSL`下的`EasyRSA`
 
 ## 使用EasyRSA和OpenVPN生成证书
@@ -21,7 +22,7 @@
 
 1. 打开`OpenVPN\config`文件夹
 2. 把证书文件`ca.crt`、`dh.pem`、`server.crt`、`server.key`、`ta.key`放入
-3. 创建配置文件`server.ovpn`(示例配置`sample-config\server.ovpn`)，写入以下内容
+3. 创建配置文件`server.ovpn`，写入以下内容
 
 ```ini
 # 本机IP(多网卡需要填写)
@@ -41,8 +42,10 @@ ca ca.crt
 cert server.crt
 key server.key
 dh dh.pem
-tls-auth ta.key 0 # 0代表服务端
-;key-direction 0 # 此选项可以代替以上的0
+tls-auth ta.key 0
+
+# 此选项可以代替tls-auth尾部的0，0代表服务端
+;key-direction 0
 
 # 网段IP和掩码
 server 10.8.0.0 255.255.255.0
@@ -50,7 +53,7 @@ server 10.8.0.0 255.255.255.0
 # 固定客户端IP(duplicate-cn开启后无效)
 ;ifconfig-pool-persist ipp.txt
 
-# 允许客户端访问其他客户端
+# 允许客户端访问其它客户端
 client-to-client
 
 # 允许相同客户登录多个
@@ -71,12 +74,18 @@ username-as-common-name
 # 心跳
 keepalive 10 120
 
-# 其他
-topology subnet
-persist-key
-persist-tun
+# 日志文件
+log-append openvpn.log
+verb 4
+mute 1024
+
+# 实时访问状态
 status openvpn-status.log
-verb 3
+status-version 2
+
+# 其它
+topology subnet
+persist-tun
 explicit-exit-notify 1
 ```
 
@@ -120,12 +129,33 @@ admin:123456
 <ca>
 ca.crt文件内容
 </ca>
+
+# crt文件
+;cert server.crt
+<cert>
+server.crt文件内容
+</cert>
+
+# key文件
+;key server.key
+<key>
+server.key文件内容
+</key>
+
+# dh文件
+;dh dh.pem
+<dh>
+dh.pem文件内容
+</dh>
+
 # ta文件
 ;tls-auth ta.key 0
-key-direction 0
 <tls-auth>
 ta.key文件内容
-<tls-auth>
+</tls-auth>
+
+# 此选项可以代替tls-auth尾部的0，0代表服务端
+key-direction 0
 ```
 
 ## 客户端配置
@@ -151,8 +181,10 @@ remote 192.168.1.1 1194
 ca ca.crt
 ;cert client.crt
 ;key client.key
-tls-auth ta.key 1 # 1代表客户端
-;key-direction 1 # 此选项可以代替以上的1
+tls-auth ta.key 1
+
+# 此选项可以代替tls-auth尾部的1，1代表客户端
+;key-direction 1
 
 # 使用用户名密码登录(不需要cert和key，但是需要ca和tls-auth(如果开启的话))
 auth-user-pass
@@ -160,16 +192,46 @@ auth-user-pass
 # 不自动登录
 auth-nocache
 
-# 其他
+# 其它
 resolv-retry infinite
 nobind
-persist-key
 persist-tun
 remote-cert-tls server
 verb 3
 ```
 
-- Windows客户端访问其他客户端(管理员打开CMD) `route -p add 10.8.0.0 mask 255.255.255.0 10.8.0.1`(需要重启)
+- 如果要把证书等文件放入到配置文件中，可以用以下方法
+
+```ini
+# ca文件
+;ca ca.crt
+<ca>
+ca.crt文件内容
+</ca>
+
+# crt文件
+;cert client.crt
+<cert>
+client.crt文件内容
+</cert>
+
+# key文件
+;key client.key
+<key>
+client.key文件内容
+</key>
+
+# ta文件
+;tls-auth ta.key 1
+<tls-auth>
+ta.key文件内容
+</tls-auth>
+
+# 此选项可以代替tls-auth尾部的1，1代表客户端
+key-direction 1
+```
+
+- Windows客户端访问其它客户端(管理员打开CMD) `route -p add 10.8.0.0 mask 255.255.255.0 10.8.0.1`(需要重启)
   - `-p` 路由将被永久添加到路由表中
   - `10.8.0.0` 网段
   - `255.255.255.0` 掩码

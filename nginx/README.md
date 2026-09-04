@@ -311,7 +311,7 @@
 |      | proxy_cache_max_range_offset   | 超出大小不缓存                                           |
 |      | proxy_cache_methods            | 哪些方法可以缓存                                         |
 |      | proxy_cache_min_uses           | 设置将缓存响应的请求数                                   |
-|      | proxy_cache_path               | 设置缓存的路径和其他参数                                 |
+|      | proxy_cache_path               | 设置缓存的路径和其它参数                                 |
 |      | proxy_cache_purge              | 定义请求将被视为缓存清除请求的条件                       |
 |      | proxy_cache_revalidate         | 使用带有`If Modified Since`和`If None Match`             |
 |      |                                | 标头字段的条件请求启用过期缓存项的重新验证               |
@@ -342,7 +342,7 @@
 |      | proxy_next_upstream_tries      | 限制将请求传递到下一个服务器的可能尝试次数               |
 |      | proxy_no_cache                 | 定义响应不会保存到缓存的条件                             |
 | ■■   | **proxy_pass**                 | 设置代理服务器的协议和地址以及位置应映射到的可选URI      |
-|      | proxy_pass_header              | 将其他禁用的标头字段从代理服务器传递到客户端             |
+|      | proxy_pass_header              | 将其它禁用的标头字段从代理服务器传递到客户端             |
 |      | proxy_pass_request_body        | 是否将原始请求正文传递给代理服务器                       |
 |      | proxy_pass_request_headers     | 是否将原始请求的头字段传递给代理服务器                   |
 |      | proxy_read_timeout             | 代理服务器读取响应的超时时间                             |
@@ -533,7 +533,7 @@
 - `listen`指令可以有几个特定于套接字相关系统调用的附加参数。这些参数可以在任何listen指令中指定，但对于给定的`address:port`只能指定一次。
 - `setfib=number`参数设置侦听套接字的关联路由表(FIBSO_SETFIB选项)。这目前仅适用于FreeBSD。
 - `fastopen=number`为侦听套接字启用`TCP Fast Open`，并限制尚未完成三方握手的连接队列的最大长度。
-- `backlog=number`在listen()调用中设置backlog参数，该参数限制挂起连接队列的最大长度。默认情况下，backlog在FreeBSD、DragonFly BSD和macOS上设置为-1，在其他平台上设置为511。
+- `backlog=number`在listen()调用中设置backlog参数，该参数限制挂起连接队列的最大长度。默认情况下，backlog在FreeBSD、DragonFly BSD和macOS上设置为-1，在其它平台上设置为511。
 - `rcvbuf=size`设置侦听套接字的接收缓冲区大小(SO_RCVBUF选项)。
 - `sndbuf=size`设置侦听套接字的接收缓冲区大小(SO_SNDBUF选项)。
 - `accept_filter=filter`为侦听套接字设置accept filter(SO_ACCEPTFILTER选项)的名称，该套接字在将传入连接传递给accept()之前对其进行筛选。这仅适用于FreeBSD和NetBSD 5.0+。可能的值是dataready和httpready。
@@ -775,7 +775,7 @@ access_log /path/to/access.log combined if=$loggable;
 ---
 
 `escape`参数允许在变量中设置`json`或`default`字符转义，默认情况下使用`default`转义。`none`值禁用转义。
-对于`default`转义，值小于32或大于126的字符`"`、`\`和其他字符将转义为`\xXX`。如果未找到变量值，将记录连字符`-`。
+对于`default`转义，值小于32或大于126的字符`"`、`\`和其它字符将转义为`\xXX`。如果未找到变量值，将记录连字符`-`。
 对于`json`转义，json字符串中不允许的所有字符都将转义，字符`"`和`\`将转义为`\"`和`\\`，值小于32的字符将转义为`\n`、`\r`、`\t`、`\b`、`\f`或`\u00XX`。
 
 ### proxy_pass 设置代理服务器的协议和地址以及位置应映射到的可选URI
@@ -896,7 +896,7 @@ proxy_set_header Accept-Encoding "";
 
 ---
 
-- 停止执行rewrite模块的指令(break、if、return、rewrite、rewrite_log、set、uninitialized_variable_warn)，但是其他模块不受影响。
+- 停止执行rewrite模块的指令(break、if、return、rewrite、rewrite_log、set、uninitialized_variable_warn)，但是其它模块不受影响。
 
 例如：
 
@@ -959,7 +959,7 @@ if ($invalid_referer) {
 
 - 停止处理并将指定的返回响应码给客户端。
 - 非标准代码444关闭连接而不发送响应头。
-- 可以指定重定向URL(对于代码301、302、303、307和308)或响应正文text(对于其他代码)。
+- 可以指定重定向URL(对于代码301、302、303、307和308)或响应正文text(对于其它代码)。
 - 响应正文文本和重定向URL可以包含变量。
 - 作为一种特殊情况，可以将重定向URL指定为该服务器本地的URI，在这种情况下，根据请求方案($scheme)以及server_name_in_redirect和port_in_redirect指令形成完整的重定向URL。
 - 此外，可以将用于代码为302的临时重定向的URL指定为唯一参数。此类参数应以`http://`、`https://`或`$scheme`字符串开头。URL可以包含变量。
@@ -1051,7 +1051,7 @@ upstream backend {
 
 ---
 
-定义服务器的地址和其他参数。该地址可以指定为域名或IP地址，带有可选端口，或者在`UNIX:`前缀后指定为UNIX域套接字路径。如果未指定端口，则使用端口80。解析为多个IP地址的域名一次定义多个服务器。
+定义服务器的地址和其它参数。该地址可以指定为域名或IP地址，带有可选端口，或者在`UNIX:`前缀后指定为UNIX域套接字路径。如果未指定端口，则使用端口80。解析为多个IP地址的域名一次定义多个服务器。
 
 可以定义以下参数：
 
@@ -1070,7 +1070,7 @@ upstream backend {
 - `slow_start=time`：设置服务器将从零恢复其权重到标称值的时间。
 - `drain`：只有绑定到服务器的请求才会被代理到它。
 
-## 其他模块
+## 其它模块
 
 ### ngx_http_addition_module 模块
 
@@ -1099,7 +1099,7 @@ upstream backend {
 - 该ngx_http_auth_request_module模块根据子请求的结果实现客户端授权。
 - 如果子请求返回2xx响应码，则允许访问。
 - 如果返回401或403，则访问被拒绝并返回相应的错误代码。
-- 子请求返回的任何其他响应代码都被视为错误。
+- 子请求返回的任何其它响应代码都被视为错误。
 - 对于401错误，客户端还会从子请求响应中收到`WWW-Authenticate`标头。
 - 默认情况下不构建此模块，应使用--with-http_auth_request_module配置参数启用它。
 
@@ -1214,7 +1214,7 @@ upstream backend {
 
 ### ngx_http_map_module 模块
 
-- 该ngx_http_map_module模块创建其值取决于其他变量值的变量。
+- 该ngx_http_map_module模块创建其值取决于其它变量值的变量。
 
 ### ngx_http_memcached_module 模块
 

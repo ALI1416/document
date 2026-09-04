@@ -32,7 +32,7 @@ server 10.8.0.0 255.255.255.0
 # 固定客户端IP(duplicate-cn开启后无效)
 ;ifconfig-pool-persist ipp.txt
 
-# 允许客户端访问其他客户端
+# 允许客户端访问其它客户端
 client-to-client
 
 # 允许相同客户登录多个
@@ -53,12 +53,18 @@ username-as-common-name
 # 心跳
 keepalive 10 120
 
-# 其他
-topology subnet
-persist-key
-persist-tun
+# 日志文件
+log-append openvpn.log
+verb 4
+mute 1024
+
+# 实时访问状态
 status openvpn-status.log
-verb 3
+status-version 2
+
+# 其它
+topology subnet
+persist-tun
 explicit-exit-notify 1
 ```
 
