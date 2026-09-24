@@ -44,11 +44,11 @@ webServer.password = "xxx"
 
 ```sh
 docker run -d --name frps \
- --net=host \
- -v /docker/frps/conf:/etc/frp \
- -v /docker/frps/log:/var/log/frp \
- --restart=always \
- snowdreamtech/frps
+  --net=host \
+  -v /docker/frps/conf:/etc/frp \
+  -v /docker/frps/log:/var/log/frp \
+  --restart=always \
+  snowdreamtech/frps
 ```
 
 - `--net=host`host网络模式(共享宿主网络)

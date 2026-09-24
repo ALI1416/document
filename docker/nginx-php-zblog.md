@@ -122,14 +122,14 @@ http {
 9. 配置并启动php容器
 
 ```sh
-docker run -d --name php \
- --network nginx-php \
- -p 9000:9000 \
- -v /docker/php/conf:/opt/bitnami/php/etc \
- -v /docker/app:/app \
- -v /docker/php/log:/opt/bitnami/php/logs \
- --restart=always \
- bitnami/php-fpm
+  docker run -d --name php \
+  --network nginx-php \
+  -p 9000:9000 \
+  -v /docker/php/conf:/opt/bitnami/php/etc \
+  -v /docker/app:/app \
+  -v /docker/php/log:/opt/bitnami/php/logs \
+  --restart=always \
+  bitnami/php-fpm
 ```
 
 - `--network nginx-php`添加桥接网络
@@ -138,14 +138,14 @@ docker run -d --name php \
 
 ```sh
 docker run -d --name nginx \
- --network nginx-php \
- -p 80:80 \
- -v /docker/nginx/conf:/etc/nginx \
- -v /docker/app:/app \
- -v /docker/nginx/log:/var/log/nginx \
- --add-host host.docker.internal:host-gateway
- --restart=always \
- nginx
+  --network nginx-php \
+  -p 80:80 \
+  -v /docker/nginx/conf:/etc/nginx \
+  -v /docker/app:/app \
+  -v /docker/nginx/log:/var/log/nginx \
+  --add-host host.docker.internal:host-gateway
+  --restart=always \
+  nginx
 ```
 
 10. 访问地址<http://127.0.0.1/>

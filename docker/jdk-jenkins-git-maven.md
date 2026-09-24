@@ -16,18 +16,18 @@ chown -R 1000:1000 /docker/jenkins
 
 ```sh
 docker run -d --name jenkins \
- -p 8080:8080 \
- -p 50000:50000 \
- -v /docker/jenkins:/var/jenkins_home \
- -e TZ=Asia/Shanghai \
- -e JENKINS_OPTS="--prefix=/jenkins" \
- --restart=always \
- jenkins/jenkins:latest-jdk21
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v /docker/jenkins:/var/jenkins_home \
+  -e TZ=Asia/Shanghai \
+  -e JENKINS_OPTS="--prefix=/jenkins" \
+  --restart=always \
+  jenkins/jenkins:latest-jdk21
 ```
 
 - `-p 8080:8080`Web页面
 - `-p 50000:50000`代理通信页面
-- `-e TZ=Asia/Shanghai`设置时区为中国
+- `-e TZ=Asia/Shanghai`指定时区为中国
 - `-e JENKINS_OPTS="--prefix=/jenkins"`访问路径添加`jenkins`前缀
 
 7. 访问地址<http://127.0.0.1:8080/jenkins>

@@ -42,14 +42,14 @@ security:
 
 ```sh
 docker run -d --name mongo \
- -p 27017:27017 \
- -v /docker/mongo/conf/mongod.conf:/etc/mongod.conf \
- -v /docker/mongo/data:/data/db \
- -v /docker/mongo/log:/var/log/mongodb \
- -e MONGO_INITDB_ROOT_USERNAME=admin \
- -e MONGO_INITDB_ROOT_PASSWORD=admin \
- --restart=always \
- mongo --config /etc/mongod.conf
+  -p 27017:27017 \
+  -v /docker/mongo/conf/mongod.conf:/etc/mongod.conf \
+  -v /docker/mongo/data:/data/db \
+  -v /docker/mongo/log:/var/log/mongodb \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=admin \
+  --restart=always \
+  mongo --config /etc/mongod.conf
 ```
 
 - `-e MONGO_INITDB_ROOT_USERNAME=admin`设置超级管理员账号为`admin`(仅首次运行时设置)

@@ -45,13 +45,13 @@ log_type all
 
 ```sh
 docker run -d --name mosquitto \
- -p 1883:1883 \
- -p 9001:9001 \
- -v /docker/mosquitto/conf/:/mosquitto/config \
- -v /docker/mosquitto/data/:/mosquitto/data \
- -v /docker/mosquitto/log/:/mosquitto/log \
- --restart=always \
- eclipse-mosquitto
+  -p 1883:1883 \
+  -p 9001:9001 \
+  -v /docker/mosquitto/conf/:/mosquitto/config \
+  -v /docker/mosquitto/data/:/mosquitto/data \
+  -v /docker/mosquitto/log/:/mosquitto/log \
+  --restart=always \
+  eclipse-mosquitto
 ```
 
 8. 进入容器内部`docker exec -it mosquitto sh`

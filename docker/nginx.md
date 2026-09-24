@@ -101,13 +101,13 @@ http {
 
 ```sh
 docker run -d --name nginx \
- -p 90:80 \
- -v /docker/nginx/conf:/etc/nginx \
- -v /docker/nginx/html:/usr/share/nginx/html \
- -v /docker/nginx/log:/var/log/nginx \
- --add-host host.docker.internal:host-gateway
- --restart=always \
- nginx
+  -p 90:80 \
+  -v /docker/nginx/conf:/etc/nginx \
+  -v /docker/nginx/html:/usr/share/nginx/html \
+  -v /docker/nginx/log:/var/log/nginx \
+  --add-host host.docker.internal:host-gateway
+  --restart=always \
+  nginx
 ```
 
 - `-d`后台运行容器(detached模式)

@@ -84,13 +84,13 @@ default-character-set = utf8mb4
 
 ```sh
 docker run -d --name mysql \
- -p 3306:3306 \
- -v /docker/mysql/conf/my.cnf:/etc/my.cnf \
- -v /docker/mysql/data:/var/lib/mysql \
- -v /docker/mysql/log:/var/log/mysql \
- -e MYSQL_ROOT_PASSWORD=root \
- --restart=always \
- mysql
+  -p 3306:3306 \
+  -v /docker/mysql/conf/my.cnf:/etc/my.cnf \
+  -v /docker/mysql/data:/var/lib/mysql \
+  -v /docker/mysql/log:/var/log/mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  --restart=always \
+  mysql
 ```
 
 - `-e MYSQL_ROOT_PASSWORD=root`设置账号为`root`的密码为`root`(仅首次运行时设置)
